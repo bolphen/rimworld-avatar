@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarDef>
+        <defName>Ears_Cat</defName>
+        <partName>Ears</partName>
+        <geneName>Ears_Cat</geneName>
+        <unisexPath>Core/Unisex/Ears/Ears_Cat</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Ears_Floppy</defName>
+        <partName>Ears</partName>
+        <geneName>Ears_Floppy</geneName>
+        <unisexPath>Core/Unisex/Ears/Ears_Floppy</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Ears_Pig</defName>
+        <partName>Ears</partName>
+        <geneName>Ears_Pig</geneName>
+        <unisexPath>Core/Unisex/Ears/Ears_Pig</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Ears_Pointed</defName>
+        <partName>Ears</partName>
+        <geneName>Ears_Pointed</geneName>
+        <unisexPath>Core/Unisex/Ears/Ears_Pointed</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Nose_Pig</defName>
+        <partName>Nose</partName>
+        <geneName>Nose_Pig</geneName>
+        <femalePath>Core/Female/Nose/Nose_Pig</femalePath>
+        <malePath>Core/Male/Nose/Nose_Pig</malePath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>MiniHorns</defName>
+        <partName>Headbone</partName>
+        <geneName>Headbone_MiniHorns</geneName>
+        <unisexPath>Core/Unisex/Headbone_MiniHorns</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>CenterHorn</defName>
+        <partName>Headbone</partName>
+        <geneName>Headbone_CenterHorn</geneName>
+        <unisexPath>Core/Unisex/Headbone_CenterHorn</unisexPath>
+    </Avatar.AvatarDef>
+
+</Defs>
