@@ -4,107 +4,171 @@
     <Avatar.AvatarDef>
         <defName>Head_AverageNormal</defName>
         <partName>Head</partName>
-        <headTypeName>AverageNormal</headTypeName>
+        <typeName>AverageNormal</typeName>
         <femalePath>Core/Female/Head/AverageNormal</femalePath>
         <malePath>Core/Male/Head/AverageNormal</malePath>
+        <girlPath>Core/Girl/Head/AverageNormal</girlPath>
+        <boyPath>Core/Boy/Head/AverageNormal</boyPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
         <defName>Head_AveragePointy</defName>
         <partName>Head</partName>
-        <headTypeName>AveragePointy</headTypeName>
+        <typeName>AveragePointy</typeName>
         <femalePath>Core/Female/Head/AveragePointy</femalePath>
         <malePath>Core/Male/Head/AveragePointy</malePath>
+        <girlPath>Core/Girl/Head/AveragePointy</girlPath>
+        <boyPath>Core/Boy/Head/AveragePointy</boyPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
         <defName>Head_AverageWide</defName>
         <partName>Head</partName>
-        <headTypeName>AverageWide</headTypeName>
+        <typeName>AverageWide</typeName>
         <femalePath>Core/Female/Head/AverageWide</femalePath>
         <malePath>Core/Male/Head/AverageWide</malePath>
+        <girlPath>Core/Girl/Head/AverageWide</girlPath>
+        <boyPath>Core/Boy/Head/AverageWide</boyPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
         <defName>Head_NarrowNormal</defName>
         <partName>Head</partName>
-        <headTypeName>NarrowNormal</headTypeName>
+        <typeName>NarrowNormal</typeName>
         <femalePath>Core/Female/Head/NarrowNormal</femalePath>
         <malePath>Core/Male/Head/NarrowNormal</malePath>
+        <girlPath>Core/Girl/Head/NarrowNormal</girlPath>
+        <boyPath>Core/Boy/Head/NarrowNormal</boyPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
         <defName>Head_NarrowPointy</defName>
         <partName>Head</partName>
-        <headTypeName>NarrowPointy</headTypeName>
+        <typeName>NarrowPointy</typeName>
         <femalePath>Core/Female/Head/NarrowPointy</femalePath>
         <malePath>Core/Male/Head/NarrowPointy</malePath>
+        <girlPath>Core/Girl/Head/NarrowPointy</girlPath>
+        <boyPath>Core/Boy/Head/NarrowPointy</boyPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
         <defName>Head_NarrowWide</defName>
         <partName>Head</partName>
-        <headTypeName>NarrowWide</headTypeName>
+        <typeName>NarrowWide</typeName>
         <femalePath>Core/Female/Head/NarrowWide</femalePath>
         <malePath>Core/Male/Head/NarrowWide</malePath>
+        <girlPath>Core/Girl/Head/NarrowWide</girlPath>
+        <boyPath>Core/Boy/Head/NarrowWide</boyPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
         <defName>Head_Gaunt</defName>
         <partName>Head</partName>
-        <headTypeName>Gaunt</headTypeName>
+        <typeName>Gaunt</typeName>
         <femalePath>Core/Female/Head/Gaunt</femalePath>
         <malePath>Core/Male/Head/Gaunt</malePath>
+        <girlPath>Core/Girl/Head/Gaunt</girlPath>
+        <boyPath>Core/Boy/Head/Gaunt</boyPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
         <defName>Head_HeavyJawNormal</defName>
         <partName>Head</partName>
-        <headTypeName>HeavyJawNormal</headTypeName>
+        <typeName>HeavyJawNormal</typeName>
         <femalePath>Core/Female/Head/HeavyJawNormal</femalePath>
         <malePath>Core/Male/Head/HeavyJawNormal</malePath>
+        <girlPath>Core/Girl/Head/HeavyJawNormal</girlPath>
+        <boyPath>Core/Boy/Head/HeavyJawNormal</boyPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
         <defName>Head_Furskin_Average1</defName>
         <partName>Head</partName>
-        <headTypeName>Furskin_Average1</headTypeName>
+        <typeName>Furskin_Average1</typeName>
+        <hideTattoo>true</hideTattoo>
         <unisexPath>Core/Unisex/Head/Furskin_Average1</unisexPath>
+        <unisexChildPath>Core/Unisex/Head/Furskin_Average1_Child</unisexChildPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
         <defName>Head_Furskin_Average2</defName>
         <partName>Head</partName>
-        <headTypeName>Furskin_Average2</headTypeName>
+        <typeName>Furskin_Average2</typeName>
+        <hideTattoo>true</hideTattoo>
         <unisexPath>Core/Unisex/Head/Furskin_Average2</unisexPath>
+        <unisexChildPath>Core/Unisex/Head/Furskin_Average2_Child</unisexChildPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
         <defName>Head_Furskin_Average3</defName>
         <partName>Head</partName>
-        <headTypeName>Furskin_Average3</headTypeName>
+        <typeName>Furskin_Average3</typeName>
+        <hideTattoo>true</hideTattoo>
         <unisexPath>Core/Unisex/Head/Furskin_Average3</unisexPath>
+        <unisexChildPath>Core/Unisex/Head/Furskin_Average3_Child</unisexChildPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
         <defName>Head_Furskin_Narrow1</defName>
         <partName>Head</partName>
-        <headTypeName>Furskin_Narrow1</headTypeName>
-        <unisexPath>Core/Unisex/Head/Furskin_Narrow1</unisexPath>
+        <typeName>Furskin_Narrow1</typeName>
+        <hideTattoo>true</hideTattoo>
+        <unisexPath>Core/Unisex/Head/Furskin_Average1</unisexPath>
+        <unisexChildPath>Core/Unisex/Head/Furskin_Average1_Child</unisexChildPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
         <defName>Head_Furskin_Narrow2</defName>
         <partName>Head</partName>
-        <headTypeName>Furskin_Narrow2</headTypeName>
-        <unisexPath>Core/Unisex/Head/Furskin_Narrow2</unisexPath>
+        <typeName>Furskin_Narrow2</typeName>
+        <hideTattoo>true</hideTattoo>
+        <unisexPath>Core/Unisex/Head/Furskin_Average2</unisexPath>
+        <unisexChildPath>Core/Unisex/Head/Furskin_Average2_Child</unisexChildPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
         <defName>Head_Furskin_Narrow3</defName>
         <partName>Head</partName>
-        <headTypeName>Furskin_Narrow3</headTypeName>
-        <unisexPath>Core/Unisex/Head/Furskin_Narrow3</unisexPath>
+        <typeName>Furskin_Narrow3</typeName>
+        <hideTattoo>true</hideTattoo>
+        <unisexPath>Core/Unisex/Head/Furskin_Average3</unisexPath>
+        <unisexChildPath>Core/Unisex/Head/Furskin_Average3_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Head_Furskin_Gaunt</defName>
+        <partName>Head</partName>
+        <typeName>Furskin_Gaunt</typeName>
+        <hideTattoo>true</hideTattoo>
+        <unisexPath>Core/Unisex/Head/Furskin_Gaunt</unisexPath>
+        <unisexChildPath>Core/Unisex/Head/Furskin_Gaunt_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Head_Furskin_Heavy1</defName>
+        <partName>Head</partName>
+        <typeName>Furskin_Heavy1</typeName>
+        <hideTattoo>true</hideTattoo>
+        <unisexPath>Core/Unisex/Head/Furskin_Heavy</unisexPath>
+        <unisexChildPath>Core/Unisex/Head/Furskin_Heavy_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Head_Furskin_Heavy2</defName>
+        <partName>Head</partName>
+        <typeName>Furskin_Heavy2</typeName>
+        <hideTattoo>true</hideTattoo>
+        <unisexPath>Core/Unisex/Head/Furskin_Heavy</unisexPath>
+        <unisexChildPath>Core/Unisex/Head/Furskin_Heavy_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Head_Furskin_Heavy3</defName>
+        <partName>Head</partName>
+        <typeName>Furskin_Heavy3</typeName>
+        <hideTattoo>true</hideTattoo>
+        <unisexPath>Core/Unisex/Head/Furskin_Heavy</unisexPath>
+        <unisexChildPath>Core/Unisex/Head/Furskin_Heavy_Child</unisexChildPath>
     </Avatar.AvatarDef>
 
 </Defs>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarDef>
+        <defName>Head_ScaleSkin_Average</defName>
+        <partName>Head</partName>
+        <typeName>VRESaurids_ScaleSkin_Average</typeName>
+        <unisexPath>VanillaExpanded/Saurids/Head/ScaleSkin_Average</unisexPath>
+        <unisexChildPath>VanillaExpanded/Saurids/Head/ScaleSkin_Average_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Head_ScaleSkin_Narrow</defName>
+        <partName>Head</partName>
+        <typeName>VRESaurids_ScaleSkin_Narrow</typeName>
+        <unisexPath>VanillaExpanded/Saurids/Head/ScaleSkin_Narrow</unisexPath>
+        <unisexChildPath>VanillaExpanded/Saurids/Head/ScaleSkin_Narrow_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Head_ScaleSkin_Gaunt</defName>
+        <partName>Head</partName>
+        <typeName>VRESaurids_ScaleSkin_Gaunt</typeName>
+        <unisexPath>VanillaExpanded/Saurids/Head/ScaleSkin_Gaunt</unisexPath>
+        <unisexChildPath>VanillaExpanded/Saurids/Head/ScaleSkin_Gaunt_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Head_ScaleSkin_Heavy</defName>
+        <partName>Head</partName>
+        <typeName>VRESaurids_ScaleSkin_Heavy</typeName>
+        <unisexPath>VanillaExpanded/Saurids/Head/ScaleSkin_Heavy</unisexPath>
+        <unisexChildPath>VanillaExpanded/Saurids/Head/ScaleSkin_Heavy_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Ears_Frilled</defName>
+        <partName>Ears</partName>
+        <geneName>VRESaurids_FrilledEars</geneName>
+        <unisexPath>VanillaExpanded/Saurids/Ears_Frilled</unisexPath>
+        <unisexChildPath>VanillaExpanded/Saurids/Ears_Frilled_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Yoshi</defName>
+        <partName>Hair</partName>
+        <typeName>VRESaurids_Yoshi</typeName>
+        <unisexPath>VanillaExpanded/Saurids/Hair/Yoshi</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Zilla</defName>
+        <partName>Hair</partName>
+        <typeName>VRESaurids_Zilla</typeName>
+        <unisexPath>VanillaExpanded/Saurids/Hair/Yoshi</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Rango</defName>
+        <partName>Hair</partName>
+        <typeName>VRESaurids_Rango</typeName>
+        <unisexPath>VanillaExpanded/Saurids/Hair/Spyro</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Geico</defName>
+        <partName>Hair</partName>
+        <typeName>VRESaurids_Geico</typeName>
+        <unisexPath>VanillaExpanded/Saurids/Hair/Geico</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Kaa</defName>
+        <partName>Hair</partName>
+        <typeName>VRESaurids_Kaa</typeName>
+        <unisexPath>VanillaExpanded/Saurids/Hair/Kaa</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Crush</defName>
+        <partName>Hair</partName>
+        <typeName>VRESaurids_Crush</typeName>
+        <unisexPath>VanillaExpanded/Saurids/Hair/Crush</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Grimlock</defName>
+        <partName>Hair</partName>
+        <typeName>VRESaurids_Grimlock</typeName>
+        <unisexPath>VanillaExpanded/Saurids/Hair/Spyro</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Reptar</defName>
+        <partName>Hair</partName>
+        <typeName>VRESaurids_Reptar</typeName>
+        <unisexPath>VanillaExpanded/Saurids/Hair/Reptar</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Littlefoot</defName>
+        <partName>Hair</partName>
+        <typeName>VRESaurids_Littlefoot</typeName>
+        <unisexPath>VanillaExpanded/Saurids/Hair/Littlefoot</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Spyro</defName>
+        <partName>Hair</partName>
+        <typeName>VRESaurids_Spyro</typeName>
+        <unisexPath>VanillaExpanded/Saurids/Hair/Spyro</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Smaug</defName>
+        <partName>Hair</partName>
+        <typeName>VRESaurids_Smaug</typeName>
+        <unisexPath>VanillaExpanded/Saurids/Hair/Yoshi</unisexPath>
+    </Avatar.AvatarDef>
+
+</Defs>

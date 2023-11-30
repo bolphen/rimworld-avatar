@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarDef>
+        <defName>Head_BarkNarrow</defName>
+        <partName>Head</partName>
+        <typeName>VRE_BarkNarrow</typeName>
+        <hideWrinkles>true</hideWrinkles>
+        <unisexPath>VanillaExpanded/Phytokins/Head/BarkAverage</unisexPath>
+        <unisexChildPath>VanillaExpanded/Phytokins/Head/BarkAverage_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Head_BarkAverage</defName>
+        <partName>Head</partName>
+        <typeName>VRE_BarkAverage</typeName>
+        <hideWrinkles>true</hideWrinkles>
+        <unisexPath>VanillaExpanded/Phytokins/Head/BarkAverage</unisexPath>
+        <unisexChildPath>VanillaExpanded/Phytokins/Head/BarkAverage_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Head_BarkGaunt</defName>
+        <partName>Head</partName>
+        <typeName>VRE_BarkGaunt</typeName>
+        <hideWrinkles>true</hideWrinkles>
+        <unisexPath>VanillaExpanded/Phytokins/Head/BarkGaunt</unisexPath>
+        <unisexChildPath>VanillaExpanded/Phytokins/Head/BarkGaunt_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Head_BarkHeavy</defName>
+        <partName>Head</partName>
+        <typeName>VRE_BarkHeavy</typeName>
+        <hideWrinkles>true</hideWrinkles>
+        <unisexPath>VanillaExpanded/Phytokins/Head/BarkHeavy</unisexPath>
+        <unisexChildPath>VanillaExpanded/Phytokins/Head/BarkHeavy_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Eve</defName>
+        <partName>Hair</partName>
+        <typeName>VRE_FoliageHairEve</typeName>
+        <unisexPath>VanillaExpanded/Phytokins/Hair/Eve</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Hope</defName>
+        <partName>Hair</partName>
+        <typeName>VRE_FoliageHairHope</typeName>
+        <unisexPath>VanillaExpanded/Phytokins/Hair/Hope</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Kathy</defName>
+        <partName>Hair</partName>
+        <typeName>VRE_FoliageHairKathy</typeName>
+        <unisexPath>VanillaExpanded/Phytokins/Hair/Kathy</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Leafein</defName>
+        <partName>Hair</partName>
+        <typeName>VRE_FoliageHairLeafein</typeName>
+        <unisexPath>VanillaExpanded/Phytokins/Hair/Leafein</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Ophie</defName>
+        <partName>Hair</partName>
+        <typeName>VRE_FoliageHairOphie</typeName>
+        <unisexPath>VanillaExpanded/Phytokins/Hair/Ophie</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Hair_Pixie</defName>
+        <partName>Hair</partName>
+        <typeName>VRE_FoliageHairPixie</typeName>
+        <unisexPath>VanillaExpanded/Phytokins/Hair/Pixie</unisexPath>
+    </Avatar.AvatarDef>
+
+</Defs>

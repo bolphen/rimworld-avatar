@@ -8,20 +8,32 @@ namespace Avatar
     public class AvatarDef : Def
     {
         public string partName;
+        public string typeName;
         public string geneName;
-        public string headTypeName;
-        public string hairName;
         public string unisexPath;
+        public string unisexChildPath;
         public string femalePath;
         public string malePath;
+        public string girlPath;
+        public string boyPath;
+        public bool hideWrinkles;
+        public bool hideTattoo;
         public string GetPath(string gender)
         {
-            if (unisexPath != null)
+            if ((gender == "Girl" || gender == "Boy") && unisexChildPath != null)
+                return unisexChildPath;
+            else if (unisexPath != null)
                 return unisexPath;
             else if (gender == "Female")
                 return femalePath;
-            else
+            else if (gender == "Male")
                 return malePath;
+            else if (gender == "Girl")
+                return girlPath;
+            else if (gender == "Boy")
+                return girlPath;
+            else
+                return null;
         }
     }
     public class AvatarPart
@@ -79,47 +91,66 @@ namespace Avatar
             result.Apply();
             return result;
         }
+        private string GetPath(string gender, string partName, string typeName, string fallbackPath)
+        {
+            string result = null;
+            foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs)
+                if (def.partName == partName && def.typeName == typeName)
+                    result = def.GetPath(gender);
+            if (result == null)
+            {
+                Log.Warning("Missing def for " + partName + ": " + typeName);
+                result = fallbackPath;
+            }
+            return result;
+        }
         private void RenderAvatar()
         {
             Pawn pawn = parent as Pawn;
             int width = 40;
             int height = 40;
             string gender = (pawn.gender == Gender.Female) ? "Female" : "Male";
+            int yOffset = 0;
+            int eyeLevel = 19;
+            if (pawn.ageTracker.AgeBiologicalYears < 13)
+            { // children
+                gender = (pawn.gender == Gender.Female) ? "Girl" : "Boy";
+                yOffset = 2;
+                eyeLevel = 18;
+            }
             Color skinColor = pawn.story.SkinColor;
             Color hairColor = pawn.story.HairColor;
             List<AvatarPart> parts = new ();
             string headTypeName = pawn.story.headType.defName;
             if (headTypeName.StartsWith("Female_"))
                 headTypeName = headTypeName.Substring(7);
+            if (headTypeName.EndsWith("_Female"))
+                headTypeName = headTypeName.Substring(0, headTypeName.Length-7);
             if (headTypeName.StartsWith("Male_"))
                 headTypeName = headTypeName.Substring(5);
-            string tattoo = "Core/"+gender+"/Tattoo/"+pawn.style.FaceTattoo.defName;
-            string beard = "Core/Unisex/Beard/"+pawn.style.beardDef.defName;
-            string hair = "Core/Unisex/Hair/Bald";
-            string head = "Core/"+gender+"/Head/AverageNormal"; // default head type
+            if (headTypeName.EndsWith("_Male"))
+                headTypeName = headTypeName.Substring(0, headTypeName.Length-5);
+            string head   = GetPath(gender, "Head", headTypeName, "Core/"+gender+"/Head/AverageNormal");
+            string tattoo = GetPath(gender, "Tattoo", pawn.style.FaceTattoo.defName, "Core/Unisex/Tattoo/NoTattoo");
+            string beard  = GetPath(gender, "Beard", pawn.style.beardDef.defName, "Core/Unisex/Beard/NoBeard");
+            string hair   = GetPath(gender, "Hair", pawn.story.hairDef.defName, "Core/Unisex/Hair/Bald");
             string neck = "Core/"+gender+"/Neck";
             string ears = "Core/Unisex/Ears/Ears_Human";
             string nose = "Core/"+gender+"/Nose/Nose"+((pawn.ageTracker.BirthDayOfYear%5)+1).ToString();
             string eyes = "Core/"+gender+"/Eyes/Eyes"+((pawn.ageTracker.BirthDayOfYear%6)+1).ToString();
             string mouth = "Core/"+gender+"/Mouth/Mouth"+((pawn.ageTracker.BirthYear%5)+1).ToString();
             string brows = "Core/"+gender+"/Brows/Brows"+((pawn.ageTracker.BirthDayOfYear%3)+1).ToString();
-            foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "Head"))
-                if (def.headTypeName == headTypeName)
-                    head = def.GetPath(gender);
             foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "Ears"))
                 if (pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == def.geneName))
                     ears = def.GetPath(gender);
             foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "Nose"))
                 if (pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == def.geneName))
                     nose = def.GetPath(gender);
-            foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "Hair"))
-                if (def.hairName == pawn.story.hairDef.defName)
-                    hair = def.GetPath(gender);
             parts.Add(new AvatarPart(neck, skinColor));
             parts.Add(new AvatarPart(ears, skinColor));
             parts.Add(new AvatarPart(head, skinColor));
-            parts.Add(new AvatarPart(nose, skinColor));
             parts.Add(new AvatarPart(mouth, skinColor));
+            parts.Add(new AvatarPart(nose, skinColor));
             parts.Add(new AvatarPart(eyes, skinColor));
             foreach (Hediff h in pawn.health.hediffSet.hediffs.Where(h => h.Part != null))
             {
@@ -127,7 +158,10 @@ namespace Avatar
                 {
                     if (h.def.defName == "MissingBodyPart")
                     {
-                        parts[3].texPath = "Core/Unisex/Nose_Missing";
+                        if (pawn.ageTracker.AgeBiologicalYears < 13)
+                            parts[4].texPath = "Core/Unisex/Nose_Missing_Child";
+                        else
+                            parts[4].texPath = "Core/Unisex/Nose_Missing";
                     }
                 }
                 else if (h.Part.customLabel == "left eye")
@@ -159,16 +193,25 @@ namespace Avatar
                         parts[1].drawDexter = false;
                 }
             }
-            if (!pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == "Ageless"))
+            bool hideTattoo = false;
+            bool hideWrinkles = false;
+            foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs)
+                if (def.partName == "Head" && def.typeName == headTypeName)
+                {
+                    hideTattoo = def.hideTattoo;
+                    hideWrinkles = def.hideWrinkles;
+                }
+            if (!pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == "Ageless") && !hideWrinkles)
             {
-                if (pawn.ageTracker.AgeBiologicalYears >= 70 && !headTypeName.EndsWith("Gaunt"))
-                    parts.Add(new AvatarPart("Core/"+gender+"/Wrinkles2", skinColor));
-                else if (pawn.ageTracker.AgeBiologicalYears >= 50)
-                    parts.Add(new AvatarPart("Core/"+gender+"/Wrinkles1", skinColor));
+                if (pawn.ageTracker.AgeBiologicalYears >= 55)
+                    parts.Add(new AvatarPart("Core/Unisex/Wrinkles", skinColor));
             }
-            if (pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == "Brow_Heavy"))
-                parts.Add(new AvatarPart("Core/Unisex/Brow_Heavy", skinColor));
-            if (!pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == "Furskin")) // Only non-furskins should have tattoos.
+            foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "Facial"))
+            {
+                if (pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == def.geneName))
+                    parts.Add(new AvatarPart(def.GetPath(gender), skinColor));
+            }
+            if (!hideTattoo)
                 parts.Add(new AvatarPart(tattoo));
             parts.Add(new AvatarPart(beard, hairColor));
             parts.Add(new AvatarPart(brows, hairColor));
@@ -194,42 +237,45 @@ namespace Avatar
                     canvas.SetPixel(x, y, new Color(.5f,.5f,.6f,.5f));
             foreach (AvatarPart part in parts)
             {
-                layer = ContentFinder<Texture2D>.Get(part.texPath); // to suppress errors: .Get(part.texPath, false);
+                layer = ContentFinder<Texture2D>.Get(part.texPath);
+                // the path is defined in the def so the texture should exist
                 if (layer != null)
                 {
                     layer = MakeReadable(layer);
-                    for (int y = 0; y < height; y++)
+                    for (int y = 0; y < height-yOffset; y++)
                     {
                         for (int x = (part.drawDexter ? 0 : width/2); x < (part.drawSinister ? width : width/2); x++)
                         {
-                            Color color1 = layer.GetPixel(x, y);
-                            if (color1.a > 0)
+                            Color oldColor = canvas.GetPixel(x, y);
+                            Color newColor = layer.GetPixel(x, y+yOffset);
+                            if (newColor.a > 0)
                             {
-                                if (part.color is Color color2)
+                                Color color = new ();
+                                if (part.color is Color tint)
                                 {
-                                    Color color = new ();
-                                    color.r = (color1.r * color2.r);
-                                    color.g = (color1.g * color2.g);
-                                    color.b = (color1.b * color2.b);
-                                    color.a = (color1.a * color2.a);
-                                    canvas.SetPixel(x, y, color);
+                                    color.r = oldColor.r*(1f-newColor.a) + newColor.r*tint.r*newColor.a;
+                                    color.g = oldColor.g*(1f-newColor.a) + newColor.g*tint.g*newColor.a;
+                                    color.b = oldColor.b*(1f-newColor.a) + newColor.b*tint.b*newColor.a;
+                                    color.a = 1f;
                                 }
                                 else
-                                    canvas.SetPixel(x, y, color1);
+                                {
+                                    color.r = oldColor.r*(1f-newColor.a) + newColor.r*newColor.a;
+                                    color.g = oldColor.g*(1f-newColor.a) + newColor.g*newColor.a;
+                                    color.b = oldColor.b*(1f-newColor.a) + newColor.b*newColor.a;
+                                    color.a = 1f;
+                                }
+                                canvas.SetPixel(x, y, color);
                             }
                         }
                     }
                     if (part.texPath == eyes)
                     { // draw eye colors manually
-                        canvas.SetPixel(14,19, eyeColor.Item1);
-                        canvas.SetPixel(15,19, eyeColor.Item2);
-                        canvas.SetPixel(23,19, eyeColor.Item2);
-                        canvas.SetPixel(24,19, eyeColor.Item1);
+                        canvas.SetPixel(14, eyeLevel, eyeColor.Item1);
+                        canvas.SetPixel(15, eyeLevel, eyeColor.Item2);
+                        canvas.SetPixel(23, eyeLevel, eyeColor.Item2);
+                        canvas.SetPixel(24, eyeLevel, eyeColor.Item1);
                     }
-                }
-                else
-                {
-                    // TODO fallback?
                 }
             }
             canvas.Apply();

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarDef>
+        <defName>Tattoo_NoTattoo</defName>
+        <partName>Tattoo</partName>
+        <typeName>NoTattoo_Face</typeName>
+        <unisexPath>Core/Unisex/Tattoo/NoTattoo</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Tattoo_Cobweb</defName>
+        <partName>Tattoo</partName>
+        <typeName>Face_Cobweb</typeName>
+        <unisexPath>Core/Unisex/Tattoo/Cobweb</unisexPath>
+        <unisexChildPath>Core/Unisex/Tattoo/Cobweb_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Tattoo_Eclipse</defName>
+        <partName>Tattoo</partName>
+        <typeName>Face_Eclipse</typeName>
+        <femalePath>Core/Unisex/Tattoo/Eclipse_Female</femalePath>
+        <malePath>Core/Unisex/Tattoo/Eclipse_Male</malePath>
+        <girlPath>Core/Unisex/Tattoo/Eclipse_Girl</girlPath>
+        <boyPath>Core/Unisex/Tattoo/Eclipse_Boy</boyPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Tattoo_Headshot</defName>
+        <partName>Tattoo</partName>
+        <typeName>Face_Headshot</typeName>
+        <unisexPath>Core/Unisex/Tattoo/Headshot</unisexPath>
+        <unisexChildPath>Core/Unisex/Tattoo/Headshot_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Tattoo_Line</defName>
+        <partName>Tattoo</partName>
+        <typeName>Face_Line</typeName>
+        <femalePath>Core/Unisex/Tattoo/Line_Female</femalePath>
+        <malePath>Core/Unisex/Tattoo/Line_Male</malePath>
+        <girlPath>Core/Unisex/Tattoo/Line_Girl</girlPath>
+        <boyPath>Core/Unisex/Tattoo/Line_Boy</boyPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Tattoo_Love</defName>
+        <partName>Tattoo</partName>
+        <typeName>Face_Love</typeName>
+        <unisexPath>Core/Unisex/Tattoo/Love</unisexPath>
+        <unisexChildPath>Core/Unisex/Tattoo/Love_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Tattoo_Oracle</defName>
+        <partName>Tattoo</partName>
+        <typeName>Face_Oracle</typeName>
+        <unisexPath>Core/Unisex/Tattoo/Oracle</unisexPath>
+        <unisexChildPath>Core/Unisex/Tattoo/Oracle_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Tattoo_Pantheon</defName>
+        <partName>Tattoo</partName>
+        <typeName>Face_Pantheon</typeName>
+        <unisexPath>Core/Unisex/Tattoo/Pantheon</unisexPath>
+        <unisexChildPath>Core/Unisex/Tattoo/Pantheon_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Tattoo_Spider</defName>
+        <partName>Tattoo</partName>
+        <typeName>Face_Spider</typeName>
+        <unisexPath>Core/Unisex/Tattoo/Spider</unisexPath>
+        <unisexChildPath>Core/Unisex/Tattoo/Spider_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Tattoo_Stars</defName>
+        <partName>Tattoo</partName>
+        <typeName>Face_Stars</typeName>
+        <femalePath>Core/Unisex/Tattoo/Stars_Female</femalePath>
+        <malePath>Core/Unisex/Tattoo/Stars_Male</malePath>
+        <girlPath>Core/Unisex/Tattoo/Stars_Female</girlPath>
+        <boyPath>Core/Unisex/Tattoo/Stars_Male</boyPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Tattoo_Tear</defName>
+        <partName>Tattoo</partName>
+        <typeName>Face_Tear</typeName>
+        <unisexPath>Core/Unisex/Tattoo/Tear</unisexPath>
+        <unisexChildPath>Core/Unisex/Tattoo/Tear_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Tattoo_Tiger</defName>
+        <partName>Tattoo</partName>
+        <typeName>Face_Tiger</typeName>
+        <unisexPath>Core/Unisex/Tattoo/Tiger</unisexPath>
+        <unisexChildPath>Core/Unisex/Tattoo/Tiger_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Tattoo_Warpaint</defName>
+        <partName>Tattoo</partName>
+        <typeName>Face_Warpaint</typeName>
+        <unisexPath>Core/Unisex/Tattoo/Warpaint</unisexPath>
+        <unisexChildPath>Core/Unisex/Tattoo/Warpaint_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Tattoo_Worried</defName>
+        <partName>Tattoo</partName>
+        <typeName>Face_Worried</typeName>
+        <unisexPath>Core/Unisex/Tattoo/Worried</unisexPath>
+        <unisexChildPath>Core/Unisex/Tattoo/Worried_Child</unisexChildPath>
+    </Avatar.AvatarDef>
+
+</Defs>

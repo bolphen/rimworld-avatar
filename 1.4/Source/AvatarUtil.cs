@@ -36,8 +36,7 @@ namespace Avatar
             {
                 Pawn pawn = Find.Selector.SelectedPawns.First();
                 CompAvatar comp = pawn.GetComp<CompAvatar>();
-                if (comp != null && pawn.ageTracker.AgeBiologicalYears >= 13)
-                // don't show avatar for children, for now
+                if (comp != null && pawn.ageTracker.AgeBiologicalYears >= 3)
                 {
                     MainTabWindow_Inspect window = Find.WindowStack.WindowOfType<MainTabWindow_Inspect>();
                     if (window != null)
