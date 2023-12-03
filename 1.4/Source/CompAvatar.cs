@@ -76,27 +76,28 @@ namespace Avatar
             this.brows = brows;
         }
     }
-    public class CompAvatar : ThingComp
+
+    public class AvatarManager
     {
+        private Pawn pawn;
         private Texture2D avatar;
         private int lastUpdate;
-        private Feature feature;
+        public void SetPawn(Pawn pawn)
+        {
+            if (this.pawn != pawn)
+            {
+                this.pawn = pawn;
+                if (avatar != null)
+                { // destroy old texture
+                    UnityEngine.Object.Destroy(avatar);
+                    avatar = null;
+                }
+            }
+        }
         private Feature GetFeature()
         {
-            if (feature == null)
-            {
-                Pawn pawn = parent as Pawn;
-                int v = 2632*pawn.ageTracker.BirthDayOfYear+3341*pawn.ageTracker.BirthYear;
-                feature = new ((v%450)/90+1, (v%90)/15+1, (v%15)/3+1, (v%3)+1);
-            }
-            return feature;
-        }
-        public void Randomize()
-        {
-            if (feature != null)
-            {
-                feature = new (UnityEngine.Random.Range(1,6), UnityEngine.Random.Range(1,7), UnityEngine.Random.Range(1,6), UnityEngine.Random.Range(1,4));
-            }
+            int v = 2632*pawn.ageTracker.BirthDayOfYear+3341*pawn.ageTracker.BirthYear;
+            return new ((v%450)/90+1, (v%90)/15+1, (v%15)/3+1, (v%3)+1);
         }
         private void ClearTexture(Texture2D texture, Color color)
         {
@@ -108,7 +109,7 @@ namespace Avatar
             RenderTexture.ReleaseTemporary(canvas);
             RenderTexture.active = active;
         }
-        private Texture2D MakeReadable(Texture2D texture)
+        private Texture2D MakeReadableCopy(Texture2D texture)
         {
             RenderTexture active = RenderTexture.active;
             RenderTexture canvas = RenderTexture.GetTemporary(texture.width, texture.height);
@@ -153,13 +154,10 @@ namespace Avatar
             foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs)
                 if (def.partName == partName && def.typeName == typeName)
                     result = def.GetPath(gender);
-            if (result == null)
-                result = fallbackPath;
-            return result;
+            return result ?? fallbackPath;
         }
         private void RenderAvatar()
         {
-            Pawn pawn = parent as Pawn;
             int width = 40;
             int height = 40;
             Texture2D canvas = new (width, height);
@@ -328,11 +326,11 @@ namespace Avatar
             {
                 if (part.texPath != null)
                 {
-                    Texture2D layer = ContentFinder<Texture2D>.Get(part.texPath);
+                    Texture2D unreadableLayer = ContentFinder<Texture2D>.Get(part.texPath);
                     // the path is defined in the def so the texture should exist
-                    if (layer != null)
+                    if (unreadableLayer != null)
                     {
-                        layer = MakeReadable(layer);
+                        Texture2D layer = MakeReadableCopy(unreadableLayer);
                         for (int y = 0; y < height-yOffset; y++)
                         {
                             for (int x = (part.drawDexter ? 0 : width/2); x < (part.drawSinister ? width : width/2); x++)
@@ -369,10 +367,11 @@ namespace Avatar
                             canvas.SetPixel(23, eyeLevel, eyeColor.Item2);
                             canvas.SetPixel(24, eyeLevel, eyeColor.Item1);
                         }
+                        UnityEngine.Object.Destroy(layer);
                     }
                 }
             }
-            if (pawn.Dead) // pawn is dead
+            if (pawn.Dead)
                 for (int y = 0; y < height; y++)
                     for (int x = 0; x < width; x++)
                     {
@@ -381,8 +380,13 @@ namespace Avatar
                         canvas.SetPixel(x, y, new Color(gray,gray,gray*1.2f,oldColor.a));
                     }
             canvas.Apply();
+            if (avatar != null)
+            { // destroy old texture
+                UnityEngine.Object.Destroy(avatar);
+            }
             avatar = ScaleX2(canvas);
             avatar.filterMode = FilterMode.Point;
+            UnityEngine.Object.Destroy(canvas);
         }
         public Texture2D GetAvatar()
         {
@@ -392,14 +396,6 @@ namespace Avatar
                 lastUpdate = Time.frameCount;
             }
             return avatar;
-        }
-        public void SaveAsPng()
-        {
-            string dir = Application.persistentDataPath + "/avatar/";
-            if (!Directory.Exists(dir))
-                Directory.CreateDirectory(dir);
-            string savePath = dir + "avatar-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".png";
-            File.WriteAllBytes(savePath, GetAvatar().EncodeToPNG());
         }
     }
 }

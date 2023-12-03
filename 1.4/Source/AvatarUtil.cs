@@ -10,21 +10,13 @@ namespace Avatar
     [StaticConstructorOnStartup]
     public static class AvatarUtil
     {
+        // stores the pawn, if any, and the avatar texture
+        public static AvatarManager manager;
+
         static AvatarUtil()
         {
             new Harmony("AvatarMod").PatchAll();
-
-            // add the CompAvatar to all humanlikes
-            foreach (ThingDef def in DefDatabase<ThingDef>.AllDefs)
-            {
-                if (def.race?.Humanlike ?? false)
-                {
-                    def.comps.Add(new CompProperties
-                    {
-                        compClass = typeof(CompAvatar)
-                    });
-                }
-            }
+            manager = new ();
         }
     }
 
@@ -35,29 +27,21 @@ namespace Avatar
         {
             if (pane is MainTabWindow_Inspect inspectPanel && inspectPanel.OpenTabType is null)
             {
-                CompAvatar comp = null;
-                if (inspectPanel.SelThing is Pawn pawn)
-                    comp = pawn.GetComp<CompAvatar>();
+                Pawn pawn = null;
+                if (inspectPanel.SelThing is Pawn selectedPawn)
+                    pawn = selectedPawn;
                 else if (inspectPanel.SelThing is Corpse corpse && !corpse.IsDessicated())
-                    comp = corpse.InnerPawn.GetComp<CompAvatar>();
-                if (comp != null)
+                    pawn = corpse.InnerPawn;
+                if (pawn != null && (pawn.def.race?.Humanlike ?? false))
                 {
-                    Texture2D avatar = comp.GetAvatar();
+                    AvatarUtil.manager.SetPawn(pawn);
+                    Texture2D avatar = AvatarUtil.manager.GetAvatar();
                     float width = 200f;
                     float height = 200f*avatar.height/avatar.width;
                     Rect rect = new(0, inspectPanel.PaneTopY - InspectPaneUtility.TabHeight - height, width, height);
                     GUI.DrawTexture(rect, avatar);
                     if (Event.current.type == EventType.MouseDown && Mouse.IsOver(rect))
-                    {
-                        if (Event.current.button == 1) // rightbutton
-                        {
-                            Find.WindowStack.Add(new FloatMenu(new List<FloatMenuOption>()
-                                {
-                                    // new FloatMenuOption("Randomize features", (() => comp.Randomize()), MenuOptionPriority.Default),
-                                    new FloatMenuOption("Save as png", (() => comp.SaveAsPng()), MenuOptionPriority.Default)
-                                })
-                            );
-                        }
+                    { // capture mouse click
                         Event.current.Use();
                     }
                 }
