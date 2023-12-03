@@ -14,6 +14,7 @@
         <geneName>Ears_Floppy</geneName>
         <unisexPath>Core/Unisex/Ears/Ears_Floppy</unisexPath>
         <unisexChildPath>Core/Unisex/Ears/Ears_Floppy_Child</unisexChildPath>
+        <unisexNewbornPath>Core/Unisex/Ears/Ears_Floppy_Child</unisexNewbornPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
@@ -36,31 +37,62 @@
         <geneName>Nose_Pig</geneName>
         <femalePath>Core/Female/Nose/Nose_Pig</femalePath>
         <malePath>Core/Male/Nose/Nose_Pig</malePath>
-        <girlPath>Core/Girl/Nose/Nose_Pig</girlPath>
-        <boyPath>Core/Boy/Nose/Nose_Pig</boyPath>
+        <femaleChildPath>Core/FemaleChild/Nose/Nose_Pig</femaleChildPath>
+        <maleChildPath>Core/MaleChild/Nose/Nose_Pig</maleChildPath>
+        <femaleNewbornPath>Core/FemaleNewborn/Nose/Nose_Pig</femaleNewbornPath>
+        <maleNewbornPath>Core/MaleNewborn/Nose/Nose_Pig</maleNewbornPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Eyes_Red</defName>
+        <partName>Eyes</partName>
+        <geneName>Eyes_Red</geneName>
+        <color1>(1.0,0.1,0.1)</color1>
+        <color2>(0.7,0.0,0.0)</color2>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Eyes_Gray</defName>
+        <partName>Eyes</partName>
+        <geneName>Eyes_Gray</geneName>
+        <color1>(0.4,0.4,0.4)</color1>
+        <color2>(0.6,0.6,0.6)</color2>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
         <defName>Brow_Heavy</defName>
         <partName>Facial</partName>
         <geneName>Brow_Heavy</geneName>
-        <unisexPath>Core/Unisex/Brow_Heavy</unisexPath>
+        <unisexPath>Core/Unisex/Facial/Brow_Heavy</unisexPath>
+        <unisexChildPath>Core/Unisex/Facial/Brow_Heavy_Child</unisexChildPath>
+        <unisexNewbornPath>Core/Unisex/Facial/Brow_Heavy_Newborn</unisexNewbornPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>FacialRidges</defName>
+        <partName>Facial</partName>
+        <geneName>FacialRidges</geneName>
+        <unisexPath>Core/Unisex/Facial/FacialRidges</unisexPath>
+        <unisexChildPath>Core/Unisex/Facial/FacialRidges_Child</unisexChildPath>
+        <unisexNewbornPath>Core/Unisex/Facial/FacialRidges_Newborn</unisexNewbornPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
         <defName>MiniHorns</defName>
         <partName>Headbone</partName>
         <geneName>Headbone_MiniHorns</geneName>
-        <unisexPath>Core/Unisex/Headbone_MiniHorns</unisexPath>
-        <unisexChildPath>Core/Unisex/Headbone_MiniHorns_Child</unisexChildPath>
+        <unisexPath>Core/Unisex/Horn/Headbone_MiniHorns</unisexPath>
+        <unisexChildPath>Core/Unisex/Horn/Headbone_MiniHorns_Child</unisexChildPath>
+        <unisexNewbornPath>Core/Unisex/Horn/Headbone_MiniHorns_Newborn</unisexNewbornPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
         <defName>CenterHorn</defName>
         <partName>Headbone</partName>
         <geneName>Headbone_CenterHorn</geneName>
-        <unisexPath>Core/Unisex/Headbone_CenterHorn</unisexPath>
-        <unisexChildPath>Core/Unisex/Headbone_CenterHorn_Child</unisexChildPath>
+        <unisexPath>Core/Unisex/Horn/Headbone_CenterHorn</unisexPath>
+        <unisexChildPath>Core/Unisex/Horn/Headbone_CenterHorn_Child</unisexChildPath>
+        <unisexNewbornPath>Core/Unisex/Horn/Headbone_CenterHorn_Newborn</unisexNewbornPath>
     </Avatar.AvatarDef>
 
 </Defs>

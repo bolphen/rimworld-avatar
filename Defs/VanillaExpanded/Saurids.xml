@@ -7,6 +7,7 @@
         <typeName>VRESaurids_ScaleSkin_Average</typeName>
         <unisexPath>VanillaExpanded/Saurids/Head/ScaleSkin_Average</unisexPath>
         <unisexChildPath>VanillaExpanded/Saurids/Head/ScaleSkin_Average_Child</unisexChildPath>
+        <unisexNewbornPath>VanillaExpanded/Saurids/Head/ScaleSkin_Average_Newborn</unisexNewbornPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
@@ -15,6 +16,7 @@
         <typeName>VRESaurids_ScaleSkin_Narrow</typeName>
         <unisexPath>VanillaExpanded/Saurids/Head/ScaleSkin_Narrow</unisexPath>
         <unisexChildPath>VanillaExpanded/Saurids/Head/ScaleSkin_Narrow_Child</unisexChildPath>
+        <unisexNewbornPath>VanillaExpanded/Saurids/Head/ScaleSkin_Narrow_Newborn</unisexNewbornPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
@@ -23,6 +25,7 @@
         <typeName>VRESaurids_ScaleSkin_Gaunt</typeName>
         <unisexPath>VanillaExpanded/Saurids/Head/ScaleSkin_Gaunt</unisexPath>
         <unisexChildPath>VanillaExpanded/Saurids/Head/ScaleSkin_Gaunt_Child</unisexChildPath>
+        <unisexNewbornPath>VanillaExpanded/Saurids/Head/ScaleSkin_Gaunt_Newborn</unisexNewbornPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
@@ -31,6 +34,7 @@
         <typeName>VRESaurids_ScaleSkin_Heavy</typeName>
         <unisexPath>VanillaExpanded/Saurids/Head/ScaleSkin_Heavy</unisexPath>
         <unisexChildPath>VanillaExpanded/Saurids/Head/ScaleSkin_Heavy_Child</unisexChildPath>
+        <unisexNewbornPath>VanillaExpanded/Saurids/Head/ScaleSkin_Heavy_Newborn</unisexNewbornPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
@@ -39,6 +43,7 @@
         <geneName>VRESaurids_FrilledEars</geneName>
         <unisexPath>VanillaExpanded/Saurids/Ears_Frilled</unisexPath>
         <unisexChildPath>VanillaExpanded/Saurids/Ears_Frilled_Child</unisexChildPath>
+        <unisexNewbornPath>VanillaExpanded/Saurids/Ears_Frilled_Newborn</unisexNewbornPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>

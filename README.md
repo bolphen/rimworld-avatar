@@ -7,7 +7,9 @@ Show a pixel-art style avatar for pawns.
 -----
 
 - Requires [Harmony](https://github.com/pardeike/HarmonyRimWorld).
-- Currently covers all vanilla and DLC contents (hairs, tattoos, genes).
+- Currently covers all vanilla and DLC contents:
+  - hairs, tattoos, genes
+  - life stages: newborn, child, adult, corpse
 - Supported mods:
   - VRE Phytokin
   - VRE Saurid

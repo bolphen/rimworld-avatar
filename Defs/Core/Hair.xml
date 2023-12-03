@@ -259,8 +259,8 @@
         <typeName>Primal</typeName>
         <femalePath>Core/Unisex/Hair/Primal_Female</femalePath>
         <malePath>Core/Unisex/Hair/Primal_Male</malePath>
-        <girlPath>Core/Unisex/Hair/Primal_Female</girlPath>
-        <boyPath>Core/Unisex/Hair/Primal_Male</boyPath>
+        <femaleChildPath>Core/Unisex/Hair/Primal_Female</femaleChildPath>
+        <maleChildPath>Core/Unisex/Hair/Primal_Male</maleChildPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
@@ -311,8 +311,8 @@
         <typeName>Rookie</typeName>
         <femalePath>Core/Unisex/Hair/Rookie_Female</femalePath>
         <malePath>Core/Unisex/Hair/Rookie_Male</malePath>
-        <girlPath>Core/Unisex/Hair/Rookie_Female</girlPath>
-        <boyPath>Core/Unisex/Hair/Rookie_Male</boyPath>
+        <femaleChildPath>Core/Unisex/Hair/Rookie_Female</femaleChildPath>
+        <maleChildPath>Core/Unisex/Hair/Rookie_Male</maleChildPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
@@ -356,8 +356,8 @@
         <typeName>Shaved</typeName>
         <femalePath>Core/Unisex/Hair/Shaved_Female</femalePath>
         <malePath>Core/Unisex/Hair/Shaved_Male</malePath>
-        <girlPath>Core/Unisex/Hair/Shaved_Female</girlPath>
-        <boyPath>Core/Unisex/Hair/Shaved_Male</boyPath>
+        <femaleChildPath>Core/Unisex/Hair/Shaved_Female</femaleChildPath>
+        <maleChildPath>Core/Unisex/Hair/Shaved_Male</maleChildPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>

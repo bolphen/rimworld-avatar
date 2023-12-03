@@ -8,6 +8,7 @@
         <hideWrinkles>true</hideWrinkles>
         <unisexPath>VanillaExpanded/Phytokins/Head/BarkAverage</unisexPath>
         <unisexChildPath>VanillaExpanded/Phytokins/Head/BarkAverage_Child</unisexChildPath>
+        <unisexNewbornPath>VanillaExpanded/Phytokins/Head/BarkAverage_Newborn</unisexNewbornPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
@@ -17,6 +18,7 @@
         <hideWrinkles>true</hideWrinkles>
         <unisexPath>VanillaExpanded/Phytokins/Head/BarkAverage</unisexPath>
         <unisexChildPath>VanillaExpanded/Phytokins/Head/BarkAverage_Child</unisexChildPath>
+        <unisexNewbornPath>VanillaExpanded/Phytokins/Head/BarkAverage_Newborn</unisexNewbornPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
@@ -26,6 +28,7 @@
         <hideWrinkles>true</hideWrinkles>
         <unisexPath>VanillaExpanded/Phytokins/Head/BarkGaunt</unisexPath>
         <unisexChildPath>VanillaExpanded/Phytokins/Head/BarkGaunt_Child</unisexChildPath>
+        <unisexNewbornPath>VanillaExpanded/Phytokins/Head/BarkGaunt_Newborn</unisexNewbornPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
@@ -35,6 +38,7 @@
         <hideWrinkles>true</hideWrinkles>
         <unisexPath>VanillaExpanded/Phytokins/Head/BarkHeavy</unisexPath>
         <unisexChildPath>VanillaExpanded/Phytokins/Head/BarkHeavy_Child</unisexChildPath>
+        <unisexNewbornPath>VanillaExpanded/Phytokins/Head/BarkHeavy_Newborn</unisexNewbornPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>

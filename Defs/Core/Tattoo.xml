@@ -22,8 +22,8 @@
         <typeName>Face_Eclipse</typeName>
         <femalePath>Core/Unisex/Tattoo/Eclipse_Female</femalePath>
         <malePath>Core/Unisex/Tattoo/Eclipse_Male</malePath>
-        <girlPath>Core/Unisex/Tattoo/Eclipse_Girl</girlPath>
-        <boyPath>Core/Unisex/Tattoo/Eclipse_Boy</boyPath>
+        <femaleChildPath>Core/Unisex/Tattoo/Eclipse_FemaleChild</femaleChildPath>
+        <maleChildPath>Core/Unisex/Tattoo/Eclipse_MaleChild</maleChildPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
@@ -40,8 +40,8 @@
         <typeName>Face_Line</typeName>
         <femalePath>Core/Unisex/Tattoo/Line_Female</femalePath>
         <malePath>Core/Unisex/Tattoo/Line_Male</malePath>
-        <girlPath>Core/Unisex/Tattoo/Line_Girl</girlPath>
-        <boyPath>Core/Unisex/Tattoo/Line_Boy</boyPath>
+        <femaleChildPath>Core/Unisex/Tattoo/Line_FemaleChild</femaleChildPath>
+        <maleChildPath>Core/Unisex/Tattoo/Line_MaleChild</maleChildPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
@@ -82,8 +82,8 @@
         <typeName>Face_Stars</typeName>
         <femalePath>Core/Unisex/Tattoo/Stars_Female</femalePath>
         <malePath>Core/Unisex/Tattoo/Stars_Male</malePath>
-        <girlPath>Core/Unisex/Tattoo/Stars_Female</girlPath>
-        <boyPath>Core/Unisex/Tattoo/Stars_Male</boyPath>
+        <femaleChildPath>Core/Unisex/Tattoo/Stars_Female</femaleChildPath>
+        <maleChildPath>Core/Unisex/Tattoo/Stars_Male</maleChildPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
