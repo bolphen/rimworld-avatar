@@ -5,6 +5,7 @@
         <defName>Head_BarkNarrow</defName>
         <partName>Head</partName>
         <typeName>VRE_BarkNarrow</typeName>
+        <hideTattoo>true</hideTattoo>
         <hideWrinkles>true</hideWrinkles>
         <unisexPath>VanillaExpanded/Phytokins/Head/BarkAverage</unisexPath>
         <unisexChildPath>VanillaExpanded/Phytokins/Head/BarkAverage_Child</unisexChildPath>
@@ -15,6 +16,7 @@
         <defName>Head_BarkAverage</defName>
         <partName>Head</partName>
         <typeName>VRE_BarkAverage</typeName>
+        <hideTattoo>true</hideTattoo>
         <hideWrinkles>true</hideWrinkles>
         <unisexPath>VanillaExpanded/Phytokins/Head/BarkAverage</unisexPath>
         <unisexChildPath>VanillaExpanded/Phytokins/Head/BarkAverage_Child</unisexChildPath>
@@ -25,6 +27,7 @@
         <defName>Head_BarkGaunt</defName>
         <partName>Head</partName>
         <typeName>VRE_BarkGaunt</typeName>
+        <hideTattoo>true</hideTattoo>
         <hideWrinkles>true</hideWrinkles>
         <unisexPath>VanillaExpanded/Phytokins/Head/BarkGaunt</unisexPath>
         <unisexChildPath>VanillaExpanded/Phytokins/Head/BarkGaunt_Child</unisexChildPath>
@@ -35,6 +38,7 @@
         <defName>Head_BarkHeavy</defName>
         <partName>Head</partName>
         <typeName>VRE_BarkHeavy</typeName>
+        <hideTattoo>true</hideTattoo>
         <hideWrinkles>true</hideWrinkles>
         <unisexPath>VanillaExpanded/Phytokins/Head/BarkHeavy</unisexPath>
         <unisexChildPath>VanillaExpanded/Phytokins/Head/BarkHeavy_Child</unisexChildPath>
