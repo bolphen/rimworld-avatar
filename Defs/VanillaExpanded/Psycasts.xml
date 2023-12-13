@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarDef>
+        <defName>VPE_Apparel_EltexMask</defName>
+        <partName>Headgear</partName>
+        <unisexPath>VanillaExpanded/Apparel/EltexMask</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>VPE_Apparel_EltexCape</defName>
+        <partName>Apparel</partName>
+        <unisexPath>VanillaExpanded/Apparel/EltexCape</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>VPE_Apparel_PlateArmorPrestige</defName>
+        <partName>Apparel</partName>
+        <overlay>(1.0,0.9,0.4)</overlay>
+        <unisexPath>VanillaExpanded/Apparel/PlateArmorPrestige</unisexPath>
+    </Avatar.AvatarDef>
+
+</Defs>

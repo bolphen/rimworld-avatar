@@ -3,6 +3,7 @@ using Verse;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.IO;
 using RimWorld;
 
 namespace Avatar
@@ -31,24 +32,18 @@ namespace Avatar
         public Color? overlay;
         public string GetPath(string gender, string lifeStage)
         {
-            if (lifeStage == "Child" && unisexChildPath != null)
-                return unisexChildPath;
-            else if (lifeStage == "Newborn" && unisexNewbornPath != null)
+            if (lifeStage == "Newborn" && unisexNewbornPath != null)
                 return unisexNewbornPath;
+            else if ((lifeStage == "Newborn" || lifeStage == "Child") && unisexChildPath != null)
+                return unisexChildPath;
             else if (unisexPath != null)
                 return unisexPath;
-            else if (gender == "Female" && lifeStage == "")
-                return femalePath;
-            else if (gender == "Male" && lifeStage == "")
-                return malePath;
-            else if (gender == "Female" && lifeStage == "Child")
-                return femaleChildPath;
-            else if (gender == "Male" && lifeStage == "Child")
-                return maleChildPath;
-            else if (gender == "Female" && lifeStage == "Newborn")
-                return femaleNewbornPath;
-            else if (gender == "Male" && lifeStage == "Newborn")
-                return maleNewbornPath;
+            else if (lifeStage == "Newborn")
+                return gender == "Female" ? femaleNewbornPath : maleNewbornPath;
+            else if (lifeStage == "Child")
+                return gender == "Female" ? femaleChildPath : maleChildPath;
+            else if (lifeStage == "")
+                return gender == "Female" ? femalePath : malePath;
             else
                 return null;
         }
@@ -139,11 +134,15 @@ namespace Avatar
 
     public class AvatarManager
     {
+        public AvatarMod mod;
         public Pawn pawn;
         private Texture2D canvas;
         private Texture2D avatar;
         private bool drawHeadgear = true;
-        private bool scaling = true;
+        public AvatarManager(AvatarMod mod)
+        {
+            this.mod = mod;
+        }
         public void ClearCachedAvatar()
         {
             if (avatar != null)
@@ -157,7 +156,7 @@ namespace Avatar
             if (this.pawn != pawn)
             {
                 this.pawn = pawn;
-                drawHeadgear = true;
+                drawHeadgear = mod.settings.defaultDrawHeadgear;
                 ClearCachedAvatar();
             }
         }
@@ -166,9 +165,14 @@ namespace Avatar
             drawHeadgear = !drawHeadgear;
             ClearCachedAvatar();
         }
+        public void ToggleCompression()
+        {
+            mod.settings.ToggleCompression();
+            ClearCachedAvatar();
+        }
         public void ToggleScaling()
         {
-            scaling = !scaling;
+            mod.settings.ToggleScaling();
             ClearCachedAvatar();
         }
         private Feature GetFeature()
@@ -235,48 +239,77 @@ namespace Avatar
                 string bodyTattooPath = GetPath(gender, lifeStage, "BodyTattoo", pawn.style.BodyTattoo.defName, "Core/Unisex/BodyTattoo/NoTattoo");
                 parts.Add(new AvatarPart(bodyTattooPath, new Color(1f,1f,1f,0.8f), 8));
             }
-            foreach (Apparel a in pawn.apparel.WornApparel)
+            foreach (Apparel apparel in pawn.apparel.WornApparel)
             {
                 AvatarDef def = null;
-                CompStyleable comp = a.GetComp<CompStyleable>();
+                CompStyleable comp = apparel.GetComp<CompStyleable>();
                 if (comp != null && comp.styleDef != null)
                     def = DefDatabase<AvatarDef>.GetNamedSilentFail(comp.styleDef.defName);
-                def ??= DefDatabase<AvatarDef>.GetNamedSilentFail(a.def.defName);
+                def ??= DefDatabase<AvatarDef>.GetNamedSilentFail(apparel.def.defName);
                 if (def != null && def.partName == "Apparel")
                 {
-                    parts.Add(new AvatarPart(def.GetPath(gender, lifeStage), a.DrawColor, 8));
+                    parts.Add(new AvatarPart(def.GetPath(gender, lifeStage), apparel.DrawColor, 8));
                     if (def.overlay is Color overlayColor)
                         parts.Add(new AvatarPart(def.GetPath(gender, lifeStage)+"Overlay", overlayColor, 8));
+                }
+                else if (def == null && apparel.def.apparel.bodyPartGroups.Exists(p => p.defName == "Torso"))
+                {
+                    if (apparel.def.thingCategories.Exists(p => p.defName == "ApparelArmor"))
+                        parts.Add(new AvatarPart("Core/Apparel/GenericArmor"+lifeStage, apparel.DrawColor, 8));
+                    else if (!apparel.def.thingCategories.Exists(p => p.defName == "ApparelUtility"))
+                        parts.Add(new AvatarPart("Core/Apparel/Generic"+lifeStage, apparel.DrawColor, 8));
                 }
             }
             if (!pawn.health.hediffSet.hediffs.Exists(h => h.def.defName == "MissingBodyPart" && h.Part != null && h.Part.def.defName == "Head"))
             {
                 string headPath   = GetPath(gender, lifeStage, "Head", headTypeName, "Core/"+gender+lifeStage+"/Head/AverageNormal");
                 string faceTattooPath = GetPath(gender, lifeStage, "FaceTattoo", pawn.style.FaceTattoo.defName, "Core/Unisex/FaceTattoo/NoTattoo");
-                string beardPath  = GetPath(gender, lifeStage, "Beard", pawn.style.beardDef.defName, "Core/Unisex/Beard/NoBeard");
-                string hairPath   = GetPath(gender, lifeStage, "Hair", pawn.story.hairDef.defName, "Core/Unisex/Hair/Bald");
+                string beardPath  = GetPath(gender, lifeStage, "Beard", pawn.style.beardDef.defName, "Core/Unisex/Beard/Curly");
+                string hairPath = GetPath(gender, lifeStage, "Hair", pawn.story.hairDef.defName, "");
                 string earsPath = "Core/Unisex/Ears/Ears_Human";
                 string nosePath = "Core/"+gender+lifeStage+"/Nose/Nose"+GetFeature().nose.ToString();
                 string eyesPath = "Core/"+gender+lifeStage+"/Eyes/Eyes"+GetFeature().eyes.ToString();
                 string mouthPath = "Core/"+gender+lifeStage+"/Mouth/Mouth"+GetFeature().mouth.ToString();
                 string browsPath = "Core/"+gender+lifeStage+"/Brows/Brows"+GetFeature().brows.ToString();
+                if (hairPath == "")
+                {
+                    hairPath = "Core/Unisex/Hair/";
+                    if (pawn.story.hairDef.category.defName == "Tribal")
+                        hairPath += "BraidedKnot";
+                    else if (pawn.story.hairDef.styleTags.Exists(t => t == "HairShort"))
+                    {
+                        if (!pawn.story.hairDef.styleTags.Exists(t => t == "HairLong")) // short
+                            hairPath += gender == "Female" ? "Burgundy" : "GreasySwoop";
+                        else // mid
+                            hairPath += gender == "Female" ? "Victoria" : "Lackland";
+                    }
+                    else // long
+                        hairPath += gender == "Female" ? "Long" : "Snazzy";
+                }
                 foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "Ears"))
                     if (pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == def.geneName))
                         earsPath = def.GetPath(gender, lifeStage);
                 foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "Nose"))
                     if (pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == def.geneName))
                         nosePath = def.GetPath(gender, lifeStage);
+                foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "Eyes"))
+                    if (pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == def.geneName))
+                        eyesPath = def.GetPath(gender, lifeStage);
+                foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "Mouth"))
+                    if (pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == def.geneName))
+                        mouthPath = def.GetPath(gender, lifeStage);
                 AvatarPart ears = new (earsPath, skinColor);
                 AvatarPart nose = new (nosePath, skinColor);
                 AvatarPart eyes = new (eyesPath, skinColor);
+                AvatarPart mouth = new (mouthPath, skinColor);
                 AvatarPart head = new (headPath, skinColor);
                 parts.Add(ears);
                 parts.Add(head);
-                parts.Add(new AvatarPart(mouthPath, skinColor));
+                parts.Add(mouth);
                 parts.Add(nose);
                 parts.Add(eyes);
                 eyes.eyeColor = (new Color(.6f,.6f,.6f,1), new Color(.1f,.1f,.1f,1));
-                foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "Eyes"))
+                foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "EyeColor"))
                 {
                     if (pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == def.geneName))
                         eyes.eyeColor = (def.color1, def.color2);
@@ -311,11 +344,11 @@ namespace Avatar
                     {
                         if (h.Part.def.defName == "Nose")
                         {
-                            nose.texPath = "Core/Unisex/Nose/Missing" + (lifeStage != "" ? "_"+lifeStage : "");
+                            nose.texPath = "Core/Unisex/Nose/Missing" + lifeStage;
                         }
                         else if (h.Part.def.defName == "Jaw")
                         {
-                            parts.Add(new AvatarPart("Core/Unisex/Jaw/Missing" + (lifeStage != "" ? "_"+lifeStage : ""), skinColor));
+                            parts.Add(new AvatarPart("Core/Unisex/Jaw/Missing" + lifeStage));
                         }
                         else if (h.Part.def.defName == "Eye")
                         {
@@ -336,7 +369,7 @@ namespace Avatar
                     }
                     else if (h.def.defName == "Denture")
                     {
-                        parts.Add(new AvatarPart("Core/Unisex/Jaw/Denture" + (lifeStage != "" ? "_"+lifeStage : "")));
+                        parts.Add(new AvatarPart("Core/Unisex/Jaw/Denture" + lifeStage));
                     }
                     else if (h.def.defName == "BionicEye" || h.def.defName == "ArchotechEye")
                     {
@@ -369,6 +402,7 @@ namespace Avatar
                     parts.Add(hair);
                     if (drawHeadgear)
                     {
+                        List<AvatarPart> partsToAdd = new ();
                         foreach (Apparel a in pawn.apparel.WornApparel)
                         {
                             AvatarDef def = null;
@@ -381,9 +415,9 @@ namespace Avatar
                                 AvatarPart headgear = new (def.GetPath(gender, lifeStage), a.DrawColor);
                                 if (!a.def.apparel.shellCoversHead)
                                 {
-                                    parts.Add(headgear);
+                                    partsToAdd.Add(headgear);
                                     if (def.overlay is Color overlayColor)
-                                        parts.Add(new AvatarPart(def.GetPath(gender, lifeStage)+"Overlay", overlayColor));
+                                        partsToAdd.Add(new AvatarPart(def.GetPath(gender, lifeStage)+"Overlay", overlayColor));
                                 }
                                 else
                                     coversAll = headgear;
@@ -392,6 +426,9 @@ namespace Avatar
                                 beard.hideTop = def.hideBeard ? height : 0;
                             }
                         }
+                        if (coversAll == null)
+                            foreach (AvatarPart part in partsToAdd)
+                                parts.Add(part);
                     }
                 }
                 foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "Headbone"))
@@ -406,11 +443,13 @@ namespace Avatar
             {
                 if (part.texPath != null)
                 {
-                    Texture2D unreadableLayer = ContentFinder<Texture2D>.Get(part.texPath);
+                    Texture2D unreadableLayer = mod.GetTexture(part.texPath);
                     // the path is defined in the def so the texture should exist
                     if (unreadableLayer != null)
                     {
                         Texture2D layer = TextureUtil.MakeReadableCopy(unreadableLayer);
+                        if (mod.settings.avatarCompression)
+                            layer.Compress(true);
                         for (int y = height-layer.height-part.offset; y < height-part.hideTop-yOffset-part.offset; y++)
                         {
                             for (int x = (part.drawDexter ? 0 : width/2); x < (part.drawSinister ? width : width/2); x++)
@@ -464,7 +503,7 @@ namespace Avatar
             { // destroy old texture
                 UnityEngine.Object.Destroy(avatar);
             }
-            if (scaling)
+            if (mod.settings.avatarScaling)
                 avatar = TextureUtil.ScaleX2(canvas);
             else
             {
@@ -477,6 +516,24 @@ namespace Avatar
         public Texture2D GetAvatar()
         {
             return avatar ?? RenderAvatar();
+        }
+        public void SaveAsPng()
+        {
+            string dir = Application.persistentDataPath + "/avatar/";
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
+            string savePath = dir + "avatar-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".png";
+            File.WriteAllBytes(savePath, avatar.EncodeToPNG());
+        }
+        public FloatMenu GetFloatMenu()
+        {
+            FloatMenu menu = new (new List<FloatMenuOption>()
+            {
+                new FloatMenuOption(mod.settings.avatarCompression ? "Turn off compression" : "Turn on compression", ToggleCompression),
+                new FloatMenuOption(mod.settings.avatarScaling ? "Turn off scaling" : "Turn on scaling", ToggleScaling),
+                new FloatMenuOption("Save as png", SaveAsPng)
+            });
+            return menu;
         }
     }
 }

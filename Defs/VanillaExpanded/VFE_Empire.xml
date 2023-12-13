@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarDef>
+        <defName>VFEE_Apparel_JanissaryHelmet</defName>
+        <partName>Headgear</partName>
+        <hideHair>true</hideHair>
+        <unisexPath>VanillaExpanded/VFE_Empire/JanissaryHelmet</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>VFEE_Apparel_JanissaryCuirass</defName>
+        <partName>Apparel</partName>
+        <unisexPath>VanillaExpanded/VFE_Empire/JanissaryCuirass</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>VFEE_Apparel_DeserterHelmet</defName>
+        <partName>Headgear</partName>
+        <hideHair>true</hideHair>
+        <unisexPath>VanillaExpanded/VFE_Empire/DeserterHelmet</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>VFEE_Apparel_ArmorDeserter</defName>
+        <partName>Apparel</partName>
+        <overlay>(0.4,0.3,0.4)</overlay>
+        <unisexPath>VanillaExpanded/VFE_Empire/ArmorDeserter</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>VFEE_Apparel_AbsolverHelmet</defName>
+        <partName>Headgear</partName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>VanillaExpanded/VFE_Empire/AbsolverHelmet</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>VFEE_Apparel_ArmorAbsolver</defName>
+        <partName>Apparel</partName>
+        <unisexPath>VanillaExpanded/VFE_Empire/ArmorAbsolver</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>VFEE_Apparel_TechfriarCrown</defName>
+        <partName>Headgear</partName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <overlay>(1.0,0.9,0.4)</overlay>
+        <unisexPath>VanillaExpanded/VFE_Empire/TechfriarCrown</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>VFE_Apparel_StellicRobe</defName>
+        <partName>Apparel</partName>
+        <unisexPath>VanillaExpanded/VFE_Empire/StellicRobe</unisexPath>
+    </Avatar.AvatarDef>
+
+</Defs>
