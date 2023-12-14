@@ -275,17 +275,21 @@ namespace Avatar
                 if (hairPath == "")
                 {
                     hairPath = "Core/Unisex/Hair/";
-                    if (pawn.story.hairDef.category.defName == "Tribal")
-                        hairPath += "BraidedKnot";
-                    else if (pawn.story.hairDef.styleTags.Exists(t => t == "HairShort"))
+                    if (pawn.story.hairDef.styleTags != null)
                     {
-                        if (!pawn.story.hairDef.styleTags.Exists(t => t == "HairLong")) // short
-                            hairPath += gender == "Female" ? "Burgundy" : "GreasySwoop";
-                        else // mid
-                            hairPath += gender == "Female" ? "Victoria" : "Lackland";
+                        if (pawn.story.hairDef.styleTags.Exists(t => t == "HairShort"))
+                        {
+                            if (!pawn.story.hairDef.styleTags.Exists(t => t == "HairLong")) // short
+                                hairPath += gender == "Female" ? "Burgundy" : "GreasySwoop";
+                            else // mid
+                                hairPath += gender == "Female" ? "Victoria" : "Lackland";
+                        }
+                        else // long
+                            hairPath += gender == "Female" ? "Long" : "Snazzy";
                     }
-                    else // long
-                        hairPath += gender == "Female" ? "Long" : "Snazzy";
+                    else
+                        hairPath += gender == "Female" ? "Burgundy" : "GreasySwoop";
+
                 }
                 foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "Ears"))
                     if (pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == def.geneName))
@@ -299,6 +303,9 @@ namespace Avatar
                 foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "Mouth"))
                     if (pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == def.geneName))
                         mouthPath = def.GetPath(gender, lifeStage);
+                foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "Brows"))
+                    if (pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == def.geneName))
+                        browsPath = def.GetPath(gender, lifeStage);
                 AvatarPart ears = new (earsPath, skinColor);
                 AvatarPart nose = new (nosePath, skinColor);
                 AvatarPart eyes = new (eyesPath, skinColor);
