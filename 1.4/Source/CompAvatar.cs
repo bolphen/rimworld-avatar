@@ -252,7 +252,8 @@ namespace Avatar
                     if (def.overlay is Color overlayColor)
                         parts.Add(new AvatarPart(def.GetPath(gender, lifeStage)+"Overlay", overlayColor, 8));
                 }
-                else if (def == null && apparel.def.apparel.bodyPartGroups.Exists(p => p.defName == "Torso"))
+                else if (def == null && apparel.def.apparel.bodyPartGroups.Exists(p => p.defName == "Torso")
+                    && apparel.def.thingCategories != null) // warcaskets don't have this...
                 {
                     if (apparel.def.thingCategories.Exists(p => p.defName == "ApparelArmor"))
                         parts.Add(new AvatarPart("Core/Apparel/GenericArmor"+lifeStage, apparel.DrawColor, 8));
