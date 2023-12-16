@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarDef>
+        <defName>Ears_Canine</defName>
+        <partName>Ears</partName>
+        <geneName>VRE_CanineEars</geneName>
+        <unisexPath>VanillaExpanded/VRE_Lycanthropes/Ears_Canine</unisexPath>
+        <unisexChildPath>VanillaExpanded/VRE_Lycanthropes/Ears_Canine_Child</unisexChildPath>
+        <unisexNewbornPath>VanillaExpanded/VRE_Lycanthropes/Ears_Canine_Newborn</unisexNewbornPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Nose_Canine</defName>
+        <partName>Nose</partName>
+        <geneName>VRE_CanineNose</geneName>
+        <femalePath>VanillaExpanded/VRE_Lycanthropes/Nose_Canine_Female</femalePath>
+        <malePath>VanillaExpanded/VRE_Lycanthropes/Nose_Canine_Male</malePath>
+        <femaleChildPath>VanillaExpanded/VRE_Lycanthropes/Nose_Canine_FemaleChild</femaleChildPath>
+        <maleChildPath>VanillaExpanded/VRE_Lycanthropes/Nose_Canine_MaleChild</maleChildPath>
+        <unisexNewbornPath>VanillaExpanded/VRE_Lycanthropes/Nose_Canine_Newborn</unisexNewbornPath>
+    </Avatar.AvatarDef>
+
+</Defs>

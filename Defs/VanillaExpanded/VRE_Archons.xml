@@ -18,4 +18,11 @@
         <unisexChildPath>VanillaExpanded/VRE_Archons/FacialSpots_Child</unisexChildPath>
     </Avatar.AvatarDef>
 
+    <Avatar.AvatarDef>
+        <defName>VREA_Apparel_Archoplate</defName>
+        <partName>Apparel</partName>
+        <overlay>(1.0,0.9,0.4)</overlay>
+        <unisexPath>VanillaExpanded/VRE_Archons/Archoplate</unisexPath>
+    </Avatar.AvatarDef>
+
 </Defs>

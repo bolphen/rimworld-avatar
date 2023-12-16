@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarDef>
+        <defName>Ears_Bat</defName>
+        <partName>Ears</partName>
+        <geneName>VRE_BatEars</geneName>
+        <unisexPath>VanillaExpanded/VRE_Sanguophages/Ears_Bat</unisexPath>
+        <unisexChildPath>VanillaExpanded/VRE_Sanguophages/Ears_Bat_Child</unisexChildPath>
+        <unisexNewbornPath>VanillaExpanded/VRE_Sanguophages/Ears_Bat_Newborn</unisexNewbornPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Ears_Chiropteric</defName>
+        <partName>Ears</partName>
+        <geneName>VRE_UpperBatEars</geneName>
+        <unisexPath>VanillaExpanded/VRE_Sanguophages/Ears_Chiropteric</unisexPath>
+        <unisexChildPath>VanillaExpanded/VRE_Sanguophages/Ears_Chiropteric_Child</unisexChildPath>
+        <unisexNewbornPath>VanillaExpanded/VRE_Sanguophages/Ears_Chiropteric_Newborn</unisexNewbornPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Nose_Bat</defName>
+        <partName>Nose</partName>
+        <geneName>VRE_BatNose</geneName>
+        <femalePath>VanillaExpanded/VRE_Sanguophages/Nose_Bat_Female</femalePath>
+        <malePath>VanillaExpanded/VRE_Sanguophages/Nose_Bat_Male</malePath>
+        <femaleChildPath>VanillaExpanded/VRE_Sanguophages/Nose_Bat_FemaleChild</femaleChildPath>
+        <maleChildPath>VanillaExpanded/VRE_Sanguophages/Nose_Bat_MaleChild</maleChildPath>
+        <unisexNewbornPath>VanillaExpanded/VRE_Sanguophages/Nose_Bat_Newborn</unisexNewbornPath>
+    </Avatar.AvatarDef>
+
+</Defs>

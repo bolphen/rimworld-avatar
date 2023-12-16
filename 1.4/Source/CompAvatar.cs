@@ -133,32 +133,36 @@ namespace Avatar
             result.Apply();
             return result;
         }
-        public static Texture2D ProcessVanillaTexture(string texPath, (int, int) scale, int yOffset)
+        public static Texture2D ProcessVanillaTexture(string texPath, (int, int) size, (int, int) scale, int yOffset)
         {
-            Texture2D raw = ContentFinder<Texture2D>.Get(texPath);
-            Texture2D resized = MakeReadableCopy(raw, scale.Item1, scale.Item2);
-            Texture2D result = new (40, 48);
-            result.SetPixels(resized.GetPixels((scale.Item1-40)/2, yOffset, 40, 48));
-            result.Apply();
-            UnityEngine.Object.Destroy(resized);
-
-            Texture2D gray = LoadedModManager.GetMod<AvatarMod>().GetTexture("gray");
-            for (int y = 0; y < result.height; y++)
+            if (!AvatarMod.cachedTextures.ContainsKey(texPath))
             {
-                for (int x = 0; x < result.width; x++)
+                Texture2D raw = ContentFinder<Texture2D>.Get(texPath);
+                Texture2D resized = MakeReadableCopy(raw, scale.Item1, scale.Item2);
+                Texture2D result = new (size.Item1, size.Item2);
+                int xOffset = (scale.Item1-size.Item1)/2;
+
+                Texture2D gray = LoadedModManager.GetMod<AvatarMod>().GetTexture("gray");
+                for (int y = 0; y < result.height; y++)
                 {
-                    Color old = result.GetPixel(x,y);
-                    if (old.a < 0.5)
-                        result.SetPixel(x,y,new Color(0,0,0,0));
-                    else if (old.r+old.g+old.b > 2.7)
-                        result.SetPixel(x,y,gray.GetPixel(0,0));
-                    else if (old.r+old.g+old.b > 1)
-                        result.SetPixel(x,y,gray.GetPixel(1,0));
-                    else
-                        result.SetPixel(x,y,gray.GetPixel(2,0));
+                    for (int x = 0; x < result.width; x++)
+                    {
+                        Color old = resized.GetPixel(x+xOffset,y+yOffset);
+                        if (old.a < 0.5)
+                            result.SetPixel(x,y,new Color(0,0,0,0));
+                        else if (old.r+old.g+old.b > 2.7)
+                            result.SetPixel(x,y,gray.GetPixel(0,0));
+                        else if (old.r+old.g+old.b > 1)
+                            result.SetPixel(x,y,gray.GetPixel(1,0));
+                        else
+                            result.SetPixel(x,y,gray.GetPixel(2,0));
+                    }
                 }
+                result.Apply();
+                AvatarMod.cachedTextures[texPath] = result;
+                UnityEngine.Object.Destroy(resized);
             }
-            return result;
+            return MakeReadableCopy(AvatarMod.cachedTextures[texPath]);
         }
     }
 
@@ -168,7 +172,7 @@ namespace Avatar
         public Pawn pawn;
         private Texture2D canvas;
         private Texture2D avatar;
-        private bool drawHeadgear = true;
+        private bool drawHeadgear;
         public AvatarManager(AvatarMod mod)
         {
             this.mod = mod;
@@ -293,6 +297,7 @@ namespace Avatar
                         parts.Add(new AvatarPart("Core/Apparel/Generic"+lifeStage, apparel.DrawColor, 8));
                 }
             }
+            // draw head
             if (!pawn.health.hediffSet.hediffs.Exists(h => h.def.defName == "MissingBodyPart" && h.Part != null && h.Part.def.defName == "Head"))
             {
                 string headPath   = GetPath(gender, lifeStage, "Head", headTypeName, "Core/"+gender+lifeStage+"/Head/AverageNormal");
@@ -329,13 +334,15 @@ namespace Avatar
                 parts.Add(mouth);
                 parts.Add(nose);
                 if (!hideEyes)
-                    parts.Add(eyes);
-                eyes.eyeColor = (new Color(.6f,.6f,.6f,1), new Color(.1f,.1f,.1f,1));
-                foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "EyeColor"))
                 {
-                    if (pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == def.geneName))
+                    parts.Add(eyes);
+                    eyes.eyeColor = (new Color(.6f,.6f,.6f,1), new Color(.1f,.1f,.1f,1));
+                    foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "EyeColor"))
                     {
-                        eyes.eyeColor = (def.color1, def.color2);
+                        if (pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == def.geneName))
+                        {
+                            eyes.eyeColor = (def.color1, def.color2);
+                        }
                     }
                 }
                 if (!hideWrinkles && !pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == "Ageless"))
@@ -411,7 +418,8 @@ namespace Avatar
                     AvatarPart hair = new (hairPath, hairColor);
                     AvatarPart brows = new (browsPath, hairColor);
                     parts.Add(beard);
-                    parts.Add(brows);
+                    if (!hideEyes)
+                        parts.Add(brows);
                     if (drawHeadgear)
                         // facegear goes under hair
                         foreach (Apparel a in pawn.apparel.WornApparel)
@@ -424,21 +432,23 @@ namespace Avatar
                             if (def != null && def.partName == "Facegear")
                                 parts.Add(new AvatarPart(def.GetPath(gender, lifeStage), a.DrawColor));
                         }
-                    parts.Add(hair);
-                    if (drawHeadgear)
+                    if (!drawHeadgear)
+                        parts.Add(hair);
+                    else
                     {
+                        bool hideHair = false;
                         List<AvatarPart> partsToAdd = new ();
-                        foreach (Apparel a in pawn.apparel.WornApparel)
+                        foreach (Apparel apparel in pawn.apparel.WornApparel)
                         {
                             AvatarDef def = null;
-                            CompStyleable comp = a.GetComp<CompStyleable>();
+                            CompStyleable comp = apparel.GetComp<CompStyleable>();
                             if (comp != null && comp.styleDef != null)
                                 def = DefDatabase<AvatarDef>.GetNamedSilentFail(comp.styleDef.defName);
-                            def ??= DefDatabase<AvatarDef>.GetNamedSilentFail(a.def.defName);
+                            def ??= DefDatabase<AvatarDef>.GetNamedSilentFail(apparel.def.defName);
                             if (def != null && def.partName == "Headgear")
                             {
-                                AvatarPart headgear = new (def.GetPath(gender, lifeStage), a.DrawColor);
-                                if (!a.def.apparel.shellCoversHead)
+                                AvatarPart headgear = new (def.GetPath(gender, lifeStage), apparel.DrawColor);
+                                if (!apparel.def.apparel.shellCoversHead)
                                 {
                                     partsToAdd.Add(headgear);
                                     if (def.overlay is Color overlayColor)
@@ -446,11 +456,17 @@ namespace Avatar
                                 }
                                 else
                                     coversAll = headgear;
-                                hair.hideTop = def.hideHair ? height : Math.Max(hair.hideTop, def.hideTop);
+                                if (mod.settings.showHairWithHeadgear)
+                                    hideHair |= def.hideHair;
+                                else
+                                    hideHair |= apparel.def.apparel.bodyPartGroups.Exists(p => p.defName == "UpperHead" || p.defName == "FullHead");
+                                hair.hideTop = Math.Max(hair.hideTop, def.hideTop);
                                 head.hideTop = Math.Max(head.hideTop, def.hideTop);
                                 beard.hideTop = def.hideBeard ? height : 0;
                             }
                         }
+                        if (!hideHair)
+                            parts.Add(hair);
                         if (coversAll == null)
                             foreach (AvatarPart part in partsToAdd)
                                 parts.Add(part);
@@ -462,8 +478,12 @@ namespace Avatar
                         parts.Add(new AvatarPart(def.GetPath(gender, lifeStage)));
                 }
             }
+            // end of head drawing
+
             if (coversAll is AvatarPart someCoversAll)
                 parts.Add(someCoversAll);
+
+            // render the texture
             foreach (AvatarPart part in parts)
             {
                 if (part.texPath != null)
@@ -472,9 +492,9 @@ namespace Avatar
                     // process vanilla hair and beard texture
                     // scaling and yOffset are hand-tweaked
                     if (part.texPath == "HAIR")
-                        layer = TextureUtil.ProcessVanillaTexture(pawn.story.hairDef.texPath + "_south", (62,68), 4);
+                        layer = TextureUtil.ProcessVanillaTexture(pawn.story.hairDef.texPath + "_south", (width, height), (62,68), 4);
                     else if (part.texPath == "BEARD")
-                        layer = TextureUtil.ProcessVanillaTexture(pawn.style.beardDef.texPath + "_south", (62,68), 8);
+                        layer = TextureUtil.ProcessVanillaTexture(pawn.style.beardDef.texPath + "_south", (width, height), (62,68), 8);
                     else
                     {
                         Texture2D unreadableLayer = mod.GetTexture(part.texPath);
