@@ -9,20 +9,12 @@ using System.IO;
 
 namespace Avatar
 {
-    [StaticConstructorOnStartup]
-    public static class HarmonyInit
-    {
-        static HarmonyInit ()
-        {
-            new Harmony("AvatarMod").PatchAll();
-        }
-    }
-
     public class AvatarMod : Mod
     {
         public AvatarSettings settings;
         public static Dictionary<string, Texture2D> cachedTextures;
-        public static List<AvatarManager> managers;
+        public static AvatarManager mainManager;
+        public static Dictionary<Pawn, AvatarManager> managers;
         // each manager stores a pawn, if any, and the avatar texture
 
         [DebugAction("Avatar", "Reload Textures")]
@@ -31,8 +23,15 @@ namespace Avatar
             foreach (KeyValuePair<string, Texture2D> kvp in cachedTextures)
                 UnityEngine.Object.Destroy(kvp.Value);
             cachedTextures.Clear();
-            foreach (AvatarManager manager in managers)
-                manager.ClearCachedAvatar();
+            ClearCachedAvatars();
+        }
+
+        public static void ClearCachedAvatars()
+        {
+            mainManager.ClearCachedAvatar();
+            foreach (KeyValuePair<Pawn, AvatarManager> kvp in managers)
+                kvp.Value.ClearCachedAvatar();
+            managers.Clear();
         }
 
         public Texture2D GetTexture(string texPath)
@@ -53,8 +52,8 @@ namespace Avatar
 
         public AvatarMod(ModContentPack content) : base(content)
         {
+            mainManager = new (this);
             managers = new ();
-            managers.Add(new AvatarManager(this));
             settings = GetSettings<AvatarSettings>();
             cachedTextures = new ();
         }
@@ -71,34 +70,40 @@ namespace Avatar
                 "Whether textures should be compressed. Avatars will look slightly more natural but also have more artifacts.");
             listingStandard.CheckboxLabeled("Scaling", ref settings.avatarScaling,
                 "Whether avatars should be algorithmically scaled up for a smoother look.");
-            listingStandard.CheckboxLabeled("Draw headgear by default", ref settings.defaultDrawHeadgear,
-                "Whether headgear should be drawn by default. Can always be toggled by clicking on the avatar.");
-            listingStandard.CheckboxLabeled("Show hair with headgear", ref settings.showHairWithHeadgear,
-                "Whether hair should be drawn along with headgear. Doesn't look good for some modded hair styles so you may want to turn this off.");
-            listingStandard.CheckboxLabeled("Show in quest tab (experimental)", ref settings.showInQuestTab);
             string samplePath = "UI/AvatarSample" + (settings.avatarCompression ? "C" : "") + (settings.avatarScaling ? "S" : "");
             Texture2D avatar = GetTexture(samplePath);
             avatar.filterMode = FilterMode.Point;
             float width = settings.avatarWidth;
             float height = width*avatar.height/avatar.width;
             listingStandard.ButtonImage(avatar, width, height);
+            listingStandard.GapLine();
+            listingStandard.CheckboxLabeled("Draw headgear by default", ref settings.defaultDrawHeadgear,
+                "Whether headgear should be drawn by default. Can always be toggled by clicking on the avatar.");
+            listingStandard.CheckboxLabeled("Show hair with headgear", ref settings.showHairWithHeadgear,
+                "Whether hair should be drawn along with headgear. Doesn't look good for some modded hair styles so you may want to turn this off.");
+            listingStandard.GapLine();
+            listingStandard.CheckboxLabeled("Hide main avatar", ref settings.hideMainAvatar);
+            listingStandard.CheckboxLabeled("Show avatars in colonist bar (experimental)", ref settings.showInColonistBar);
+            settings.showInColonistBarSizeAdjust = (float)(
+                listingStandard.SliderLabeled("Colonist bar avatar size adjustment", settings.showInColonistBarSizeAdjust, 0f, 10f));
+            listingStandard.Label("Note: If you use ColoredMoodBar, the size won't change immediately. You need to go to its setting for a forced refresh.");
+            listingStandard.CheckboxLabeled("Show avatars in quest tab (experimental)", ref settings.showInQuestTab);
             listingStandard.End();
         }
 
-        public List<Texture2D> GetAvatar(List<Pawn> pawns)
+        public Texture2D GetAvatar(Pawn pawn, Color? color = null)
         {
-            int count = Math.Min(5, pawns.Count);
-            while (managers.Count < count)
+            if (!managers.ContainsKey(pawn))
             {
-                managers.Add(new AvatarManager(this));
+                AvatarManager manager = new (this);
+                managers[pawn] = manager;
+                manager.SetPawn(pawn);
             }
-            List<Texture2D> result = new ();
-            for (int i = 0; i < count; i++)
+            if (color is Color bgColor)
             {
-                managers[i].SetPawn(pawns[i]);
-                result.Add(managers[i].GetAvatar());
+                managers[pawn].SetBGColor(bgColor);
             }
-            return result;
+            return managers[pawn].GetAvatar();
         }
     }
 
@@ -107,7 +112,8 @@ namespace Avatar
     {
         public static void Postfix(IInspectPane pane)
         {
-            if (pane is MainTabWindow_Inspect inspectPanel && inspectPanel.OpenTabType is null)
+            AvatarMod mod = LoadedModManager.GetMod<AvatarMod>();
+            if (!mod.settings.hideMainAvatar && pane is MainTabWindow_Inspect inspectPanel && inspectPanel.OpenTabType is null)
             {
                 Pawn pawn = null;
                 if (inspectPanel.SelThing is Pawn selectedPawn)
@@ -116,10 +122,10 @@ namespace Avatar
                     pawn = corpse.InnerPawn;
                 if (pawn != null && pawn.RaceProps.Humanlike)
                 {
-                    AvatarManager manager = AvatarMod.managers[0];
+                    AvatarManager manager = AvatarMod.mainManager;
                     manager.SetPawn(pawn);
                     Texture2D avatar = manager.GetAvatar();
-                    float width = LoadedModManager.GetMod<AvatarMod>().settings.avatarWidth;
+                    float width = mod.settings.avatarWidth;
                     float height = width*avatar.height/avatar.width;
                     Rect rect = new(0, inspectPanel.PaneTopY - InspectPaneUtility.TabHeight - height, width, height);
                     GUI.DrawTexture(rect, avatar);
@@ -162,12 +168,16 @@ namespace Avatar
                 }
                 if (pawns.Count > 0)
                 {
-                    List<Texture2D> avatars = mod.GetAvatar(pawns);
-                    float width = 120f;
+                    float width = pawns.Count > 4 ? 80f : 120f;
                     float height = width*1.2f;
-                    for (int i = 0; i < avatars.Count; i++)
+                    for (int i = 0; i < Math.Min(5, pawns.Count); i++)
                     {
-                        GUI.DrawTexture(new(rect.width - (width+5)*(i+1), curY+15, width, height), avatars[i]);
+                        Rect avatarRect = new(rect.width - (width+5)*(i+1), curY+15, width, height);
+                        GUI.DrawTexture(avatarRect, mod.GetAvatar(pawns[i]));
+                        if (Mouse.IsOver(avatarRect))
+                        {
+                            TooltipHandler.TipRegion(avatarRect, pawns[i].LabelCap);
+                        }
                     }
                     curY += height+15;
                 }
@@ -181,9 +191,10 @@ namespace Avatar
     {
         public static void Postfix(Pawn pawn)
         {
-            foreach (AvatarManager manager in AvatarMod.managers)
-                if (pawn == manager.pawn)
-                    manager.ClearCachedAvatar();
+            if (pawn == AvatarMod.mainManager.pawn)
+                AvatarMod.mainManager.ClearCachedAvatar();
+            if (AvatarMod.managers.ContainsKey(pawn))
+                AvatarMod.managers[pawn].ClearCachedAvatar();
         }
     }
 
@@ -193,9 +204,10 @@ namespace Avatar
     {
         public static void Postfix(ref Pawn_AgeTracker __instance)
         {
-            foreach (AvatarManager manager in AvatarMod.managers)
-                if (__instance.pawn == manager.pawn)
-                    manager.ClearCachedAvatar();
+            if (__instance.pawn == AvatarMod.mainManager.pawn)
+                AvatarMod.mainManager.ClearCachedAvatar();
+            if (AvatarMod.managers.ContainsKey(__instance.pawn))
+                AvatarMod.managers[__instance.pawn].ClearCachedAvatar();
         }
     }
 
@@ -206,7 +218,10 @@ namespace Avatar
         public bool avatarScaling = true;
         public bool defaultDrawHeadgear = true;
         public bool showHairWithHeadgear = true;
+        public bool hideMainAvatar = false;
         public bool showInQuestTab = true;
+        public bool showInColonistBar = false;
+        public float showInColonistBarSizeAdjust = 0f;
 
         public void ToggleScaling()
         {
@@ -228,9 +243,11 @@ namespace Avatar
             Scribe_Values.Look(ref avatarScaling, "avatarScaling");
             Scribe_Values.Look(ref defaultDrawHeadgear, "defaultDrawHeadgear");
             Scribe_Values.Look(ref showHairWithHeadgear, "showHairWithHeadgear");
+            Scribe_Values.Look(ref hideMainAvatar, "hideMainAvatar");
             Scribe_Values.Look(ref showInQuestTab, "showInQuestTab");
-            foreach (AvatarManager manager in AvatarMod.managers)
-                manager.ClearCachedAvatar();
+            Scribe_Values.Look(ref showInColonistBar, "showInColonistBar");
+            Scribe_Values.Look(ref showInColonistBarSizeAdjust, "showInColonistBarSizeAdjust");
+            AvatarMod.ClearCachedAvatars();
         }
     }
 }

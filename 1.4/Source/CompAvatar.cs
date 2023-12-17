@@ -173,6 +173,7 @@ namespace Avatar
         private Texture2D canvas;
         private Texture2D avatar;
         private bool drawHeadgear;
+        private Color bgColor = new Color(.5f,.5f,.6f,.5f);
         public AvatarManager(AvatarMod mod)
         {
             this.mod = mod;
@@ -191,6 +192,19 @@ namespace Avatar
             {
                 this.pawn = pawn;
                 drawHeadgear = mod.settings.defaultDrawHeadgear;
+                ClearCachedAvatar();
+            }
+        }
+        public void SetDrawHeadgear(bool drawHeadgear)
+        {
+            this.drawHeadgear = drawHeadgear;
+            ClearCachedAvatar();
+        }
+        public void SetBGColor(Color color)
+        {
+            if (bgColor != color)
+            {
+                bgColor = color;
                 ClearCachedAvatar();
             }
         }
@@ -228,7 +242,7 @@ namespace Avatar
             int height = 48;
             if (canvas == null)
                 canvas = new (width, height);
-            TextureUtil.ClearTexture(canvas, new Color(.5f,.5f,.6f,.5f));
+            TextureUtil.ClearTexture(canvas, bgColor);
             string gender = (pawn.gender == Gender.Female) ? "Female" : "Male";
             string lifeStage = "";
             int yOffset = 0;
