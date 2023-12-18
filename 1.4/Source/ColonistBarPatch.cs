@@ -28,7 +28,7 @@ namespace Avatar
             AvatarMod mod = LoadedModManager.GetMod<AvatarMod>();
             if (mod.settings.showInColonistBar)
             {
-                return mod.GetAvatar(pawn, new Color(0,0,0,0));
+                return mod.GetAvatar(pawn, new Color(0,0,0,0), true);
             }
             return PortraitsCache.Get(pawn, size, rotation, cameraOffset, cameraZoom, supersample, compensateForUIScale, renderHeadgear, renderClothes, overrideApparelColors, overrideHairColor, stylingStation, healthStateOverride);
         }

@@ -198,6 +198,7 @@ namespace Avatar
         private Texture2D canvas;
         private Texture2D avatar;
         private bool drawHeadgear;
+        private bool checkDowned = false;
         private Color bgColor = new Color(.5f,.5f,.6f,.5f);
         public AvatarManager(AvatarMod mod)
         {
@@ -233,6 +234,14 @@ namespace Avatar
                 ClearCachedAvatar();
             }
         }
+        public void SetCheckDowned(bool checkDowned)
+        {
+            if (this.checkDowned != checkDowned)
+            {
+                this.checkDowned = checkDowned;
+                ClearCachedAvatar();
+            }
+        }
         public void ToggleDrawHeadgear()
         {
             drawHeadgear = !drawHeadgear;
@@ -265,6 +274,7 @@ namespace Avatar
         {
             int width = 40;
             int height = 48;
+            int halfWidthHeightDiff = (height-width)/2;
             if (canvas == null)
                 canvas = new (width, height);
             TextureUtil.ClearTexture(canvas, bgColor);
@@ -284,6 +294,9 @@ namespace Avatar
                 yOffset = 2;
                 eyeLevel = 26;
             }
+            // babies are always downed, no need to draw them this way unless dead
+            bool downed = checkDowned && (lifeStage != "Newborn" && pawn.Downed);
+            int downedOffset = 10;
             Color skinColor = pawn.story.SkinColor;
             Color hairColor = pawn.story.HairColor;
             List<AvatarPart> parts = new ();
@@ -363,7 +376,7 @@ namespace Avatar
                 string earsPath = "Core/Unisex/Ears/Ears_Human";
                 string nosePath = "Core/"+gender+lifeStage+"/Nose/Nose"+GetFeature().nose.ToString();
                 string eyesPath = "Core/"+gender+lifeStage+"/Eyes/Eyes"+GetFeature().eyes.ToString();
-                string mouthPath = "Core/"+gender+lifeStage+"/Mouth/Mouth"+GetFeature().mouth.ToString();
+                string mouthPath = "Core/"+(mod.settings.noFemaleLips ? "Male" : gender)+lifeStage+"/Mouth/Mouth"+GetFeature().mouth.ToString();
                 string browsPath = "Core/"+gender+lifeStage+"/Brows/Brows"+GetFeature().brows.ToString();
                 foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "Ears"))
                     if (pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == def.geneName))
@@ -402,6 +415,7 @@ namespace Avatar
                 }
                 AvatarPart eyes = new (eyesPath, skinColor);
                 AvatarPart mouth = new (mouthPath, skinColor);
+                if (mod.settings.noFemaleLips && gender == "Female" && lifeStage != "Newborn") mouth.offset = -1; // shift female lips
                 AvatarPart head = new (headPath, skinColor);
                 if (!hideEars) parts.Add(ears);
                 parts.Add(head);
@@ -419,7 +433,7 @@ namespace Avatar
                         }
                     }
                 }
-                if (!hideWrinkles)
+                if (!hideWrinkles && !mod.settings.noWrinkles)
                 {
                     float ageThreshold = 0.7f*pawn.RaceProps.lifeExpectancy;
                     foreach (Gene g in pawn.genes.GenesListForReading.Where(g => g.Active))
@@ -613,7 +627,7 @@ namespace Avatar
                         {
                             for (int x = (part.drawDexter ? 0 : width/2); x < (part.drawSinister ? width : width/2); x++)
                             {
-                                Color oldColor = canvas.GetPixel(x, y);
+                                Color oldColor = downed ? canvas.GetPixel(y-halfWidthHeightDiff, x) : canvas.GetPixel(x, y);
                                 Color newColor = layer.GetPixel(x, y-(height-layer.height-part.offset)+yOffset);
                                 if (newColor.a > 0)
                                 {
@@ -634,16 +648,33 @@ namespace Avatar
                                         color.b = oldColor.b*(1f-alpha) + newColor.b*alpha;
                                         color.a = 1f;
                                     }
-                                    canvas.SetPixel(x, y, color);
+                                    if (downed)
+                                    {
+                                        if (y >= halfWidthHeightDiff && y < height-halfWidthHeightDiff
+                                            && x <= width-downedOffset)
+                                            canvas.SetPixel(y-halfWidthHeightDiff, width-x-downedOffset, color);
+                                    }
+                                    else
+                                        canvas.SetPixel(x, y, color);
                                 }
                             }
                         }
                         if (part.eyeColor is (Color, Color) eyeColor)
                         { // draw eye colors manually
-                            canvas.SetPixel(14, eyeLevel, eyeColor.Item1);
-                            canvas.SetPixel(15, eyeLevel, eyeColor.Item2);
-                            canvas.SetPixel(23, eyeLevel, eyeColor.Item2);
-                            canvas.SetPixel(24, eyeLevel, eyeColor.Item1);
+                            if (downed)
+                            {
+                                canvas.SetPixel(eyeLevel-halfWidthHeightDiff, width-14-downedOffset, eyeColor.Item1);
+                                canvas.SetPixel(eyeLevel-halfWidthHeightDiff, width-15-downedOffset, eyeColor.Item2);
+                                canvas.SetPixel(eyeLevel-halfWidthHeightDiff, width-23-downedOffset, eyeColor.Item2);
+                                canvas.SetPixel(eyeLevel-halfWidthHeightDiff, width-24-downedOffset, eyeColor.Item1);
+                            }
+                            else
+                            {
+                                canvas.SetPixel(14, eyeLevel, eyeColor.Item1);
+                                canvas.SetPixel(15, eyeLevel, eyeColor.Item2);
+                                canvas.SetPixel(23, eyeLevel, eyeColor.Item2);
+                                canvas.SetPixel(24, eyeLevel, eyeColor.Item1);
+                            }
                         }
                         UnityEngine.Object.Destroy(layer);
                     }

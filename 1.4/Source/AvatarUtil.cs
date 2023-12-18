@@ -81,17 +81,19 @@ namespace Avatar
                 "Whether headgear should be drawn by default. Can always be toggled by clicking on the avatar.");
             listingStandard.CheckboxLabeled("Show hair with headgear", ref settings.showHairWithHeadgear,
                 "Whether hair should be drawn along with headgear. Doesn't look good for some modded hair styles so you may want to turn this off.");
+            listingStandard.CheckboxLabeled("Use same lips for both gender", ref settings.noFemaleLips);
+            listingStandard.CheckboxLabeled("Disable wrinkles for all pawns", ref settings.noWrinkles);
             listingStandard.GapLine();
             listingStandard.CheckboxLabeled("Hide main avatar", ref settings.hideMainAvatar);
             listingStandard.CheckboxLabeled("Show avatars in colonist bar (experimental)", ref settings.showInColonistBar);
             settings.showInColonistBarSizeAdjust = (float)(
                 listingStandard.SliderLabeled("Colonist bar avatar size adjustment", settings.showInColonistBarSizeAdjust, 0f, 10f));
-            listingStandard.Label("Note: If you use ColoredMoodBar, the size won't change immediately. You need to go to its setting for a forced refresh.");
+            listingStandard.Label("Note: If you use ColorCodedMoodBar, the size won't change immediately. You need to go to its setting for a forced refresh.");
             listingStandard.CheckboxLabeled("Show avatars in quest tab (experimental)", ref settings.showInQuestTab);
             listingStandard.End();
         }
 
-        public Texture2D GetAvatar(Pawn pawn, Color? color = null)
+        public Texture2D GetAvatar(Pawn pawn, Color? color = null, bool checkDowned = false)
         {
             if (!managers.ContainsKey(pawn))
             {
@@ -103,6 +105,7 @@ namespace Avatar
             {
                 managers[pawn].SetBGColor(bgColor);
             }
+            managers[pawn].SetCheckDowned(checkDowned);
             return managers[pawn].GetAvatar();
         }
     }
@@ -163,23 +166,26 @@ namespace Avatar
                         partPawns = extraFaction.affectedPawns?.Where(p => p.RaceProps.Humanlike).ToList();
                     else
                         partPawns = part.QuestLookTargets.Where(x => x.Thing is Pawn p && p.RaceProps.Humanlike).Select(x => x.Thing).Cast<Pawn>().ToList();
-                    if (partPawns.Count > pawns.Count)
-                        pawns = partPawns;
+                    foreach (Pawn pawn in partPawns)
+                    {
+                        if (!pawns.Contains(pawn))
+                            pawns.Add(pawn);
+                    }
                 }
                 if (pawns.Count > 0)
                 {
                     float width = pawns.Count > 4 ? 80f : 120f;
                     float height = width*1.2f;
-                    for (int i = 0; i < Math.Min(5, pawns.Count); i++)
+                    for (int i = 0; i < pawns.Count; i++)
                     {
-                        Rect avatarRect = new(rect.width - (width+5)*(i+1), curY+15, width, height);
+                        Rect avatarRect = new(rect.width - (width+5)*(i%5+1), curY+15+(height+5)*(i/5), width, height);
                         GUI.DrawTexture(avatarRect, mod.GetAvatar(pawns[i]));
                         if (Mouse.IsOver(avatarRect))
                         {
                             TooltipHandler.TipRegion(avatarRect, pawns[i].LabelCap);
                         }
                     }
-                    curY += height+15;
+                    curY += 10f+(height+5f)*(float)Math.Ceiling(pawns.Count/5f);
                 }
             }
         }
@@ -222,6 +228,8 @@ namespace Avatar
         public bool showInQuestTab = true;
         public bool showInColonistBar = false;
         public float showInColonistBarSizeAdjust = 0f;
+        public bool noFemaleLips = false;
+        public bool noWrinkles = false;
 
         public void ToggleScaling()
         {
@@ -247,6 +255,8 @@ namespace Avatar
             Scribe_Values.Look(ref showInQuestTab, "showInQuestTab");
             Scribe_Values.Look(ref showInColonistBar, "showInColonistBar");
             Scribe_Values.Look(ref showInColonistBarSizeAdjust, "showInColonistBarSizeAdjust");
+            Scribe_Values.Look(ref noFemaleLips, "noFemaleLips");
+            Scribe_Values.Look(ref noWrinkles, "noWrinkles");
             AvatarMod.ClearCachedAvatars();
         }
     }
