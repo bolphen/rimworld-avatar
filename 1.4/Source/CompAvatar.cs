@@ -27,6 +27,9 @@ namespace Avatar
         public bool hideHair;
         public bool hideBeard;
         public bool hideEyes;
+        public bool hideEars;
+        public bool hideNose;
+        public bool hideMouth;
         public int hideTop = 0;
         public Color color1;
         public Color color2;
@@ -56,6 +59,7 @@ namespace Avatar
         public (Color, Color)? eyeColor;
         public bool drawDexter = true;
         public bool drawSinister = true;
+        public (string, int)? fallback = null;
         public int hideTop = 0;
         public int offset = 0;
         public AvatarPart(string texPath, Color? color = null, int offset = 0)
@@ -63,6 +67,27 @@ namespace Avatar
             this.texPath = texPath;
             this.color = color;
             this.offset = offset;
+        }
+        public static AvatarPart FromGene(Gene gene, Pawn pawn)
+        {
+            GeneGraphicData graphicData = gene.def.graphicData;
+            Color color;
+            switch (graphicData.colorType)
+            {
+                case GeneColorType.Hair: color = pawn.story.HairColor; break;
+                case GeneColorType.Skin: color = pawn.story.SkinColor; break;
+                default: color = Color.white; break;
+            }
+            AvatarPart result = new (graphicData.GraphicPathFor(pawn), color);
+            int offset = 0;
+            switch (gene.def.graphicData.drawLoc)
+            {
+                case GeneDrawLoc.HeadTop: offset = 2; break;
+                case GeneDrawLoc.HeadMiddle: offset = 4; break;
+                case GeneDrawLoc.HeadLower: offset = 6; break;
+            }
+            result.fallback = (graphicData.GraphicPathFor(pawn) + "_south", offset);
+            return result;
         }
     }
     public class Feature
@@ -263,6 +288,17 @@ namespace Avatar
             Color hairColor = pawn.story.HairColor;
             List<AvatarPart> parts = new ();
             AvatarPart coversAll = null;
+            List<Gene> cosmeticGenes = new ();
+            // collect all cosmetic genes not handled by the defined defs
+            foreach (Gene gene in pawn.genes.GenesListForReading.Where(g => g.Active))
+            {
+                if (gene.def.HasGraphic &&
+                    !DefDatabase<AvatarDef>.AllDefs.ToList().Exists(def => def.geneName == gene.def.defName))
+                {
+                    if (gene.def.graphicData.drawLoc != GeneDrawLoc.Tailbone)
+                        cosmeticGenes.Add(gene);
+                }
+            }
             string headTypeName = pawn.story.headType.defName;
             if (headTypeName.StartsWith("Female_"))
                 headTypeName = headTypeName.Substring(7);
@@ -275,12 +311,18 @@ namespace Avatar
             bool hideTattoo = false;
             bool hideWrinkles = false;
             bool hideEyes = false;
+            bool hideEars = false;
+            bool hideNose = false;
+            bool hideMouth = false;
             foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs)
                 if (def.partName == "Head" && def.typeName == headTypeName)
                 {
                     hideTattoo = def.hideTattoo;
                     hideWrinkles = def.hideWrinkles;
                     hideEyes = def.hideEyes;
+                    hideEars = def.hideEars;
+                    hideNose = def.hideNose;
+                    hideMouth = def.hideMouth;
                 }
             string neckPath = "Core/"+gender+lifeStage+"/Neck";
             parts.Add(new AvatarPart(neckPath, skinColor, 8));
@@ -339,14 +381,32 @@ namespace Avatar
                     if (pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == def.geneName))
                         browsPath = def.GetPath(gender, lifeStage);
                 AvatarPart ears = new (earsPath, skinColor);
+                foreach (Gene gene in cosmeticGenes)
+                {
+                    if (gene.def.endogeneCategory == EndogeneCategory.Ears)
+                    {
+                        ears = AvatarPart.FromGene(gene, pawn);
+                        cosmeticGenes.Remove(gene);
+                        break;
+                    }
+                }
                 AvatarPart nose = new (nosePath, skinColor);
+                foreach (Gene gene in cosmeticGenes)
+                {
+                    if (gene.def.endogeneCategory == EndogeneCategory.Nose)
+                    {
+                        nose = AvatarPart.FromGene(gene, pawn);
+                        cosmeticGenes.Remove(gene);
+                        break;
+                    }
+                }
                 AvatarPart eyes = new (eyesPath, skinColor);
                 AvatarPart mouth = new (mouthPath, skinColor);
                 AvatarPart head = new (headPath, skinColor);
-                parts.Add(ears);
+                if (!hideEars) parts.Add(ears);
                 parts.Add(head);
-                parts.Add(mouth);
-                parts.Add(nose);
+                if (!hideMouth) parts.Add(mouth);
+                if (!hideNose) parts.Add(nose);
                 if (!hideEyes)
                 {
                     parts.Add(eyes);
@@ -359,9 +419,23 @@ namespace Avatar
                         }
                     }
                 }
-                if (!hideWrinkles && !pawn.genes.GenesListForReading.Exists(g => g.Active && g.def.defName == "Ageless"))
+                if (!hideWrinkles)
                 {
-                    if (pawn.ageTracker.AgeBiologicalYears >= 0.7*pawn.RaceProps.lifeExpectancy)
+                    float ageThreshold = 0.7f*pawn.RaceProps.lifeExpectancy;
+                    foreach (Gene g in pawn.genes.GenesListForReading.Where(g => g.Active))
+                    {
+                        if (g.def.defName == "Ageless")
+                            ageThreshold = float.PositiveInfinity;
+                        else if (!g.def.statFactors.NullOrEmpty())
+                        {
+                            foreach (StatModifier statModifier in g.def.statFactors)
+                            {
+                                if (statModifier.stat == StatDefOf.LifespanFactor)
+                                    ageThreshold *= statModifier.value;
+                            }
+                        }
+                    }
+                    if (pawn.ageTracker.AgeBiologicalYears >= ageThreshold)
                         parts.Add(new AvatarPart("Core/Unisex/Facial/Wrinkles", skinColor));
                 }
                 foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs.Where(d => d.partName == "Facial"))
@@ -379,6 +453,15 @@ namespace Avatar
                             }
                             parts.Add(new AvatarPart(path, skinColor));
                         }
+                    }
+                }
+                foreach (Gene gene in cosmeticGenes)
+                {
+                    if (gene.def.endogeneCategory == EndogeneCategory.Jaw)
+                    {
+                        parts.Add(AvatarPart.FromGene(gene, pawn));
+                        cosmeticGenes.Remove(gene);
+                        break;
                     }
                 }
                 if (!hideTattoo)
@@ -429,7 +512,11 @@ namespace Avatar
                 if (lifeStage != "Newborn")
                 {
                     AvatarPart beard = new (beardPath, hairColor);
+                    if (beardPath == "BEARD")
+                        beard.fallback = (pawn.style.beardDef.texPath + "_south", 8);
                     AvatarPart hair = new (hairPath, hairColor);
+                    if (hairPath == "HAIR")
+                        hair.fallback = (pawn.story.hairDef.texPath + "_south", 4);
                     AvatarPart brows = new (browsPath, hairColor);
                     parts.Add(beard);
                     if (!hideEyes)
@@ -492,6 +579,8 @@ namespace Avatar
                         parts.Add(new AvatarPart(def.GetPath(gender, lifeStage)));
                 }
             }
+            foreach (Gene gene in cosmeticGenes)
+                parts.Add(AvatarPart.FromGene(gene, pawn));
             // end of head drawing
 
             if (coversAll is AvatarPart someCoversAll)
@@ -503,12 +592,12 @@ namespace Avatar
                 if (part.texPath != null)
                 {
                     Texture2D layer = null;
-                    // process vanilla hair and beard texture
-                    // scaling and yOffset are hand-tweaked
-                    if (part.texPath == "HAIR")
-                        layer = TextureUtil.ProcessVanillaTexture(pawn.story.hairDef.texPath + "_south", (width, height), (62,68), 4);
-                    else if (part.texPath == "BEARD")
-                        layer = TextureUtil.ProcessVanillaTexture(pawn.style.beardDef.texPath + "_south", (width, height), (62,68), 8);
+                    if (part.fallback is (string, int) fallback)
+                    {
+                        // fallback to vanilla texture
+                        if (ContentFinder<Texture2D>.Get(fallback.Item1, false) != null)
+                            layer = TextureUtil.ProcessVanillaTexture(fallback.Item1, (width, height), (62,68), fallback.Item2);
+                    }
                     else
                     {
                         Texture2D unreadableLayer = mod.GetTexture(part.texPath);

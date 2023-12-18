@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarDef>
+        <defName>Head_AG_SlugFace_Normal</defName>
+        <partName>Head</partName>
+        <typeName>AG_SlugFace_Normal</typeName>
+        <hideTattoo>true</hideTattoo>
+        <hideWrinkles>true</hideWrinkles>
+        <hideEyes>true</hideEyes>
+        <hideEars>true</hideEars>
+        <hideNose>true</hideNose>
+        <hideMouth>true</hideMouth>
+        <unisexPath>AlphaGenes/SlugFace</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Head_AG_SlugFace_Narrow</defName>
+        <partName>Head</partName>
+        <typeName>AG_SlugFace_Narrow</typeName>
+        <hideTattoo>true</hideTattoo>
+        <hideWrinkles>true</hideWrinkles>
+        <hideEyes>true</hideEyes>
+        <hideEars>true</hideEars>
+        <hideNose>true</hideNose>
+        <hideMouth>true</hideMouth>
+        <unisexPath>AlphaGenes/SlugFace</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Head_AG_SlugFace_Wide</defName>
+        <partName>Head</partName>
+        <typeName>AG_SlugFace_Wide</typeName>
+        <hideTattoo>true</hideTattoo>
+        <hideWrinkles>true</hideWrinkles>
+        <hideEyes>true</hideEyes>
+        <hideEars>true</hideEars>
+        <hideNose>true</hideNose>
+        <hideMouth>true</hideMouth>
+        <unisexPath>AlphaGenes/SlugFace</unisexPath>
+    </Avatar.AvatarDef>
+
+</Defs>
