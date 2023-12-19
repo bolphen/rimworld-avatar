@@ -14,7 +14,8 @@ namespace Avatar
         public AvatarSettings settings;
         public static Dictionary<string, Texture2D> cachedTextures;
         public static AvatarManager mainManager;
-        public static Dictionary<Pawn, AvatarManager> managers;
+        public static Dictionary<Pawn, AvatarManager> colonistBarManagers;
+        public static Dictionary<Pawn, AvatarManager> questTabManagers;
         // each manager stores a pawn, if any, and the avatar texture
 
         [DebugAction("Avatar", "Reload Textures")]
@@ -29,9 +30,12 @@ namespace Avatar
         public static void ClearCachedAvatars()
         {
             mainManager.ClearCachedAvatar();
-            foreach (KeyValuePair<Pawn, AvatarManager> kvp in managers)
+            foreach (KeyValuePair<Pawn, AvatarManager> kvp in colonistBarManagers)
                 kvp.Value.ClearCachedAvatar();
-            managers.Clear();
+            colonistBarManagers.Clear();
+            foreach (KeyValuePair<Pawn, AvatarManager> kvp in questTabManagers)
+                kvp.Value.ClearCachedAvatar();
+            questTabManagers.Clear();
         }
 
         public Texture2D GetTexture(string texPath)
@@ -53,7 +57,8 @@ namespace Avatar
         public AvatarMod(ModContentPack content) : base(content)
         {
             mainManager = new (this);
-            managers = new ();
+            colonistBarManagers = new ();
+            questTabManagers = new ();
             settings = GetSettings<AvatarSettings>();
             cachedTextures = new ();
         }
@@ -93,20 +98,28 @@ namespace Avatar
             listingStandard.End();
         }
 
-        public Texture2D GetAvatar(Pawn pawn, Color? color = null, bool checkDowned = false)
+        public Texture2D GetColonistBarAvatar(Pawn pawn)
         {
-            if (!managers.ContainsKey(pawn))
+            if (!colonistBarManagers.ContainsKey(pawn))
             {
                 AvatarManager manager = new (this);
-                managers[pawn] = manager;
                 manager.SetPawn(pawn);
+                manager.SetBGColor(new Color(0,0,0,0));
+                manager.SetCheckDowned(true);
+                colonistBarManagers[pawn] = manager;
             }
-            if (color is Color bgColor)
+            return colonistBarManagers[pawn].GetAvatar();
+        }
+
+        public Texture2D GetQuestTabAvatar(Pawn pawn)
+        {
+            if (!questTabManagers.ContainsKey(pawn))
             {
-                managers[pawn].SetBGColor(bgColor);
+                AvatarManager manager = new (this);
+                manager.SetPawn(pawn);
+                questTabManagers[pawn] = manager;
             }
-            managers[pawn].SetCheckDowned(checkDowned);
-            return managers[pawn].GetAvatar();
+            return questTabManagers[pawn].GetAvatar();
         }
     }
 
@@ -179,7 +192,7 @@ namespace Avatar
                     for (int i = 0; i < pawns.Count; i++)
                     {
                         Rect avatarRect = new(rect.width - (width+5)*(i%5+1), curY+15+(height+5)*(i/5), width, height);
-                        GUI.DrawTexture(avatarRect, mod.GetAvatar(pawns[i]));
+                        GUI.DrawTexture(avatarRect, mod.GetQuestTabAvatar(pawns[i]));
                         if (Mouse.IsOver(avatarRect))
                         {
                             TooltipHandler.TipRegion(avatarRect, pawns[i].LabelCap);
@@ -199,8 +212,10 @@ namespace Avatar
         {
             if (pawn == AvatarMod.mainManager.pawn)
                 AvatarMod.mainManager.ClearCachedAvatar();
-            if (AvatarMod.managers.ContainsKey(pawn))
-                AvatarMod.managers[pawn].ClearCachedAvatar();
+            if (AvatarMod.colonistBarManagers.ContainsKey(pawn))
+                AvatarMod.colonistBarManagers[pawn].ClearCachedAvatar();
+            if (AvatarMod.questTabManagers.ContainsKey(pawn))
+                AvatarMod.questTabManagers[pawn].ClearCachedAvatar();
         }
     }
 
@@ -212,8 +227,10 @@ namespace Avatar
         {
             if (__instance.pawn == AvatarMod.mainManager.pawn)
                 AvatarMod.mainManager.ClearCachedAvatar();
-            if (AvatarMod.managers.ContainsKey(__instance.pawn))
-                AvatarMod.managers[__instance.pawn].ClearCachedAvatar();
+            if (AvatarMod.colonistBarManagers.ContainsKey(__instance.pawn))
+                AvatarMod.colonistBarManagers[__instance.pawn].ClearCachedAvatar();
+            if (AvatarMod.questTabManagers.ContainsKey(__instance.pawn))
+                AvatarMod.questTabManagers[__instance.pawn].ClearCachedAvatar();
         }
     }
 
