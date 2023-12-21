@@ -158,7 +158,7 @@
     <Avatar.AvatarDef>
         <defName>VAE_Apparel_FleeceShirt</defName>
         <partName>Apparel</partName>
-        <unisexPath>Core/Apparel/CollarShirt</unisexPath>
+        <unisexPath>VanillaExpanded/Apparel/FleeceShirt</unisexPath>
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>

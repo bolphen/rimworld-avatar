@@ -12,7 +12,10 @@ namespace Avatar
     public class AvatarMod : Mod
     {
         public AvatarSettings settings;
+
+        public static Dictionary<string, List<AvatarDef>> avatarDefs;
         public static Dictionary<string, Texture2D> cachedTextures;
+
         public static AvatarManager mainManager;
         public static Dictionary<Pawn, AvatarManager> colonistBarManagers;
         public static Dictionary<Pawn, AvatarManager> questTabManagers;
@@ -54,12 +57,31 @@ namespace Avatar
             return cachedTextures[texPath];
         }
 
+        public void CacheAvatarDefs()
+        {
+            foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs)
+            {
+                if (!avatarDefs.ContainsKey(def.partName))
+                    avatarDefs[def.partName] = new();
+                avatarDefs[def.partName].Add(def);
+            }
+            avatarDefs["_Gene"] = DefDatabase<AvatarDef>.AllDefs.Where(def => def.geneName != null).ToList();
+        }
+
+        public List<AvatarDef> GetDefsForPart(string partName)
+        {
+            if (avatarDefs.Count == 0)
+                CacheAvatarDefs();
+            return avatarDefs.ContainsKey(partName) ? avatarDefs[partName] : new();
+        }
+
         public AvatarMod(ModContentPack content) : base(content)
         {
             mainManager = new (this);
             colonistBarManagers = new ();
             questTabManagers = new ();
             settings = GetSettings<AvatarSettings>();
+            avatarDefs = new ();
             cachedTextures = new ();
         }
 
@@ -88,6 +110,8 @@ namespace Avatar
                 "Whether hair should be drawn along with headgear. Doesn't look good for some modded hair styles so you may want to turn this off.");
             listingStandard.CheckboxLabeled("Use same lips for both gender", ref settings.noFemaleLips);
             listingStandard.CheckboxLabeled("Disable wrinkles for all pawns", ref settings.noWrinkles);
+            listingStandard.CheckboxLabeled("Show special ears on top", ref settings.earsOnTop,
+                "Whether xenogene ears should be drawn on top of hair and headgear.");
             listingStandard.GapLine();
             listingStandard.CheckboxLabeled("Hide main avatar", ref settings.hideMainAvatar);
             listingStandard.CheckboxLabeled("Show avatars in colonist bar (experimental)", ref settings.showInColonistBar);
@@ -149,8 +173,8 @@ namespace Avatar
                     { // capture mouse click
                         if (Event.current.button == 0) // leftbutton
                             manager.ToggleDrawHeadgear();
-                        /* else if (Event.current.button == 1) // rightbutton */
-                        /*     Find.WindowStack.Add(manager.GetFloatMenu()); */
+                        else if (Event.current.button == 1) // rightbutton
+                            Find.WindowStack.Add(manager.GetFloatMenu());
                         Event.current.Use();
                     }
                 }
@@ -247,6 +271,7 @@ namespace Avatar
         public float showInColonistBarSizeAdjust = 0f;
         public bool noFemaleLips = false;
         public bool noWrinkles = false;
+        public bool earsOnTop = false;
 
         public void ToggleScaling()
         {
@@ -274,6 +299,7 @@ namespace Avatar
             Scribe_Values.Look(ref showInColonistBarSizeAdjust, "showInColonistBarSizeAdjust");
             Scribe_Values.Look(ref noFemaleLips, "noFemaleLips");
             Scribe_Values.Look(ref noWrinkles, "noWrinkles");
+            Scribe_Values.Look(ref earsOnTop, "earsOnTop");
             AvatarMod.ClearCachedAvatars();
         }
     }
