@@ -77,7 +77,7 @@ namespace Avatar
             {
                 case GeneColorType.Hair: color = pawn.story.HairColor; recolor = true; break;
                 case GeneColorType.Skin: color = pawn.story.SkinColor; recolor = true; break;
-                default: color = Color.white; recolor = false; break;
+                default: color = graphicData.color ?? Color.white; recolor = false; break;
             }
             AvatarPart result = new (graphicData.GraphicPathFor(pawn), color);
             int offset = 0;
