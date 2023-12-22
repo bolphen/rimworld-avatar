@@ -317,7 +317,7 @@ namespace Avatar
             // collect all cosmetic genes not handled by the defined defs
             List<Gene> cosmeticGenes = activeGenes.Where(g =>
                 g.def.HasGraphic
-                && !AvatarMod.avatarDefs["_Gene"].Exists(def => def.geneName == g.def.defName)
+                && !mod.GetDefsForPart("_Gene").Exists(def => def.geneName == g.def.defName)
                 && g.def.graphicData.drawLoc != GeneDrawLoc.Tailbone)
                 .ToList();
             string headTypeName = pawn.story.headType.defName;
