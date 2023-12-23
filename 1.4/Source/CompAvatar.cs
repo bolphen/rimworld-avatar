@@ -201,6 +201,28 @@ namespace Avatar
             }
             return MakeReadableCopy(AvatarMod.cachedTextures[texPath]);
         }
+        public static void AddOutline(Texture2D texture)
+        {
+            Texture2D copy = MakeReadableCopy(texture);
+            for (int y = 0; y < texture.height; y++)
+            {
+                for (int x = 0; x < texture.width; x++)
+                {
+                    if (copy.GetPixel(x,y).a < 0.9)
+                    {
+                        bool isOutline = false;
+                        if (x > 0 && copy.GetPixel(x-1,y).a > 0.9) isOutline = true;
+                        if (y > 0 && copy.GetPixel(x,y-1).a > 0.9) isOutline = true;
+                        if (x < texture.width-1 && copy.GetPixel(x+1,y).a > 0.9) isOutline = true;
+                        if (y < texture.height-1 && copy.GetPixel(x,y+1).a > 0.9) isOutline = true;
+                        if (isOutline)
+                            texture.SetPixel(x,y,new Color(.1f,.1f,.1f,1f));
+                    }
+                }
+            }
+            texture.Apply();
+            UnityEngine.Object.Destroy(copy);
+        }
     }
 
     public class AvatarManager
@@ -707,6 +729,8 @@ namespace Avatar
                         canvas.SetPixel(x, y, new Color(gray,gray,gray*1.2f,oldColor.a));
                     }
             canvas.Apply();
+            if (mod.settings.addOutline)
+                TextureUtil.AddOutline(canvas);
             if (avatar != null)
             { // destroy old texture
                 UnityEngine.Object.Destroy(avatar);

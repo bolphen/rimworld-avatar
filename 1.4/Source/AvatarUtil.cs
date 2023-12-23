@@ -108,6 +108,7 @@ namespace Avatar
                 "Whether headgear should be drawn by default. Can always be toggled by clicking on the avatar.");
             listingStandard.CheckboxLabeled("Show hair with headgear", ref settings.showHairWithHeadgear,
                 "Whether hair should be drawn along with headgear. Doesn't look good for some modded hair styles so you may want to turn this off.");
+            listingStandard.CheckboxLabeled("Draw a black outline", ref settings.addOutline);
             listingStandard.CheckboxLabeled("Use same lips for both gender", ref settings.noFemaleLips);
             listingStandard.CheckboxLabeled("Disable wrinkles for all pawns", ref settings.noWrinkles);
             listingStandard.CheckboxLabeled("Show special ears on top", ref settings.earsOnTop,
@@ -265,6 +266,7 @@ namespace Avatar
         public bool avatarScaling = true;
         public bool defaultDrawHeadgear = true;
         public bool showHairWithHeadgear = true;
+        public bool addOutline = false;
         public bool hideMainAvatar = false;
         public bool showInQuestTab = true;
         public bool showInColonistBar = false;
@@ -293,6 +295,7 @@ namespace Avatar
             Scribe_Values.Look(ref avatarScaling, "avatarScaling");
             Scribe_Values.Look(ref defaultDrawHeadgear, "defaultDrawHeadgear");
             Scribe_Values.Look(ref showHairWithHeadgear, "showHairWithHeadgear");
+            Scribe_Values.Look(ref addOutline, "addOutline");
             Scribe_Values.Look(ref hideMainAvatar, "hideMainAvatar");
             Scribe_Values.Look(ref showInQuestTab, "showInQuestTab");
             Scribe_Values.Look(ref showInColonistBar, "showInColonistBar");
