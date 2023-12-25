@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarDef>
+        <defName>Nose_RBSF_DeerHead</defName>
+        <partName>Nose</partName>
+        <geneName>RBSF_DeerHead</geneName>
+        <replaceModdedTexture>false</replaceModdedTexture>
+        <femalePath>Common/Nose/Canine_Female</femalePath>
+        <malePath>Common/Nose/Canine_Male</malePath>
+        <femaleChildPath>Common/Nose/Canine_FemaleChild</femaleChildPath>
+        <maleChildPath>Common/Nose/Canine_MaleChild</maleChildPath>
+        <unisexNewbornPath>Common/Nose/Canine_Newborn</unisexNewbornPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Nose_RBM_MinotaurHead</defName>
+        <partName>Nose</partName>
+        <geneName>RBM_BovineHead</geneName>
+        <replaceModdedTexture>false</replaceModdedTexture>
+        <femalePath>Common/Nose/Bovine_Female</femalePath>
+        <malePath>Common/Nose/Bovine_Male</malePath>
+        <femaleChildPath>Common/Nose/Bovine_FemaleChild</femaleChildPath>
+        <maleChildPath>Common/Nose/Bovine_MaleChild</maleChildPath>
+        <unisexNewbornPath>Common/Nose/Bovine_Newborn</unisexNewbornPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Eyes_RBSF_HorizontalPupils</defName>
+        <partName>EyeColor</partName>
+        <geneName>RBSF_HorizontalPupils</geneName>
+        <color1>(0.1,0.1,0.1)</color1>
+        <color2>(0.6,0.6,0.6)</color2>
+    </Avatar.AvatarDef>
+
+</Defs>

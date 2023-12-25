@@ -2,6 +2,36 @@
 <Defs>
 
     <Avatar.AvatarDef>
+        <defName>Eyes_Bionic</defName>
+        <partName>Hediff</partName>
+        <typeName>BionicEye</typeName>
+        <unisexPath>Core/Unisex/Eyes/BionicEye</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Eyes_Archotech</defName>
+        <partName>Hediff</partName>
+        <typeName>ArchotechEye</typeName>
+        <unisexPath>Core/Unisex/Eyes/ArchotechEye</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Ears_CochlearImplant</defName>
+        <partName>Hediff</partName>
+        <typeName>CochlearImplant</typeName>
+        <unisexPath>Core/Unisex/Ears/CochlearImplant</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Jaw_Denture</defName>
+        <partName>Hediff</partName>
+        <typeName>Denture</typeName>
+        <unisexPath>Core/Unisex/Jaw/Denture</unisexPath>
+        <unisexChildPath>Core/Unisex/Jaw/DentureChild</unisexChildPath>
+        <unisexNewbornPath>Core/Unisex/Jaw/DentureNewborn</unisexNewbornPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
         <defName>Ears_Cat</defName>
         <partName>Ears</partName>
         <geneName>Ears_Cat</geneName>

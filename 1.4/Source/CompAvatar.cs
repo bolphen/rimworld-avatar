@@ -31,9 +31,10 @@ namespace Avatar
         public bool hideNose;
         public bool hideMouth;
         public int hideTop = 0;
-        public Color color1;
-        public Color color2;
+        public Color? color1;
+        public Color? color2;
         public Color? overlay;
+        public bool replaceModdedTexture = true;
         public string GetPath(string gender, string lifeStage)
         {
             if (lifeStage == "Newborn" && unisexNewbornPath != null)
@@ -339,8 +340,9 @@ namespace Avatar
             // collect all cosmetic genes not handled by the defined defs
             List<Gene> cosmeticGenes = activeGenes.Where(g =>
                 g.def.HasGraphic
-                && !mod.GetDefsForPart("_Gene").Exists(def => def.geneName == g.def.defName)
-                && g.def.graphicData.drawLoc != GeneDrawLoc.Tailbone)
+                && !mod.GetDefsForPart("_Gene").Exists(def => def.geneName == g.def.defName && def.replaceModdedTexture)
+                && g.def.graphicData.drawLoc != GeneDrawLoc.Tailbone
+                && !g.def.graphicData.drawOnEyes) // eye textures cause most issues, easier to just ignore them
                 .ToList();
             string headTypeName = pawn.story.headType.defName;
             if (headTypeName.StartsWith("Female_"))
@@ -428,7 +430,7 @@ namespace Avatar
                             browsPath = def.GetPath(gender, lifeStage);
                     foreach (AvatarDef def in mod.GetDefsForPart("EyeColor"))
                         if (gene.def.defName == def.geneName)
-                            eyeColor = (def.color1, def.color2);
+                            eyeColor = (def.color1 ?? eyeColor.Item1, def.color2 ?? eyeColor.Item2);
                 }
                 AvatarPart ears = new (earsPath, skinColor);
                 AvatarPart nose = new (nosePath, skinColor);
@@ -534,18 +536,34 @@ namespace Avatar
                                 ears.drawDexter = false;
                         }
                     }
-                    else if (h.def.defName == "Denture")
+                    else
                     {
-                        parts.Add(new AvatarPart("Core/Unisex/Jaw/Denture" + lifeStage));
-                    }
-                    else if (h.def.defName == "BionicEye" || h.def.defName == "ArchotechEye")
-                    {
-                        AvatarPart modEyes = new ("Core/Unisex/Eyes/" + h.def.defName);
-                        if (h.Part.customLabel == "left eye")
-                            modEyes.drawDexter = false;
-                        else if (h.Part.customLabel == "right eye")
-                            modEyes.drawSinister = false;
-                        parts.Add(modEyes);
+                        foreach (AvatarDef def in mod.GetDefsForPart("Hediff"))
+                        {
+                            if (h.def.defName == def.typeName)
+                            {
+                                if (h.Part.def.defName == "Nose")
+                                {
+                                    nose.texPath = def.GetPath(gender, lifeStage);
+                                    nose.color = null;
+                                }
+                                else
+                                {
+                                    AvatarPart prosthetic = new (def.GetPath(gender, lifeStage));
+                                    if (h.Part.customLabel?.StartsWith("left") ?? false)
+                                    {
+                                        prosthetic.drawDexter = false;
+                                        if (h.Part.def.defName == "Ear") ears.drawSinister = false;
+                                    }
+                                    else if (h.Part.customLabel?.StartsWith("right") ?? false)
+                                    {
+                                        prosthetic.drawSinister = false;
+                                        if (h.Part.def.defName == "Ear") ears.drawDexter = false;
+                                    }
+                                    parts.Add(prosthetic);
+                                }
+                            }
+                        }
                     }
                 }
                 foreach (Gene gene in cosmeticGenes)

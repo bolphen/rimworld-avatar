@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarDef>
+        <defName>Apparel_SpaceSuitBodyChild</defName>
+        <partName>Apparel</partName>
+        <overlay>(1,1,1)</overlay>
+        <unisexChildPath>SOS2/SpaceSuitBodyChild</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Apparel_SpaceSuitBody</defName>
+        <partName>Apparel</partName>
+        <overlay>(1,1,1)</overlay>
+        <unisexPath>SOS2/SpaceSuitBody</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Apparel_SpaceSuitBodyHeavy</defName>
+        <partName>Apparel</partName>
+        <overlay>(1,1,1)</overlay>
+        <unisexPath>SOS2/SpaceSuitBodyHeavy</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Apparel_SpaceSuitHelmetChild</defName>
+        <partName>Headgear</partName>
+        <hideHair>true</hideHair>
+        <overlay>(1.0,0.9,0.4)</overlay>
+        <unisexChildPath>SOS2/SpaceSuitHelmetChild</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Apparel_SpaceSuitHelmet</defName>
+        <partName>Headgear</partName>
+        <hideHair>true</hideHair>
+        <overlay>(1.0,0.9,0.4)</overlay>
+        <unisexPath>SOS2/SpaceSuitHelmet</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Apparel_SpaceSuitHelmetHeavy</defName>
+        <partName>Headgear</partName>
+        <hideHair>true</hideHair>
+        <overlay>(1.0,0.9,0.4)</overlay>
+        <unisexPath>SOS2/SpaceSuitHelmetHeavy</unisexPath>
+    </Avatar.AvatarDef>
+
+</Defs>

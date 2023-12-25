@@ -40,4 +40,15 @@
         <unisexPath>AlphaGenes/SlugFace</unisexPath>
     </Avatar.AvatarDef>
 
+    <Avatar.AvatarDef>
+        <defName>Head_FoxFace</defName>
+        <partName>Nose</partName>
+        <geneName>AG_FoxFace</geneName>
+        <femalePath>Common/Nose/Feline_Female</femalePath>
+        <malePath>Common/Nose/Feline_Male</malePath>
+        <femaleChildPath>Common/Nose/Feline_FemaleChild</femaleChildPath>
+        <maleChildPath>Common/Nose/Feline_MaleChild</maleChildPath>
+        <unisexNewbornPath>Common/Nose/Feline_Newborn</unisexNewbornPath>
+    </Avatar.AvatarDef>
+
 </Defs>
