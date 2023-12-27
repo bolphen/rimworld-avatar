@@ -31,6 +31,8 @@ namespace Avatar
         public bool hideNose;
         public bool hideMouth;
         public int hideTop = 0;
+        public bool specialNoJaw = false;
+        public string forceBodyType;
         public Color? color1;
         public Color? color2;
         public Color? overlay;
@@ -359,17 +361,21 @@ namespace Avatar
             bool hideEars = false;
             bool hideNose = false;
             bool hideMouth = false;
+            AvatarDef headTypeDef = null;
+            string bodyTypeName = "";
             foreach (AvatarDef def in mod.GetDefsForPart("Head"))
                 if (def.typeName == headTypeName)
                 {
+                    headTypeDef = def;
                     hideTattoo = def.hideTattoo;
                     hideWrinkles = def.hideWrinkles;
                     hideEyes = def.hideEyes;
                     hideEars = def.hideEars;
                     hideNose = def.hideNose;
                     hideMouth = def.hideMouth;
+                    bodyTypeName = def.forceBodyType;
                 }
-            string neckPath = "Core/"+gender+lifeStage+"/Neck";
+            string neckPath = GetPath(gender, lifeStage, "Body", bodyTypeName, "Core/"+gender+lifeStage+"/Neck");
             parts.Add(new AvatarPart(neckPath, skinColor, 8));
             if (!hideTattoo)
             {
@@ -411,11 +417,16 @@ namespace Avatar
                 string mouthPath = "Core/"+(mod.settings.noFemaleLips ? "Male" : gender)+lifeStage+"/Mouth/Mouth"+GetFeature().mouth.ToString();
                 string browsPath = "Core/"+gender+lifeStage+"/Brows/Brows"+GetFeature().brows.ToString();
                 (Color, Color) eyeColor = (new Color(.6f,.6f,.6f,1), new Color(.1f,.1f,.1f,1));
+                Color earsColor = skinColor;
                 foreach (Gene gene in activeGenes)
                 {
                     foreach (AvatarDef def in mod.GetDefsForPart("Ears"))
                         if (gene.def.defName == def.geneName)
+                        {
                             earsPath = def.GetPath(gender, lifeStage);
+                            if (gene.def.HasGraphic && gene.def.graphicData.colorType == GeneColorType.Hair)
+                                earsColor = hairColor;
+                        }
                     foreach (AvatarDef def in mod.GetDefsForPart("Nose"))
                         if (gene.def.defName == def.geneName)
                             nosePath = def.GetPath(gender, lifeStage);
@@ -432,7 +443,7 @@ namespace Avatar
                         if (gene.def.defName == def.geneName)
                             eyeColor = (def.color1 ?? eyeColor.Item1, def.color2 ?? eyeColor.Item2);
                 }
-                AvatarPart ears = new (earsPath, skinColor);
+                AvatarPart ears = new (earsPath, earsColor);
                 AvatarPart nose = new (nosePath, skinColor);
                 foreach (Gene gene in cosmeticGenes)
                 {
@@ -517,7 +528,10 @@ namespace Avatar
                         }
                         else if (h.Part.def.defName == "Jaw")
                         {
-                            parts.Add(new AvatarPart("Core/Unisex/Jaw/Missing" + lifeStage));
+                            if (headTypeDef != null && headTypeDef.specialNoJaw)
+                                head.texPath += "NoJaw";
+                            else
+                                parts.Add(new AvatarPart("Core/Unisex/Jaw/Missing" + lifeStage));
                         }
                         else if (h.Part.def.defName == "Eye")
                         {

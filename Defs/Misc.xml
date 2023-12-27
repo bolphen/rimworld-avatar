@@ -9,4 +9,26 @@
         <color2>(0.7,0.6,0.0)</color2>
     </Avatar.AvatarDef>
 
+    <Avatar.AvatarDef>
+        <defName>Head_SSS_HeadType</defName>
+        <partName>Head</partName>
+        <typeName>SSS_HeadType</typeName>
+        <hideTattoo>true</hideTattoo>
+        <hideWrinkles>true</hideWrinkles>
+        <hideEyes>true</hideEyes>
+        <hideEars>true</hideEars>
+        <hideNose>true</hideNose>
+        <hideMouth>true</hideMouth>
+        <specialNoJaw>true</specialNoJaw>
+        <forceBodyType>Skeleton</forceBodyType>
+        <unisexPath>Common/Skull</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Body_Skeleton</defName>
+        <partName>Body</partName>
+        <typeName>Skeleton</typeName>
+        <unisexPath>Common/Skeleton</unisexPath>
+    </Avatar.AvatarDef>
+
 </Defs>
