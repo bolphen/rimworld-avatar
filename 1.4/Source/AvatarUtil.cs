@@ -229,6 +229,24 @@ namespace Avatar
         }
     }
 
+    // disable some of vanilla's portrait updating
+    [HarmonyPatch(typeof(Verse.AI.JobDriver), "SetInitialPosture")]
+    public static class AvatarJobDriverPatch
+    {
+        public static void SetDirty(Pawn _)
+        {
+            // DO NOTHING!
+        }
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            foreach (CodeInstruction instruction in instructions)
+                if (instruction.Calls(AccessTools.Method(typeof(PortraitsCache), "SetDirty")))
+                    yield return new CodeInstruction(System.Reflection.Emit.OpCodes.Call, AccessTools.Method("AvatarJobDriverPatch:SetDirty"));
+                else
+                    yield return instruction;
+        }
+    }
+
     // redraw avatar whenever ingame portrait got redrawn
     [HarmonyPatch(typeof(PortraitsCache), "SetDirty")]
     public static class AvatarUpdateHookPatch
