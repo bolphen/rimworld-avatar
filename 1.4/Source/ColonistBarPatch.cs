@@ -12,7 +12,8 @@ namespace Avatar
     [StaticConstructorOnStartup]
     public static class HarmonyInit
     {
-        public static bool CMBar_Loaded = ModsConfig.IsActive("crashm.colorcodedmoodbar.11");
+        public static bool CCMBar_Loaded = ModsConfig.IsActive("crashm.colorcodedmoodbar.11");
+        public static bool GradientHair_Loaded = ModsConfig.IsActive("automatic.gradienthair");
 
         static HarmonyInit ()
         {
@@ -51,12 +52,12 @@ namespace Avatar
     }
 
     [HarmonyPatch]
-    public static class CMBar_Transpiler_Patch
+    public static class CCMBar_Transpiler_Patch
     {
         public static MethodInfo target;
         public static bool Prepare()
         {
-            if (HarmonyInit.CMBar_Loaded)
+            if (HarmonyInit.CCMBar_Loaded)
             {
                 target = AccessTools.Method("ColoredMoodBar13.MoodPatch:DrawColonist");
                 return target != null;
@@ -90,12 +91,12 @@ namespace Avatar
     }
 
     [HarmonyPatch]
-    class CMBar_GetRect_Patch
+    class CCMBar_GetRect_Patch
     {
         public static MethodInfo target;
         public static bool Prepare()
         {
-            if (HarmonyInit.CMBar_Loaded)
+            if (HarmonyInit.CCMBar_Loaded)
             {
                 target = AccessTools.Method("ColoredMoodBar13.MoodCache:GetPawnTextureRect");
                 return target != null;

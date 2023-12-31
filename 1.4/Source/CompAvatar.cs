@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using HarmonyLib;
+using UnityEngine;
 using Verse;
 using System;
 using System.Linq;
@@ -60,9 +61,10 @@ namespace Avatar
         public string texPath;
         public Color? color;
         public (Color, Color)? eyeColor;
+        public (string, Color)? gradient;
         public bool drawDexter = true;
         public bool drawSinister = true;
-        public (string, int, bool)? fallback = null;
+        public (string, int, string)? fallback = null;
         public int hideTop = 0;
         public int offset = 0;
         public AvatarPart(string texPath, Color? color = null, int offset = 0)
@@ -75,12 +77,12 @@ namespace Avatar
         {
             GeneGraphicData graphicData = gene.def.graphicData;
             Color color;
-            bool recolor;
+            string recolor;
             switch (graphicData.colorType)
             {
-                case GeneColorType.Hair: color = pawn.story.HairColor; recolor = true; break;
-                case GeneColorType.Skin: color = pawn.story.SkinColor; recolor = true; break;
-                default: color = graphicData.color ?? Color.white; recolor = false; break;
+                case GeneColorType.Hair: color = pawn.story.HairColor; recolor = "yes"; break;
+                case GeneColorType.Skin: color = pawn.story.SkinColor; recolor = "yes"; break;
+                default: color = graphicData.color ?? Color.white; recolor = "gray"; break;
             }
             AvatarPart result = new (graphicData.GraphicPathFor(pawn), color);
             int offset = 0;
@@ -162,7 +164,8 @@ namespace Avatar
             result.Apply();
             return result;
         }
-        public static Texture2D ProcessVanillaTexture(string texPath, (int, int) size, (int, int) scale, int yOffset, bool recolor)
+        public static Texture2D ProcessVanillaTexture(string texPath, (int, int) size, (int, int) scale, int yOffset, string recolor)
+        // creates a copy of the texture, needs to be freed!
         {
             if (!AvatarMod.cachedTextures.ContainsKey(texPath))
             {
@@ -181,19 +184,23 @@ namespace Avatar
                             result.SetPixel(x,y,new Color(0,0,0,0));
                         else {
                             float gray = (old.r+old.g+old.b)/3f;
-                            if (recolor)
+                            switch (recolor)
                             {
-                                if (gray > 0.9)
-                                    result.SetPixel(x,y,grayPalette.GetPixel(0,0));
-                                else if (gray > 0.3)
-                                    result.SetPixel(x,y,grayPalette.GetPixel(1,0));
-                                else
-                                    result.SetPixel(x,y,grayPalette.GetPixel(2,0));
-                            }
-                            else
-                            {
-                                gray = ((float)Math.Round(gray*5f)+2f)/7f;
-                                result.SetPixel(x,y,new Color(gray, gray, gray, 1f));
+                                case "yes":
+                                    if (gray > 0.9)
+                                        result.SetPixel(x,y,grayPalette.GetPixel(0,0));
+                                    else if (gray > 0.3)
+                                        result.SetPixel(x,y,grayPalette.GetPixel(1,0));
+                                    else
+                                        result.SetPixel(x,y,grayPalette.GetPixel(2,0));
+                                    break;
+                                case "gray":
+                                    gray = ((float)Math.Round(gray*5f)+2f)/7f;
+                                    result.SetPixel(x,y,new Color(gray, gray, gray, 1f));
+                                    break;
+                                case "no":
+                                    result.SetPixel(x,y,old);
+                                    break;
                             }
                         }
                     }
@@ -593,10 +600,27 @@ namespace Avatar
                 {
                     AvatarPart beard = new (beardPath, hairColor);
                     if (beardPath == "BEARD")
-                        beard.fallback = (pawn.style.beardDef.texPath + "_south", 8, true);
+                        beard.fallback = (pawn.style.beardDef.texPath + "_south", 8, "yes");
                     AvatarPart hair = new (hairPath, hairColor);
                     if (hairPath == "HAIR")
-                        hair.fallback = (pawn.story.hairDef.texPath + "_south", 4, true);
+                        hair.fallback = (pawn.story.hairDef.texPath + "_south", 4, "yes");
+                    // gradient hair mod support
+                    if (HarmonyInit.GradientHair_Loaded)
+                    {
+                        Type[] generic = {AccessTools.TypeByName("GradientHair.CompGradientHair")};
+                        var compGradientHair = AccessTools.Method(typeof(Pawn), "GetComp", null, generic).Invoke(pawn, null);
+                        if (compGradientHair != null)
+                        {
+                            var settings = AccessTools.Field("GradientHair.CompGradientHair:settings").GetValue(compGradientHair);
+                            if ((bool) AccessTools.Field("GradientHair.GradientHairSettings:enabled").GetValue(settings))
+                            {
+                                hair.gradient = (
+                                    (string) AccessTools.Field("GradientHair.GradientHairSettings:mask").GetValue(settings),
+                                    (Color) AccessTools.Field("GradientHair.GradientHairSettings:colorB").GetValue(settings)
+                                );
+                            }
+                        }
+                    }
                     AvatarPart brows = new (browsPath, hairColor);
                     parts.Add(beard);
                     if (!hideEyes)
@@ -678,7 +702,7 @@ namespace Avatar
                 if (part.texPath != null)
                 {
                     Texture2D layer = null;
-                    if (part.fallback is (string, int, bool) fallback)
+                    if (part.fallback is (string, int, string) fallback)
                     {
                         // fallback to vanilla texture
                         if (ContentFinder<Texture2D>.Get(fallback.Item1, false) != null)
@@ -695,6 +719,16 @@ namespace Avatar
                     {
                         if (mod.settings.avatarCompression)
                             layer.Compress(true);
+
+                        // ad hoc stuff for gradient hair
+                        Texture2D mask = null;
+                        Color colorB = new ();
+                        if (part.gradient is (string, Color) gradient)
+                        {
+                            mask = TextureUtil.ProcessVanillaTexture(gradient.Item1, (width, height), (62,68), 4, "no");
+                            colorB = gradient.Item2;
+                        }
+
                         for (int y = height-layer.height-part.offset; y < height-part.hideTop-yOffset-part.offset; y++)
                         {
                             for (int x = (part.drawDexter ? 0 : width/2); x < (part.drawSinister ? width : width/2); x++)
@@ -708,10 +742,21 @@ namespace Avatar
                                     if (part.color is Color tint)
                                     {
                                         alpha *= tint.a;
-                                        color.r = oldColor.r*(1f-alpha) + newColor.r*tint.r*alpha;
-                                        color.g = oldColor.g*(1f-alpha) + newColor.g*tint.g*alpha;
-                                        color.b = oldColor.b*(1f-alpha) + newColor.b*tint.b*alpha;
-                                        color.a = 1f;
+                                        if (mask != null)
+                                        {
+                                            Color maskPixel = mask.GetPixel(x, y-(height-layer.height-part.offset)+yOffset);
+                                            color.r = oldColor.r*(1f-alpha) + newColor.r*(tint.r*maskPixel.r + colorB.r*maskPixel.g)*alpha;
+                                            color.g = oldColor.g*(1f-alpha) + newColor.g*(tint.g*maskPixel.r + colorB.g*maskPixel.g)*alpha;
+                                            color.b = oldColor.b*(1f-alpha) + newColor.b*(tint.b*maskPixel.r + colorB.b*maskPixel.g)*alpha;
+                                            color.a = 1f;
+                                        }
+                                        else
+                                        {
+                                            color.r = oldColor.r*(1f-alpha) + newColor.r*tint.r*alpha;
+                                            color.g = oldColor.g*(1f-alpha) + newColor.g*tint.g*alpha;
+                                            color.b = oldColor.b*(1f-alpha) + newColor.b*tint.b*alpha;
+                                            color.a = 1f;
+                                        }
                                     }
                                     else
                                     {
@@ -748,6 +793,7 @@ namespace Avatar
                                 canvas.SetPixel(24, eyeLevel, eyeColor.Item1);
                             }
                         }
+                        if (mask != null) UnityEngine.Object.Destroy(mask);
                         UnityEngine.Object.Destroy(layer);
                     }
                 }
@@ -781,19 +827,30 @@ namespace Avatar
         {
             return avatar ?? RenderAvatar();
         }
-        public void SaveAsPng()
+        private void SavePng(string filename, byte[] bytes)
         {
             string dir = Application.persistentDataPath + "/avatar/";
             if (!Directory.Exists(dir))
                 Directory.CreateDirectory(dir);
-            string savePath = dir + "avatar-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".png";
-            File.WriteAllBytes(savePath, avatar.EncodeToPNG());
+            string savePath = dir + filename;
+            File.WriteAllBytes(savePath, bytes);
+        }
+        public void SaveAsPng()
+        {
+            SavePng("avatar-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".png", avatar.EncodeToPNG());
+        }
+        public void UpscaleSaveAsPng()
+        {
+            Texture2D upscaled = TextureUtil.MakeReadableCopy(avatar, 480, 576);
+            SavePng("avatar-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + "-upscaled.png", upscaled.EncodeToPNG());
+            UnityEngine.Object.Destroy(upscaled);
         }
         public FloatMenu GetFloatMenu()
         {
             FloatMenu menu = new (new List<FloatMenuOption>()
             {
-                new FloatMenuOption("Save as png", SaveAsPng)
+                new FloatMenuOption("Save upscaled (480x576)", UpscaleSaveAsPng),
+                new FloatMenuOption("Save original ("+avatar.width.ToString()+"x"+avatar.height.ToString()+")", SaveAsPng)
             });
             return menu;
         }
