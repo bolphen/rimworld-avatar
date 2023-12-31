@@ -612,7 +612,7 @@ namespace Avatar
                         if (compGradientHair != null)
                         {
                             var settings = AccessTools.Field("GradientHair.CompGradientHair:settings").GetValue(compGradientHair);
-                            if ((bool) AccessTools.Field("GradientHair.GradientHairSettings:enabled").GetValue(settings))
+                            if (settings != null && (bool) AccessTools.Field("GradientHair.GradientHairSettings:enabled").GetValue(settings))
                             {
                                 hair.gradient = (
                                     (string) AccessTools.Field("GradientHair.GradientHairSettings:mask").GetValue(settings),
@@ -832,8 +832,7 @@ namespace Avatar
             string dir = Application.persistentDataPath + "/avatar/";
             if (!Directory.Exists(dir))
                 Directory.CreateDirectory(dir);
-            string savePath = dir + filename;
-            File.WriteAllBytes(savePath, bytes);
+            File.WriteAllBytes(dir+filename, bytes);
         }
         public void SaveAsPng()
         {
