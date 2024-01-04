@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarDef>
+        <defName>Apparel_BabyShadecone</defName>
+        <partName>Headgear</partName>
+        <hideTop>16</hideTop>
+        <unisexPath>Core/Apparel/Headgear/Shadecone</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Apparel_BabyTuque</defName>
+        <partName>Headgear</partName>
+        <hideTop>16</hideTop>
+        <unisexPath>Core/Apparel/Headgear/Tuque</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Apparel_BabyTribal</defName>
+        <partName>Apparel</partName>
+        <unisexPath>Toddlers/Tribal</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Apparel_BabyOnesie</defName>
+        <partName>Apparel</partName>
+        <unisexPath>Toddlers/Onesie</unisexPath>
+    </Avatar.AvatarDef>
+
+</Defs>

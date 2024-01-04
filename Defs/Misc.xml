@@ -10,6 +10,15 @@
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
+        <defName>GS_Tusk</defName>
+        <partName>Headbone</partName>
+        <geneName>GS_Tusk</geneName>
+        <unisexPath>Common/Tusk</unisexPath>
+        <unisexChildPath>Common/TuskChild</unisexChildPath>
+        <unisexNewbornPath>Common/TuskNewborn</unisexNewbornPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
         <defName>Head_SSS_HeadType</defName>
         <partName>Head</partName>
         <typeName>SSS_HeadType</typeName>
