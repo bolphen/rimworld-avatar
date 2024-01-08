@@ -291,16 +291,6 @@ namespace Avatar
             drawHeadgear = !drawHeadgear;
             ClearCachedAvatar();
         }
-        public void ToggleCompression()
-        {
-            mod.settings.ToggleCompression();
-            ClearCachedAvatar();
-        }
-        public void ToggleScaling()
-        {
-            mod.settings.ToggleScaling();
-            ClearCachedAvatar();
-        }
         private Feature GetFeature()
         {
             int v = 2632*pawn.ageTracker.BirthDayOfYear+3341*pawn.ageTracker.BirthYear;

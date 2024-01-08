@@ -89,8 +89,14 @@ namespace Avatar
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
-            Listing_Standard listingStandard = new Listing_Standard();
-            listingStandard.Begin(inRect);
+            Rect viewRect = new (0, 0, inRect.width - 17f, settings.scrollHeight);
+            Widgets.BeginScrollView(inRect, ref settings.scroll, viewRect);
+            Listing_Standard listingStandard = new Listing_Standard(inRect.AtZero(), () => settings.scroll)
+            {
+                maxOneColumn = true,
+                ColumnWidth = viewRect.width
+            };
+            listingStandard.Begin(viewRect);
             settings.avatarWidth = (float)Math.Round(
                 listingStandard.SliderLabeled("Avatar size", settings.avatarWidth, 80f, 320f));
             listingStandard.CheckboxLabeled("Compression", ref settings.avatarCompression,
@@ -116,11 +122,22 @@ namespace Avatar
             listingStandard.GapLine();
             listingStandard.CheckboxLabeled("Hide main avatar", ref settings.hideMainAvatar);
             listingStandard.CheckboxLabeled("Show avatars in colonist bar (experimental)", ref settings.showInColonistBar);
-            settings.showInColonistBarSizeAdjust = (float)(
-                listingStandard.SliderLabeled("Colonist bar avatar size adjustment", settings.showInColonistBarSizeAdjust, 0f, 10f));
-            listingStandard.Label("Note: If you use ColorCodedMoodBar, the size won't change immediately. You need to go to its setting for a forced refresh.");
+            if (settings.showInColonistBar)
+            {
+                settings.showInColonistBarSizeAdjust = (float)(
+                    listingStandard.SliderLabeled("Colonist bar avatar size adjustment", settings.showInColonistBarSizeAdjust, 0f, 10f));
+            }
+            if (HarmonyInit.CCMBar_Loaded && listingStandard.ButtonText("Refresh colonist bar"))
+            {
+                AccessTools.Method("ColoredMoodBar13.MoodPatch:CGMarkColonistsDirty").Invoke(null, new object[] {null});
+            }
             listingStandard.CheckboxLabeled("Show avatars in quest tab (experimental)", ref settings.showInQuestTab);
+            if (Event.current.type == EventType.Layout)
+            {
+                settings.scrollHeight = listingStandard.CurHeight;
+            }
             listingStandard.End();
+            Widgets.EndScrollView();
         }
 
         public Texture2D GetColonistBarAvatar(Pawn pawn)
@@ -293,17 +310,8 @@ namespace Avatar
         public bool noWrinkles = false;
         public bool earsOnTop = false;
 
-        public void ToggleScaling()
-        {
-            avatarScaling = !avatarScaling;
-            Write();
-        }
-
-        public void ToggleCompression()
-        {
-            avatarCompression = !avatarCompression;
-            Write();
-        }
+        public Vector2 scroll;
+        public float scrollHeight = 0;
 
         public override void ExposeData()
         {

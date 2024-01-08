@@ -13,6 +13,7 @@ namespace Avatar
     public static class HarmonyInit
     {
         public static bool CCMBar_Loaded = ModsConfig.IsActive("crashm.colorcodedmoodbar.11");
+        public static bool FacialAnimation_Loaded = ModsConfig.IsActive("Nals.FacialAnimation");
         public static bool GradientHair_Loaded = ModsConfig.IsActive("automatic.gradienthair");
 
         static HarmonyInit ()
@@ -21,6 +22,7 @@ namespace Avatar
         }
     }
 
+    // patch vanilla colonist bar drawing function to use the avatars
     [HarmonyPatch(typeof(ColonistBarColonistDrawer), "DrawColonist")]
     public static class ColonistBar_Transpiler_Patch
     {
@@ -51,6 +53,7 @@ namespace Avatar
         }
     }
 
+    // patch CCMBar drawing function to use the avatars
     [HarmonyPatch]
     public static class CCMBar_Transpiler_Patch
     {
@@ -71,6 +74,7 @@ namespace Avatar
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) => ColonistBar_Transpiler_Patch.Transpiler(instructions);
     }
 
+    // patch GetRect for vanilla colonist bar drawing function
     [HarmonyPatch(typeof(ColonistBarColonistDrawer), "GetPawnTextureRect")]
     class ColonistBar_GetRect_Patch
     {
@@ -90,6 +94,7 @@ namespace Avatar
         }
     }
 
+    // patch GetRect for CCMBar drawing function
     [HarmonyPatch]
     class CCMBar_GetRect_Patch
     {
@@ -108,5 +113,40 @@ namespace Avatar
             return target;
         }
         static bool Prefix(ref Rect __result, Vector2 pos) => ColonistBar_GetRect_Patch.Prefix(ref __result, pos);
+    }
+
+    // patch FacialAnimation colonist bar update function
+    [HarmonyPatch]
+    class FA_UpdatePortrait_Patch
+    {
+        public static MethodInfo target;
+        public static bool Prepare()
+        {
+            if (HarmonyInit.FacialAnimation_Loaded)
+            {
+                target = AccessTools.Method("FacialAnimation.FacialAnimationControllerComp:UpdatePortrait");
+                return target != null;
+            }
+            return false;
+        }
+        public static MethodBase TargetMethod()
+        {
+            return target;
+        }
+        public static void SetDirty(Pawn pawn)
+        {
+            if (!LoadedModManager.GetMod<AvatarMod>().settings.showInColonistBar)
+            {
+                PortraitsCache.SetDirty(pawn);
+            }
+        }
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            foreach (CodeInstruction instruction in instructions)
+                if (instruction.Calls(AccessTools.Method(typeof(PortraitsCache), "SetDirty")))
+                    yield return new CodeInstruction(OpCodes.Call, AccessTools.Method("FA_UpdatePortrait_Patch:SetDirty"));
+                else
+                    yield return instruction;
+        }
     }
 }

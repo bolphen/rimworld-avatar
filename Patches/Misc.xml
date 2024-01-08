@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+    <!-- Cheek color is not nose! -->
+    <Operation Class="PatchOperationRemove" MayRequire="com.yayo.papagoRace">
+        <xpath>Defs/GeneDef[@Name="papagoCheekBase"]/endogeneCategory</xpath>
+    </Operation>
+
+</Patch>
