@@ -13,6 +13,7 @@ namespace Avatar
     public static class HarmonyInit
     {
         public static bool CCMBar_Loaded = ModsConfig.IsActive("crashm.colorcodedmoodbar.11");
+        public static bool ColonyGroups_Loaded = ModsConfig.IsActive("DerekBickley.LTOColonyGroupsFinal");
         public static bool FacialAnimation_Loaded = ModsConfig.IsActive("Nals.FacialAnimation");
         public static bool GradientHair_Loaded = ModsConfig.IsActive("automatic.gradienthair");
 
@@ -74,6 +75,27 @@ namespace Avatar
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) => ColonistBar_Transpiler_Patch.Transpiler(instructions);
     }
 
+    // patch ColonyGroups drawing function to use the avatars
+    [HarmonyPatch]
+    public static class ColonyGroups_Transpiler_Patch
+    {
+        public static MethodInfo target;
+        public static bool Prepare()
+        {
+            if (HarmonyInit.ColonyGroups_Loaded)
+            {
+                target = AccessTools.Method("TacticalGroups.TacticalGroups_ColonistBarColonistDrawer:DrawColonist");
+                return target != null;
+            }
+            return false;
+        }
+        public static MethodBase TargetMethod()
+        {
+            return target;
+        }
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) => ColonistBar_Transpiler_Patch.Transpiler(instructions);
+    }
+
     // patch GetRect for vanilla colonist bar drawing function
     [HarmonyPatch(typeof(ColonistBarColonistDrawer), "GetPawnTextureRect")]
     class ColonistBar_GetRect_Patch
@@ -83,11 +105,45 @@ namespace Avatar
             if (LoadedModManager.GetMod<AvatarMod>().settings.showInColonistBar)
             {
                 float adjust = LoadedModManager.GetMod<AvatarMod>().settings.showInColonistBarSizeAdjust;
-                float x = pos.x;
-                float y = pos.y;
                 float width = (ColonistBarColonistDrawer.PawnTextureSize.x+2f*adjust)*Find.ColonistBar.Scale;
                 Vector2 vector = new (width, width*1.2f);
-                __result = new Rect (x-adjust, y - (vector.y - Find.ColonistBar.Size.y) - 1f, vector.x, vector.y).ContractedBy (1f);
+                __result = new Rect (pos.x-adjust, pos.y - (vector.y - Find.ColonistBar.Size.y) - 1f, vector.x, vector.y).ContractedBy (1f);
+                return false;
+            }
+            return true;
+        }
+    }
+
+    // patch GetRect for ColonyGroups drawing function
+    [HarmonyPatch]
+    class ColonyGroups_GetRect_Patch
+    {
+        public static MethodInfo target;
+        public static bool Prepare()
+        {
+            if (HarmonyInit.ColonyGroups_Loaded)
+            {
+                target = AccessTools.Method("TacticalGroups.TacticalGroups_ColonistBarColonistDrawer:GetPawnTextureRect");
+                return target != null;
+            }
+            return false;
+        }
+        public static MethodBase TargetMethod()
+        {
+            return target;
+        }
+        public static bool Prefix(ref Rect __result, Vector2 pos)
+        {
+            if (LoadedModManager.GetMod<AvatarMod>().settings.showInColonistBar)
+            {
+                AccessTools.Field("TacticalGroups.TacticalGroups_ColonistBarColonistDrawer:PawnTextureSize").SetValue(null, new Vector2(40f, 48f));
+                var bar = AccessTools.Field("TacticalGroups.TacticUtils:TacticalColonistBar").GetValue(null);
+                float scale = (float) AccessTools.Field("TacticalGroups.TacticalGroupsSettings:PawnScale").GetValue(null);
+                float size_y = ((Vector2) AccessTools.Method("TacticalGroups.TacticalColonistBar:get_Size").Invoke(bar, null)).y;
+                float boxWidth = (float) AccessTools.Field("TacticalGroups.TacticalGroupsSettings:PawnBoxWidth").GetValue(null);
+                float width = boxWidth+20*(scale-1f);
+                Vector2 vector = new (width, width*1.2f);
+                __result = new Rect (pos.x-10*(scale-1f), pos.y - (vector.y - size_y) - 1f, vector.x, vector.y).ContractedBy (1f);
                 return false;
             }
             return true;
@@ -112,7 +168,44 @@ namespace Avatar
         {
             return target;
         }
-        static bool Prefix(ref Rect __result, Vector2 pos) => ColonistBar_GetRect_Patch.Prefix(ref __result, pos);
+        static bool Prefix(ref object __instance, ref Rect __result, Vector2 pos)
+        {
+            if (LoadedModManager.GetMod<AvatarMod>().settings.showInColonistBar)
+            {
+                if ((bool) AccessTools.Field("ColoredMoodBar13.MoodCache:ScalePortrait").GetValue(__instance))
+                {
+                    // the smaller portraits
+                    float scale = (float) AccessTools.Field("ColoredMoodBar13.MoodCache:Scale").GetValue(__instance);
+                    float width = ColonistBarColonistDrawer.PawnTextureSize.x*Find.ColonistBar.Scale*scale;
+                    Vector2 vector = new (width, width*1.2f);
+                    __result = new Rect (pos.x+1f, pos.y - (vector.y - Find.ColonistBar.Size.y*scale) - 1f, vector.x, vector.y).ContractedBy (1f);
+                    return false;
+                }
+                return ColonistBar_GetRect_Patch.Prefix(ref __result, pos);
+            }
+            return true;
+        }
+    }
+
+    // patch GetRectCG for CCMBar drawing function
+    [HarmonyPatch]
+    class CCMBar_ColonyGroups_GetRect_Patch
+    {
+        public static MethodInfo target;
+        public static bool Prepare()
+        {
+            if (HarmonyInit.CCMBar_Loaded && HarmonyInit.ColonyGroups_Loaded)
+            {
+                target = AccessTools.Method("ColoredMoodBar13.MoodCache:GetPawnTextureRectCG");
+                return target != null;
+            }
+            return false;
+        }
+        public static MethodBase TargetMethod()
+        {
+            return target;
+        }
+        static bool Prefix(ref Rect __result, Vector2 pos) => ColonyGroups_GetRect_Patch.Prefix(ref __result, pos);
     }
 
     // patch FacialAnimation colonist bar update function

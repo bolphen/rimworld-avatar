@@ -1,244 +1,18 @@
-﻿using HarmonyLib;
-using UnityEngine;
-using Verse;
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.IO;
+using UnityEngine;
+using Verse;
 using RimWorld;
+using HarmonyLib;
 
 namespace Avatar
 {
-    public class AvatarDef : Def
-    {
-        public string partName;
-        public string typeName;
-        public string geneName;
-        public string unisexPath;
-        public string unisexChildPath;
-        public string unisexNewbornPath;
-        public string femalePath;
-        public string malePath;
-        public string femaleChildPath;
-        public string maleChildPath;
-        public string femaleNewbornPath;
-        public string maleNewbornPath;
-        public bool hideWrinkles;
-        public bool hideTattoo;
-        public bool hideHair;
-        public bool hideBeard;
-        public bool hideEyes;
-        public bool hideEars;
-        public bool hideNose;
-        public bool hideMouth;
-        public int hideTop = 0;
-        public bool specialNoJaw = false;
-        public string forceBodyType;
-        public Color? color1;
-        public Color? color2;
-        public Color? overlay;
-        public bool replaceModdedTexture = true;
-        public string GetPath(string gender, string lifeStage)
-        {
-            if (lifeStage == "Newborn" && unisexNewbornPath != null)
-                return unisexNewbornPath;
-            else if ((lifeStage == "Newborn" || lifeStage == "Child") && unisexChildPath != null)
-                return unisexChildPath;
-            else if (unisexPath != null)
-                return unisexPath;
-            else if (lifeStage == "Newborn")
-                return gender == "Female" ? femaleNewbornPath : maleNewbornPath;
-            else if (lifeStage == "Child")
-                return gender == "Female" ? femaleChildPath : maleChildPath;
-            else if (lifeStage == "")
-                return gender == "Female" ? femalePath : malePath;
-            else
-                return null;
-        }
-    }
-    public class AvatarPart
-    {
-        public string texPath;
-        public Color? color;
-        public (Color, Color)? eyeColor;
-        public (string, Color)? gradient;
-        public bool drawDexter = true;
-        public bool drawSinister = true;
-        public (string, int, string)? fallback = null;
-        public int hideTop = 0;
-        public int offset = 0;
-        public AvatarPart(string texPath, Color? color = null, int offset = 0)
-        {
-            this.texPath = texPath;
-            this.color = color;
-            this.offset = offset;
-        }
-        public static AvatarPart FromGene(Gene gene, Pawn pawn)
-        {
-            GeneGraphicData graphicData = gene.def.graphicData;
-            Color color;
-            string recolor;
-            switch (graphicData.colorType)
-            {
-                case GeneColorType.Hair: color = pawn.story.HairColor; recolor = "yes"; break;
-                case GeneColorType.Skin: color = pawn.story.SkinColor; recolor = "yes"; break;
-                default: color = graphicData.color ?? Color.white; recolor = "gray"; break;
-            }
-            AvatarPart result = new (graphicData.GraphicPathFor(pawn), color);
-            int offset = 0;
-            switch (gene.def.graphicData.drawLoc)
-            {
-                case GeneDrawLoc.HeadTop: offset = 2; break;
-                case GeneDrawLoc.HeadMiddle: offset = 4; break;
-                case GeneDrawLoc.HeadLower: offset = 6; break;
-            }
-            result.fallback = (graphicData.GraphicPathFor(pawn) + "_south", offset, recolor);
-            return result;
-        }
-    }
-    public class Feature
-    {
-        public int nose;
-        public int eyes;
-        public int mouth;
-        public int brows;
-        public Feature(int nose, int eyes, int mouth, int brows)
-        {
-            this.nose = nose;
-            this.eyes = eyes;
-            this.mouth = mouth;
-            this.brows = brows;
-        }
-    }
-
-    public static class TextureUtil
-    {
-        public static void ClearTexture(Texture2D texture, Color color)
-        {
-            RenderTexture active = RenderTexture.active;
-            RenderTexture canvas = RenderTexture.GetTemporary(texture.width, texture.height);
-            RenderTexture.active = canvas;
-            GL.Clear(true, true, color);
-            texture.ReadPixels(new Rect(0, 0, texture.width, texture.height), 0, 0);
-            RenderTexture.ReleaseTemporary(canvas);
-            RenderTexture.active = active;
-        }
-        public static Texture2D MakeReadableCopy(Texture2D texture, int? targetWidth = null, int? targetHeight = null)
-        {
-            int width = targetWidth ?? texture.width;
-            int height = targetHeight ?? texture.height;
-            RenderTexture active = RenderTexture.active;
-            RenderTexture canvas = RenderTexture.GetTemporary(width, height);
-            Texture2D result = new (width, height);
-            Graphics.Blit(texture, canvas);
-            result.ReadPixels(new Rect(0, 0, width, height), 0, 0);
-            RenderTexture.ReleaseTemporary(canvas);
-            RenderTexture.active = active;
-            return result;
-        }
-        public static Texture2D ScaleX2(Texture2D texture)
-        {
-            Texture2D result = new (2*texture.width, 2*texture.height);
-            for (int y = 0; y < texture.height; y++)
-            {
-                for (int x = 0; x < texture.width; x++)
-                {
-                    if (x > 0 && y > 0 && texture.GetPixel(x-1,y) == texture.GetPixel(x,y-1) && texture.GetPixel(x,y) != texture.GetPixel(x-1,y-1))
-                        result.SetPixel(2*x, 2*y, texture.GetPixel(x,y-1));
-                    else
-                        result.SetPixel(2*x, 2*y, texture.GetPixel(x,y));
-                    if (x < texture.width-1 && y > 0 && texture.GetPixel(x+1,y) == texture.GetPixel(x,y-1) && texture.GetPixel(x,y) != texture.GetPixel(x+1,y-1))
-                        result.SetPixel(2*x+1, 2*y, texture.GetPixel(x,y-1));
-                    else
-                        result.SetPixel(2*x+1, 2*y, texture.GetPixel(x,y));
-                    if (x > 0 && y < texture.height-1 && texture.GetPixel(x-1,y) == texture.GetPixel(x,y+1) && texture.GetPixel(x,y) != texture.GetPixel(x-1,y+1))
-                        result.SetPixel(2*x, 2*y+1, texture.GetPixel(x,y+1));
-                    else
-                        result.SetPixel(2*x, 2*y+1, texture.GetPixel(x,y));
-                    if (x < texture.width-1 && y < texture.height-1 && texture.GetPixel(x+1,y) == texture.GetPixel(x,y+1) && texture.GetPixel(x,y) != texture.GetPixel(x+1,y+1))
-                        result.SetPixel(2*x+1, 2*y+1, texture.GetPixel(x,y+1));
-                    else
-                        result.SetPixel(2*x+1, 2*y+1, texture.GetPixel(x,y));
-                }
-            }
-            result.Apply();
-            return result;
-        }
-        public static Texture2D ProcessVanillaTexture(string texPath, (int, int) size, (int, int) scale, int yOffset, string recolor)
-        // creates a copy of the texture, needs to be freed!
-        {
-            if (!AvatarMod.cachedTextures.ContainsKey(texPath))
-            {
-                Texture2D raw = ContentFinder<Texture2D>.Get(texPath);
-                Texture2D resized = MakeReadableCopy(raw, scale.Item1, scale.Item2);
-                Texture2D result = new (size.Item1, size.Item2);
-                int xOffset = (scale.Item1-size.Item1)/2;
-
-                Texture2D grayPalette = LoadedModManager.GetMod<AvatarMod>().GetTexture("gray");
-                for (int y = 0; y < result.height; y++)
-                {
-                    for (int x = 0; x < result.width; x++)
-                    {
-                        Color old = resized.GetPixel(x+xOffset,y+yOffset);
-                        if (old.a < 0.5)
-                            result.SetPixel(x,y,new Color(0,0,0,0));
-                        else {
-                            float gray = (old.r+old.g+old.b)/3f;
-                            switch (recolor)
-                            {
-                                case "yes":
-                                    if (gray > 0.9)
-                                        result.SetPixel(x,y,grayPalette.GetPixel(0,0));
-                                    else if (gray > 0.3)
-                                        result.SetPixel(x,y,grayPalette.GetPixel(1,0));
-                                    else
-                                        result.SetPixel(x,y,grayPalette.GetPixel(2,0));
-                                    break;
-                                case "gray":
-                                    gray = ((float)Math.Round(gray*5f)+2f)/7f;
-                                    result.SetPixel(x,y,new Color(gray, gray, gray, 1f));
-                                    break;
-                                case "no":
-                                    result.SetPixel(x,y,old);
-                                    break;
-                            }
-                        }
-                    }
-                }
-                result.Apply();
-                AvatarMod.cachedTextures[texPath] = result;
-                UnityEngine.Object.Destroy(resized);
-            }
-            return MakeReadableCopy(AvatarMod.cachedTextures[texPath]);
-        }
-        public static void AddOutline(Texture2D texture)
-        {
-            Texture2D copy = MakeReadableCopy(texture);
-            for (int y = 0; y < texture.height; y++)
-            {
-                for (int x = 0; x < texture.width; x++)
-                {
-                    if (copy.GetPixel(x,y).a < 0.9)
-                    {
-                        bool isOutline = false;
-                        if (x > 0 && copy.GetPixel(x-1,y).a > 0.9) isOutline = true;
-                        if (y > 0 && copy.GetPixel(x,y-1).a > 0.9) isOutline = true;
-                        if (x < texture.width-1 && copy.GetPixel(x+1,y).a > 0.9) isOutline = true;
-                        if (y < texture.height-1 && copy.GetPixel(x,y+1).a > 0.9) isOutline = true;
-                        if (isOutline)
-                            texture.SetPixel(x,y,new Color(.1f,.1f,.1f,1f));
-                    }
-                }
-            }
-            texture.Apply();
-            UnityEngine.Object.Destroy(copy);
-        }
-    }
-
     public class AvatarManager
     {
         public AvatarMod mod;
         public Pawn pawn;
+        private Feature feature;
         private Texture2D canvas;
         private Texture2D avatar;
         private bool drawHeadgear;
@@ -254,6 +28,7 @@ namespace Avatar
             { // destroy old texture
                 UnityEngine.Object.Destroy(avatar);
                 avatar = null;
+                feature = null;
             }
         }
         public void SetPawn(Pawn pawn)
@@ -293,8 +68,12 @@ namespace Avatar
         }
         private Feature GetFeature()
         {
-            int v = 2632*pawn.ageTracker.BirthDayOfYear+3341*pawn.ageTracker.BirthYear;
-            return new ((v%450)/90+1, (v%90)/15+1, (v%15)/3+1, (v%3)+1);
+            if (feature == null)
+            {
+                int v = 2632*pawn.ageTracker.BirthDayOfYear+3341*pawn.ageTracker.BirthYear;
+                feature = new ((v%450)/90+1, (v%90)/15+1, (v%15)/3+1, (v%3)+1);
+            }
+            return feature;
         }
         private string GetPath(string gender, string lifeStage, string partName, string typeName, string fallbackPath)
         {
@@ -334,8 +113,8 @@ namespace Avatar
             int downedOffset = 10;
             Color skinColor = pawn.story.SkinColor;
             Color hairColor = pawn.story.HairColor;
-            List<AvatarPart> parts = new ();
-            AvatarPart coversAll = null;
+            List<AvatarLayer> layers = new ();
+            AvatarLayer coversAll = null;
             List<Gene> activeGenes = pawn.genes.GenesListForReading.Where(g => g.Active).ToList();
             // collect all cosmetic genes not handled by the defined defs
             List<Gene> cosmeticGenes = activeGenes.Where(g =>
@@ -374,11 +153,11 @@ namespace Avatar
                     bodyTypeName = def.forceBodyType;
                 }
             string neckPath = GetPath(gender, lifeStage, "Body", bodyTypeName, "Core/"+gender+lifeStage+"/Neck");
-            parts.Add(new AvatarPart(neckPath, skinColor, 8));
+            layers.Add(new AvatarLayer(neckPath, skinColor, 8));
             if (!hideTattoo)
             {
                 string bodyTattooPath = GetPath(gender, lifeStage, "BodyTattoo", pawn.style.BodyTattoo.defName, "Core/Unisex/BodyTattoo/NoTattoo");
-                parts.Add(new AvatarPart(bodyTattooPath, new Color(1f,1f,1f,0.8f), 8));
+                layers.Add(new AvatarLayer(bodyTattooPath, new Color(1f,1f,1f,0.8f), 8));
             }
             foreach (Apparel apparel in pawn.apparel.WornApparel)
             {
@@ -389,17 +168,17 @@ namespace Avatar
                 def ??= DefDatabase<AvatarDef>.GetNamedSilentFail(apparel.def.defName);
                 if (def != null && def.partName == "Apparel")
                 {
-                    parts.Add(new AvatarPart(def.GetPath(gender, lifeStage), apparel.DrawColor, 8));
+                    layers.Add(new AvatarLayer(def.GetPath(gender, lifeStage), apparel.DrawColor, 8));
                     if (def.overlay is Color overlayColor)
-                        parts.Add(new AvatarPart(def.GetPath(gender, lifeStage)+"Overlay", overlayColor, 8));
+                        layers.Add(new AvatarLayer(def.GetPath(gender, lifeStage)+"Overlay", overlayColor, 8));
                 }
                 else if (def == null && apparel.def.apparel.bodyPartGroups.Exists(p => p.defName == "Torso")
                     && apparel.def.thingCategories != null) // warcaskets don't have this...
                 {
                     if (apparel.def.thingCategories.Exists(p => p.defName == "ApparelArmor"))
-                        parts.Add(new AvatarPart("Core/Apparel/GenericArmor"+lifeStage, apparel.DrawColor, 8));
+                        layers.Add(new AvatarLayer("Core/Apparel/GenericArmor"+lifeStage, apparel.DrawColor, 8));
                     else if (!apparel.def.thingCategories.Exists(p => p.defName == "ApparelUtility"))
-                        parts.Add(new AvatarPart("Core/Apparel/Generic"+lifeStage, apparel.DrawColor, 8));
+                        layers.Add(new AvatarLayer("Core/Apparel/Generic"+lifeStage, apparel.DrawColor, 8));
                 }
             }
             // draw head
@@ -441,33 +220,33 @@ namespace Avatar
                         if (gene.def.defName == def.geneName)
                             eyeColor = (def.color1 ?? eyeColor.Item1, def.color2 ?? eyeColor.Item2);
                 }
-                AvatarPart ears = new (earsPath, earsColor);
-                AvatarPart nose = new (nosePath, skinColor);
+                AvatarLayer ears = new (earsPath, earsColor);
+                AvatarLayer nose = new (nosePath, skinColor);
                 foreach (Gene gene in cosmeticGenes)
                 {
                     if (gene.def.endogeneCategory == EndogeneCategory.Ears)
                     {
-                        ears = AvatarPart.FromGene(gene, pawn);
+                        ears = AvatarLayer.FromGene(gene, pawn);
                         cosmeticGenes.Remove(gene);
                         break;
                     }
                     else if (gene.def.endogeneCategory == EndogeneCategory.Nose)
                     {
-                        nose = AvatarPart.FromGene(gene, pawn);
+                        nose = AvatarLayer.FromGene(gene, pawn);
                         cosmeticGenes.Remove(gene);
                         break;
                     }
                 }
-                AvatarPart eyes = new (eyesPath, skinColor);
+                AvatarLayer eyes = new (eyesPath, skinColor);
                 eyes.eyeColor = eyeColor;
-                AvatarPart mouth = new (mouthPath, skinColor);
+                AvatarLayer mouth = new (mouthPath, skinColor);
                 if (mod.settings.noFemaleLips && gender == "Female" && lifeStage != "Newborn") mouth.offset = -1; // shift female lips
-                AvatarPart head = new (headPath, skinColor);
-                if (!hideEars && (!mod.settings.earsOnTop || ears.texPath == "Core/Unisex/Ears/Ears_Human")) parts.Add(ears);
-                parts.Add(head);
-                if (!hideMouth) parts.Add(mouth);
-                if (!hideNose) parts.Add(nose);
-                if (!hideEyes) parts.Add(eyes);
+                AvatarLayer head = new (headPath, skinColor);
+                if (!hideEars && (!mod.settings.earsOnTop || ears.texPath == "Core/Unisex/Ears/Ears_Human")) layers.Add(ears);
+                layers.Add(head);
+                if (!hideMouth) layers.Add(mouth);
+                if (!hideNose) layers.Add(nose);
+                if (!hideEyes) layers.Add(eyes);
                 if (!hideWrinkles && !mod.settings.noWrinkles)
                 {
                     float ageThreshold = 0.7f*pawn.RaceProps.lifeExpectancy;
@@ -485,7 +264,7 @@ namespace Avatar
                         }
                     }
                     if (pawn.ageTracker.AgeBiologicalYears >= ageThreshold)
-                        parts.Add(new AvatarPart("Core/Unisex/Facial/Wrinkles", skinColor));
+                        layers.Add(new AvatarLayer("Core/Unisex/Facial/Wrinkles", skinColor));
                 }
                 foreach (AvatarDef def in mod.GetDefsForPart("Facial"))
                 {
@@ -500,7 +279,7 @@ namespace Avatar
                                 string variant = gene.def.graphicData.GraphicPathFor(pawn); // should end with A, B, C
                                 path += variant[variant.Length-1];
                             }
-                            parts.Add(new AvatarPart(path, skinColor));
+                            layers.Add(new AvatarLayer(path, skinColor));
                         }
                     }
                 }
@@ -509,13 +288,13 @@ namespace Avatar
                     if (gene.def.endogeneCategory == EndogeneCategory.Jaw
                         || gene.def.graphicData.layer == GeneDrawLayer.PostSkin)
                     {
-                        parts.Add(AvatarPart.FromGene(gene, pawn));
+                        layers.Add(AvatarLayer.FromGene(gene, pawn));
                         cosmeticGenes.Remove(gene);
                         break;
                     }
                 }
                 if (!hideTattoo)
-                    parts.Add(new AvatarPart(faceTattooPath, new Color(1f,1f,1f,0.8f)));
+                    layers.Add(new AvatarLayer(faceTattooPath, new Color(1f,1f,1f,0.8f)));
                 foreach (Hediff h in pawn.health.hediffSet.hediffs.Where(h => h.Part != null))
                 {
                     if (h.def.defName == "MissingBodyPart")
@@ -529,16 +308,16 @@ namespace Avatar
                             if (headTypeDef != null && headTypeDef.specialNoJaw)
                                 head.texPath += "NoJaw";
                             else
-                                parts.Add(new AvatarPart("Core/Unisex/Jaw/Missing" + lifeStage));
+                                layers.Add(new AvatarLayer("Core/Unisex/Jaw/Missing" + lifeStage));
                         }
                         else if (h.Part.def.defName == "Eye")
                         {
-                            AvatarPart missingEyes = new ("Core/Unisex/Eyes/Missing", skinColor);
+                            AvatarLayer missingEyes = new ("Core/Unisex/Eyes/Missing", skinColor);
                             if (h.Part.customLabel == "left eye")
                                 missingEyes.drawDexter = false;
                             else if (h.Part.customLabel == "right eye")
                                 missingEyes.drawSinister = false;
-                            parts.Add(missingEyes);
+                            layers.Add(missingEyes);
                         }
                         else if (h.Part.def.defName == "Ear")
                         {
@@ -561,7 +340,7 @@ namespace Avatar
                                 }
                                 else
                                 {
-                                    AvatarPart prosthetic = new (def.GetPath(gender, lifeStage));
+                                    AvatarLayer prosthetic = new (def.GetPath(gender, lifeStage));
                                     if (h.Part.customLabel?.StartsWith("left") ?? false)
                                     {
                                         prosthetic.drawDexter = false;
@@ -572,7 +351,7 @@ namespace Avatar
                                         prosthetic.drawSinister = false;
                                         if (h.Part.def.defName == "Ear") ears.drawDexter = false;
                                     }
-                                    parts.Add(prosthetic);
+                                    layers.Add(prosthetic);
                                 }
                             }
                         }
@@ -582,15 +361,15 @@ namespace Avatar
                 {
                     if (gene.def.graphicData.layer == GeneDrawLayer.PostTattoo)
                     {
-                        parts.Add(AvatarPart.FromGene(gene, pawn));
+                        layers.Add(AvatarLayer.FromGene(gene, pawn));
                         cosmeticGenes.Remove(gene);
                         break;
                     }
                 }
-                AvatarPart beard = new (beardPath, hairColor);
+                AvatarLayer beard = new (beardPath, hairColor);
                 if (beardPath == "BEARD")
                     beard.fallback = (pawn.style.beardDef.texPath + "_south", 8, "yes");
-                AvatarPart hair = new (hairPath, hairColor);
+                AvatarLayer hair = new (hairPath, hairColor);
                 if (hairPath == "HAIR")
                     hair.fallback = (pawn.story.hairDef.texPath + "_south", 4, "yes");
                 // gradient hair mod support
@@ -610,15 +389,15 @@ namespace Avatar
                         }
                     }
                 }
-                AvatarPart brows = new (browsPath, hairColor);
+                AvatarLayer brows = new (browsPath, hairColor);
                 if (lifeStage != "Newborn")
-                    parts.Add(beard);
+                    layers.Add(beard);
                 if (!hideEyes && lifeStage != "Newborn")
-                    parts.Add(brows);
+                    layers.Add(brows);
                 if (!drawHeadgear)
                 {
                     if (lifeStage != "Newborn")
-                        parts.Add(hair);
+                        layers.Add(hair);
                 }
                 else
                 {
@@ -632,20 +411,20 @@ namespace Avatar
                         def ??= DefDatabase<AvatarDef>.GetNamedSilentFail(a.def.defName);
                         if (def != null && def.partName == "Facegear")
                         {
-                            AvatarPart gear = new (def.GetPath(gender, lifeStage), a.DrawColor);
+                            AvatarLayer gear = new (def.GetPath(gender, lifeStage), a.DrawColor);
                             if (lifeStage != "") gear.offset = -1;
-                            parts.Add(gear);
+                            layers.Add(gear);
                             if (def.overlay is Color overlayColor)
                             {
-                                AvatarPart gearOverlay = new (def.GetPath(gender, lifeStage)+"Overlay", overlayColor);
+                                AvatarLayer gearOverlay = new (def.GetPath(gender, lifeStage)+"Overlay", overlayColor);
                                 if (lifeStage != "") gearOverlay.offset = -1;
-                                parts.Add(gearOverlay);
+                                layers.Add(gearOverlay);
                             }
                         }
                     }
                     // hair and headgear
                     bool hideHair = false;
-                    List<AvatarPart> partsToAdd = new ();
+                    List<AvatarLayer> layersToAdd = new ();
                     foreach (Apparel apparel in pawn.apparel.WornApparel)
                     {
                         AvatarDef def = null;
@@ -655,12 +434,12 @@ namespace Avatar
                         def ??= DefDatabase<AvatarDef>.GetNamedSilentFail(apparel.def.defName);
                         if (def != null && def.partName == "Headgear")
                         {
-                            AvatarPart headgear = new (def.GetPath(gender, lifeStage), apparel.DrawColor);
+                            AvatarLayer headgear = new (def.GetPath(gender, lifeStage), apparel.DrawColor);
                             if (!apparel.def.apparel.shellCoversHead)
                             {
-                                partsToAdd.Add(headgear);
+                                layersToAdd.Add(headgear);
                                 if (def.overlay is Color overlayColor)
-                                    partsToAdd.Add(new AvatarPart(def.GetPath(gender, lifeStage)+"Overlay", overlayColor));
+                                    layersToAdd.Add(new AvatarLayer(def.GetPath(gender, lifeStage)+"Overlay", overlayColor));
                             }
                             else
                                 coversAll = headgear;
@@ -674,75 +453,75 @@ namespace Avatar
                         }
                     }
                     if (!hideHair)
-                        if (lifeStage != "Newborn") parts.Add(hair);
+                        if (lifeStage != "Newborn") layers.Add(hair);
                     if (coversAll == null)
-                        foreach (AvatarPart part in partsToAdd)
-                            parts.Add(part);
+                        foreach (AvatarLayer layer in layersToAdd)
+                            layers.Add(layer);
                 }
-                if (!hideEars && (mod.settings.earsOnTop && ears.texPath != "Core/Unisex/Ears/Ears_Human")) parts.Add(ears);
+                if (!hideEars && (mod.settings.earsOnTop && ears.texPath != "Core/Unisex/Ears/Ears_Human")) layers.Add(ears);
                 foreach (Gene gene in activeGenes)
                 {
                     foreach (AvatarDef def in mod.GetDefsForPart("Headbone"))
                         if (gene.def.defName == def.geneName)
-                            parts.Add(new AvatarPart(def.GetPath(gender, lifeStage)));
+                            layers.Add(new AvatarLayer(def.GetPath(gender, lifeStage)));
                 }
                 foreach (Gene gene in cosmeticGenes)
-                    parts.Add(AvatarPart.FromGene(gene, pawn));
+                    layers.Add(AvatarLayer.FromGene(gene, pawn));
             }
             // end of head drawing
 
-            if (coversAll is AvatarPart someCoversAll)
-                parts.Add(someCoversAll);
+            if (coversAll is AvatarLayer someCoversAll)
+                layers.Add(someCoversAll);
 
             // render the texture
-            foreach (AvatarPart part in parts)
+            foreach (AvatarLayer layer in layers)
             {
-                if (part.texPath != null)
+                if (layer.texPath != null)
                 {
-                    Texture2D layer = null;
-                    if (part.fallback is (string, int, string) fallback)
+                    Texture2D texture = null;
+                    if (layer.fallback is (string, int, string) fallback)
                     {
                         // fallback to vanilla texture
                         if (ContentFinder<Texture2D>.Get(fallback.Item1, false) != null)
-                            layer = TextureUtil.ProcessVanillaTexture(fallback.Item1, (width, height), (62,68), fallback.Item2, fallback.Item3);
+                            texture = TextureUtil.ProcessVanillaTexture(fallback.Item1, (width, height), (62,68), fallback.Item2, fallback.Item3);
                     }
                     else
                     {
-                        Texture2D unreadableLayer = mod.GetTexture(part.texPath);
+                        Texture2D unreadableTexture = mod.GetTexture(layer.texPath);
                         // the path is defined in the def so the texture should exist
-                        if (unreadableLayer != null)
-                            layer = TextureUtil.MakeReadableCopy(unreadableLayer);
+                        if (unreadableTexture != null)
+                            texture = TextureUtil.MakeReadableCopy(unreadableTexture);
                     }
-                    if (layer != null)
+                    if (texture != null)
                     {
                         if (mod.settings.avatarCompression)
-                            layer.Compress(true);
+                            texture.Compress(true);
 
                         // ad hoc stuff for gradient hair
                         Texture2D mask = null;
                         Color colorB = new ();
-                        if (part.gradient is (string, Color) gradient)
+                        if (layer.gradient is (string, Color) gradient)
                         {
                             mask = TextureUtil.ProcessVanillaTexture(gradient.Item1, (width, height), (62,68), 4, "no");
                             colorB = gradient.Item2;
                         }
 
-                        for (int y = height-layer.height-part.offset; y < height-part.hideTop-yOffset-part.offset; y++)
+                        for (int y = height-texture.height-layer.offset; y < height-layer.hideTop-yOffset-layer.offset; y++)
                         {
-                            for (int x = (part.drawDexter ? 0 : width/2); x < (part.drawSinister ? width : width/2); x++)
+                            for (int x = (layer.drawDexter ? 0 : width/2); x < (layer.drawSinister ? width : width/2); x++)
                             {
                                 Color oldColor = downed ? canvas.GetPixel(y-halfWidthHeightDiff, x) : canvas.GetPixel(x, y);
-                                Color newColor = layer.GetPixel(x, y-(height-layer.height-part.offset)+yOffset);
+                                Color newColor = texture.GetPixel(x, y-(height-texture.height-layer.offset)+yOffset);
                                 if (newColor.a > 0)
                                 {
                                     Color color = new ();
                                     float alpha = newColor.a;
-                                    if (part.color is Color tint)
+                                    if (layer.color is Color tint)
                                     {
                                         alpha *= tint.a;
                                         if (mask != null)
                                         {
-                                            Color maskPixel = mask.GetPixel(x, y-(height-layer.height-part.offset)+yOffset);
+                                            Color maskPixel = mask.GetPixel(x, y-(height-texture.height-layer.offset)+yOffset);
                                             color.r = oldColor.r*(1f-alpha) + newColor.r*(tint.r*maskPixel.r + colorB.r*maskPixel.g)*alpha;
                                             color.g = oldColor.g*(1f-alpha) + newColor.g*(tint.g*maskPixel.r + colorB.g*maskPixel.g)*alpha;
                                             color.b = oldColor.b*(1f-alpha) + newColor.b*(tint.b*maskPixel.r + colorB.b*maskPixel.g)*alpha;
@@ -774,7 +553,7 @@ namespace Avatar
                                 }
                             }
                         }
-                        if (part.eyeColor is (Color, Color) eyeColor)
+                        if (layer.eyeColor is (Color, Color) eyeColor)
                         { // draw eye colors manually
                             if (downed)
                             {
@@ -792,7 +571,7 @@ namespace Avatar
                             }
                         }
                         if (mask != null) UnityEngine.Object.Destroy(mask);
-                        UnityEngine.Object.Destroy(layer);
+                        UnityEngine.Object.Destroy(texture);
                     }
                 }
             }
@@ -828,9 +607,9 @@ namespace Avatar
         private void SavePng(string filename, byte[] bytes)
         {
             string dir = Application.persistentDataPath + "/avatar/";
-            if (!Directory.Exists(dir))
-                Directory.CreateDirectory(dir);
-            File.WriteAllBytes(dir+filename, bytes);
+            if (!System.IO.Directory.Exists(dir))
+                System.IO.Directory.CreateDirectory(dir);
+            System.IO.File.WriteAllBytes(dir+filename, bytes);
         }
         public void SaveAsPng()
         {

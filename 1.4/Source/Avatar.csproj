@@ -45,9 +45,11 @@
     <Publicize Include="Assembly-CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AvatarUtil.cs" />
-    <Compile Include="CompAvatar.cs" />
+    <Compile Include="DataTypes.cs" />
+    <Compile Include="AvatarManager.cs" />
+    <Compile Include="AvatarMod.cs" />
     <Compile Include="ColonistBarPatch.cs" />
+    <Compile Include="TextureUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

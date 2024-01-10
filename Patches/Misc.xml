@@ -2,8 +2,13 @@
 <Patch>
 
     <!-- Cheek color is not nose! -->
-    <Operation Class="PatchOperationRemove" MayRequire="com.yayo.papagoRace">
-        <xpath>Defs/GeneDef[@Name="papagoCheekBase"]/endogeneCategory</xpath>
+    <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Papou Race : emotional birds</li>
+        </mods>
+        <match Class="PatchOperationRemove">
+            <xpath>Defs/GeneDef[@Name="papagoCheekBase"]/endogeneCategory</xpath>
+	</match>
     </Operation>
 
 </Patch>

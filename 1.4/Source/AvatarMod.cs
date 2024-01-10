@@ -1,11 +1,10 @@
-﻿using HarmonyLib;
-using RimWorld;
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using Verse;
-using System.IO;
+using RimWorld;
+using HarmonyLib;
 
 namespace Avatar
 {
@@ -46,12 +45,12 @@ namespace Avatar
             if (!cachedTextures.ContainsKey(texPath))
             {
                 string path = Content.RootDir+"/Assets/"+texPath+".png";
-                if (!File.Exists(path))
+                if (!System.IO.File.Exists(path))
                 { // fallback to RW texture manager
                     return ContentFinder<Texture2D>.Get(texPath);
                 }
                 Texture2D newTexture = new (1, 1);
-                newTexture.LoadImage(File.ReadAllBytes(path));
+                newTexture.LoadImage(System.IO.File.ReadAllBytes(path));
                 cachedTextures[texPath] = newTexture;
             }
             return cachedTextures[texPath];
@@ -115,6 +114,7 @@ namespace Avatar
             listingStandard.CheckboxLabeled("Show hair with headgear", ref settings.showHairWithHeadgear,
                 "Whether hair should be drawn along with headgear. Doesn't look good for some modded hair styles so you may want to turn this off.");
             listingStandard.CheckboxLabeled("Draw a black outline", ref settings.addOutline);
+            listingStandard.CheckboxLabeled("Hide background", ref settings.hideBackground);
             listingStandard.CheckboxLabeled("Use same lips for both gender", ref settings.noFemaleLips);
             listingStandard.CheckboxLabeled("Disable wrinkles for all pawns", ref settings.noWrinkles);
             listingStandard.CheckboxLabeled("Show special ears on top", ref settings.earsOnTop,
@@ -122,7 +122,7 @@ namespace Avatar
             listingStandard.GapLine();
             listingStandard.CheckboxLabeled("Hide main avatar", ref settings.hideMainAvatar);
             listingStandard.CheckboxLabeled("Show avatars in colonist bar (experimental)", ref settings.showInColonistBar);
-            if (settings.showInColonistBar)
+            if (settings.showInColonistBar && !HarmonyInit.ColonyGroups_Loaded)
             {
                 settings.showInColonistBarSizeAdjust = (float)(
                     listingStandard.SliderLabeled("Colonist bar avatar size adjustment", settings.showInColonistBarSizeAdjust, 0f, 10f));
@@ -302,6 +302,7 @@ namespace Avatar
         public bool defaultDrawHeadgear = true;
         public bool showHairWithHeadgear = true;
         public bool addOutline = false;
+        public bool hideBackground = false;
         public bool hideMainAvatar = false;
         public bool showInQuestTab = true;
         public bool showInColonistBar = false;
@@ -322,6 +323,7 @@ namespace Avatar
             Scribe_Values.Look(ref defaultDrawHeadgear, "defaultDrawHeadgear");
             Scribe_Values.Look(ref showHairWithHeadgear, "showHairWithHeadgear");
             Scribe_Values.Look(ref addOutline, "addOutline");
+            Scribe_Values.Look(ref hideBackground, "hideBackground");
             Scribe_Values.Look(ref hideMainAvatar, "hideMainAvatar");
             Scribe_Values.Look(ref showInQuestTab, "showInQuestTab");
             Scribe_Values.Look(ref showInColonistBar, "showInColonistBar");
@@ -329,6 +331,8 @@ namespace Avatar
             Scribe_Values.Look(ref noFemaleLips, "noFemaleLips");
             Scribe_Values.Look(ref noWrinkles, "noWrinkles");
             Scribe_Values.Look(ref earsOnTop, "earsOnTop");
+            if (hideBackground)
+                AvatarMod.mainManager.SetBGColor(new Color(0,0,0,0));
             AvatarMod.ClearCachedAvatars();
         }
     }
