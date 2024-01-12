@@ -333,6 +333,8 @@ namespace Avatar
             Scribe_Values.Look(ref earsOnTop, "earsOnTop");
             if (hideBackground)
                 AvatarMod.mainManager.SetBGColor(new Color(0,0,0,0));
+            else
+                AvatarMod.mainManager.SetBGColor(new Color(.5f,.5f,.6f,.5f));
             AvatarMod.ClearCachedAvatars();
         }
     }

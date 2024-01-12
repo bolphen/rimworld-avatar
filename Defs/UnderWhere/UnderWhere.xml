@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarDef>
+        <defName>UnderWhere_Bra</defName>
+        <partName>Apparel</partName>
+        <femalePath>UnderWhere/Bra</femalePath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>UnderWhere_Tanktop</defName>
+        <partName>Apparel</partName>
+        <unisexPath>VanillaExpanded/Apparel/TankTop</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>UnderWhere_Chestwrap</defName>
+        <partName>Apparel</partName>
+        <femalePath>UnderWhere/Chestwrap</femalePath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>UnderWhere_LongJohns</defName>
+        <partName>Apparel</partName>
+        <unisexPath>UnderWhere/LongJohns</unisexPath>
+    </Avatar.AvatarDef>
+
+</Defs>

@@ -11,5 +11,6 @@
         <li IfModActive="kikohi.jewelry">Defs/Jewelry</li>
         <li IfModActive="kentington.saveourship2">Defs/SOS2</li>
         <li IfModActive="cyanobot.toddlers">Defs/Toddlers</li>
+        <li IfModActive="Malistaticy.UnderWhere">Defs/UnderWhere</li>
     </v1.4>
 </loadFolders>
