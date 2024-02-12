@@ -48,6 +48,7 @@
     <Compile Include="DataTypes.cs" />
     <Compile Include="AvatarManager.cs" />
     <Compile Include="AvatarMod.cs" />
+    <Compile Include="ModCompatibility.cs" />
     <Compile Include="ColonistBarPatch.cs" />
     <Compile Include="TextureUtil.cs" />
   </ItemGroup>

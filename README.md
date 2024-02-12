@@ -13,8 +13,4 @@ Show a pixel-art style avatar for pawns.
   - hairs, tattoos, genes
   - life stages: newborn, child, adult, corpse
   - gear
-- Supported mods:
-  - VE Apparel and VE Armour
-  - VFE Empire
-  - VRE Phytokin
-  - VRE Saurid
+- Check the workshop page for a list of supported mods.

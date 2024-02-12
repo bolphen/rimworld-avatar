@@ -122,12 +122,12 @@ namespace Avatar
             listingStandard.GapLine();
             listingStandard.CheckboxLabeled("Hide main avatar", ref settings.hideMainAvatar);
             listingStandard.CheckboxLabeled("Show avatars in colonist bar (experimental)", ref settings.showInColonistBar);
-            if (settings.showInColonistBar && !HarmonyInit.ColonyGroups_Loaded)
+            if (settings.showInColonistBar && !ModCompatibility.ColonyGroups_Loaded)
             {
                 settings.showInColonistBarSizeAdjust = (float)(
                     listingStandard.SliderLabeled("Colonist bar avatar size adjustment", settings.showInColonistBarSizeAdjust, 0f, 10f));
             }
-            if (HarmonyInit.CCMBar_Loaded && listingStandard.ButtonText("Refresh colonist bar"))
+            if (ModCompatibility.CCMBar_Loaded && listingStandard.ButtonText("Refresh colonist bar"))
             {
                 AccessTools.Method("ColoredMoodBar13.MoodPatch:CGMarkColonistsDirty").Invoke(null, new object[] {null});
             }

@@ -1,22 +1,17 @@
-using HarmonyLib;
-using RimWorld;
 using System;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Collections.Generic;
 using UnityEngine;
 using Verse;
+using RimWorld;
+using HarmonyLib;
 
 namespace Avatar
 {
     [StaticConstructorOnStartup]
     public static class HarmonyInit
     {
-        public static bool CCMBar_Loaded = ModsConfig.IsActive("crashm.colorcodedmoodbar.11");
-        public static bool ColonyGroups_Loaded = ModsConfig.IsActive("DerekBickley.LTOColonyGroupsFinal");
-        public static bool FacialAnimation_Loaded = ModsConfig.IsActive("Nals.FacialAnimation");
-        public static bool GradientHair_Loaded = ModsConfig.IsActive("automatic.gradienthair");
-
         static HarmonyInit ()
         {
             new Harmony("AvatarMod").PatchAll();
@@ -61,7 +56,7 @@ namespace Avatar
         public static MethodInfo target;
         public static bool Prepare()
         {
-            if (HarmonyInit.CCMBar_Loaded)
+            if (ModCompatibility.CCMBar_Loaded)
             {
                 target = AccessTools.Method("ColoredMoodBar13.MoodPatch:DrawColonist");
                 return target != null;
@@ -82,7 +77,7 @@ namespace Avatar
         public static MethodInfo target;
         public static bool Prepare()
         {
-            if (HarmonyInit.ColonyGroups_Loaded)
+            if (ModCompatibility.ColonyGroups_Loaded)
             {
                 target = AccessTools.Method("TacticalGroups.TacticalGroups_ColonistBarColonistDrawer:DrawColonist");
                 return target != null;
@@ -121,7 +116,7 @@ namespace Avatar
         public static MethodInfo target;
         public static bool Prepare()
         {
-            if (HarmonyInit.ColonyGroups_Loaded)
+            if (ModCompatibility.ColonyGroups_Loaded)
             {
                 target = AccessTools.Method("TacticalGroups.TacticalGroups_ColonistBarColonistDrawer:GetPawnTextureRect");
                 return target != null;
@@ -136,11 +131,11 @@ namespace Avatar
         {
             if (LoadedModManager.GetMod<AvatarMod>().settings.showInColonistBar)
             {
-                AccessTools.Field("TacticalGroups.TacticalGroups_ColonistBarColonistDrawer:PawnTextureSize").SetValue(null, new Vector2(40f, 48f));
-                var bar = AccessTools.Field("TacticalGroups.TacticUtils:TacticalColonistBar").GetValue(null);
-                float scale = (float) AccessTools.Field("TacticalGroups.TacticalGroupsSettings:PawnScale").GetValue(null);
-                float size_y = ((Vector2) AccessTools.Method("TacticalGroups.TacticalColonistBar:get_Size").Invoke(bar, null)).y;
-                float boxWidth = (float) AccessTools.Field("TacticalGroups.TacticalGroupsSettings:PawnBoxWidth").GetValue(null);
+                ModCompatibility.GetFieldInfo("TacticalGroups.TacticalGroups_ColonistBarColonistDrawer:PawnTextureSize").SetValue(null, new Vector2(40f, 48f));
+                var bar = ModCompatibility.GetFieldInfo("TacticalGroups.TacticUtils:TacticalColonistBar").GetValue(null);
+                float scale = (float) ModCompatibility.GetFieldInfo("TacticalGroups.TacticalGroupsSettings:PawnScale").GetValue(null);
+                float size_y = ((Vector2) ModCompatibility.GetMethodInfo("TacticalGroups.TacticalColonistBar:get_Size").Invoke(bar, null)).y;
+                float boxWidth = (float) ModCompatibility.GetFieldInfo("TacticalGroups.TacticalGroupsSettings:PawnBoxWidth").GetValue(null);
                 float width = boxWidth+20*(scale-1f);
                 Vector2 vector = new (width, width*1.2f);
                 __result = new Rect (pos.x-10*(scale-1f), pos.y - (vector.y - size_y) - 1f, vector.x, vector.y).ContractedBy (1f);
@@ -157,7 +152,7 @@ namespace Avatar
         public static MethodInfo target;
         public static bool Prepare()
         {
-            if (HarmonyInit.CCMBar_Loaded)
+            if (ModCompatibility.CCMBar_Loaded)
             {
                 target = AccessTools.Method("ColoredMoodBar13.MoodCache:GetPawnTextureRect");
                 return target != null;
@@ -172,10 +167,10 @@ namespace Avatar
         {
             if (LoadedModManager.GetMod<AvatarMod>().settings.showInColonistBar)
             {
-                if ((bool) AccessTools.Field("ColoredMoodBar13.MoodCache:ScalePortrait").GetValue(__instance))
+                if ((bool) ModCompatibility.GetFieldInfo("ColoredMoodBar13.MoodCache:ScalePortrait").GetValue(__instance))
                 {
                     // the smaller portraits
-                    float scale = (float) AccessTools.Field("ColoredMoodBar13.MoodCache:Scale").GetValue(__instance);
+                    float scale = (float) ModCompatibility.GetFieldInfo("ColoredMoodBar13.MoodCache:Scale").GetValue(__instance);
                     float width = ColonistBarColonistDrawer.PawnTextureSize.x*Find.ColonistBar.Scale*scale;
                     Vector2 vector = new (width, width*1.2f);
                     __result = new Rect (pos.x+1f, pos.y - (vector.y - Find.ColonistBar.Size.y*scale) - 1f, vector.x, vector.y).ContractedBy (1f);
@@ -194,7 +189,7 @@ namespace Avatar
         public static MethodInfo target;
         public static bool Prepare()
         {
-            if (HarmonyInit.CCMBar_Loaded && HarmonyInit.ColonyGroups_Loaded)
+            if (ModCompatibility.CCMBar_Loaded && ModCompatibility.ColonyGroups_Loaded)
             {
                 target = AccessTools.Method("ColoredMoodBar13.MoodCache:GetPawnTextureRectCG");
                 return target != null;
@@ -215,7 +210,7 @@ namespace Avatar
         public static MethodInfo target;
         public static bool Prepare()
         {
-            if (HarmonyInit.FacialAnimation_Loaded)
+            if (ModCompatibility.FacialAnimation_Loaded)
             {
                 target = AccessTools.Method("FacialAnimation.FacialAnimationControllerComp:UpdatePortrait");
                 return target != null;

@@ -2,6 +2,21 @@
 <Defs>
 
     <Avatar.AvatarDef>
+        <defName>Avatar_GenericArmor</defName>
+        <partName>apparel</partName>
+        <unisexPath>Core/Apparel/GenericArmor</unisexPath>
+        <unisexChildPath>Core/Apparel/GenericArmorChild</unisexChildPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>Avatar_Generic</defName>
+        <partName>apparel</partName>
+        <unisexPath>Core/Apparel/Generic</unisexPath>
+        <unisexChildPath>Core/Apparel/GenericChild</unisexChildPath>
+        <unisexNewbornPath>Core/Apparel/GenericNewborn</unisexNewbornPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
         <defName>Apparel_ClothMask</defName>
         <partName>Facegear</partName>
         <unisexPath>Core/Apparel/Headgear/ClothMask</unisexPath>

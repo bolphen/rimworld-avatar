@@ -5,10 +5,12 @@
         <li>1.4</li>
         <li>Defs</li>
         <li IfModActive="sarg.alphagenes">Defs/AlphaGenes</li>
+        <li IfModActive="Killathon.MechHumanlikes.AndroidTiers">Defs/AndroidTiers</li>
         <li IfModActive="ATK.Anthrosonae">Defs/Anthrosonae</li>
         <li IfModActive="Aoba.DeadManSwitch.Core">Defs/DMS</li>
         <li IfModActive="Ykara.elStrages.EPOE">Defs/EPOE</li>
         <li IfModActive="kikohi.jewelry">Defs/Jewelry</li>
+        <li IfModActive="DankPyon.Medieval.Overhaul">Defs/MedievalOverhaul</li>
         <li IfModActive="kentington.saveourship2">Defs/SOS2</li>
         <li IfModActive="cyanobot.toddlers">Defs/Toddlers</li>
         <li IfModActive="Malistaticy.UnderWhere">Defs/UnderWhere</li>
