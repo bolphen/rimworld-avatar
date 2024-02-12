@@ -40,10 +40,10 @@ namespace Avatar
             {
                 var drawSettings = GetFieldInfo("VFECore.ApparelDrawPosExtension:apparelDrawSettings").GetValue(apparelDrawPosExtension);
                 if (drawSettings != null)
-                    return ((Vector3) GetFieldInfo("VFECore.DrawSettings:drawPosSouthOffset").GetValue(drawSettings)).y;
+                    return ((Vector3) GetMethodInfo("VFECore.DrawSettings:GetDrawPosOffset").Invoke(drawSettings, new object[] {Rot4.South, new Vector3 (0,0,0)})).y;
                 drawSettings = GetFieldInfo("VFECore.ApparelDrawPosExtension:shellPosDrawSettings").GetValue(apparelDrawPosExtension);
                 if (drawSettings != null)
-                    return ((Vector3) GetFieldInfo("VFECore.DrawSettings:drawPosSouthOffset").GetValue(drawSettings)).y;
+                    return ((Vector3) GetMethodInfo("VFECore.DrawSettings:GetDrawPosOffset").Invoke(drawSettings, new object[] {Rot4.South, new Vector3 (0,0,0)})).y;
             }
             return 0f;
         }
