@@ -218,7 +218,7 @@ namespace Avatar
             layers.Add(new AvatarLayer(neckPath, skinColor, 8));
             if (!hideTattoo)
             {
-                string bodyTattooPath = GetPath(gender, lifeStage, "BodyTattoo", pawn.style.BodyTattoo.defName, "Core/Unisex/BodyTattoo/NoTattoo");
+                string bodyTattooPath = GetPath(gender, lifeStage, "BodyTattoo", pawn.style.BodyTattoo?.defName, "Core/Unisex/BodyTattoo/NoTattoo");
                 layers.Add(new AvatarLayer(bodyTattooPath, new Color(1f,1f,1f,0.8f), 8));
             }
             foreach ((Apparel apparel, AvatarDef def) in apparels)
@@ -231,8 +231,8 @@ namespace Avatar
             if (!pawn.health.hediffSet.hediffs.Exists(h => h.def.defName == "MissingBodyPart" && h.Part != null && h.Part.def.defName == "Head"))
             {
                 string headPath   = GetPath(gender, lifeStage, "Head", headTypeName, "Core/"+gender+lifeStage+"/Head/AverageNormal");
-                string faceTattooPath = GetPath(gender, lifeStage, "FaceTattoo", pawn.style.FaceTattoo.defName, "Core/Unisex/FaceTattoo/NoTattoo");
-                string beardPath  = GetPath(gender, lifeStage, "Beard", pawn.style.beardDef.defName, "BEARD");
+                string faceTattooPath = GetPath(gender, lifeStage, "FaceTattoo", pawn.style.FaceTattoo?.defName, "Core/Unisex/FaceTattoo/NoTattoo");
+                string beardPath  = GetPath(gender, lifeStage, "Beard", pawn.style.beardDef?.defName ?? "NoBeard", "BEARD");
                 string hairPath = GetPath(gender, lifeStage, "Hair", pawn.story.hairDef.defName, "HAIR");
                 string earsPath = "Core/Unisex/Ears/Ears_Human";
                 string nosePath = "Core/"+gender+lifeStage+"/Nose/Nose"+GetFeature().nose.ToString();
