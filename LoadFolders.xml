@@ -3,16 +3,29 @@
     <v1.4>
         <li>/</li>
         <li>1.4</li>
-        <li>Defs</li>
-        <li IfModActive="sarg.alphagenes">Defs/AlphaGenes</li>
-        <li IfModActive="Killathon.MechHumanlikes.AndroidTiers">Defs/AndroidTiers</li>
-        <li IfModActive="ATK.Anthrosonae">Defs/Anthrosonae</li>
-        <li IfModActive="Aoba.DeadManSwitch.Core">Defs/DMS</li>
-        <li IfModActive="Ykara.elStrages.EPOE">Defs/EPOE</li>
-        <li IfModActive="kikohi.jewelry">Defs/Jewelry</li>
-        <li IfModActive="DankPyon.Medieval.Overhaul">Defs/MedievalOverhaul</li>
-        <li IfModActive="kentington.saveourship2">Defs/SOS2</li>
-        <li IfModActive="cyanobot.toddlers">Defs/Toddlers</li>
-        <li IfModActive="Malistaticy.UnderWhere">Defs/UnderWhere</li>
+        <li IfModActive="sarg.alphagenes">Mods/AlphaGenes</li>
+        <li IfModActive="Killathon.MechHumanlikes.AndroidTiers">Mods/AndroidTiers</li>
+        <li IfModActive="ATK.Anthrosonae">Mods/Anthrosonae</li>
+        <li IfModActive="Aoba.DeadManSwitch.Core">Mods/DMS</li>
+        <li IfModActive="Ykara.elStrages.EPOE">Mods/EPOE</li>
+        <li IfModActive="kikohi.jewelry">Mods/Jewelry</li>
+        <li IfModActive="DankPyon.Medieval.Overhaul">Mods/MedievalOverhaul</li>
+        <li IfModActive="kentington.saveourship2">Mods/SOS2</li>
+        <li IfModActive="cyanobot.toddlers">Mods/Toddlers</li>
+        <li IfModActive="Malistaticy.UnderWhere">Mods/UnderWhere</li>
+        <li IfModActive="vanillaexpanded.vappe">Mods/VanillaExpanded/VE_Apparel</li>
+        <li IfModActive="vanillaexpanded.varme">Mods/VanillaExpanded/VE_Armour</li>
+        <li IfModActive="vanillaexpanded.vpsycastse">Mods/VanillaExpanded/VE_Psycasts</li>
+        <li IfModActive="oskarpotocki.vfe.empire">Mods/VanillaExpanded/VFE_Empire</li>
+        <li IfModActive="oskarpotocki.vfe.pirates">Mods/VanillaExpanded/VFE_Pirates</li>
+        <li IfModActive="oskarpotocki.vfe.tribals">Mods/VanillaExpanded/VFE_Tribals</li>
+        <li IfModActive="vanillaracesexpanded.archon">Mods/VanillaExpanded/VRE_Archons</li>
+        <li IfModActive="vanillaracesexpanded.fungoid">Mods/VanillaExpanded/VRE_Fungoids</li>
+        <li IfModActive="vanillaracesexpanded.highmate">Mods/VanillaExpanded/VRE_Highmates</li>
+        <li IfModActive="vanillaracesexpanded.lycanthrope">Mods/VanillaExpanded/VRE_Lycanthropes</li>
+        <li IfModActive="vanillaracesexpanded.phytokin">Mods/VanillaExpanded/VRE_Phytokins</li>
+        <li IfModActive="vanillaracesexpanded.sanguophage">Mods/VanillaExpanded/VRE_Sanguophages</li>
+        <li IfModActive="vanillaracesexpanded.saurid">Mods/VanillaExpanded/VRE_Saurids</li>
     </v1.4>
 </loadFolders>
+
