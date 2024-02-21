@@ -18,6 +18,8 @@ namespace Avatar
         private bool drawHeadgear;
         private bool checkDowned = false;
         private Color bgColor = new Color(.5f,.5f,.6f,.5f);
+        private int lastUpdateTime;
+        private bool updateQueued = false;
         public AvatarManager(AvatarMod mod)
         {
             this.mod = mod;
@@ -25,10 +27,19 @@ namespace Avatar
         public void ClearCachedAvatar()
         {
             if (avatar != null)
-            { // destroy old texture
-                UnityEngine.Object.Destroy(avatar);
-                avatar = null;
-                feature = null;
+            {
+                // cap the update frequency
+                if (Time.frameCount > lastUpdateTime + 5)
+                { // destroy old texture
+                    UnityEngine.Object.Destroy(avatar);
+                    avatar = null;
+                    feature = null;
+                    updateQueued = false;
+                }
+                else
+                {
+                    updateQueued = true;
+                }
             }
         }
         public void SetPawn(Pawn pawn)
@@ -85,6 +96,7 @@ namespace Avatar
         }
         private Texture2D RenderAvatar()
         {
+            lastUpdateTime = Time.frameCount;
             int width = 40;
             int height = 48;
             int halfWidthHeightDiff = (height-width)/2;
@@ -597,6 +609,7 @@ namespace Avatar
         }
         public Texture2D GetAvatar()
         {
+            if (updateQueued) ClearCachedAvatar();
             return avatar ?? RenderAvatar();
         }
         private void SavePng(string filename, byte[] bytes)
