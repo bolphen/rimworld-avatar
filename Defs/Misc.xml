@@ -19,6 +19,15 @@
     </Avatar.AvatarDef>
 
     <Avatar.AvatarDef>
+        <defName>VRE_MouthTusks</defName>
+        <partName>Headbone</partName>
+        <geneName>VRE_MouthTusks</geneName>
+        <unisexPath>Common/Tusk</unisexPath>
+        <unisexChildPath>Common/TuskChild</unisexChildPath>
+        <unisexNewbornPath>Common/TuskNewborn</unisexNewbornPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
         <defName>Head_SSS_HeadType</defName>
         <partName>Head</partName>
         <typeName>SSS_HeadType</typeName>

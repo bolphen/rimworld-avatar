@@ -17,6 +17,7 @@
         <li IfModActive="vanillaexpanded.varme">Mods/VanillaExpanded/VE_Armour</li>
         <li IfModActive="vanillaexpanded.vpsycastse">Mods/VanillaExpanded/VE_Psycasts</li>
         <li IfModActive="oskarpotocki.vfe.empire">Mods/VanillaExpanded/VFE_Empire</li>
+        <li IfModActive="oskarpotocki.vanillafactionsexpanded.medievalmodule">Mods/VanillaExpanded/VFE_Medieval</li>
         <li IfModActive="oskarpotocki.vfe.pirates">Mods/VanillaExpanded/VFE_Pirates</li>
         <li IfModActive="oskarpotocki.vfe.tribals">Mods/VanillaExpanded/VFE_Tribals</li>
         <li IfModActive="vanillaracesexpanded.archon">Mods/VanillaExpanded/VRE_Archons</li>
