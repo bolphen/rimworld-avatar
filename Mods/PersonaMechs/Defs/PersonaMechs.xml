@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarDef>
+        <defName>PersonaMechs_Persona</defName>
+        <partName>Head</partName>
+        <typeName>Persona</typeName>
+        <hideTattoo>true</hideTattoo>
+        <hideWrinkles>true</hideWrinkles>
+        <hideEyes>true</hideEyes>
+        <hideEars>true</hideEars>
+        <hideNose>true</hideNose>
+        <hideMouth>true</hideMouth>
+        <forceBodyType>PersonaMechs_Body</forceBodyType>
+        <unisexPath>PersonaMechs/Persona</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>PersonaMechs_Sturdy</defName>
+        <partName>Head</partName>
+        <typeName>Sturdy</typeName>
+        <hideTattoo>true</hideTattoo>
+        <hideWrinkles>true</hideWrinkles>
+        <hideEyes>true</hideEyes>
+        <hideEars>true</hideEars>
+        <hideNose>true</hideNose>
+        <hideMouth>true</hideMouth>
+        <forceBodyType>PersonaMechs_Body</forceBodyType>
+        <unisexPath>PersonaMechs/Sturdy</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>PersonaMechs_Tri</defName>
+        <partName>Head</partName>
+        <typeName>Tri</typeName>
+        <hideTattoo>true</hideTattoo>
+        <hideWrinkles>true</hideWrinkles>
+        <hideEyes>true</hideEyes>
+        <hideEars>true</hideEars>
+        <hideNose>true</hideNose>
+        <hideMouth>true</hideMouth>
+        <forceBodyType>PersonaMechs_Body</forceBodyType>
+        <unisexPath>PersonaMechs/Tri</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>PersonaMechs_StylishSubcore</defName>
+        <partName>Head</partName>
+        <typeName>StylishSubcore</typeName>
+        <hideTattoo>true</hideTattoo>
+        <hideWrinkles>true</hideWrinkles>
+        <hideEyes>true</hideEyes>
+        <hideEars>true</hideEars>
+        <hideNose>true</hideNose>
+        <hideMouth>true</hideMouth>
+        <forceBodyType>PersonaMechs_Body</forceBodyType>
+        <unisexPath>PersonaMechs/StylishSubcore</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>PersonaMechs_Fabricor</defName>
+        <partName>Head</partName>
+        <typeName>Fabricor</typeName>
+        <hideTattoo>true</hideTattoo>
+        <hideWrinkles>true</hideWrinkles>
+        <hideEyes>true</hideEyes>
+        <hideEars>true</hideEars>
+        <hideNose>true</hideNose>
+        <hideMouth>true</hideMouth>
+        <forceBodyType>PersonaMechs_Body</forceBodyType>
+        <unisexPath>PersonaMechs/Fabricor</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>PersonaMechs_Visor</defName>
+        <partName>Head</partName>
+        <typeName>Visor</typeName>
+        <hideTattoo>true</hideTattoo>
+        <hideWrinkles>true</hideWrinkles>
+        <hideEyes>true</hideEyes>
+        <hideEars>true</hideEars>
+        <hideNose>true</hideNose>
+        <hideMouth>true</hideMouth>
+        <forceBodyType>PersonaMechs_Body</forceBodyType>
+        <unisexPath>PersonaMechs/Visor</unisexPath>
+    </Avatar.AvatarDef>
+
+    <Avatar.AvatarDef>
+        <defName>PersonaMechs_Body</defName>
+        <partName>Body</partName>
+        <typeName>PersonaMechs_Body</typeName>
+        <unisexPath>PersonaMechs/Body</unisexPath>
+    </Avatar.AvatarDef>
+
+</Defs>
+
