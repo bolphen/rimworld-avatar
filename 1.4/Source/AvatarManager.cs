@@ -20,6 +20,9 @@ namespace Avatar
         private Color bgColor = new Color(.5f,.5f,.6f,.5f);
         private int lastUpdateTime;
         private bool updateQueued = false;
+        private Texture2D staticTexture;
+        private DateTime? staticTextureLastModified;
+        private int staticTextureLastCheck;
         public AvatarManager(AvatarMod mod)
         {
             this.mod = mod;
@@ -609,15 +612,44 @@ namespace Avatar
         }
         public Texture2D GetAvatar()
         {
+            if (avatar == null || Time.frameCount > staticTextureLastCheck + 10) // don't check every frame
+                TryGetStaticTexture();
+            if (staticTexture != null) return staticTexture;
             if (updateQueued) ClearCachedAvatar();
             return avatar ?? RenderAvatar();
         }
+        public string GetPawnName()
+        {
+            return pawn.Name.ToStringFull.Replace("'", "").Replace(" ", "_") + "_" + pawn.thingIDNumber.ToString();
+        }
+        public void TryGetStaticTexture()
+        {
+            staticTextureLastCheck = Time.frameCount;
+            string path = System.IO.Path.Combine(Application.persistentDataPath, "avatar", GetPawnName() + ".png");
+            if (System.IO.File.Exists(path))
+            {
+                if (staticTexture == null)
+                    staticTexture = new (1, 1);
+                DateTime lastModified = System.IO.File.GetLastWriteTime(path);
+                if (lastModified != staticTextureLastModified)
+                {
+                    staticTexture.LoadImage(System.IO.File.ReadAllBytes(path));
+                    staticTextureLastModified = lastModified;
+                }
+            }
+            else if (staticTexture != null)
+            {
+                staticTextureLastModified = null;
+                UnityEngine.Object.Destroy(staticTexture);
+                staticTexture = null;
+            }
+        }
         private void SavePng(string filename, byte[] bytes)
         {
-            string dir = Application.persistentDataPath + "/avatar/";
+            string dir = System.IO.Path.Combine(Application.persistentDataPath, "avatar");
             if (!System.IO.Directory.Exists(dir))
                 System.IO.Directory.CreateDirectory(dir);
-            System.IO.File.WriteAllBytes(dir+filename, bytes);
+            System.IO.File.WriteAllBytes(System.IO.Path.Combine(dir, filename), bytes);
         }
         public void SaveAsPng()
         {
@@ -629,14 +661,51 @@ namespace Avatar
             SavePng("avatar-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + "-upscaled.png", upscaled.EncodeToPNG());
             UnityEngine.Object.Destroy(upscaled);
         }
+        public void EnableStatic()
+        {
+            string dir = System.IO.Path.Combine(Application.persistentDataPath, "avatar");
+            string path = System.IO.Path.Combine(dir, GetPawnName() + ".png");
+            string backup = System.IO.Path.Combine(dir, GetPawnName() + "-backup.png");
+            if (System.IO.File.Exists(backup))
+            {
+                System.IO.File.Move(backup, path);
+            }
+            else
+            {
+                Texture2D upscaled = TextureUtil.MakeReadableCopy(avatar, 480, 576);
+                SavePng(GetPawnName() + ".png", upscaled.EncodeToPNG());
+                UnityEngine.Object.Destroy(upscaled);
+            }
+            TryGetStaticTexture();
+        }
+        public void DisableStatic()
+        {
+            string dir = System.IO.Path.Combine(Application.persistentDataPath, "avatar");
+            string path = System.IO.Path.Combine(dir, GetPawnName() + ".png");
+            if (System.IO.File.Exists(path))
+            {
+                string backup = System.IO.Path.Combine(dir, GetPawnName() + "-backup.png");
+                if (System.IO.File.Exists(backup))
+                    System.IO.File.Delete(backup);
+                System.IO.File.Move(path, backup);
+            }
+        }
         public FloatMenu GetFloatMenu()
         {
-            FloatMenu menu = new (new List<FloatMenuOption>()
-            {
+            FloatMenu menu = new (
+            (staticTexture == null) ?
+            new List<FloatMenuOption>() {
+                new FloatMenuOption("Enable static portrait", EnableStatic),
                 new FloatMenuOption("Save upscaled (480x576)", UpscaleSaveAsPng),
                 new FloatMenuOption("Save original ("+avatar.width.ToString()+"x"+avatar.height.ToString()+")", SaveAsPng)
-            });
+            }
+            :
+            new List<FloatMenuOption>() {
+                new FloatMenuOption("Disable static portrait", DisableStatic),
+            }
+            );
             return menu;
         }
     }
 }
+
