@@ -72,28 +72,28 @@ namespace Avatar
             this.color = color;
             this.offset = offset;
         }
-        public static AvatarLayer FromGene(Gene gene, Pawn pawn)
-        {
-            GeneGraphicData graphicData = gene.def.graphicData;
-            Color color;
-            string recolor;
-            switch (graphicData.colorType)
-            {
-                case GeneColorType.Hair: color = pawn.story.HairColor; recolor = "yes"; break;
-                case GeneColorType.Skin: color = pawn.story.SkinColor; recolor = "yes"; break;
-                default: color = graphicData.color ?? Color.white; recolor = "gray"; break;
-            }
-            AvatarLayer result = new (graphicData.GraphicPathFor(pawn), color);
-            int offset = 0;
-            switch (gene.def.graphicData.drawLoc)
-            {
-                case GeneDrawLoc.HeadTop: offset = 2; break;
-                case GeneDrawLoc.HeadMiddle: offset = 4; break;
-                case GeneDrawLoc.HeadLower: offset = 6; break;
-            }
-            result.fallback = (graphicData.GraphicPathFor(pawn) + "_south", offset, recolor);
-            return result;
-        }
+        // public static AvatarLayer FromGene(Gene gene, Pawn pawn)
+        // {
+        //     GeneGraphicData graphicData = gene.def.graphicData;
+        //     Color color;
+        //     string recolor;
+        //     switch (graphicData.colorType)
+        //     {
+        //         case GeneColorType.Hair: color = pawn.story.HairColor; recolor = "yes"; break;
+        //         case GeneColorType.Skin: color = pawn.story.SkinColor; recolor = "yes"; break;
+        //         default: color = graphicData.color ?? Color.white; recolor = "gray"; break;
+        //     }
+        //     AvatarLayer result = new (graphicData.GraphicPathFor(pawn), color);
+        //     int offset = 0;
+        //     switch (gene.def.graphicData.drawLoc)
+        //     {
+        //         case GeneDrawLoc.HeadTop: offset = 2; break;
+        //         case GeneDrawLoc.HeadMiddle: offset = 4; break;
+        //         case GeneDrawLoc.HeadLower: offset = 6; break;
+        //     }
+        //     result.fallback = (graphicData.GraphicPathFor(pawn) + "_south", offset, recolor);
+        //     return result;
+        // }
     }
 
     public class Feature
