@@ -3,7 +3,9 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using Verse;
+#if v1_5
 using LudeonTK;
+#endif
 using RimWorld;
 using HarmonyLib;
 
