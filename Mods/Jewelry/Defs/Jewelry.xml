@@ -1,60 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarFacegearDef>
         <defName>Jewelry_Earring</defName>
-        <partName>Facegear</partName>
-        <overlay>(1.0,0.9,0.4)</overlay>
         <unisexPath>Jewelry/Earring</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarFacegearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarFacegearDef>
         <defName>Jewelry_Earring_Silver</defName>
-        <partName>Facegear</partName>
-        <overlay>(0.7,0.7,0.6)</overlay>
-        <unisexPath>Jewelry/Earring</unisexPath>
-    </Avatar.AvatarDef>
+        <unisexPath>Jewelry/EarringSilver</unisexPath>
+    </Avatar.AvatarFacegearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarFacegearDef>
         <defName>Jewelry_EltexEarring</defName>
-        <partName>Facegear</partName>
-        <overlay>(1.0,0.9,0.4)</overlay>
         <unisexPath>Jewelry/Earring</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarFacegearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarFacegearDef>
         <defName>Jewelry_EltexEarring_Silver</defName>
-        <partName>Facegear</partName>
-        <overlay>(0.7,0.7,0.6)</overlay>
-        <unisexPath>Jewelry/Earring</unisexPath>
-    </Avatar.AvatarDef>
+        <unisexPath>Jewelry/EarringSilver</unisexPath>
+    </Avatar.AvatarFacegearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>Jewelry_Necklace</defName>
-        <partName>Apparel</partName>
-        <overlay>(1.0,0.9,0.4)</overlay>
         <unisexPath>Jewelry/Necklace</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>Jewelry_Necklace_Silver</defName>
-        <partName>Apparel</partName>
-        <overlay>(0.7,0.7,0.6)</overlay>
-        <unisexPath>Jewelry/Necklace</unisexPath>
-    </Avatar.AvatarDef>
+        <unisexPath>Jewelry/NecklaceSilver</unisexPath>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>Jewelry_PsychicNecklace</defName>
-        <partName>Apparel</partName>
-        <overlay>(1.0,0.9,0.4)</overlay>
         <unisexPath>Jewelry/Necklace</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>Jewelry_PsychicNecklace_Silver</defName>
-        <partName>Apparel</partName>
-        <overlay>(0.7,0.7,0.6)</overlay>
-        <unisexPath>Jewelry/Necklace</unisexPath>
-    </Avatar.AvatarDef>
+        <unisexPath>Jewelry/NecklaceSilver</unisexPath>
+    </Avatar.AvatarBodygearDef>
 
 </Defs>

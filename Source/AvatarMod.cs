@@ -15,12 +15,11 @@ namespace Avatar
     {
         public AvatarSettings settings;
 
-        public static Dictionary<string, List<AvatarDef>> avatarDefs;
-        public static Dictionary<string, Texture2D> cachedTextures;
+        public static Dictionary<string, Texture2D> cachedTextures = new ();
 
-        public static AvatarManager mainManager;
-        public static Dictionary<Pawn, AvatarManager> colonistBarManagers;
-        public static Dictionary<Pawn, AvatarManager> questTabManagers;
+        public static AvatarManager mainManager = new ();
+        public static Dictionary<Pawn, AvatarManager> colonistBarManagers = new ();
+        public static Dictionary<Pawn, AvatarManager> questTabManagers = new ();
         // each manager stores a pawn, if any, and the avatar texture
 
         [DebugAction("Avatar", "Reload Textures")]
@@ -43,14 +42,14 @@ namespace Avatar
             questTabManagers.Clear();
         }
 
-        public Texture2D GetTexture(string texPath)
+        public Texture2D GetTexture(string texPath, bool fallback=true)
         {
             if (!cachedTextures.ContainsKey(texPath))
             {
                 string path = Content.RootDir+"/Assets/"+texPath+".png";
                 if (!System.IO.File.Exists(path))
                 { // fallback to RW texture manager
-                    return ContentFinder<Texture2D>.Get(texPath);
+                    return fallback ? ContentFinder<Texture2D>.Get(texPath) : null;
                 }
                 Texture2D newTexture = new (1, 1);
                 newTexture.LoadImage(System.IO.File.ReadAllBytes(path));
@@ -59,32 +58,10 @@ namespace Avatar
             return cachedTextures[texPath];
         }
 
-        public void CacheAvatarDefs()
-        {
-            foreach (AvatarDef def in DefDatabase<AvatarDef>.AllDefs)
-            {
-                if (!avatarDefs.ContainsKey(def.partName))
-                    avatarDefs[def.partName] = new();
-                avatarDefs[def.partName].Add(def);
-            }
-            avatarDefs["_Gene"] = DefDatabase<AvatarDef>.AllDefs.Where(def => def.geneName != null).ToList();
-        }
-
-        public List<AvatarDef> GetDefsForPart(string partName)
-        {
-            if (avatarDefs.Count == 0)
-                CacheAvatarDefs();
-            return avatarDefs.ContainsKey(partName) ? avatarDefs[partName] : new();
-        }
-
         public AvatarMod(ModContentPack content) : base(content)
         {
-            mainManager = new (this);
-            colonistBarManagers = new ();
-            questTabManagers = new ();
+            AvatarManager.mod = this;
             settings = GetSettings<AvatarSettings>();
-            avatarDefs = new ();
-            cachedTextures = new ();
         }
 
         public override string SettingsCategory() => "Avatar";
@@ -99,8 +76,14 @@ namespace Avatar
                 ColumnWidth = viewRect.width
             };
             listingStandard.Begin(viewRect);
+            #if v1_3
+            listingStandard.Label("Avatar size");
+            settings.avatarWidth = (float)Math.Round(
+                listingStandard.Slider(settings.avatarWidth, 80f, 320f));
+            #else
             settings.avatarWidth = (float)Math.Round(
                 listingStandard.SliderLabeled("Avatar size", settings.avatarWidth, 80f, 320f));
+            #endif
             listingStandard.CheckboxLabeled("Compression", ref settings.avatarCompression,
                 "Whether textures should be compressed. Avatars will look slightly more natural but also have more artifacts.");
             listingStandard.CheckboxLabeled("Scaling", ref settings.avatarScaling,
@@ -127,8 +110,14 @@ namespace Avatar
             listingStandard.CheckboxLabeled("Show avatars in colonist bar (experimental)", ref settings.showInColonistBar);
             if (settings.showInColonistBar && !ModCompatibility.ColonyGroups_Loaded)
             {
+                #if v1_3
+                listingStandard.Label("Colonist bar avatar size adjustment");
+                settings.showInColonistBarSizeAdjust = (float)(
+                    listingStandard.Slider(settings.showInColonistBarSizeAdjust, 0f, 10f));
+                #else
                 settings.showInColonistBarSizeAdjust = (float)(
                     listingStandard.SliderLabeled("Colonist bar avatar size adjustment", settings.showInColonistBarSizeAdjust, 0f, 10f));
+                #endif
             }
             if (ModCompatibility.CCMBar_Loaded && listingStandard.ButtonText("Refresh colonist bar"))
             {
@@ -147,7 +136,7 @@ namespace Avatar
         {
             if (!colonistBarManagers.ContainsKey(pawn))
             {
-                AvatarManager manager = new (this);
+                AvatarManager manager = new ();
                 manager.SetPawn(pawn);
                 manager.SetBGColor(new Color(0,0,0,0));
                 manager.SetCheckDowned(true);
@@ -160,7 +149,7 @@ namespace Avatar
         {
             if (!questTabManagers.ContainsKey(pawn))
             {
-                AvatarManager manager = new (this);
+                AvatarManager manager = new ();
                 manager.SetPawn(pawn);
                 questTabManagers[pawn] = manager;
             }
@@ -171,9 +160,9 @@ namespace Avatar
     [HarmonyPatch(typeof(InspectPaneUtility), "DoTabs")]
     public static class UIPatch
     {
+        static AvatarMod mod = LoadedModManager.GetMod<AvatarMod>();
         public static void Postfix(IInspectPane pane)
         {
-            AvatarMod mod = LoadedModManager.GetMod<AvatarMod>();
             if (!mod.settings.hideMainAvatar && pane is MainTabWindow_Inspect inspectPanel && inspectPanel.OpenTabType is null)
             {
                 Pawn pawn = null;
@@ -207,9 +196,9 @@ namespace Avatar
     [HarmonyPatch(typeof(MainTabWindow_Quests), "DoFactionInfo")]
     public static class QuestWindowPatch
     {
+        static AvatarMod mod = LoadedModManager.GetMod<AvatarMod>();
         public static void Prefix(ref MainTabWindow_Quests __instance, Rect rect, ref float curY)
         {
-            AvatarMod mod = LoadedModManager.GetMod<AvatarMod>();
             if (mod.settings.showInQuestTab)
             {
                 List<Pawn> pawns = new();

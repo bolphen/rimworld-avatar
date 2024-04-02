@@ -1,90 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadDef>
         <defName>Head_BarkNarrow</defName>
-        <partName>Head</partName>
         <typeName>VRE_BarkNarrow</typeName>
         <hideTattoo>true</hideTattoo>
         <hideWrinkles>true</hideWrinkles>
         <unisexPath>VanillaExpanded/VRE_Phytokins/Head/BarkAverage</unisexPath>
         <unisexChildPath>VanillaExpanded/VRE_Phytokins/Head/BarkAverage_Child</unisexChildPath>
         <unisexNewbornPath>VanillaExpanded/VRE_Phytokins/Head/BarkAverage_Newborn</unisexNewbornPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadDef>
         <defName>Head_BarkAverage</defName>
-        <partName>Head</partName>
         <typeName>VRE_BarkAverage</typeName>
         <hideTattoo>true</hideTattoo>
         <hideWrinkles>true</hideWrinkles>
         <unisexPath>VanillaExpanded/VRE_Phytokins/Head/BarkAverage</unisexPath>
         <unisexChildPath>VanillaExpanded/VRE_Phytokins/Head/BarkAverage_Child</unisexChildPath>
         <unisexNewbornPath>VanillaExpanded/VRE_Phytokins/Head/BarkAverage_Newborn</unisexNewbornPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadDef>
         <defName>Head_BarkGaunt</defName>
-        <partName>Head</partName>
         <typeName>VRE_BarkGaunt</typeName>
         <hideTattoo>true</hideTattoo>
         <hideWrinkles>true</hideWrinkles>
         <unisexPath>VanillaExpanded/VRE_Phytokins/Head/BarkGaunt</unisexPath>
         <unisexChildPath>VanillaExpanded/VRE_Phytokins/Head/BarkGaunt_Child</unisexChildPath>
         <unisexNewbornPath>VanillaExpanded/VRE_Phytokins/Head/BarkGaunt_Newborn</unisexNewbornPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadDef>
         <defName>Head_BarkHeavy</defName>
-        <partName>Head</partName>
         <typeName>VRE_BarkHeavy</typeName>
         <hideTattoo>true</hideTattoo>
         <hideWrinkles>true</hideWrinkles>
         <unisexPath>VanillaExpanded/VRE_Phytokins/Head/BarkHeavy</unisexPath>
         <unisexChildPath>VanillaExpanded/VRE_Phytokins/Head/BarkHeavy_Child</unisexChildPath>
         <unisexNewbornPath>VanillaExpanded/VRE_Phytokins/Head/BarkHeavy_Newborn</unisexNewbornPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHairDef>
         <defName>Hair_Eve</defName>
-        <partName>Hair</partName>
         <typeName>VRE_FoliageHairEve</typeName>
         <unisexPath>VanillaExpanded/VRE_Phytokins/Hair/Eve</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHairDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHairDef>
         <defName>Hair_Hope</defName>
-        <partName>Hair</partName>
         <typeName>VRE_FoliageHairHope</typeName>
         <unisexPath>VanillaExpanded/VRE_Phytokins/Hair/Hope</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHairDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHairDef>
         <defName>Hair_Kathy</defName>
-        <partName>Hair</partName>
         <typeName>VRE_FoliageHairKathy</typeName>
         <unisexPath>VanillaExpanded/VRE_Phytokins/Hair/Kathy</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHairDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHairDef>
         <defName>Hair_Leafein</defName>
-        <partName>Hair</partName>
         <typeName>VRE_FoliageHairLeafein</typeName>
         <unisexPath>VanillaExpanded/VRE_Phytokins/Hair/Leafein</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHairDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHairDef>
         <defName>Hair_Ophie</defName>
-        <partName>Hair</partName>
         <typeName>VRE_FoliageHairOphie</typeName>
         <unisexPath>VanillaExpanded/VRE_Phytokins/Hair/Ophie</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHairDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHairDef>
         <defName>Hair_Pixie</defName>
-        <partName>Hair</partName>
         <typeName>VRE_FoliageHairPixie</typeName>
         <unisexPath>VanillaExpanded/VRE_Phytokins/Hair/Pixie</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHairDef>
 
 </Defs>

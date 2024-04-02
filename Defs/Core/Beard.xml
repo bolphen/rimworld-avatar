@@ -1,291 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Anchor</defName>
-        <partName>Beard</partName>
         <typeName>Anchor</typeName>
         <unisexPath>Core/Unisex/Beard/Anchor</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_BeardCurly</defName>
-        <partName>Beard</partName>
         <typeName>BeardCurly</typeName>
         <unisexPath>Core/Unisex/Beard/BeardCurly</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_BeardFurskinKnots</defName>
-        <partName>Beard</partName>
         <typeName>BeardFurskinKnots</typeName>
         <unisexPath>Core/Unisex/Beard/BeardFurskinKnots</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_BeardFurskinMegabraid</defName>
-        <partName>Beard</partName>
         <typeName>BeardFurskinMegabraid</typeName>
         <unisexPath>Core/Unisex/Beard/BeardFurskinMegabraid</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_BeardFurskinMonkey</defName>
-        <partName>Beard</partName>
         <typeName>BeardFurskinMonkey</typeName>
         <unisexPath>Core/Unisex/Beard/BeardFurskinMonkey</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_BeardFurskinMoustache</defName>
-        <partName>Beard</partName>
         <typeName>BeardFurskinMoustache</typeName>
         <unisexPath>Core/Unisex/Beard/BeardFurskinMoustache</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_BeardFurskinScruffy</defName>
-        <partName>Beard</partName>
         <typeName>BeardFurskinScruffy</typeName>
         <unisexPath>Core/Unisex/Beard/BeardFurskinScruffy</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_BeardFurskinSenile</defName>
-        <partName>Beard</partName>
         <typeName>BeardFurskinSenile</typeName>
         <unisexPath>Core/Unisex/Beard/BeardFurskinSenile</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_BeardFurskinSideChops</defName>
-        <partName>Beard</partName>
         <typeName>BeardFurskinSideChops</typeName>
         <unisexPath>Core/Unisex/Beard/BeardFurskinSideChops</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_BeardFurskinSideTufts</defName>
-        <partName>Beard</partName>
         <typeName>BeardFurskinSideTufts</typeName>
         <unisexPath>Core/Unisex/Beard/BeardFurskinSideTufts</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_BeardFurskinStrongChops</defName>
-        <partName>Beard</partName>
         <typeName>BeardFurskinStrongChops</typeName>
         <unisexPath>Core/Unisex/Beard/BeardFurskinStrongChops</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Boxed</defName>
-        <partName>Beard</partName>
         <typeName>Boxed</typeName>
         <unisexPath>Core/Unisex/Beard/Boxed</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Braided</defName>
-        <partName>Beard</partName>
         <typeName>Braided</typeName>
         <unisexPath>Core/Unisex/Beard/Braided</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Bushy</defName>
-        <partName>Beard</partName>
         <typeName>Bushy</typeName>
         <unisexPath>Core/Unisex/Beard/Bushy</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_BushyStyled</defName>
-        <partName>Beard</partName>
         <typeName>BushyStyled</typeName>
         <unisexPath>Core/Unisex/Beard/BushyStyled</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Circle</defName>
-        <partName>Beard</partName>
         <typeName>Circle</typeName>
         <unisexPath>Core/Unisex/Beard/Circle</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Classy</defName>
-        <partName>Beard</partName>
         <typeName>Classy</typeName>
         <unisexPath>Core/Unisex/Beard/Classy</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Curtain</defName>
-        <partName>Beard</partName>
         <typeName>Curtain</typeName>
         <unisexPath>Core/Unisex/Beard/Curtain</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Ducktail</defName>
-        <partName>Beard</partName>
         <typeName>Ducktail</typeName>
         <unisexPath>Core/Unisex/Beard/Ducktail</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Fork</defName>
-        <partName>Beard</partName>
         <typeName>Fork</typeName>
         <unisexPath>Core/Unisex/Beard/Fork</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_French</defName>
-        <partName>Beard</partName>
         <typeName>French</typeName>
         <unisexPath>Core/Unisex/Beard/French</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Full</defName>
-        <partName>Beard</partName>
         <typeName>Full</typeName>
         <unisexPath>Core/Unisex/Beard/Full</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_FurskinCurlyMoustache</defName>
-        <partName>Beard</partName>
         <typeName>FurskinCurlyMoustache</typeName>
         <unisexPath>Core/Unisex/Beard/FurskinCurlyMoustache</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Goatee</defName>
-        <partName>Beard</partName>
         <typeName>Goatee</typeName>
         <unisexPath>Core/Unisex/Beard/Goatee</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Lincoln</defName>
-        <partName>Beard</partName>
         <typeName>Lincoln</typeName>
         <unisexPath>Core/Unisex/Beard/Lincoln</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_LongDutch</defName>
-        <partName>Beard</partName>
         <typeName>LongDutch</typeName>
         <unisexPath>Core/Unisex/Beard/LongDutch</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Machete</defName>
-        <partName>Beard</partName>
         <typeName>Machete</typeName>
         <unisexPath>Core/Unisex/Beard/Machete</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Moustache</defName>
-        <partName>Beard</partName>
         <typeName>Moustache</typeName>
         <unisexPath>Core/Unisex/Beard/Moustache</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_MuttonChops</defName>
-        <partName>Beard</partName>
         <typeName>MuttonChops</typeName>
         <unisexPath>Core/Unisex/Beard/MuttonChops</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_NoBeard</defName>
-        <partName>Beard</partName>
         <typeName>NoBeard</typeName>
         <unisexPath>Core/Unisex/Beard/NoBeard</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Norse</defName>
-        <partName>Beard</partName>
         <typeName>Norse</typeName>
         <unisexPath>Core/Unisex/Beard/Norse</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_OldDutch</defName>
-        <partName>Beard</partName>
         <typeName>OldDutch</typeName>
         <unisexPath>Core/Unisex/Beard/OldDutch</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Seer</defName>
-        <partName>Beard</partName>
         <typeName>Seer</typeName>
         <unisexPath>Core/Unisex/Beard/Seer</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_SideWhiskers</defName>
-        <partName>Beard</partName>
         <typeName>SideWhiskers</typeName>
         <unisexPath>Core/Unisex/Beard/SideWhiskers</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_SoulPatch</defName>
-        <partName>Beard</partName>
         <typeName>SoulPatch</typeName>
         <unisexPath>Core/Unisex/Beard/SoulPatch</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_StacheAndChops</defName>
-        <partName>Beard</partName>
         <typeName>StacheAndChops</typeName>
         <unisexPath>Core/Unisex/Beard/StacheAndChops</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Stubble</defName>
-        <partName>Beard</partName>
         <typeName>Stubble</typeName>
         <unisexPath>Core/Unisex/Beard/Stubble</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_TriBraid</defName>
-        <partName>Beard</partName>
         <typeName>TriBraid</typeName>
         <unisexPath>Core/Unisex/Beard/TriBraid</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Urist</defName>
-        <partName>Beard</partName>
         <typeName>Urist</typeName>
         <unisexPath>Core/Unisex/Beard/Urist</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_VanDyke</defName>
-        <partName>Beard</partName>
         <typeName>VanDyke</typeName>
         <unisexPath>Core/Unisex/Beard/VanDyke</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBeardDef>
         <defName>Beard_Wizard</defName>
-        <partName>Beard</partName>
         <typeName>Wizard</typeName>
         <unisexPath>Core/Unisex/Beard/Wizard</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBeardDef>
 
 </Defs>

@@ -1,68 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHediffDef>
         <defName>Eyes_EyePatch</defName>
-        <partName>Hediff</partName>
         <typeName>EyePatch</typeName>
         <unisexPath>EPOE/EyePatch</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHediffDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHediffDef>
         <defName>Ears_EarBandage</defName>
-        <partName>Hediff</partName>
         <typeName>EarBandage</typeName>
         <unisexPath>EPOE/EarBandage</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHediffDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHediffDef>
         <defName>Eyes_GoldenEye</defName>
-        <partName>Hediff</partName>
         <typeName>GoldenEye</typeName>
         <unisexPath>EPOE/GoldenEye</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHediffDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHediffDef>
         <defName>Eyes_LightReceptor</defName>
-        <partName>Hediff</partName>
         <typeName>LightReceptor</typeName>
         <unisexPath>EPOE/LightReceptor</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHediffDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHediffDef>
         <defName>Nose_ArtificialNose</defName>
-        <partName>Hediff</partName>
         <typeName>ArtificialNose</typeName>
         <femalePath>EPOE/ArtificialNoseFemale</femalePath>
         <malePath>EPOE/ArtificialNoseMale</malePath>
         <femaleChildPath>EPOE/ArtificialNoseFemaleChild</femaleChildPath>
         <maleChildPath>EPOE/ArtificialNoseMaleChild</maleChildPath>
         <unisexNewbornPath>EPOE/ArtificialNoseNewborn</unisexNewbornPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHediffDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHediffDef>
         <defName>Eyes_AdvancedBionic</defName>
-        <partName>Hediff</partName>
         <typeName>AdvancedBionicEye</typeName>
         <unisexPath>EPOE/AdvancedBionicEye</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHediffDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHediffDef>
         <defName>Jaw_HydraulicJaw</defName>
-        <partName>Hediff</partName>
         <typeName>HydraulicJaw</typeName>
         <unisexPath>Core/Unisex/Jaw/Denture</unisexPath>
         <unisexChildPath>Core/Unisex/Jaw/DentureChild</unisexChildPath>
         <unisexNewbornPath>Core/Unisex/Jaw/DentureNewborn</unisexNewbornPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHediffDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHediffDef>
         <defName>Jaw_SilentJaw</defName>
-        <partName>Hediff</partName>
         <typeName>SilentJaw</typeName>
         <unisexPath>Core/Unisex/Jaw/Denture</unisexPath>
         <unisexChildPath>Core/Unisex/Jaw/DentureChild</unisexChildPath>
         <unisexNewbornPath>Core/Unisex/Jaw/DentureNewborn</unisexNewbornPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHediffDef>
 
 </Defs>

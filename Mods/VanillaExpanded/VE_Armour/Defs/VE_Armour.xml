@@ -1,155 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_HAZMATMask</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
         <unisexPath>VanillaExpanded/Apparel/HAZMATMask</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_GhillieHood</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
-        <overlay>(0.4,0.5,0.0,0.8)</overlay>
         <unisexPath>VanillaExpanded/Apparel/GhillieHood</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Apparel_PlateHelmet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>VanillaExpanded/Apparel/PlateHelmet</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_TrooperHelmet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>VanillaExpanded/Apparel/TrooperHelmet</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_RoyalTrooperHelmet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
-        <overlay>(1.0,0.9,0.4)</overlay>
         <unisexPath>VanillaExpanded/Apparel/RoyalTrooperHelmet</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_HeavyMarineHelmet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
         <unisexPath>VanillaExpanded/Apparel/HeavyMarineHelmet</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_RoyalSiegeHelmet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
-        <overlay>(1.0,0.9,0.4)</overlay>
         <unisexPath>VanillaExpanded/Apparel/RoyalSiegeHelmet</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_Balaclava</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideTop>12</hideTop>
         <hideBeard>true</hideBeard>
         <unisexPath>VanillaExpanded/Apparel/Balaclava</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_StoneWarMask</defName>
-        <partName>Headgear</partName>
         <unisexPath>VanillaExpanded/Apparel/StoneWarMask</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_TrooperArmor</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/TrooperArmor</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_RoyalTrooperArmor</defName>
-        <partName>Apparel</partName>
-        <overlay>(1.0,0.9,0.4)</overlay>
         <unisexPath>VanillaExpanded/Apparel/RoyalTrooperArmor</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_HeavyMarineArmor</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/HeavyMarineArmor</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_RoyalSiegeArmor</defName>
-        <partName>Apparel</partName>
-        <overlay>(1.0,0.9,0.4)</overlay>
         <unisexPath>VanillaExpanded/Apparel/RoyalSiegeArmor</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_LightPlateArmor</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/LightPlateArmor</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_PlateShoulderpads</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/PlateShoulderpads</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_WoodenArmor</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/WoodenArmor</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_Chainmail</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/Chainmail</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_Chestplate</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/Chestplate</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_Gambeson</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/Gambeson</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_QuiltedVest</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/QuiltedVest</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_GhillieSuit</defName>
-        <partName>Apparel</partName>
-        <overlay>(0.4,0.5,0.0,0.8)</overlay>
         <unisexPath>VanillaExpanded/Apparel/GhillieSuit</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_HAZMATSuit</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/HAZMATSuit</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
 </Defs>

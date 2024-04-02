@@ -1,189 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_Fedora</defName>
-        <partName>Headgear</partName>
         <hideTop>16</hideTop>
         <unisexPath>VanillaExpanded/Apparel/Fedora</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_Beret</defName>
-        <partName>Headgear</partName>
         <hideTop>14</hideTop>
         <unisexPath>Core/Apparel/Headgear/Beret</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_Scarf</defName>
-        <partName>Headgear</partName>
         <unisexPath>VanillaExpanded/Apparel/Scarf</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_Sunglasses</defName>
-        <partName>Headgear</partName>
         <unisexPath>VanillaExpanded/Apparel/Sunglasses</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_Glasses</defName>
-        <partName>Headgear</partName>
         <unisexPath>VanillaExpanded/Apparel/Glasses</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_BaseballCap</defName>
-        <partName>Headgear</partName>
         <hideTop>16</hideTop>
         <unisexPath>VanillaExpanded/Apparel/BaseballCap</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_ChefsToque</defName>
-        <partName>Headgear</partName>
         <hideTop>16</hideTop>
         <unisexPath>VanillaExpanded/Apparel/ChefsToque</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_Hardhat</defName>
-        <partName>Headgear</partName>
         <hideTop>16</hideTop>
-        <overlay>(1.0,0.7,0.1,0.8)</overlay>
         <unisexPath>VanillaExpanded/Apparel/Hardhat</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VAE_Headgear_SurgicalMask</defName>
-        <partName>Headgear</partName>
         <hideTop>14</hideTop>
-        <overlay>(0.2,1.0,1.0,0.5)</overlay>
         <unisexPath>VanillaExpanded/Apparel/SurgicalMask</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_Apron</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/Apron</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_BuildersJacket</defName>
-        <partName>Apparel</partName>
-        <overlay>(0.8,1.0,0.0)</overlay>
         <unisexPath>VanillaExpanded/Apparel/BuildersJacket</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_ChefsUniform</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/ChefsUniform</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_DoctorScrubs</defName>
-        <partName>Apparel</partName>
-        <overlay>(0.2,1.0,1.0,0.5)</overlay>
         <unisexPath>VanillaExpanded/Apparel/DoctorScrubs</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_Jumpsuit</defName>
-        <partName>Apparel</partName>
         <unisexPath>Core/Apparel/CollarShirt</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_LabCoat</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/LabCoat</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_TribalPoncho</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/TribalPoncho</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_TankTop</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/TankTop</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_CasualTShirt</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/CasualTShirt</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_Hoodie</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/Hoodie</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_Blouse</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/Blouse</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_Tunic</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/Tunic</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_SheriffShirt</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/SheriffShirt</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_ShirtandTie</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/ShirtandTie</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_SuitJacket</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/SuitJacket</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_FleeceShirt</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/FleeceShirt</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_Overalls</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/Overalls</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_PeltCoat</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/PeltCoat</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_MilitaryJacket</defName>
-        <partName>Apparel</partName>
-        <overlay>(1.0,0.9,0.4)</overlay>
         <unisexPath>VanillaExpanded/Apparel/MilitaryJacket</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_MilitaryUniform</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/Apparel/MilitaryUniform</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
 </Defs>

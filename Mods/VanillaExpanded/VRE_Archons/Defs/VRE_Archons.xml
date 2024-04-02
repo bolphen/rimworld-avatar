@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarEarsDef>
         <defName>Ears_Serrated</defName>
-        <partName>Ears</partName>
         <geneName>VRE_SerratedEars</geneName>
         <unisexPath>VanillaExpanded/VRE_Archons/Ears_Serrated</unisexPath>
         <unisexChildPath>VanillaExpanded/VRE_Archons/Ears_Serrated_Child</unisexChildPath>
         <unisexNewbornPath>VanillaExpanded/VRE_Archons/Ears_Serrated_Newborn</unisexNewbornPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarEarsDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarFacialDef>
         <defName>FacialSpots</defName>
-        <partName>Facial</partName>
         <geneName>VRE_FacialSpots</geneName>
         <unisexPath>VanillaExpanded/VRE_Archons/FacialSpots</unisexPath>
         <unisexChildPath>VanillaExpanded/VRE_Archons/FacialSpots_Child</unisexChildPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarFacialDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VREA_Apparel_Archoplate</defName>
-        <partName>Apparel</partName>
-        <overlay>(1.0,0.9,0.4)</overlay>
         <unisexPath>VanillaExpanded/VRE_Archons/Archoplate</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
 </Defs>

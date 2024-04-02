@@ -1,79 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VFEM_Apparel_DameHat</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>VanillaExpanded/VFE_Medieval/DameHat</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VFEM_Apparel_JesterHat</defName>
-        <partName>Headgear</partName>
         <hideTop>15</hideTop>
         <unisexPath>VanillaExpanded/VFE_Medieval/JesterHat</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VFEM_Apparel_KingsCrown</defName>
-        <partName>Headgear</partName>
         <hideTop>16</hideTop>
-        <overlay>(1.0,0.9,0.4)</overlay>
         <unisexPath>VanillaExpanded/VFE_Medieval/KingsCrown</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VFEM_Apparel_PlagueMask</defName>
-        <partName>Headgear</partName>
         <unisexPath>VanillaExpanded/VFE_Medieval/PlagueMask</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VFEM_Apparel_PlateHelmetHeavy</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
         <unisexPath>VanillaExpanded/VFE_Medieval/PlateHelmetHeavy</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>VFEM_Apparel_PlateHelmetLight</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>VanillaExpanded/VFE_Medieval/PlateHelmetLight</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VFEM_Apparel_DameDress</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/VFE_Medieval/DameDress</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VFEM_Apparel_JesterOutfit</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/VFE_Medieval/JesterOutfit</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VFEM_Apparel_KingsRobes</defName>
-        <partName>Apparel</partName>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>VanillaExpanded/VFE_Medieval/KingsRobe</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VFEM_Apparel_PlateArmorHeavy</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/VFE_Medieval/PlateArmorHeavy</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>VFEM_Apparel_Tabard</defName>
-        <partName>Apparel</partName>
         <unisexPath>VanillaExpanded/VFE_Medieval/Tabard</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
 </Defs>
 

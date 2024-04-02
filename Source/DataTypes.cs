@@ -1,3 +1,7 @@
+#if v1_4 || v1_5
+#define BIOTECH
+#endif
+using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
@@ -5,9 +9,7 @@ namespace Avatar
 {
     public class AvatarDef : Def
     {
-        public string partName;
         public string typeName;
-        public string geneName;
 
         public string unisexPath;
         public string unisexChildPath;
@@ -19,22 +21,7 @@ namespace Avatar
         public string femaleNewbornPath;
         public string maleNewbornPath;
 
-        public bool hideWrinkles;
-        public bool hideTattoo;
-        public bool hideHair;
-        public bool hideBeard;
-        public bool hideEyes;
-        public bool hideEars;
-        public bool hideNose;
-        public bool hideMouth;
-        public int hideTop = 0;
-        public bool specialNoJaw = false;
-        public string forceBodyType;
         public bool replaceModdedTexture = true; // set to false to show both textures
-
-        public Color? color1;
-        public Color? color2;
-        public Color? overlay;
 
         public string GetPath(string gender, string lifeStage)
         {
@@ -55,6 +42,55 @@ namespace Avatar
         }
     }
 
+    public class AvatarFaceTattooDef : AvatarDef {};
+    public class AvatarBodyTattooDef : AvatarDef {};
+    public class AvatarBeardDef : AvatarDef {};
+    public class AvatarHairDef : AvatarDef {};
+    public class AvatarHeadDef : AvatarDef
+    {
+        public bool hideWrinkles;
+        public bool hideTattoo;
+        public bool hideEyes;
+        public bool hideEars;
+        public bool hideNose;
+        public bool hideMouth;
+        public bool specialNoJaw = false;
+        public string forceBodyType;
+    }
+    public class AvatarBodyDef : AvatarDef {};
+    public class AvatarHediffDef : AvatarDef {};
+
+    public class AvatarApparelDef : AvatarDef {};
+    public class AvatarBodygearDef : AvatarApparelDef {};
+    public class AvatarBackgearDef : AvatarApparelDef {};
+    public class AvatarFacegearDef : AvatarApparelDef {};
+    public class AvatarHeadgearDef : AvatarApparelDef
+    {
+        public bool hideHair;
+        public bool hideBeard;
+        public int hideTop = 0;
+    }
+
+    #if BIOTECH
+    public class AvatarGeneDef : AvatarDef
+    {
+        public string geneName;
+        public int offset;
+    };
+    public class AvatarEarsDef : AvatarGeneDef {};
+    public class AvatarNoseDef : AvatarGeneDef {};
+    public class AvatarMouthDef : AvatarGeneDef {};
+    public class AvatarBrowsDef : AvatarGeneDef {};
+    public class AvatarFacialDef : AvatarGeneDef {};
+    public class AvatarHeadboneDef : AvatarGeneDef {};
+    public class AvatarEyesDef : AvatarGeneDef
+    {
+        public Color? color1;
+        public Color? color2;
+        public List<EyePos> eyesPos;
+    }
+    #endif
+
     public class AvatarLayer
     {
         public string texPath;
@@ -72,30 +108,64 @@ namespace Avatar
             this.color = color;
             this.offset = offset;
         }
-        #if v1_4
+        #if BIOTECH
         public static AvatarLayer FromGene(Gene gene, Pawn pawn)
         {
-            GeneGraphicData graphicData = gene.def.graphicData;
+            #if v1_4
+            GeneGraphicData attachment = gene.def.graphicData;
+            #else
+            // this is a fallback method for auto compability of mods, so we
+            // will ignore the fancy rendering features from 1.5, and take only
+            // one graphic element like in 1.4
+            PawnRenderNodeProperties attachment = gene.def.renderNodeProperties[0];
+            #endif
             Color color;
             string recolor;
-            switch (graphicData.colorType)
+            switch (attachment.colorType)
             {
+                #if v1_4
                 case GeneColorType.Hair: color = pawn.story.HairColor; recolor = "yes"; break;
                 case GeneColorType.Skin: color = pawn.story.SkinColor; recolor = "yes"; break;
-                default: color = graphicData.color ?? Color.white; recolor = "gray"; break;
+                #else
+                case PawnRenderNodeProperties.AttachmentColorType.Hair: color = pawn.story.HairColor; recolor = "yes"; break;
+                case PawnRenderNodeProperties.AttachmentColorType.Skin: color = pawn.story.SkinColor; recolor = "yes"; break;
+                #endif
+                default: color = attachment.color ?? Color.white; recolor = "gray"; break;
             }
-            AvatarLayer result = new (graphicData.GraphicPathFor(pawn), color);
+            string path;
+            #if v1_4
+            path = attachment.GraphicPathFor(pawn);
+            #else
+            PawnRenderNode node = new (pawn, attachment, null);
+            node.gene = gene;
+            path = node.TexPathFor(pawn);
+            #endif
             int offset = 0;
-            switch (gene.def.graphicData.drawLoc)
+            switch (gene.def.endogeneCategory)
             {
-                case GeneDrawLoc.HeadTop: offset = 2; break;
-                case GeneDrawLoc.HeadMiddle: offset = 4; break;
-                case GeneDrawLoc.HeadLower: offset = 6; break;
+                case EndogeneCategory.Headbone:
+                case EndogeneCategory.Ears: offset = 2; break;
+                case EndogeneCategory.Nose: offset = 4; break;
+                case EndogeneCategory.Jaw:  offset = 6; break;
             }
-            result.fallback = (graphicData.GraphicPathFor(pawn) + "_south", offset, recolor);
+            offset = DefDatabase<AvatarGeneDef>.AllDefsListForReading.FirstOrFallback(def => def.geneName == gene.def.defName)?.offset ?? offset;
+            AvatarLayer result = new (path, color);
+            result.fallback = (path + "_south", offset, recolor);
             return result;
         }
         #endif
+    }
+
+    public class EyePos
+    {
+        public IntVec2 pos1;
+        public IntVec2 pos2;
+        public EyePos() {}
+        public EyePos(int pos1x, int pos1y, int pos2x, int pos2y)
+        {
+            pos1 = new (pos1x, pos1y);
+            pos2 = new (pos2x, pos2y);
+        }
     }
 
     public class Feature

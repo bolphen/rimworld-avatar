@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadDef>
         <defName>Head_AG_SlugFace_Normal</defName>
-        <partName>Head</partName>
         <typeName>AG_SlugFace_Normal</typeName>
         <hideTattoo>true</hideTattoo>
         <hideWrinkles>true</hideWrinkles>
@@ -12,11 +11,10 @@
         <hideNose>true</hideNose>
         <hideMouth>true</hideMouth>
         <unisexPath>AlphaGenes/SlugFace</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadDef>
         <defName>Head_AG_SlugFace_Narrow</defName>
-        <partName>Head</partName>
         <typeName>AG_SlugFace_Narrow</typeName>
         <hideTattoo>true</hideTattoo>
         <hideWrinkles>true</hideWrinkles>
@@ -25,11 +23,10 @@
         <hideNose>true</hideNose>
         <hideMouth>true</hideMouth>
         <unisexPath>AlphaGenes/SlugFace</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadDef>
         <defName>Head_AG_SlugFace_Wide</defName>
-        <partName>Head</partName>
         <typeName>AG_SlugFace_Wide</typeName>
         <hideTattoo>true</hideTattoo>
         <hideWrinkles>true</hideWrinkles>
@@ -38,17 +35,16 @@
         <hideNose>true</hideNose>
         <hideMouth>true</hideMouth>
         <unisexPath>AlphaGenes/SlugFace</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarNoseDef>
         <defName>Head_FoxFace</defName>
-        <partName>Nose</partName>
         <geneName>AG_FoxFace</geneName>
         <femalePath>Common/Nose/Feline_Female</femalePath>
         <malePath>Common/Nose/Feline_Male</malePath>
         <femaleChildPath>Common/Nose/Feline_FemaleChild</femaleChildPath>
         <maleChildPath>Common/Nose/Feline_MaleChild</maleChildPath>
         <unisexNewbornPath>Common/Nose/Feline_Newborn</unisexNewbornPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarNoseDef>
 
 </Defs>

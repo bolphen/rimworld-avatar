@@ -2,82 +2,79 @@
 <Defs>
 
 <!--
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadboneDef>
         <defName>AG_OutwardsAntennas</defName>
-        <partName>Headbone</partName>
         <geneName>AG_OutwardsAntennas</geneName>
         <unisexPath>AlphaGenes/OutwardsAntennas</unisexPath>
         <unisexNewbornPath>AlphaGenes/OutwardsAntennas_Newborn</unisexNewbornPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadboneDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadboneDef>
         <defName>AG_DownwardsAntennas</defName>
-        <partName>Headbone</partName>
         <geneName>AG_DownwardsAntennas</geneName>
         <unisexPath>AlphaGenes/DownwardsAntennas</unisexPath>
         <unisexNewbornPath>AlphaGenes/DownwardsAntennas_Newborn</unisexNewbornPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadboneDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadboneDef>
         <defName>AG_MothAntennas</defName>
-        <partName>Headbone</partName>
         <geneName>AG_MothAntennas</geneName>
         <unisexPath>AlphaGenes/MothAntennas</unisexPath>
         <unisexNewbornPath>AlphaGenes/MothAntennas_Newborn</unisexNewbornPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadboneDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadboneDef>
         <defName>AG_FormicAntennas</defName>
-        <partName>Headbone</partName>
         <geneName>AG_FormicAntennas</geneName>
         <unisexPath>AlphaGenes/FormicAntennas</unisexPath>
         <unisexNewbornPath>AlphaGenes/FormicAntennas_Newborn</unisexNewbornPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadboneDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadboneDef>
         <defName>AG_LowerAntennas</defName>
-        <partName>Headbone</partName>
         <geneName>AG_LowerAntennas</geneName>
         <unisexPath>AlphaGenes/LowerAntennas</unisexPath>
         <unisexChildPath>AlphaGenes/LowerAntennas_Child</unisexChildPath>
         <unisexNewbornPath>AlphaGenes/LowerAntennas_Newborn</unisexNewbornPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadboneDef>
 
 -->
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarMouthDef>
         <defName>AG_FaceTentacles_Mouth</defName>
-        <partName>Mouth</partName>
         <geneName>AG_FaceTentacles</geneName>
         <unisexPath>AlphaGenes/FaceTentacles</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarMouthDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarNoseDef>
         <defName>AG_FaceTentacles_Nose</defName>
-        <partName>Nose</partName>
         <geneName>AG_FaceTentacles</geneName>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarNoseDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarFacialDef>
         <defName>AG_HeavilyScarred</defName>
-        <partName>Facial</partName>
         <geneName>AG_HeavilyScarred</geneName>
         <unisexPath>AlphaGenes/HeavilyScarred</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarFacialDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadboneDef>
         <defName>AG_OrnateEldritchHorns</defName>
-        <partName>Headbone</partName>
         <geneName>AG_OrnateEldritchHorns</geneName>
         <unisexPath>AlphaGenes/OrnateEldritchHorns</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadboneDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarFacialDef>
+        <defName>AG_RockSpurs</defName>
+        <geneName>AG_RockSpurs</geneName>
+        <replaceModdedTexture>false</replaceModdedTexture>
+        <offset>5</offset>
+    </Avatar.AvatarFacialDef>
+
+    <Avatar.AvatarEyesDef>
         <defName>AG_DevilEyes</defName>
-        <partName>EyeColor</partName>
         <geneName>AG_DevilEyes</geneName>
         <color1>(1.0,0.8,0.1)</color1>
         <color2>(0.7,0.6,0.0)</color2>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarEyesDef>
 
 </Defs>

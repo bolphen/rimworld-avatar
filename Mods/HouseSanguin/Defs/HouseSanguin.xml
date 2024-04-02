@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>DevDesigner_Blood_Apparel_HeraldicGreatHelm</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>HouseSanguin/GreatHelmSanguin</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>DevDesigner_Blood_Apparel_Armet</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>HouseSanguin/Armet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>DevDesigner_Blood_Apparel_ArmetNormal</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>HouseSanguin/ArmetNormal</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>DevDesigner_Blood_Apparel_ArmetLord</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>HouseSanguin/ArmetLord</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>DevDesigner_Blood_Apparel_ArmetWinged</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>HouseSanguin/ArmetWinged</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>DevDesigner_Blood_Apparel_Hood</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>HouseSanguin/Hood</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>DevDesigner_Blood_Apparel_FullPlate</defName>
+        <unisexPath>HouseSanguin/FullPlate</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>DevDesigner_Blood_Apparel_LordFullPlate</defName>
+        <unisexPath>HouseSanguin/FullPlateLord</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>DevDesigner_Blood_Apparel_HeraldicHeavyHauberk</defName>
+        <unisexPath>HouseSanguin/HauberkSanguin</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>DevDesigner_Blood_Apparel_Cape</defName>
+        <unisexPath>HouseSanguin/Cape</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+</Defs>
+

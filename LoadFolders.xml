@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <loadFolders>
+    <v1.3>
+        <li>/</li>
+        <li>1.3</li>
+        <li IfModActive="Ykara.elStrages.EPOE">Mods/EPOE</li>
+        <li IfModActive="kikohi.jewelry">Mods/Jewelry</li>
+        <li IfModActive="DankPyon.Medieval.Overhaul">Mods/MedievalOverhaul</li>
+        <li IfModActive="kentington.saveourship2">Mods/SOS2</li>
+        <li IfModActive="Malistaticy.UnderWhere">Mods/UnderWhere</li>
+        <li IfModActive="vanillaexpanded.vappe">Mods/VanillaExpanded/VE_Apparel</li>
+        <li IfModActive="vanillaexpanded.varme">Mods/VanillaExpanded/VE_Armour</li>
+        <li IfModActive="vanillaexpanded.vpsycastse">Mods/VanillaExpanded/VE_Psycasts</li>
+        <li IfModActive="oskarpotocki.vanillafactionsexpanded.medievalmodule">Mods/VanillaExpanded/VFE_Medieval</li>
+        <li IfModActive="oskarpotocki.vfe.pirates">Mods/VanillaExpanded/VFE_Pirates</li>
+    </v1.3>
     <v1.4>
         <li>/</li>
         <li>1.4</li>
@@ -8,6 +22,7 @@
         <li IfModActive="ATK.Anthrosonae">Mods/Anthrosonae</li>
         <li IfModActive="Aoba.DeadManSwitch.Core">Mods/DMS</li>
         <li IfModActive="Ykara.elStrages.EPOE">Mods/EPOE</li>
+        <li IfModActive="DevDesigner.Blood">Mods/HouseSanguin</li>
         <li IfModActive="kikohi.jewelry">Mods/Jewelry</li>
         <li IfModActive="DankPyon.Medieval.Overhaul">Mods/MedievalOverhaul</li>
         <li IfModActive="Pal5k.PersonaMechs">Mods/PersonaMechs</li>

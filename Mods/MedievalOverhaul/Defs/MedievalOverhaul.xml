@@ -1,521 +1,423 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ArmingCap</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>MedievalOverhaul/Headgear/ArmingCap</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_FullArmingCap</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>MedievalOverhaul/Headgear/ArmingCapFull</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_PaddedNasalHelmet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
-        <overlay>(0.9,0.8,0.7)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/PaddedNasal</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_PaddedKettleHelmet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
-        <overlay>(0.9,0.8,0.7)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/PaddedKettle</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_PaddedFlatTopHelmet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
-        <overlay>(0.9,0.8,0.7)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/PaddedFlatTop</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_coif</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>MedievalOverhaul/Headgear/Coif</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_Hood</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>MedievalOverhaul/Headgear/Hood</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_RedBandana</defName>
-        <partName>Headgear</partName>
         <hideTop>17</hideTop>
-        <overlay>(0.5,0.1,0.1)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/RedBandana</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_BearGrizzly</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>MedievalOverhaul/Headgear/HoodBear</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_BearPolar</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>MedievalOverhaul/Headgear/HoodBear</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_WolfArctic</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>MedievalOverhaul/Headgear/HoodWolf</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_WolfTimber</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>MedievalOverhaul/Headgear/HoodWolf</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ZweihandersHat</defName>
-        <partName>Headgear</partName>
         <hideTop>16</hideTop>
         <unisexPath>MedievalOverhaul/Headgear/ZweihanderHat</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ChainCoif</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>MedievalOverhaul/Headgear/ChainCoif</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ChainCoifClosed</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
         <unisexPath>MedievalOverhaul/Headgear/ChainCoifClosed</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ChainCoifFull</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
         <unisexPath>MedievalOverhaul/Headgear/ChainCoifFull</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ChainNasalHelmet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>MedievalOverhaul/Headgear/ChainNasal</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ChainNasalRedHelmet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
-        <overlay>(0.5,0.1,0.1)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/ChainNasal</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ChainKettleHelmet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>MedievalOverhaul/Headgear/ChainKettle</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_Chain_FlatTopHelmet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>MedievalOverhaul/Headgear/ChainFlatTop</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ClosedChain_FlatTopHelmet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
         <unisexPath>MedievalOverhaul/Headgear/ClosedChainFlatTop</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ChainClosedFlatTopHelmet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
         <unisexPath>MedievalOverhaul/Headgear/ChainClosedFlatTop</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Adorned_HeavyMailCoif</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/ChainCoifAdorned</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Adorned_FlatTop</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/FlatTopAdorned</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_HeavyBarbrute</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>MedievalOverhaul/Headgear/HeavyBarbrute</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_Armet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
         <unisexPath>MedievalOverhaul/Headgear/Armet</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ArmetGilded</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
-        <overlay>(1.0,0.9,0.4)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/ArmetGilded</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ArmetNamed</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
-        <overlay>(1.0,0.9,0.4)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/ArmetNamed</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_OpenBascinet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>MedievalOverhaul/Headgear/Bascinet</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_WolfBascinet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <unisexPath>MedievalOverhaul/Headgear/BascinetWolf</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ClosedBascinetHelmet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
         <unisexPath>MedievalOverhaul/Headgear/BascinetClosed</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_KlappvisorBascinet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
         <unisexPath>MedievalOverhaul/Headgear/BascinetKlappvisor</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_Bascinet_KlappvisierHelmetClosed</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
         <unisexPath>MedievalOverhaul/Headgear/BascinetClosedKlappvisor</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_SalletHelmet</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
         <unisexPath>MedievalOverhaul/Headgear/Sallet</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_SalletBellowFace</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
         <unisexPath>MedievalOverhaul/Headgear/SalletBellowFace</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_SalletGryphon</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
         <unisexPath>MedievalOverhaul/Headgear/SalletGryphon</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ZweihanderHelm</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/ZweihanderHelm</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ZweihanderHelmAmboise</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/ZweihanderHelmAmboise</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ZweihanderHelmHesse</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/ZweihanderHelmHesse</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ZweihanderHelmOswin</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/ZweihanderHelmOswin</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_ZweihanderHelmSoren</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/ZweihanderHelmSoren</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_GreatHelm</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
         <unisexPath>MedievalOverhaul/Headgear/GreatHelm</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Adorned_GreatHelm</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/GreatHelmAdorned</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_HeraldicGreatHelm1c</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/GreatHelmAmboise</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_HeraldicGreatHelm2c</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/GreatHelmSoren</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_HeraldicGreatHelm3c</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/GreatHelmOswin</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarHeadgearDef>
         <defName>DankPyon_Headgear_HeraldicGreatHelm4c</defName>
-        <partName>Headgear</partName>
         <hideHair>true</hideHair>
         <hideBeard>true</hideBeard>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/Headgear/GreatHelmHesse</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarHeadgearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_FullPlate</defName>
-        <partName>Apparel</partName>
         <unisexPath>MedievalOverhaul/FullPlate</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_FullPlateGilded</defName>
-        <partName>Apparel</partName>
-        <overlay>(1.0,0.9,0.4)</overlay>
         <unisexPath>MedievalOverhaul/FullPlateGilded</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_FullPlateNamed</defName>
-        <partName>Apparel</partName>
-        <overlay>(1.0,0.9,0.4)</overlay>
         <unisexPath>MedievalOverhaul/FullPlateNamed</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_AdornedHeavyPlate</defName>
-        <partName>Apparel</partName>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/FullPlateAdorned</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>Dankpyon_Apparel_Gambeson</defName>
-        <partName>Apparel</partName>
         <unisexPath>MedievalOverhaul/Gambeson</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_Breast_Plate</defName>
-        <partName>Apparel</partName>
         <unisexPath>MedievalOverhaul/BreastPlate</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_Brigandine</defName>
-        <partName>Apparel</partName>
         <unisexPath>MedievalOverhaul/Brigandine</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_Hauberk</defName>
-        <partName>Apparel</partName>
         <unisexPath>MedievalOverhaul/Hauberk</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_Heavy_Hauberk</defName>
-        <partName>Apparel</partName>
         <unisexPath>MedievalOverhaul/HauberkHeavy</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_AdornedMailShirt</defName>
-        <partName>Apparel</partName>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/HauberkAdorned</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_Heraldic_Hauberk1c</defName>
-        <partName>Apparel</partName>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/HauberkAmboise</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_Heraldic_Hauberk2c</defName>
-        <partName>Apparel</partName>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/HauberkSoren</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_Heraldic_Hauberk3c</defName>
-        <partName>Apparel</partName>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/HauberkOswin</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_Heraldic_Hauberk4c</defName>
-        <partName>Apparel</partName>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/HauberkHesse</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_AdornedWarriorArmor</defName>
-        <partName>Apparel</partName>
-        <overlay>(1,1,1)</overlay>
         <unisexPath>MedievalOverhaul/WarriorArmorAdorned</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_Leather_Tunic</defName>
-        <partName>Apparel</partName>
         <unisexPath>MedievalOverhaul/LeatherTunic</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_Light_Lamellar</defName>
-        <partName>Apparel</partName>
         <unisexPath>MedievalOverhaul/LightLamellar</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_Padded_Leather</defName>
-        <partName>Apparel</partName>
         <unisexPath>MedievalOverhaul/PaddedLeather</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_Padded_Surcoat</defName>
-        <partName>Apparel</partName>
         <unisexPath>MedievalOverhaul/PaddedSurcoat</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_Sackcloth</defName>
-        <partName>Apparel</partName>
         <unisexPath>MedievalOverhaul/SackCloth</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_DirewolfPelt</defName>
-        <partName>Apparel</partName>
         <unisexPath>MedievalOverhaul/PeltDirewolf</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBodygearDef>
         <defName>DankPyon_Apparel_HyenaPelt</defName>
-        <partName>Apparel</partName>
         <unisexPath>MedievalOverhaul/PeltHyena</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBodygearDef>
 
-    <Avatar.AvatarDef>
+    <Avatar.AvatarBackgearDef>
         <defName>DankPyon_Apparel_Quiver</defName>
-        <partName>Backgear</partName>
         <unisexPath>MedievalOverhaul/Quiver</unisexPath>
-    </Avatar.AvatarDef>
+    </Avatar.AvatarBackgearDef>
 
 </Defs>
 
