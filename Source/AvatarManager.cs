@@ -743,21 +743,107 @@ namespace Avatar
                 System.IO.File.Move(path, backup);
             }
         }
+        public string GetPrompts()
+        {
+            string prompts = "front portrait, ";
+            prompts += string.Format("{0}-year-old {1} {2}, ",
+                pawn.ageTracker.AgeBiologicalYears,
+                (pawn.gender == Gender.Female) ? "female" : "male",
+                pawn.ageTracker.CurLifeStage.defName.Substring(9).ToLower());
+            foreach (Apparel apparel in pawn.apparel.WornApparel)
+            {
+                prompts += apparel.def.label + ", ";
+            }
+            return prompts;
+        }
+        public void GeneratePortrait()
+        {
+            Find.WindowStack.Add(new Prompts_Window(this));
+        }
+        public string SaveToStaticPortrait()
+        {
+            string dir = System.IO.Path.Combine(Application.persistentDataPath, "avatar");
+            string path = System.IO.Path.Combine(dir, GetPawnName() + ".png");
+            Texture2D upscaled = TextureUtil.MakeReadableCopy(RenderAvatar(), 480, 576);
+            SavePng(GetPawnName() + ".png", upscaled.EncodeToPNG());
+            UnityEngine.Object.Destroy(upscaled);
+            return path;
+        }
         public FloatMenu GetFloatMenu()
         {
-            FloatMenu menu = new (
-            (staticTexture == null) ?
-            new List<FloatMenuOption>() {
-                new FloatMenuOption("Enable static portrait", EnableStatic),
-                new FloatMenuOption("Save upscaled (480x576)", UpscaleSaveAsPng),
-                new FloatMenuOption("Save original ("+avatar.width.ToString()+"x"+avatar.height.ToString()+")", SaveAsPng)
+            List<FloatMenuOption> options = new ();
+            if (staticTexture == null)
+            {
+                options.Add(new ("Enable static portrait", EnableStatic));
+                if (mod.settings.aiGenExecutable?.Length > 0)
+                    options.Add(new ("Generate portrait", GeneratePortrait));
+                options.Add(new ("Save upscaled (480x576)", UpscaleSaveAsPng));
+                options.Add(new ("Save original ("+avatar.width.ToString()+"x"+avatar.height.ToString()+")", SaveAsPng));
             }
-            :
-            new List<FloatMenuOption>() {
-                new FloatMenuOption("Disable static portrait", DisableStatic),
+            else
+            {
+                options.Add(new ("Disable static portrait", DisableStatic));
+                if (mod.settings.aiGenExecutable?.Length > 0)
+                    options.Add(new ("Regenerate portrait", GeneratePortrait));
             }
-            );
-            return menu;
+            return new FloatMenu(options);
+        }
+        public bool CheckCursor(Vector2 pos)
+        {
+            Texture2D displayed = GetAvatar();
+            int x = (int) (pos.x * (float) displayed.width);
+            int y = (int) (pos.y * (float) displayed.height);
+            return displayed.GetPixel(x, y).a > 0;
+        }
+    }
+
+    public class Prompts_Window : Window
+    {
+        private AvatarManager manager;
+        protected string curPrompts;
+        public override Vector2 InitialSize => new Vector2(640f, 200f);
+        public Prompts_Window(AvatarManager manager)
+        {
+            this.manager = manager;
+            curPrompts = manager.GetPrompts();
+            doCloseX = true;
+            forcePause = true;
+            absorbInputAroundWindow = true;
+            closeOnClickedOutside = true;
+            closeOnAccept = false;
+        }
+        private void Generate()
+        {
+            System.Diagnostics.ProcessStartInfo process = new ();
+            process.FileName = AvatarManager.mod.settings.aiGenExecutable;
+            process.Arguments = string.Format("\"{0}\" \"{1}\"", manager.SaveToStaticPortrait(), curPrompts);
+            System.Diagnostics.Process.Start(process);
+        }
+        public override void DoWindowContents(Rect rect)
+        {
+            Text.Font = GameFont.Small;
+            Widgets.Label(new Rect(0f, 0f, rect.width, 35f), "Prompts");
+            curPrompts = Widgets.TextArea(new Rect(0f, 35f, rect.width / 2f + 100f, InitialSize.y - 75f), curPrompts);
+            bool enterPressed = false;
+            if (Event.current.type == EventType.KeyDown && (Event.current.keyCode == KeyCode.Return || Event.current.keyCode == KeyCode.KeypadEnter))
+            {
+                enterPressed = true;
+                Event.current.Use();
+            }
+            if (Widgets.ButtonText(new Rect(rect.width / 2f + 120f, 35f, rect.width / 2f - 120f, 35f), "OK") || enterPressed)
+            {
+                if (curPrompts.Length > 0)
+                {
+                    Messages.Message("AI-gen process launched", MessageTypeDefOf.TaskCompletion, historical: false);
+                    Generate();
+                    Find.WindowStack.TryRemove(this);
+                }
+                else
+                {
+                    Messages.Message("Prompts cannot be empty", MessageTypeDefOf.RejectInput, historical: false);
+                }
+                Event.current.Use();
+            }
         }
     }
 }

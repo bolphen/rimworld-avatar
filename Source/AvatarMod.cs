@@ -124,6 +124,9 @@ namespace Avatar
                 AccessTools.Method("ColoredMoodBar13.MoodPatch:CGMarkColonistsDirty").Invoke(null, new object[] {null});
             }
             listingStandard.CheckboxLabeled("Show avatars in quest tab (experimental)", ref settings.showInQuestTab);
+            listingStandard.GapLine();
+            listingStandard.Label("Path to the AI-gen executable");
+            settings.aiGenExecutable = listingStandard.TextEntry(settings.aiGenExecutable);
             if (Event.current.type == EventType.Layout)
             {
                 settings.scrollHeight = listingStandard.CurHeight;
@@ -161,6 +164,10 @@ namespace Avatar
     public static class UIPatch
     {
         static AvatarMod mod = LoadedModManager.GetMod<AvatarMod>();
+        private static Vector2 relPos(Vector2 absPos, Rect rect)
+        {
+            return new((absPos.x-rect.x)/rect.width, 1f-(absPos.y-rect.y)/rect.height);
+        }
         public static void Postfix(IInspectPane pane)
         {
             if (!mod.settings.hideMainAvatar && pane is MainTabWindow_Inspect inspectPanel && inspectPanel.OpenTabType is null)
@@ -179,7 +186,8 @@ namespace Avatar
                     float height = width*avatar.height/avatar.width;
                     Rect rect = new(0, inspectPanel.PaneTopY - InspectPaneUtility.TabHeight - height, width, height);
                     GUI.DrawTexture(rect, avatar);
-                    if (Event.current.type == EventType.MouseDown && Mouse.IsOver(rect))
+                    if (Event.current.type == EventType.MouseDown && Mouse.IsOver(rect)
+                        && manager.CheckCursor(relPos(Event.current.mousePosition, rect)))
                     { // capture mouse click
                         if (Event.current.button == 0) // leftbutton
                             manager.ToggleDrawHeadgear();
@@ -303,6 +311,8 @@ namespace Avatar
         public bool noWrinkles = false;
         public bool earsOnTop = false;
 
+        public string aiGenExecutable = "";
+
         public Vector2 scroll;
         public float scrollHeight = 0;
 
@@ -323,6 +333,7 @@ namespace Avatar
             Scribe_Values.Look(ref noFemaleLips, "noFemaleLips");
             Scribe_Values.Look(ref noWrinkles, "noWrinkles");
             Scribe_Values.Look(ref earsOnTop, "earsOnTop");
+            Scribe_Values.Look(ref aiGenExecutable, "aiGenExecutable");
             if (hideBackground)
                 AvatarMod.mainManager.SetBGColor(new Color(0,0,0,0));
             else
