@@ -32,7 +32,7 @@ namespace Avatar
         {
             if (mod.settings.showInColonistBar)
             {
-                return mod.GetColonistBarAvatar(pawn);
+                return mod.GetColonistBarAvatar(pawn, renderHeadgear, renderClothes);
             }
             #if v1_3
             return PortraitsCache.Get(pawn, size, rotation, cameraOffset, cameraZoom, supersample, compensateForUIScale, renderHeadgear, renderClothes, overrideApparelColors, overrideHairColor, stylingStation);

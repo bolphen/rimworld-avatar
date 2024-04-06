@@ -135,13 +135,15 @@ namespace Avatar
             Widgets.EndScrollView();
         }
 
-        public Texture2D GetColonistBarAvatar(Pawn pawn)
+        public Texture2D GetColonistBarAvatar(Pawn pawn, bool drawHeadgear, bool drawClothes)
         {
             if (!colonistBarManagers.ContainsKey(pawn))
             {
                 AvatarManager manager = new ();
                 manager.SetPawn(pawn);
                 manager.SetBGColor(new Color(0,0,0,0));
+                manager.drawHeadgear = drawHeadgear;
+                manager.drawClothes = drawClothes;
                 manager.SetCheckDowned(true);
                 colonistBarManagers[pawn] = manager;
             }
@@ -190,7 +192,7 @@ namespace Avatar
                         && manager.CheckCursor(relPos(Event.current.mousePosition, rect)))
                     { // capture mouse click
                         if (Event.current.button == 0) // leftbutton
-                            manager.ToggleDrawHeadgear();
+                            manager.drawHeadgear = !manager.drawHeadgear;
                         else if (Event.current.button == 1) // rightbutton
                             Find.WindowStack.Add(manager.GetFloatMenu());
                         Event.current.Use();

@@ -18,7 +18,28 @@ namespace Avatar
         private Feature feature;
         private Texture2D canvas;
         private Texture2D avatar;
-        private bool drawHeadgear;
+        private bool _drawHeadgear = true;
+        private bool _drawClothes = true;
+        public bool drawHeadgear { get => this._drawHeadgear;
+            set
+            {
+                if (this._drawHeadgear != value)
+                {
+                    this._drawHeadgear = value;
+                    ClearCachedAvatar();
+                }
+            }
+        }
+        public bool drawClothes { get => this._drawClothes;
+            set
+            {
+                if (this._drawClothes != value)
+                {
+                    this._drawClothes = value;
+                    ClearCachedAvatar();
+                }
+            }
+        }
         private bool checkDowned = false;
         private Color bgColor = new Color(.5f,.5f,.6f,.5f);
         private int lastUpdateTime;
@@ -53,11 +74,6 @@ namespace Avatar
                 ClearCachedAvatar();
             }
         }
-        public void SetDrawHeadgear(bool drawHeadgear)
-        {
-            this.drawHeadgear = drawHeadgear;
-            ClearCachedAvatar();
-        }
         public void SetBGColor(Color color)
         {
             if (bgColor != color)
@@ -73,11 +89,6 @@ namespace Avatar
                 this.checkDowned = checkDowned;
                 ClearCachedAvatar();
             }
-        }
-        public void ToggleDrawHeadgear()
-        {
-            drawHeadgear = !drawHeadgear;
-            ClearCachedAvatar();
         }
         private Feature GetFeature()
         {
@@ -195,42 +206,45 @@ namespace Avatar
             List<(Apparel, AvatarBackgearDef)> backgears = new ();
             List<(Apparel, AvatarFacegearDef)> facegears = new ();
             List<(Apparel, AvatarHeadgearDef)> headgears = new ();
-            foreach (Apparel apparel in pawn.apparel.WornApparel)
+            if (drawClothes)
             {
-                if (GetApparelDef<AvatarBodygearDef>(apparel) is AvatarBodygearDef bodygearDef)
-                    bodygears.Add((apparel, bodygearDef));
-                else if (GetApparelDef<AvatarBackgearDef>(apparel) is AvatarBackgearDef backgearDef)
-                    backgears.Add((apparel, backgearDef));
-                else if (GetApparelDef<AvatarFacegearDef>(apparel) is AvatarFacegearDef facegearDef)
-                    facegears.Add((apparel, facegearDef));
-                else if (GetApparelDef<AvatarHeadgearDef>(apparel) is AvatarHeadgearDef headgearDef)
+                foreach (Apparel apparel in pawn.apparel.WornApparel)
                 {
-                    #if v1_3 || v1_4
-                    if (apparel.def.apparel.shellCoversHead)
-                    #else
-                    if (apparel.def.apparel.renderSkipFlags?.FirstOrDefault()?.defName == "Head")
-                    #endif
-                        coversAll = new (headgearDef.GetPath(gender, lifeStage), apparel.DrawColor);
-                    else
-                        headgears.Add((apparel, headgearDef));
-                    if (drawHeadgear)
+                    if (GetApparelDef<AvatarBodygearDef>(apparel) is AvatarBodygearDef bodygearDef)
+                        bodygears.Add((apparel, bodygearDef));
+                    else if (GetApparelDef<AvatarBackgearDef>(apparel) is AvatarBackgearDef backgearDef)
+                        backgears.Add((apparel, backgearDef));
+                    else if (GetApparelDef<AvatarFacegearDef>(apparel) is AvatarFacegearDef facegearDef)
+                        facegears.Add((apparel, facegearDef));
+                    else if (GetApparelDef<AvatarHeadgearDef>(apparel) is AvatarHeadgearDef headgearDef)
                     {
-                        if (mod.settings.showHairWithHeadgear)
-                            hideHair |= headgearDef.hideHair;
-                        else
-                            hideHair |= apparel.def.apparel.bodyPartGroups.Exists(p => p.defName == "UpperHead" || p.defName == "FullHead");
-                        hairHideTop = Math.Max(hairHideTop, headgearDef.hideTop);
-                        headHideTop = Math.Max(headHideTop, headgearDef.hideTop);
-                        hideBeard |= headgearDef.hideBeard;
+                        if (drawHeadgear)
+                        {
+                            #if v1_3 || v1_4
+                            if (apparel.def.apparel.shellCoversHead)
+                            #else
+                            if (apparel.def.apparel.renderSkipFlags?.FirstOrDefault()?.defName == "Head")
+                            #endif
+                                coversAll = new (headgearDef.GetPath(gender, lifeStage), apparel.DrawColor);
+                            else
+                                headgears.Add((apparel, headgearDef));
+                            if (mod.settings.showHairWithHeadgear)
+                                hideHair |= headgearDef.hideHair;
+                            else
+                                hideHair |= apparel.def.apparel.bodyPartGroups.Exists(p => p.defName == "UpperHead" || p.defName == "FullHead");
+                            hairHideTop = Math.Max(hairHideTop, headgearDef.hideTop);
+                            headHideTop = Math.Max(headHideTop, headgearDef.hideTop);
+                            hideBeard |= headgearDef.hideBeard;
+                        }
                     }
-                }
-                else if (apparel.def.apparel.bodyPartGroups.Exists(p => p.defName == "Torso")
-                    && apparel.def.thingCategories != null) // warcaskets don't have this...
-                {
-                    if (apparel.def.thingCategories.Exists(p => p.defName == "ApparelArmor"))
-                        bodygears.Add((apparel, DefDatabase<AvatarBodygearDef>.GetNamedSilentFail("Avatar_GenericArmor")));
-                    else if (!apparel.def.thingCategories.Exists(p => p.defName == "ApparelUtility"))
-                        bodygears.Add((apparel, DefDatabase<AvatarBodygearDef>.GetNamedSilentFail("Avatar_Generic")));
+                    else if (apparel.def.apparel.bodyPartGroups.Exists(p => p.defName == "Torso")
+                        && apparel.def.thingCategories != null) // warcaskets don't have this...
+                    {
+                        if (apparel.def.thingCategories.Exists(p => p.defName == "ApparelArmor"))
+                            bodygears.Add((apparel, DefDatabase<AvatarBodygearDef>.GetNamedSilentFail("Avatar_GenericArmor")));
+                        else if (!apparel.def.thingCategories.Exists(p => p.defName == "ApparelUtility"))
+                            bodygears.Add((apparel, DefDatabase<AvatarBodygearDef>.GetNamedSilentFail("Avatar_Generic")));
+                    }
                 }
             }
             // sorting
@@ -663,11 +677,14 @@ namespace Avatar
             avatar.filterMode = FilterMode.Point;
             return avatar;
         }
-        public Texture2D GetAvatar()
+        public Texture2D GetAvatar(bool allowStatic = true)
         {
-            if (avatar == null || Time.frameCount > staticTextureLastCheck + 10) // don't check every frame
-                TryGetStaticTexture();
-            if (staticTexture != null) return staticTexture;
+            if (allowStatic)
+            {
+                if (avatar == null || Time.frameCount > staticTextureLastCheck + 10) // don't check every frame
+                    TryGetStaticTexture();
+                if (staticTexture != null) return staticTexture;
+            }
             if (updateQueued) ClearCachedAvatar();
             return avatar ?? RenderAvatar();
         }
@@ -750,23 +767,31 @@ namespace Avatar
                 pawn.ageTracker.AgeBiologicalYears,
                 (pawn.gender == Gender.Female) ? "female" : "male",
                 pawn.ageTracker.CurLifeStage.defName.Substring(9).ToLower());
-            foreach (Apparel apparel in pawn.apparel.WornApparel)
+            if (drawClothes)
             {
-                prompts += apparel.def.label + ", ";
+                foreach (Apparel apparel in pawn.apparel.WornApparel)
+                {
+                    if (!apparel.def.apparel.layers.Exists(p => p.label == "headgear" || p.label == "eyes")
+                        || drawHeadgear)
+                    {
+                        prompts += apparel.def.label + ", ";
+                    }
+                }
             }
             return prompts;
         }
         public void GeneratePortrait()
         {
-            Find.WindowStack.Add(new Prompts_Window(this));
+            Find.WindowStack.Add(new Prompts_Window(pawn));
         }
         public string SaveToStaticPortrait()
         {
             string dir = System.IO.Path.Combine(Application.persistentDataPath, "avatar");
             string path = System.IO.Path.Combine(dir, GetPawnName() + ".png");
-            Texture2D upscaled = TextureUtil.MakeReadableCopy(RenderAvatar(), 480, 576);
+            Texture2D upscaled = TextureUtil.MakeReadableCopy(GetAvatar(false), 480, 576);
             SavePng(GetPawnName() + ".png", upscaled.EncodeToPNG());
             UnityEngine.Object.Destroy(upscaled);
+            ClearCachedAvatar();
             return path;
         }
         public FloatMenu GetFloatMenu()
@@ -797,45 +822,74 @@ namespace Avatar
         }
     }
 
+    public static class AIGen
+    {
+        public static void Generate(string image, string prompts)
+        {
+            System.Diagnostics.ProcessStartInfo process = new ();
+            process.FileName = AvatarManager.mod.settings.aiGenExecutable;
+            process.Arguments = string.Format("\"{0}\" \"{1}\"", image, prompts);
+            System.Diagnostics.Process.Start(process);
+        }
+    }
+
     public class Prompts_Window : Window
     {
         private AvatarManager manager;
         protected string curPrompts;
-        public override Vector2 InitialSize => new Vector2(640f, 200f);
-        public Prompts_Window(AvatarManager manager)
+        public override Vector2 InitialSize => new Vector2(800f, 200f);
+        public Prompts_Window(Pawn pawn)
         {
-            this.manager = manager;
+            manager = new ();
+            manager.SetPawn(pawn);
+            manager.SetBGColor(new Color(0,0,0,0));
+            manager.drawHeadgear = false;
+            manager.drawClothes = true;
+            manager.SetCheckDowned(false);
             curPrompts = manager.GetPrompts();
             doCloseX = true;
+            draggable = true;
             forcePause = true;
-            absorbInputAroundWindow = true;
-            closeOnClickedOutside = true;
-            closeOnAccept = false;
-        }
-        private void Generate()
-        {
-            System.Diagnostics.ProcessStartInfo process = new ();
-            process.FileName = AvatarManager.mod.settings.aiGenExecutable;
-            process.Arguments = string.Format("\"{0}\" \"{1}\"", manager.SaveToStaticPortrait(), curPrompts);
-            System.Diagnostics.Process.Start(process);
         }
         public override void DoWindowContents(Rect rect)
         {
-            Text.Font = GameFont.Small;
+            Text.Font = GameFont.Medium;
             Widgets.Label(new Rect(0f, 0f, rect.width, 35f), "Prompts");
-            curPrompts = Widgets.TextArea(new Rect(0f, 35f, rect.width / 2f + 100f, InitialSize.y - 75f), curPrompts);
+            Text.Font = GameFont.Small;
+            GUI.DrawTexture(new Rect(0f, 35f, 100f, 120f), manager.GetAvatar(false));
+            curPrompts = Widgets.TextArea(new Rect(120f, 35f, rect.width / 2f + 60f, InitialSize.y - 75f), curPrompts);
             bool enterPressed = false;
             if (Event.current.type == EventType.KeyDown && (Event.current.keyCode == KeyCode.Return || Event.current.keyCode == KeyCode.KeypadEnter))
             {
                 enterPressed = true;
                 Event.current.Use();
             }
-            if (Widgets.ButtonText(new Rect(rect.width / 2f + 120f, 35f, rect.width / 2f - 120f, 35f), "OK") || enterPressed)
+            bool drawHeadgear = manager.drawHeadgear;
+            bool drawClothes = manager.drawClothes;
+            bool toggled = false;
+            Widgets.CheckboxLabeled(new Rect(rect.width / 2f + 200f, 35f, rect.width / 2f - 200f, 30f), "Draw headgear", ref drawHeadgear, !drawClothes);
+            Widgets.CheckboxLabeled(new Rect(rect.width / 2f + 200f, 65f, rect.width / 2f - 200f, 30f), "Draw clothes", ref drawClothes);
+            if (drawHeadgear != manager.drawHeadgear)
+            {
+                manager.drawHeadgear = drawHeadgear;
+                toggled = true;
+            }
+            if (drawClothes != manager.drawClothes)
+            {
+                manager.drawClothes = drawClothes;
+                toggled = true;
+            }
+            if (toggled)
+            {
+                curPrompts = manager.GetPrompts();
+            }
+            manager.drawClothes = drawClothes;
+            if (Widgets.ButtonText(new Rect(rect.width / 2f + 200f, 105f, rect.width / 2f - 200f, 35f), "OK") || enterPressed)
             {
                 if (curPrompts.Length > 0)
                 {
                     Messages.Message("AI-gen process launched", MessageTypeDefOf.TaskCompletion, historical: false);
-                    Generate();
+                    AIGen.Generate(manager.SaveToStaticPortrait(), curPrompts);
                     Find.WindowStack.TryRemove(this);
                 }
                 else
@@ -844,6 +898,10 @@ namespace Avatar
                 }
                 Event.current.Use();
             }
+        }
+        public override void PostClose()
+        {
+            manager.ClearCachedAvatar();
         }
     }
 }
