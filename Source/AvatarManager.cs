@@ -767,10 +767,31 @@ namespace Avatar
                 pawn.ageTracker.AgeBiologicalYears,
                 (pawn.gender == Gender.Female) ? "female" : "male",
                 pawn.ageTracker.CurLifeStage.defName.Substring(9).ToLower());
+            {
+                AIGenPromptDef def = DefDatabase<AIGenPromptDef>.GetNamedSilentFail(pawn.story.hairDef.defName);
+                if (def != null)
+                {
+                    prompts += def.prompt + ", ";
+                }
+            }
+            if (pawn.style.beardDef?.defName != "NoBeard")
+                prompts += "beard, ";
+            #if BIOTECH
+            foreach (Gene gene in pawn.genes.GenesListForReading.Where(g => g.Active))
+            {
+                AIGenPromptDef def = DefDatabase<AIGenPromptDef>.GetNamedSilentFail(gene.def.defName);
+                if (def != null)
+                {
+                    prompts += def.prompt + ", ";
+                }
+            }
+            #endif
             if (drawClothes)
             {
                 foreach (Apparel apparel in pawn.apparel.WornApparel)
                 {
+                    if (apparel.def.apparel.layers.Exists(p => p.label == "utility"))
+                        continue;
                     if (!apparel.def.apparel.layers.Exists(p => p.label == "headgear" || p.label == "eyes")
                         || drawHeadgear)
                     {
@@ -831,6 +852,11 @@ namespace Avatar
             process.Arguments = string.Format("\"{0}\" \"{1}\"", image, prompts);
             System.Diagnostics.Process.Start(process);
         }
+    }
+
+    public class AIGenPromptDef : Def
+    {
+        public string prompt;
     }
 
     public class Prompts_Window : Window
