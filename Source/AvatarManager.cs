@@ -775,7 +775,17 @@ namespace Avatar
                 }
             }
             if (pawn.style.beardDef?.defName != "NoBeard")
-                prompts += "beard, ";
+            {
+                AIGenPromptDef def = DefDatabase<AIGenPromptDef>.GetNamedSilentFail(pawn.style.beardDef.defName);
+                if (def != null)
+                    prompts += def.prompt + ", ";
+                else
+                    prompts += "beard, ";
+            }
+            if (pawn.style.faceTattoo?.defName != "NoTattoo_Face")
+                prompts += "facial tattoo, ";
+            if (pawn.style.bodyTattoo?.defName != "NoTattoo_Body")
+                prompts += "body tattoo, ";
             #if BIOTECH
             foreach (Gene gene in pawn.genes.GenesListForReading.Where(g => g.Active))
             {
@@ -795,7 +805,11 @@ namespace Avatar
                     if (!apparel.def.apparel.layers.Exists(p => p.label == "headgear" || p.label == "eyes")
                         || drawHeadgear)
                     {
-                        prompts += apparel.def.label + ", ";
+                        AIGenPromptDef def = DefDatabase<AIGenPromptDef>.GetNamedSilentFail(apparel.def.defName);
+                        if (def != null)
+                            prompts += def.prompt + ", ";
+                        else
+                            prompts += apparel.def.label + ", ";
                     }
                 }
             }

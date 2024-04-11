@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
+    <!-- the prompts here are personal choices -->
+    <!-- feel free to adapt them to the AI model you're using -->
 
     <Avatar.AIGenPromptDef>
         <defName>Bald</defName>
@@ -12,10 +14,78 @@
     </Avatar.AIGenPromptDef>
 
     <Avatar.AIGenPromptDef>
+        <defName>SideWhiskers</defName>
+        <prompt>sideburns</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Moustache</defName>
+        <prompt>moustache</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <!-- apparels -->
+    <Avatar.AIGenPromptDef>
+        <defName>Apparel_ArmorHelmetRecon</defName>
+        <prompt>high-tech helmet</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Apparel_ArmorRecon</defName>
+        <prompt>high-tech armor</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Apparel_ArmorHelmetCataphract</defName>
+        <prompt>high-tech closed helmet</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Apparel_ArmorCataphract</defName>
+        <prompt>high-tech heavy armor</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <!-- genes -->
+    <Avatar.AIGenPromptDef>
         <defName>Headbone_MiniHorns</defName>
         <prompt>(headhorns)</prompt>
     </Avatar.AIGenPromptDef>
 
+    <Avatar.AIGenPromptDef>
+        <defName>Nose_Pig</defName>
+        <prompt>(pig nose)</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Ears_Pig</defName>
+        <prompt>(pig ears)</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Head_Gaunt</defName>
+        <prompt>(gaunt skull like), (mutated)</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Beauty_Pretty</defName>
+        <prompt>pretty</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Beauty_Beautiful</defName>
+        <prompt>(beautiful)</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Beauty_Ugly</defName>
+        <prompt>ugly</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Beauty_VeryUgly</defName>
+        <prompt>(ugly)</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <!-- increased weights for hair/eyes/skin color -->
     <Avatar.AIGenPromptDef>
         <defName>Hair_SnowWhite</defName>
         <prompt>(white hair: 1.5)</prompt>
