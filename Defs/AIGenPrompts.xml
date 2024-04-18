@@ -4,6 +4,11 @@
     <!-- feel free to adapt them to the AI model you're using -->
 
     <Avatar.AIGenPromptDef>
+        <defName>Wrinkles</defName>
+        <prompt>(wrinkles)</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
         <defName>Bald</defName>
         <prompt>bald</prompt>
     </Avatar.AIGenPromptDef>
@@ -25,23 +30,51 @@
 
     <!-- apparels -->
     <Avatar.AIGenPromptDef>
+        <defName>Apparel_PlateArmor</defName>
+        <prompt>plate armor</prompt>
+        <overrides>T-shirt, button-down shirt</overrides>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Apparel_FlakJacket</defName>
+        <prompt>flak jacket</prompt>
+        <overrides>T-shirt, button-down shirt</overrides>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
         <defName>Apparel_ArmorHelmetRecon</defName>
         <prompt>high-tech helmet</prompt>
+        <overrides>bald, shaved head</overrides>
     </Avatar.AIGenPromptDef>
 
     <Avatar.AIGenPromptDef>
         <defName>Apparel_ArmorRecon</defName>
         <prompt>high-tech armor</prompt>
+        <overrides>T-shirt, button-down shirt</overrides>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Apparel_PowerArmorHelmet</defName>
+        <prompt>high-tech helmet</prompt>
+        <overrides>bald, shaved head</overrides>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Apparel_PowerArmor</defName>
+        <prompt>high-tech armor</prompt>
+        <overrides>T-shirt, button-down shirt</overrides>
     </Avatar.AIGenPromptDef>
 
     <Avatar.AIGenPromptDef>
         <defName>Apparel_ArmorHelmetCataphract</defName>
         <prompt>high-tech closed helmet</prompt>
+        <overrides>bald, shaved head</overrides>
     </Avatar.AIGenPromptDef>
 
     <Avatar.AIGenPromptDef>
         <defName>Apparel_ArmorCataphract</defName>
         <prompt>high-tech heavy armor</prompt>
+        <overrides>T-shirt, button-down shirt</overrides>
     </Avatar.AIGenPromptDef>
 
     <!-- genes -->
@@ -102,6 +135,11 @@
     </Avatar.AIGenPromptDef>
 
     <Avatar.AIGenPromptDef>
+        <defName>Skin_InkBlack</defName>
+        <prompt>(black skin: 1.5)</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
         <defName>Skin_SlateGray</defName>
         <prompt>(gray skin: 1.5)</prompt>
     </Avatar.AIGenPromptDef>
@@ -127,13 +165,33 @@
     </Avatar.AIGenPromptDef>
 
     <Avatar.AIGenPromptDef>
-        <defName>Skin_Orange</defName>
-        <prompt>(orange skin: 1.5)</prompt>
+        <defName>Skin_PaleRed</defName>
+        <prompt>(red skin: 1.5)</prompt>
     </Avatar.AIGenPromptDef>
 
     <Avatar.AIGenPromptDef>
         <defName>Skin_DeepRed</defName>
         <prompt>(red skin: 1.5)</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Skin_PaleYellow</defName>
+        <prompt>(yellow skin: 1.5)</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Skin_DeepYellow</defName>
+        <prompt>(yellow skin: 1.5)</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Skin_Orange</defName>
+        <prompt>(orange skin: 1.5)</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Skin_Green</defName>
+        <prompt>(green skin: 1.5)</prompt>
     </Avatar.AIGenPromptDef>
 
 </Defs>

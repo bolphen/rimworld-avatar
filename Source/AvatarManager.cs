@@ -115,6 +115,26 @@ namespace Avatar
                 def = DefDatabase<T>.GetNamedSilentFail(comp.styleDef.defName);
             return def ?? DefDatabase<T>.GetNamedSilentFail(apparel.def.defName);
         }
+        private bool ShouldShowWrinkles()
+        {
+            float ageThreshold = 0.7f*pawn.RaceProps.lifeExpectancy;
+            #if BIOTECH
+            foreach (Gene gene in pawn.genes.GenesListForReading.Where(g => g.Active))
+            {
+                if (gene.def.defName == "Ageless")
+                    ageThreshold = float.PositiveInfinity;
+                else if (!gene.def.statFactors.NullOrEmpty())
+                {
+                    foreach (StatModifier statModifier in gene.def.statFactors)
+                    {
+                        if (statModifier.stat == StatDefOf.LifespanFactor)
+                            ageThreshold *= statModifier.value;
+                    }
+                }
+            }
+            #endif
+            return pawn.ageTracker.AgeBiologicalYears >= ageThreshold;
+        }
         private Texture2D RenderAvatar()
         {
             lastUpdateTime = Time.frameCount;
@@ -344,23 +364,7 @@ namespace Avatar
                 layers.Add(head);
                 if (!hideWrinkles && !mod.settings.noWrinkles)
                 {
-                    float ageThreshold = 0.7f*pawn.RaceProps.lifeExpectancy;
-                    #if BIOTECH
-                    foreach (Gene gene in activeGenes)
-                    {
-                        if (gene.def.defName == "Ageless")
-                            ageThreshold = float.PositiveInfinity;
-                        else if (!gene.def.statFactors.NullOrEmpty())
-                        {
-                            foreach (StatModifier statModifier in gene.def.statFactors)
-                            {
-                                if (statModifier.stat == StatDefOf.LifespanFactor)
-                                    ageThreshold *= statModifier.value;
-                            }
-                        }
-                    }
-                    #endif
-                    if (pawn.ageTracker.AgeBiologicalYears >= ageThreshold)
+                    if (ShouldShowWrinkles())
                         layers.Add(new AvatarLayer("Core/Unisex/Facial/Wrinkles", skinColor));
                 }
                 #if BIOTECH
@@ -762,37 +766,45 @@ namespace Avatar
         }
         public string GetPrompts()
         {
-            string prompts = "front portrait, ";
-            prompts += string.Format("{0}-year-old {1} {2}, ",
+            string prompts_joind = "front portrait, ";
+            prompts_joind += string.Format("{0}-year-old {1} {2}, ",
                 pawn.ageTracker.AgeBiologicalYears,
                 (pawn.gender == Gender.Female) ? "female" : "male",
                 pawn.ageTracker.CurLifeStage.defName.Substring(9).ToLower());
+            HashSet<string> prompts = new ();
+            if (ShouldShowWrinkles())
+                prompts.Add(DefDatabase<AIGenPromptDef>.GetNamedSilentFail("Wrinkles")?.prompt ?? "");
+            HashSet<string> overridden = new ();
             {
                 AIGenPromptDef def = DefDatabase<AIGenPromptDef>.GetNamedSilentFail(pawn.story.hairDef.defName);
                 if (def != null)
                 {
-                    prompts += def.prompt + ", ";
+                    prompts.Add(def.prompt);
                 }
             }
             if (pawn.style.beardDef?.defName != "NoBeard")
             {
                 AIGenPromptDef def = DefDatabase<AIGenPromptDef>.GetNamedSilentFail(pawn.style.beardDef.defName);
                 if (def != null)
-                    prompts += def.prompt + ", ";
+                    prompts.Add(def.prompt);
                 else
-                    prompts += "beard, ";
+                    prompts.Add("beard");
             }
             if (pawn.style.faceTattoo?.defName != "NoTattoo_Face")
-                prompts += "facial tattoo, ";
+                prompts.Add("facial tattoo");
             if (pawn.style.bodyTattoo?.defName != "NoTattoo_Body")
-                prompts += "body tattoo, ";
+                prompts.Add("body tattoo");
             #if BIOTECH
             foreach (Gene gene in pawn.genes.GenesListForReading.Where(g => g.Active))
             {
                 AIGenPromptDef def = DefDatabase<AIGenPromptDef>.GetNamedSilentFail(gene.def.defName);
                 if (def != null)
                 {
-                    prompts += def.prompt + ", ";
+                    prompts.Add(def.prompt);
+                    foreach (string p in def.overrides.Split(',').Select(p => p.Trim()))
+                    {
+                        overridden.Add(p);
+                    }
                 }
             }
             #endif
@@ -807,13 +819,22 @@ namespace Avatar
                     {
                         AIGenPromptDef def = DefDatabase<AIGenPromptDef>.GetNamedSilentFail(apparel.def.defName);
                         if (def != null)
-                            prompts += def.prompt + ", ";
+                        {
+                            prompts.Add(def.prompt);
+                            foreach (string p in def.overrides.Split(',').Select(p => p.Trim()))
+                            {
+                                overridden.Add(p);
+                            }
+                        }
                         else
-                            prompts += apparel.def.label + ", ";
+                            prompts.Add(apparel.def.label);
                     }
                 }
             }
-            return prompts;
+            foreach (string p in overridden)
+                prompts.Remove(p);
+            prompts_joind += string.Join(", ", prompts);
+            return prompts_joind;
         }
         public void GeneratePortrait()
         {
@@ -871,6 +892,7 @@ namespace Avatar
     public class AIGenPromptDef : Def
     {
         public string prompt;
+        public string overrides = "";
     }
 
     public class Prompts_Window : Window
