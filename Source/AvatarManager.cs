@@ -295,7 +295,7 @@ namespace Avatar
                 string headPath   = GetPath<AvatarHeadDef>(gender, lifeStage, headTypeName, "Core/"+gender+lifeStage+"/Head/AverageNormal");
                 string faceTattooPath = GetPath<AvatarFaceTattooDef>(gender, lifeStage, pawn.style.FaceTattoo?.defName, "Core/Unisex/FaceTattoo/NoTattoo");
                 string beardPath  = GetPath<AvatarBeardDef>(gender, lifeStage, pawn.style.beardDef?.defName ?? "NoBeard", "BEARD");
-                string hairPath = GetPath<AvatarHairDef>(gender, lifeStage, pawn.story.hairDef.defName, "HAIR");
+                string hairPath = GetPath<AvatarHairDef>(gender, lifeStage, pawn.story.hairDef?.defName ?? "Bald", "HAIR");
                 string earsPath = "Core/Unisex/Ears/Ears_Human";
                 string nosePath = "Core/"+gender+lifeStage+"/Nose/Nose"+GetFeature().nose.ToString();
                 string eyesPath = "Core/"+gender+lifeStage+"/Eyes/Eyes"+GetFeature().eyes.ToString();
