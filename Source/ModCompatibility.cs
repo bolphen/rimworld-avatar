@@ -14,6 +14,7 @@ namespace Avatar
         public static bool ColonyGroups_Loaded = ModsConfig.IsActive("DerekBickley.LTOColonyGroupsFinal");
         public static bool FacialAnimation_Loaded = ModsConfig.IsActive("Nals.FacialAnimation");
         public static bool GradientHair_Loaded = ModsConfig.IsActive("automatic.gradienthair");
+        public static bool Portraits_Loaded = ModsConfig.IsActive("twopenny.portraitsoftherim");
         public static bool VanillaFactionsExpanded_Loaded = ModsConfig.IsActive("OskarPotocki.VanillaFactionsExpanded.Core");
 
         private static Dictionary<string, FieldInfo> cachedFieldInfo = new ();
@@ -31,9 +32,9 @@ namespace Avatar
             return cachedMethodInfo[methodName];
         }
 
+        #if v1_3 || v1_4
         public static float GetVEOffset(ThingDef def)
         {
-            #if v1_3 || v1_4
             if (!cachedMethodInfo.ContainsKey("VFECore:GetModExtension_ApparelDrawPosExtension"))
                 cachedMethodInfo["VFECore:GetModExtension_ApparelDrawPosExtension"] = AccessTools.Method(typeof(Def), "GetModExtension", null, new Type[] {AccessTools.TypeByName("VFECore.ApparelDrawPosExtension")});
             var apparelDrawPosExtension = cachedMethodInfo["VFECore:GetModExtension_ApparelDrawPosExtension"].Invoke(def, null);
@@ -47,10 +48,8 @@ namespace Avatar
                     return ((Vector3) GetMethodInfo("VFECore.DrawSettings:GetDrawPosOffset").Invoke(drawSettings, new object[] {Rot4.South, new Vector3 (0,0,0)})).y;
             }
             return 0f;
-            #else
-            return def.apparel?.drawData?.dataSouth?.offset?.y ?? 0f;
-            #endif
         }
+        #endif
 
         public static (string, Color)? GetGradientHair(Pawn pawn)
         {
@@ -69,6 +68,16 @@ namespace Avatar
                 }
             }
             return null;
+        }
+
+        public static bool PortraitShown(Pawn pawn)
+        {
+            var portrait = GetMethodInfo("PortraitsOfTheRim.PortraitUtils:GetPortrait").Invoke(null, new object[] {pawn});
+            if (portrait != null)
+            {
+                return !(bool) GetFieldInfo("PortraitsOfTheRim.Portrait:hidePortrait").GetValue(portrait);
+            }
+            return false;
         }
     }
 }

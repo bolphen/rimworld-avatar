@@ -107,7 +107,7 @@ namespace Avatar
                 "Whether xenogene ears should be drawn on top of hair and headgear.");
             listingStandard.GapLine();
             listingStandard.CheckboxLabeled("Hide main avatar", ref settings.hideMainAvatar);
-            listingStandard.CheckboxLabeled("Show avatars in colonist bar (experimental)", ref settings.showInColonistBar);
+            listingStandard.CheckboxLabeled("Show avatars in colonist bar", ref settings.showInColonistBar);
             if (settings.showInColonistBar && !ModCompatibility.ColonyGroups_Loaded)
             {
                 #if v1_3
@@ -177,7 +177,7 @@ namespace Avatar
                 Pawn pawn = null;
                 if (inspectPanel.SelThing is Pawn selectedPawn)
                     pawn = selectedPawn;
-                else if (inspectPanel.SelThing is Corpse corpse && !corpse.IsDessicated())
+                else if (inspectPanel.SelThing is Corpse corpse)
                     pawn = corpse.InnerPawn;
                 if (pawn != null && pawn.RaceProps.Humanlike)
                 {
@@ -186,7 +186,14 @@ namespace Avatar
                     Texture2D avatar = manager.GetAvatar();
                     float width = mod.settings.avatarWidth;
                     float height = width*avatar.height/avatar.width;
-                    Rect rect = new(0, inspectPanel.PaneTopY - InspectPaneUtility.TabHeight - height, width, height);
+                    float left = 0f;
+                    if (ModCompatibility.Portraits_Loaded && pawn.ageTracker.AgeBiologicalYearsFloat >= 7 && !pawn.Dead)
+                    {
+                        // move avatar to the right of the portrait
+                        left = 30f;
+                        if (ModCompatibility.PortraitShown(pawn)) left += 185f;
+                    }
+                    Rect rect = new(left, inspectPanel.PaneTopY - InspectPaneUtility.TabHeight - height, width, height);
                     GUI.DrawTexture(rect, avatar);
                     if (Event.current.type == EventType.MouseDown && Mouse.IsOver(rect)
                         && manager.CheckCursor(relPos(Event.current.mousePosition, rect)))
@@ -303,15 +310,15 @@ namespace Avatar
         public bool avatarScaling = true;
         public bool defaultDrawHeadgear = true;
         public bool showHairWithHeadgear = true;
-        public bool addOutline = false;
-        public bool hideBackground = false;
+        public bool addOutline = true;
+        public bool hideBackground = true;
         public bool hideMainAvatar = false;
         public bool showInQuestTab = true;
         public bool showInColonistBar = false;
         public float showInColonistBarSizeAdjust = 0f;
         public bool noFemaleLips = false;
         public bool noWrinkles = false;
-        public bool earsOnTop = false;
+        public bool earsOnTop = true;
 
         public string aiGenExecutable = "";
 

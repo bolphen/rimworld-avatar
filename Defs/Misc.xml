@@ -52,10 +52,12 @@
         <unisexNewbornPath>Common/TuskNewborn</unisexNewbornPath>
     </Avatar.AvatarHeadboneDef>
 
-    <Avatar.AvatarHeadDef MayRequire="Sovereign.Skeleton">
-        <defName>Head_SSS_HeadType</defName>
+    <Avatar.AvatarHeadDef>
+        <defName>Head_Skeleton</defName>
         <typeName>SSS_HeadType</typeName>
         <hideTattoo>true</hideTattoo>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
         <hideWrinkles>true</hideWrinkles>
         <hideEyes>true</hideEyes>
         <hideEars>true</hideEars>
@@ -66,7 +68,7 @@
         <unisexPath>Common/Skull</unisexPath>
     </Avatar.AvatarHeadDef>
 
-    <Avatar.AvatarBodyDef MayRequire="Sovereign.Skeleton">
+    <Avatar.AvatarBodyDef>
         <defName>Body_Skeleton</defName>
         <typeName>Skeleton</typeName>
         <unisexPath>Common/Skeleton</unisexPath>

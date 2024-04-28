@@ -126,5 +126,16 @@ namespace Avatar
             texture.Apply();
             UnityEngine.Object.Destroy(copy);
         }
+        public static void SavePng(string path, Texture2D texture)
+        {
+            if (texture.isReadable)
+                System.IO.File.WriteAllBytes(path, texture.EncodeToPNG());
+            else
+            {
+                Texture2D copy = MakeReadableCopy(texture);
+                System.IO.File.WriteAllBytes(path, copy.EncodeToPNG());
+                UnityEngine.Object.Destroy(copy);
+            }
+        }
     }
 }

@@ -579,4 +579,42 @@
         <unisexPath>Core/Apparel/FlakJacket_Spikecore</unisexPath>
     </Avatar.AvatarBodygearDef>
 
+    <!-- anomaly -->
+    <Avatar.AvatarBodygearDef>
+        <defName>Apparel_LabCoat</defName>
+        <unisexPath>Core/Apparel/LabCoat</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>CultistMask_TwistedMask</defName>
+        <unisexPath>Core/Apparel/Headgear/CultistMaskTwisted</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>CultistMask_Dreadmask</defName>
+        <unisexPath>Core/Apparel/Headgear/CultistMaskDread</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>CultistMask_SpikedApex</defName>
+        <unisexPath>Core/Apparel/Headgear/CultistMaskSpikedApex</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>CultistMask_Spikemask</defName>
+        <unisexPath>Core/Apparel/Headgear/CultistMaskSpike</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>CeremonialCultistMask_WhispererMask</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>Core/Apparel/Headgear/CeremonialCultistMaskWhisperer</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>CeremonialCultistMask_CeremonialDreadcap</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>Core/Apparel/Headgear/CeremonialCultistMaskDread</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
 </Defs>

@@ -135,6 +135,16 @@ namespace Avatar
             #endif
             return pawn.ageTracker.AgeBiologicalYears >= ageThreshold;
         }
+        #if BIOTECH
+        private bool GeneUseHairColor(Gene gene)
+        {
+            #if v1_4
+            return gene.def.HasGraphic && gene.def.graphicData.colorType == GeneColorType.Hair;
+            #else
+            return gene.def.renderNodeProperties?.Count >= 1 && gene.def.renderNodeProperties[0].colorType == PawnRenderNodeProperties.AttachmentColorType.Hair;
+            #endif
+        }
+        #endif
         private Texture2D RenderAvatar()
         {
             lastUpdateTime = Time.frameCount;
@@ -197,6 +207,15 @@ namespace Avatar
                 headTypeName = headTypeName.Substring(5);
             if (headTypeName.EndsWith("_Male"))
                 headTypeName = headTypeName.Substring(0, headTypeName.Length-5);
+            if (pawn.Corpse?.IsDessicated() ?? false
+                #if !(v1_3 || v1_4)
+                || pawn.Drawer.renderer.CurRotDrawMode == RotDrawMode.Dessicated
+                #endif
+            )
+            {
+                headTypeName = "SSS_HeadType";
+                skinColor = new (0.9f, 0.8f, 0.7f);
+            }
             bool hideTattoo = false;
             bool hideWrinkles = false;
             bool hideEyes = false;
@@ -215,6 +234,8 @@ namespace Avatar
                 {
                     headTypeDef = def;
                     hideTattoo = def.hideTattoo;
+                    hideHair = def.hideHair;
+                    hideBeard = def.hideBeard;
                     hideWrinkles = def.hideWrinkles;
                     hideEyes = def.hideEyes;
                     hideEars = def.hideEars;
@@ -268,12 +289,25 @@ namespace Avatar
                 }
             }
             // sorting
-            // Vanilla apparels are already sorted. Unfortunately Vanilla Expanded added a new mechanic that breaks it.
+            // Vanilla apparels are already sorted.
+            // However the offset can be set manually which changes rendering order.
+            #if v1_3 || v1_4
             if (ModCompatibility.VanillaFactionsExpanded_Loaded)
             {
                 bodygears = bodygears.OrderBy(a => ModCompatibility.GetVEOffset(a.Item1.def)).ToList();
             }
+            #else
+            bodygears = bodygears.OrderBy(a => a.Item1.def.apparel?.drawData?.dataSouth?.offset?.y ?? 0f).ToList();
+            #endif
             // building layers
+            #if BIOTECH
+            foreach (Gene gene in activeGenes)
+            {
+                foreach (AvatarBackDef def in DefDatabase<AvatarBackDef>.AllDefs)
+                    if (gene.def.defName == def.geneName)
+                        layers.Add(new AvatarLayer(def.GetPath(gender, lifeStage)));
+            }
+            #endif
             foreach ((Apparel apparel, AvatarBackgearDef def) in backgears)
             {
                 layers.Add(new AvatarLayer(def.GetPath(gender, lifeStage), apparel.DrawColor, 8));
@@ -303,6 +337,7 @@ namespace Avatar
                 string browsPath = "Core/"+gender+lifeStage+"/Brows/Brows"+GetFeature().brows.ToString();
                 (Color, Color) eyeColor = (new Color(.6f,.6f,.6f,1), new Color(.1f,.1f,.1f,1));
                 Color earsColor = skinColor;
+                Color noseColor = skinColor;
                 #if BIOTECH
                 foreach (Gene gene in activeGenes)
                 {
@@ -310,16 +345,16 @@ namespace Avatar
                         if (gene.def.defName == def.geneName)
                         {
                             earsPath = def.GetPath(gender, lifeStage);
-                            #if v1_4
-                            if (gene.def.HasGraphic && gene.def.graphicData.colorType == GeneColorType.Hair)
-                            #else
-                            if (gene.def.renderNodeProperties?.Count == 1 && gene.def.renderNodeProperties[0].colorType == PawnRenderNodeProperties.AttachmentColorType.Hair)
-                            #endif
+                            if (GeneUseHairColor(gene))
                                 earsColor = hairColor;
                         }
                     foreach (AvatarNoseDef def in DefDatabase<AvatarNoseDef>.AllDefs)
                         if (gene.def.defName == def.geneName)
+                        {
                             nosePath = def.GetPath(gender, lifeStage);
+                            if (GeneUseHairColor(gene))
+                                noseColor = hairColor;
+                        }
                     foreach (AvatarMouthDef def in DefDatabase<AvatarMouthDef>.AllDefs)
                         if (gene.def.defName == def.geneName)
                             mouthPath = def.GetPath(gender, lifeStage);
@@ -336,7 +371,7 @@ namespace Avatar
                 }
                 #endif
                 AvatarLayer ears = new (earsPath, earsColor);
-                AvatarLayer nose = new (nosePath, skinColor);
+                AvatarLayer nose = new (nosePath, noseColor);
                 #if BIOTECH
                 foreach (Gene gene in cosmeticGenes)
                 {
@@ -352,6 +387,16 @@ namespace Avatar
                         cosmeticGenes.Remove(gene);
                         break;
                     }
+                }
+                #endif
+                #if !(v1_3 || v1_4)
+                if (pawn.IsShambler)
+                {
+                    hairColor = MutantUtility.GetShamblerColor(hairColor);
+                    // try to make the eyes look more lifeless
+                    Color avg = new ((eyeColor.Item1.r + eyeColor.Item2.r*2)/3, (eyeColor.Item1.g + eyeColor.Item2.g*2)/3, (eyeColor.Item1.b + eyeColor.Item2.b*2)/3);
+                    eyeColor.Item1 = avg;
+                    eyeColor.Item2 = avg;
                 }
                 #endif
                 AvatarLayer eyes = new (eyesPath, skinColor);
@@ -407,7 +452,7 @@ namespace Avatar
                             #endif
                                 path += variant[variant.Length-1];
                             }
-                            layers.Add(new AvatarLayer(path, skinColor));
+                            layers.Add(new AvatarLayer(path, GeneUseHairColor(gene) ? hairColor : skinColor));
                         }
                     }
                 }
@@ -432,17 +477,21 @@ namespace Avatar
                         else if (h.Part.def.defName == "Eye")
                         {
                             AvatarLayer missingEyes = new ("Core/Unisex/Eyes/Missing", skinColor);
-                            if (h.Part.customLabel == "left eye")
+                            if (h.Part.woundAnchorTag == "LeftEye") // this means it's left...
                                 missingEyes.drawDexter = false;
-                            else if (h.Part.customLabel == "right eye")
+                            else
                                 missingEyes.drawSinister = false;
                             layers.Add(missingEyes);
                         }
                         else if (h.Part.def.defName == "Ear")
                         {
+                            #if v1_3 || v1_4
                             if (h.Part.customLabel == "left ear")
+                            #else
+                            if (h.Part.flipGraphic)
+                            #endif
                                 ears.drawSinister = false;
-                            else if (h.Part.customLabel == "right ear")
+                            else
                                 ears.drawDexter = false;
                         }
                     }
@@ -460,16 +509,40 @@ namespace Avatar
                                 else
                                 {
                                     AvatarLayer prosthetic = new (def.GetPath(gender, lifeStage));
-                                    if (h.Part.customLabel?.StartsWith("left") ?? false)
+                                    if (h.Part.def.defName == "Eye")
                                     {
-                                        prosthetic.drawDexter = false;
-                                        if (h.Part.def.defName == "Ear") ears.drawSinister = false;
+                                        if (h.Part.woundAnchorTag == "LeftEye")
+                                            prosthetic.drawDexter = false;
+                                        else
+                                            prosthetic.drawSinister = false;
                                     }
-                                    else if (h.Part.customLabel?.StartsWith("right") ?? false)
+                                    else if (h.Part.def.defName == "Ear")
                                     {
-                                        prosthetic.drawSinister = false;
-                                        if (h.Part.def.defName == "Ear") ears.drawDexter = false;
+                                        #if v1_3 || v1_4
+                                        if (h.Part.customLabel == "left ear")
+                                        #else
+                                        if (h.Part.flipGraphic)
+                                        #endif
+                                        {
+                                            ears.drawSinister = false;
+                                            prosthetic.drawDexter = false;
+                                        }
+                                        else
+                                        {
+                                            ears.drawDexter = false;
+                                            prosthetic.drawSinister = false;
+                                        }
                                     }
+                                    #if !(v1_3 || v1_4)
+                                    // handle variant
+                                    if (h.def.renderNodeProperties?.Count >= 1 && h.def.renderNodeProperties[0].texPaths != null) // only the first node is read
+                                    {
+                                        PawnRenderNode node = new (pawn, h.def.renderNodeProperties[0], null);
+                                        node.hediff = h;
+                                        string variant = node.TexPathFor(pawn); // should end with A, B, C
+                                        prosthetic.texPath += variant[variant.Length-1];
+                                    }
+                                    #endif
                                     layers.Add(prosthetic);
                                 }
                             }
@@ -504,7 +577,7 @@ namespace Avatar
                     layers.Add(brows);
                 if (!drawHeadgear)
                 {
-                    if (lifeStage != "Newborn")
+                    if (!hideHair && lifeStage != "Newborn")
                         layers.Add(hair);
                 }
                 else
@@ -718,21 +791,21 @@ namespace Avatar
                 staticTexture = null;
             }
         }
-        private void SavePng(string filename, byte[] bytes)
+        private static void SavePng(string filename, Texture2D texture)
         {
             string dir = System.IO.Path.Combine(Application.persistentDataPath, "avatar");
             if (!System.IO.Directory.Exists(dir))
                 System.IO.Directory.CreateDirectory(dir);
-            System.IO.File.WriteAllBytes(System.IO.Path.Combine(dir, filename), bytes);
+            TextureUtil.SavePng(System.IO.Path.Combine(dir, filename), texture);
         }
         public void SaveAsPng()
         {
-            SavePng("avatar-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".png", avatar.EncodeToPNG());
+            SavePng("avatar-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".png", avatar);
         }
         public void UpscaleSaveAsPng()
         {
             Texture2D upscaled = TextureUtil.MakeReadableCopy(avatar, 480, 576);
-            SavePng("avatar-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + "-upscaled.png", upscaled.EncodeToPNG());
+            SavePng("avatar-" + DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + "-upscaled.png", upscaled);
             UnityEngine.Object.Destroy(upscaled);
         }
         public void EnableStatic()
@@ -747,7 +820,7 @@ namespace Avatar
             else
             {
                 Texture2D upscaled = TextureUtil.MakeReadableCopy(avatar, 480, 576);
-                SavePng(GetPawnName() + ".png", upscaled.EncodeToPNG());
+                SavePng(GetPawnName() + ".png", upscaled);
                 UnityEngine.Object.Destroy(upscaled);
             }
             TryGetStaticTexture();
@@ -812,9 +885,9 @@ namespace Avatar
             {
                 foreach (Apparel apparel in pawn.apparel.WornApparel)
                 {
-                    if (apparel.def.apparel.layers.Exists(p => p.label == "utility"))
+                    if (apparel.def.apparel.layers.Exists(p => p.defName == "Belt"))
                         continue;
-                    if (!apparel.def.apparel.layers.Exists(p => p.label == "headgear" || p.label == "eyes")
+                    if (!apparel.def.apparel.layers.Exists(p => p.defName == "Overhead" || p.defName == "EyeCover")
                         || drawHeadgear)
                     {
                         AIGenPromptDef def = DefDatabase<AIGenPromptDef>.GetNamedSilentFail(apparel.def.defName);
@@ -845,7 +918,7 @@ namespace Avatar
             string dir = System.IO.Path.Combine(Application.persistentDataPath, "avatar");
             string path = System.IO.Path.Combine(dir, GetPawnName() + ".png");
             Texture2D upscaled = TextureUtil.MakeReadableCopy(GetAvatar(false), 480, 576);
-            SavePng(GetPawnName() + ".png", upscaled.EncodeToPNG());
+            SavePng(GetPawnName() + ".png", upscaled);
             UnityEngine.Object.Destroy(upscaled);
             ClearCachedAvatar();
             return path;

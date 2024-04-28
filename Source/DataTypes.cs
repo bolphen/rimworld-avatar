@@ -49,6 +49,8 @@ namespace Avatar
     public class AvatarHeadDef : AvatarDef
     {
         public bool hideWrinkles;
+        public bool hideHair;
+        public bool hideBeard;
         public bool hideTattoo;
         public bool hideEyes;
         public bool hideEars;
@@ -83,6 +85,7 @@ namespace Avatar
     public class AvatarBrowsDef : AvatarGeneDef {};
     public class AvatarFacialDef : AvatarGeneDef {};
     public class AvatarHeadboneDef : AvatarGeneDef {};
+    public class AvatarBackDef : AvatarGeneDef {};
     public class AvatarEyesDef : AvatarGeneDef
     {
         public Color? color1;
