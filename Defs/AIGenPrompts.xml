@@ -43,7 +43,7 @@
 
     <Avatar.AIGenPromptDef>
         <defName>Apparel_ArmorHelmetRecon</defName>
-        <prompt>high-tech helmet</prompt>
+        <prompt>high-tech helmet, (cheek pads)</prompt>
         <overrides>bald, shaved head</overrides>
     </Avatar.AIGenPromptDef>
 
@@ -81,6 +81,16 @@
     <Avatar.AIGenPromptDef>
         <defName>Headbone_MiniHorns</defName>
         <prompt>(headhorns)</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Jaw_Heavy</defName>
+        <prompt>(large cheeks), (heavy jaw), (neanderthal: 1.3)</prompt>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>Brow_Heavy</defName>
+        <prompt>(big forehead)</prompt>
     </Avatar.AIGenPromptDef>
 
     <Avatar.AIGenPromptDef>

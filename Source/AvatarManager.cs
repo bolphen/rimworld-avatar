@@ -838,7 +838,7 @@ namespace Avatar
         }
         public void GeneratePortrait()
         {
-            Find.WindowStack.Add(new Prompts_Window(pawn));
+            Find.WindowStack.Add(new Prompts_Window(pawn, drawHeadgear, drawClothes));
         }
         public string SaveToStaticPortrait()
         {
@@ -900,13 +900,13 @@ namespace Avatar
         private AvatarManager manager;
         protected string curPrompts;
         public override Vector2 InitialSize => new Vector2(800f, 200f);
-        public Prompts_Window(Pawn pawn)
+        public Prompts_Window(Pawn pawn, bool drawHeadgear = false, bool drawClothes = true)
         {
             manager = new ();
             manager.SetPawn(pawn);
             manager.SetBGColor(new Color(0,0,0,0));
-            manager.drawHeadgear = false;
-            manager.drawClothes = true;
+            manager.drawHeadgear = drawHeadgear;
+            manager.drawClothes = drawClothes;
             manager.SetCheckDowned(false);
             curPrompts = manager.GetPrompts();
             doCloseX = true;
