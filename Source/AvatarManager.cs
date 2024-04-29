@@ -319,6 +319,13 @@ namespace Avatar
                 string bodyTattooPath = GetPath<AvatarBodyTattooDef>(gender, lifeStage, pawn.style.BodyTattoo?.defName, "Core/Unisex/BodyTattoo/NoTattoo");
                 layers.Add(new AvatarLayer(bodyTattooPath, new Color(1f,1f,1f,0.8f), 8));
             }
+            #if !(v1_3 || v1_4)
+            if (pawn.IsShambler && !(headTypeName == "SSS_HeadType"))
+            {
+                int v = 2632*pawn.ageTracker.BirthDayOfYear+3341*pawn.ageTracker.BirthYear;
+                layers.Add(new AvatarLayer("Core/Unisex/Shambler/BodyScar" + ((v%5)+1).ToString(), skinColor, 8));
+            }
+            #endif
             foreach ((Apparel apparel, AvatarBodygearDef def) in bodygears)
             {
                 layers.Add(new AvatarLayer(def.GetPath(gender, lifeStage), apparel.DrawColor, 8));
@@ -459,6 +466,13 @@ namespace Avatar
                 #endif
                 if (!hideTattoo)
                     layers.Add(new AvatarLayer(faceTattooPath, new Color(1f,1f,1f,0.8f)));
+                #if !(v1_3 || v1_4)
+                if (pawn.IsShambler && !(headTypeName == "SSS_HeadType"))
+                {
+                    int v = 2632*pawn.ageTracker.BirthDayOfYear+3341*pawn.ageTracker.BirthYear;
+                    layers.Add(new AvatarLayer("Core/Unisex/Shambler/FaceScar" + ((v%25)/5+1).ToString(), skinColor));
+                }
+                #endif
                 foreach (Hediff h in pawn.health.hediffSet.hediffs.Where(h => h.Part != null))
                 {
                     if (h.def.defName == "MissingBodyPart")

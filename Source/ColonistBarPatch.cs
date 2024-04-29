@@ -41,13 +41,13 @@ namespace Avatar
             #endif
         }
 
-        private static MethodInfo Old_GetPortrait = AccessTools.Method("PortraitsCache:Get");
-        private static MethodInfo New_GetPortrait = AccessTools.Method("ColonistBar_Transpiler_Patch:GetPortrait");
+        private static MethodInfo oldMethod = AccessTools.Method("PortraitsCache:Get");
+        private static MethodInfo newMethod = AccessTools.Method("ColonistBar_Transpiler_Patch:GetPortrait");
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             foreach (CodeInstruction instruction in instructions)
             {
-                yield return instruction.Calls(Old_GetPortrait) ? new CodeInstruction(OpCodes.Call, New_GetPortrait) : instruction;
+                yield return instruction.Calls(oldMethod) ? new CodeInstruction(OpCodes.Call, newMethod) : instruction;
             }
         }
     }
@@ -217,13 +217,13 @@ namespace Avatar
                 PortraitsCache.SetDirty(pawn);
             }
         }
-        private static MethodInfo Old_SetDirty = AccessTools.Method("PortraitsCache:SetDirty");
-        private static MethodInfo New_SetDirty = AccessTools.Method("FA_UpdatePortrait_Patch:SetDirty");
+        private static MethodInfo oldMethod = AccessTools.Method("PortraitsCache:SetDirty");
+        private static MethodInfo newMethod = AccessTools.Method("FA_UpdatePortrait_Patch:SetDirty");
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             foreach (CodeInstruction instruction in instructions)
             {
-                yield return instruction.Calls(Old_SetDirty) ? new CodeInstruction(OpCodes.Call, New_SetDirty) : instruction;
+                yield return instruction.Calls(oldMethod) ? new CodeInstruction(OpCodes.Call, newMethod) : instruction;
             }
         }
     }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Reflection.Emit;
 using UnityEngine;
 using Verse;
 #if v1_5
@@ -259,6 +261,8 @@ namespace Avatar
     [HarmonyPatch(typeof(Verse.AI.JobDriver), "SetInitialPosture")]
     public static class AvatarJobDriverPatch
     {
+        private static MethodInfo oldMethod = AccessTools.Method(typeof(PortraitsCache), "SetDirty");
+        private static MethodInfo newMethod = AccessTools.Method("AvatarJobDriverPatch:SetDirty");
         public static void SetDirty(Pawn _)
         {
             // DO NOTHING!
@@ -266,8 +270,26 @@ namespace Avatar
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             foreach (CodeInstruction instruction in instructions)
-                if (instruction.Calls(AccessTools.Method(typeof(PortraitsCache), "SetDirty")))
-                    yield return new CodeInstruction(System.Reflection.Emit.OpCodes.Call, AccessTools.Method("AvatarJobDriverPatch:SetDirty"));
+                yield return (instruction.Calls(oldMethod)) ? new CodeInstruction(OpCodes.Call, newMethod) : instruction;
+        }
+    }
+
+    // Heal function calls unnecessary updates, which becomes a problem for entities with regeneration
+    // Removing them might not be the best solution, but what the hell
+    [HarmonyPatch(typeof(Verse.Hediff_Injury), "Heal")]
+    public static class AvatarHealPatch
+    {
+        private static MethodInfo oldMethod = AccessTools.Method(typeof(Verse.Pawn_HealthTracker), "Notify_HediffChanged");
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            foreach (CodeInstruction instruction in instructions)
+                if (instruction.Calls(oldMethod))
+                {
+                    // clear the stack then do a nop
+                    yield return new CodeInstruction(OpCodes.Pop);
+                    yield return new CodeInstruction(OpCodes.Pop);
+                    yield return new CodeInstruction(OpCodes.Nop);
+                }
                 else
                     yield return instruction;
         }
