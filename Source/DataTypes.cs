@@ -27,18 +27,26 @@ namespace Avatar
         {
             if (lifeStage == "Newborn" && unisexNewbornPath != null)
                 return unisexNewbornPath;
-            else if ((lifeStage == "Newborn" || lifeStage == "Child") && unisexChildPath != null)
+            if ((lifeStage == "Newborn" || lifeStage == "Child") && unisexChildPath != null)
                 return unisexChildPath;
-            else if (unisexPath != null)
+            if (unisexPath != null)
                 return unisexPath;
-            else if (lifeStage == "Newborn")
-                return gender == "Female" ? femaleNewbornPath : maleNewbornPath;
-            else if (lifeStage == "Child")
-                return gender == "Female" ? femaleChildPath : maleChildPath;
-            else if (lifeStage == "")
-                return gender == "Female" ? femalePath : malePath;
+            if (gender == "Female")
+            {
+                if (lifeStage == "Newborn" && femaleNewbornPath != null)
+                    return femaleNewbornPath;
+                if ((lifeStage == "Newborn" || lifeStage == "Child") && femaleChildPath != null)
+                    return femaleChildPath;
+                return femalePath;
+            }
             else
-                return null;
+            {
+                if (lifeStage == "Newborn" && maleNewbornPath != null)
+                    return maleNewbornPath;
+                if ((lifeStage == "Newborn" || lifeStage == "Child") && maleChildPath != null)
+                    return maleChildPath;
+                return malePath;
+            }
         }
     }
 
@@ -60,7 +68,8 @@ namespace Avatar
         public string forceBodyType;
     }
     public class AvatarBodyDef : AvatarDef {};
-    public class AvatarHediffDef : AvatarDef {};
+    public class AvatarHeadHediffDef : AvatarDef {};
+    public class AvatarBodyHediffDef : AvatarDef {};
 
     public class AvatarApparelDef : AvatarDef {};
     public class AvatarBodygearDef : AvatarApparelDef {};
@@ -97,6 +106,8 @@ namespace Avatar
     public class AvatarLayer
     {
         public string texPath;
+        public string alphaMaskPath;
+        public bool flipGraphic = false;
         public Color? color;
         public (Color, Color)? eyeColor;
         public (string, Color)? gradient;

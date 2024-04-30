@@ -107,6 +107,8 @@ namespace Avatar
             listingStandard.CheckboxLabeled("Disable wrinkles for all pawns", ref settings.noWrinkles);
             listingStandard.CheckboxLabeled("Show special ears on top", ref settings.earsOnTop,
                 "Whether xenogene ears should be drawn on top of hair and headgear.");
+            listingStandard.CheckboxLabeled("Disable corpse graphics", ref settings.noCorpseGore,
+                "Disable corpse graphics if you find them too disturbing.");
             listingStandard.GapLine();
             listingStandard.CheckboxLabeled("Hide main avatar", ref settings.hideMainAvatar);
             listingStandard.CheckboxLabeled("Show avatars in colonist bar", ref settings.showInColonistBar);
@@ -164,7 +166,7 @@ namespace Avatar
         }
     }
 
-    [HarmonyPatch(typeof(InspectPaneUtility), "DoTabs")]
+    [HarmonyPatch(typeof(InspectPaneUtility), nameof(InspectPaneUtility.DoTabs))]
     public static class UIPatch
     {
         static AvatarMod mod = LoadedModManager.GetMod<AvatarMod>();
@@ -212,7 +214,7 @@ namespace Avatar
     }
 
     // basically borrrowed from Portraits of the Rim
-    [HarmonyPatch(typeof(MainTabWindow_Quests), "DoFactionInfo")]
+    [HarmonyPatch(typeof(MainTabWindow_Quests), nameof(MainTabWindow_Quests.DoFactionInfo))]
     public static class QuestWindowPatch
     {
         static AvatarMod mod = LoadedModManager.GetMod<AvatarMod>();
@@ -258,7 +260,7 @@ namespace Avatar
     }
 
     // disable some of vanilla's portrait updating
-    [HarmonyPatch(typeof(Verse.AI.JobDriver), "SetInitialPosture")]
+    [HarmonyPatch(typeof(Verse.AI.JobDriver), nameof(Verse.AI.JobDriver.SetInitialPosture))]
     public static class AvatarJobDriverPatch
     {
         private static MethodInfo oldMethod = AccessTools.Method(typeof(PortraitsCache), "SetDirty");
@@ -276,7 +278,7 @@ namespace Avatar
 
     // Heal function calls unnecessary updates, which becomes a problem for entities with regeneration
     // Removing them might not be the best solution, but what the hell
-    [HarmonyPatch(typeof(Verse.Hediff_Injury), "Heal")]
+    [HarmonyPatch(typeof(Verse.Hediff_Injury), nameof(Verse.Hediff_Injury.Heal))]
     public static class AvatarHealPatch
     {
         private static MethodInfo oldMethod = AccessTools.Method(typeof(Verse.Pawn_HealthTracker), "Notify_HediffChanged");
@@ -296,7 +298,7 @@ namespace Avatar
     }
 
     // redraw avatar whenever ingame portrait got redrawn
-    [HarmonyPatch(typeof(PortraitsCache), "SetDirty")]
+    [HarmonyPatch(typeof(PortraitsCache), nameof(PortraitsCache.SetDirty))]
     public static class AvatarUpdateHookPatch
     {
         public static void Postfix(Pawn pawn)
@@ -311,7 +313,7 @@ namespace Avatar
     }
 
     // redraw avatar when pawn ages (for wrinkles)
-    [HarmonyPatch(typeof(Pawn_AgeTracker), "BirthdayBiological")]
+    [HarmonyPatch(typeof(Pawn_AgeTracker), nameof(Pawn_AgeTracker.BirthdayBiological))]
     public static class Pawn_AgeTracker_BirthdayBiological_Patch
     {
         public static void Postfix(ref Pawn_AgeTracker __instance)
@@ -341,6 +343,7 @@ namespace Avatar
         public bool noFemaleLips = false;
         public bool noWrinkles = false;
         public bool earsOnTop = true;
+        public bool noCorpseGore = false;
 
         public string aiGenExecutable = "";
 
@@ -364,6 +367,7 @@ namespace Avatar
             Scribe_Values.Look(ref noFemaleLips, "noFemaleLips");
             Scribe_Values.Look(ref noWrinkles, "noWrinkles");
             Scribe_Values.Look(ref earsOnTop, "earsOnTop");
+            Scribe_Values.Look(ref noCorpseGore, "noCorpseGore");
             Scribe_Values.Look(ref aiGenExecutable, "aiGenExecutable");
             if (hideBackground)
                 AvatarMod.mainManager.SetBGColor(new Color(0,0,0,0));

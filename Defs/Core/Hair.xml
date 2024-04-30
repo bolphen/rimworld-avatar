@@ -222,8 +222,6 @@
         <typeName>Primal</typeName>
         <femalePath>Core/Unisex/Hair/Primal_Female</femalePath>
         <malePath>Core/Unisex/Hair/Primal_Male</malePath>
-        <femaleChildPath>Core/Unisex/Hair/Primal_Female</femaleChildPath>
-        <maleChildPath>Core/Unisex/Hair/Primal_Male</maleChildPath>
     </Avatar.AvatarHairDef>
 
     <Avatar.AvatarHairDef>
@@ -267,8 +265,6 @@
         <typeName>Rookie</typeName>
         <femalePath>Core/Unisex/Hair/Rookie_Female</femalePath>
         <malePath>Core/Unisex/Hair/Rookie_Male</malePath>
-        <femaleChildPath>Core/Unisex/Hair/Rookie_Female</femaleChildPath>
-        <maleChildPath>Core/Unisex/Hair/Rookie_Male</maleChildPath>
     </Avatar.AvatarHairDef>
 
     <Avatar.AvatarHairDef>
@@ -306,8 +302,6 @@
         <typeName>Shaved</typeName>
         <femalePath>Core/Unisex/Hair/Shaved_Female</femalePath>
         <malePath>Core/Unisex/Hair/Shaved_Male</malePath>
-        <femaleChildPath>Core/Unisex/Hair/Shaved_Female</femaleChildPath>
-        <maleChildPath>Core/Unisex/Hair/Shaved_Male</maleChildPath>
     </Avatar.AvatarHairDef>
 
     <Avatar.AvatarHairDef>
@@ -382,4 +376,117 @@
         <unisexPath>Core/Unisex/Hair/William</unisexPath>
     </Avatar.AvatarHairDef>
 
+    <!-- anomaly -->
+    <Avatar.AvatarHairDef>
+        <defName>Hair_DoubleTuft</defName>
+        <typeName>DoubleTuft</typeName>
+        <femalePath>Core/Unisex/Hair/DoubleTuft_Female</femalePath>
+        <malePath>Core/Unisex/Hair/DoubleTuft_Male</malePath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_LargeTuft</defName>
+        <typeName>LargeTuft</typeName>
+        <unisexPath>Core/Unisex/Hair/LargeTuft</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_LongMess</defName>
+        <typeName>LongMess</typeName>
+        <unisexPath>Core/Unisex/Hair/LongMess</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_LongOily</defName>
+        <typeName>LongOily</typeName>
+        <unisexPath>Core/Unisex/Hair/LongOily</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_Parted</defName>
+        <typeName>Parted</typeName>
+        <unisexPath>Core/Unisex/Hair/Parted</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_PatchyShave</defName>
+        <typeName>PatchyShave</typeName>
+        <femalePath>Core/Unisex/Hair/PatchyShave_Female</femalePath>
+        <malePath>Core/Unisex/Hair/PatchyShave_Male</malePath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_RoughShave</defName>
+        <typeName>RoughShave</typeName>
+        <femalePath>Core/Unisex/Hair/RoughShave_Female</femalePath>
+        <malePath>Core/Unisex/Hair/RoughShave_Male</malePath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_ShavedMohawk</defName>
+        <typeName>ShavedMohawk</typeName>
+        <unisexPath>Core/Unisex/Hair/ShavedMohawk</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_ShortCut</defName>
+        <typeName>ShortCut</typeName>
+        <unisexPath>Core/Unisex/Hair/ShortCut</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_SideCut</defName>
+        <typeName>SideCut</typeName>
+        <unisexPath>Core/Unisex/Hair/SideCut</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_SideSpikes</defName>
+        <typeName>SideSpikes</typeName>
+        <unisexPath>Core/Unisex/Hair/SideSpikes</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_Ghoul_Furious</defName>
+        <typeName>Ghoul_Furious</typeName>
+        <unisexPath>Core/Unisex/Hair/Ghoul_Furious</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_Ghoul_Hungry</defName>
+        <typeName>Ghoul_Hungry</typeName>
+        <unisexPath>Core/Unisex/Hair/Ghoul_Hungry</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_Ghoul_Ravenous</defName>
+        <typeName>Ghoul_Ravenous</typeName>
+        <unisexPath>Core/Unisex/Hair/Ghoul_Ravenous</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_Ghoul_Twisted</defName>
+        <typeName>Ghoul_Twisted</typeName>
+        <unisexPath>Core/Unisex/Hair/Ghoul_Twisted</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_Ghoul_Vengeful</defName>
+        <typeName>Ghoul_Vengeful</typeName>
+        <unisexPath>Core/Unisex/Hair/Ghoul_Vengeful</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_Ghoul_Warped</defName>
+        <typeName>Ghoul_Warped</typeName>
+        <unisexPath>Core/Unisex/Hair/Ghoul_Warped</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_Ghoul_Wicked</defName>
+        <typeName>Ghoul_Wicked</typeName>
+        <unisexPath>Core/Unisex/Hair/Ghoul_Wicked</unisexPath>
+    </Avatar.AvatarHairDef>
+
 </Defs>
+

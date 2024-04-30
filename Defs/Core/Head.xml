@@ -169,4 +169,29 @@
         <unisexNewbornPath>Core/Unisex/Head/Furskin_Heavy_Newborn</unisexNewbornPath>
     </Avatar.AvatarHeadDef>
 
+    <Avatar.AvatarHeadDef>
+        <defName>Head_Ghoul_Normal</defName>
+        <typeName>Ghoul_Normal</typeName>
+        <unisexPath>Core/Unisex/Head/Ghoul_Normal</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_Ghoul_Narrow</defName>
+        <typeName>Ghoul_Narrow</typeName>
+        <unisexPath>Core/Unisex/Head/Ghoul_Narrow</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_Ghoul_Wide</defName>
+        <typeName>Ghoul_Wide</typeName>
+        <unisexPath>Core/Unisex/Head/Ghoul_Wide</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_Ghoul_Heavy</defName>
+        <typeName>Ghoul_Heavy</typeName>
+        <unisexPath>Core/Unisex/Head/Ghoul_Heavy</unisexPath>
+    </Avatar.AvatarHeadDef>
+
 </Defs>
+

@@ -65,13 +65,17 @@
         <hideMouth>true</hideMouth>
         <specialNoJaw>true</specialNoJaw>
         <forceBodyType>Skeleton</forceBodyType>
-        <unisexPath>Common/Skull</unisexPath>
+        <unisexPath>Core/Unisex/Corpse/Skull</unisexPath>
+        <unisexChildPath>Core/Unisex/Corpse/SkullChild</unisexChildPath>
+        <unisexNewbornPath>Core/Unisex/Corpse/SkullNewborn</unisexNewbornPath>
     </Avatar.AvatarHeadDef>
 
     <Avatar.AvatarBodyDef>
         <defName>Body_Skeleton</defName>
         <typeName>Skeleton</typeName>
-        <unisexPath>Common/Skeleton</unisexPath>
+        <unisexPath>Core/Unisex/Corpse/Skeleton</unisexPath>
+        <unisexChildPath>Core/Unisex/Corpse/SkeletonChild</unisexChildPath>
+        <unisexNewbornPath>Core/Unisex/Corpse/SkeletonNewborn</unisexNewbornPath>
     </Avatar.AvatarBodyDef>
 
 </Defs>

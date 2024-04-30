@@ -1,6 +1,9 @@
 ﻿#if v1_4 || v1_5
 #define BIOTECH
 #endif
+#if v1_5
+#define ANOMALY
+#endif
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -90,11 +93,15 @@ namespace Avatar
                 ClearCachedAvatar();
             }
         }
+        private int Seed()
+        {
+            return 2632*pawn.ageTracker.BirthDayOfYear+3341*pawn.ageTracker.BirthYear;
+        }
         private Feature GetFeature()
         {
             if (feature == null)
             {
-                int v = 2632*pawn.ageTracker.BirthDayOfYear+3341*pawn.ageTracker.BirthYear;
+                int v = Seed();
                 feature = new ((v%450)/90+1, (v%90)/15+1, (v%15)/3+1, (v%3)+1);
             }
             return feature;
@@ -115,6 +122,31 @@ namespace Avatar
                 def = DefDatabase<T>.GetNamedSilentFail(comp.styleDef.defName);
             return def ?? DefDatabase<T>.GetNamedSilentFail(apparel.def.defName);
         }
+        #if !(v1_3 || v1_4)
+        private List<AvatarLayer> HandleRenderNode(List<PawnRenderNodeProperties> props, Hediff hediff, string path, Color skinColor, Color hairColor)
+        {
+            List<AvatarLayer> layers = new ();
+            foreach (PawnRenderNodeProperties prop in props)
+            {
+                AvatarLayer attachment = new (path);
+                if (prop.flipGraphic == true)
+                    attachment.flipGraphic = true;
+                if (prop.texPaths != null)
+                {
+                    PawnRenderNode node = new (pawn, prop, null);
+                    node.hediff = hediff;
+                    string variant = node.TexPathFor(pawn); // should end with A, B, C
+                    attachment.texPath += variant[variant.Length-1];
+                }
+                if (prop.colorType == PawnRenderNodeProperties.AttachmentColorType.Skin)
+                    attachment.color = skinColor;
+                if (prop.colorType == PawnRenderNodeProperties.AttachmentColorType.Hair)
+                    attachment.color = hairColor;
+                layers.Add(attachment);
+            }
+            return layers;
+        }
+        #endif
         private bool ShouldShowWrinkles()
         {
             float ageThreshold = 0.7f*pawn.RaceProps.lifeExpectancy;
@@ -176,6 +208,9 @@ namespace Avatar
             int downedOffset = 10;
             Color skinColor = pawn.story.SkinColor;
             Color hairColor = pawn.story.hairColor;
+            #if ANOMALY
+            if (pawn.IsShambler) hairColor = MutantUtility.GetShamblerColor(hairColor);
+            #endif
             List<AvatarLayer> layers = new ();
             AvatarLayer coversAll = null;
             #if BIOTECH
@@ -207,14 +242,10 @@ namespace Avatar
                 headTypeName = headTypeName.Substring(5);
             if (headTypeName.EndsWith("_Male"))
                 headTypeName = headTypeName.Substring(0, headTypeName.Length-5);
-            if (pawn.Corpse?.IsDessicated() ?? false
-                #if !(v1_3 || v1_4)
-                || pawn.Drawer.renderer.CurRotDrawMode == RotDrawMode.Dessicated
-                #endif
-            )
+            if (pawn.Drawer.renderer.CurRotDrawMode == RotDrawMode.Dessicated)
             {
                 headTypeName = "SSS_HeadType";
-                skinColor = new (0.9f, 0.8f, 0.7f);
+                skinColor = new (0.8f, 0.7f, 0.6f);
             }
             bool hideTattoo = false;
             bool hideWrinkles = false;
@@ -312,23 +343,70 @@ namespace Avatar
             {
                 layers.Add(new AvatarLayer(def.GetPath(gender, lifeStage), apparel.DrawColor, 8));
             }
+            List<AvatarLayer> body_layers = new ();
             string neckPath = GetPath<AvatarBodyDef>(gender, lifeStage, bodyTypeName, "Core/"+gender+lifeStage+"/Neck");
-            layers.Add(new AvatarLayer(neckPath, skinColor, 8));
+            body_layers.Add(new AvatarLayer(neckPath, skinColor, 8));
             if (!hideTattoo)
             {
                 string bodyTattooPath = GetPath<AvatarBodyTattooDef>(gender, lifeStage, pawn.style.BodyTattoo?.defName, "Core/Unisex/BodyTattoo/NoTattoo");
-                layers.Add(new AvatarLayer(bodyTattooPath, new Color(1f,1f,1f,0.8f), 8));
+                body_layers.Add(new AvatarLayer(bodyTattooPath, new Color(1f,1f,1f,0.8f), 8));
             }
-            #if !(v1_3 || v1_4)
-            if (pawn.IsShambler && !(headTypeName == "SSS_HeadType"))
+            #if ANOMALY
+            if (pawn.IsShambler && !(headTypeName == "SSS_HeadType") && !mod.settings.noCorpseGore)
             {
-                int v = 2632*pawn.ageTracker.BirthDayOfYear+3341*pawn.ageTracker.BirthYear;
-                layers.Add(new AvatarLayer("Core/Unisex/Shambler/BodyScar" + ((v%5)+1).ToString(), skinColor, 8));
+                body_layers.Add(new AvatarLayer("Core/Unisex/Corpse/BodyScar" + ((Seed()%125)/25+1).ToString(), skinColor, 8));
             }
             #endif
+            if (pawn.Drawer.renderer.CurRotDrawMode == RotDrawMode.Rotting && !mod.settings.noCorpseGore)
+            {
+                layers.Add(new ("Core/Unisex/Corpse/Skeleton" + lifeStage, new (0.8f, 0.7f, 0.6f), 8));
+                foreach (AvatarLayer layer in body_layers)
+                {
+                    layer.alphaMaskPath = "Core/Unisex/Corpse/BodyMask" + ((Seed()%625)/125+1).ToString();
+                }
+            }
+            foreach (AvatarLayer layer in body_layers)
+                layers.Add(layer);
             foreach ((Apparel apparel, AvatarBodygearDef def) in bodygears)
             {
                 layers.Add(new AvatarLayer(def.GetPath(gender, lifeStage), apparel.DrawColor, 8));
+            }
+            foreach (Hediff h in pawn.health.hediffSet.hediffs.Where(h => h.Part != null))
+            {
+                foreach (AvatarBodyHediffDef def in DefDatabase<AvatarBodyHediffDef>.AllDefs)
+                {
+                    if (h.def.defName == def.typeName)
+                    {
+                        AvatarLayer prosthetic = new (def.GetPath(gender, lifeStage));
+                        prosthetic.offset = 8;
+                        if (h.Part.def.defName == "Shoulder")
+                        {
+                            prosthetic.color = skinColor;
+                            if (h.Part.woundAnchorTag == "LeftShoulder")
+                                prosthetic.drawDexter = false;
+                            else
+                                prosthetic.drawSinister = false;
+                            layers.Add(prosthetic);
+                        }
+                        else
+                        {
+                            #if v1_3 || v1_4
+                            layers.Add(prosthetic);
+                            #else
+                            if (h.def.renderNodeProperties != null)
+                            {
+                                foreach (AvatarLayer layer in HandleRenderNode(h.def.renderNodeProperties, h, def.GetPath(gender, lifeStage), skinColor, hairColor))
+                                {
+                                    layer.offset = 8;
+                                    layers.Add(layer);
+                                }
+                            }
+                            else
+                                layers.Add(prosthetic);
+                            #endif
+                        }
+                    }
+                }
             }
             // draw head
             if (!pawn.health.hediffSet.hediffs.Exists(h => h.def.defName == "MissingBodyPart" && h.Part != null && h.Part.def.defName == "Head"))
@@ -345,6 +423,7 @@ namespace Avatar
                 (Color, Color) eyeColor = (new Color(.6f,.6f,.6f,1), new Color(.1f,.1f,.1f,1));
                 Color earsColor = skinColor;
                 Color noseColor = skinColor;
+                List<AvatarLayer> head_layers = new ();
                 #if BIOTECH
                 foreach (Gene gene in activeGenes)
                 {
@@ -377,6 +456,9 @@ namespace Avatar
                         }
                 }
                 #endif
+                if (pawn.story.traits.allTraits.Exists(t => t.def.defName == "BodyMastery")
+                    || pawn.health.hediffSet.hediffs.Exists(t => t.def.defName == "VoidTouched"))
+                    eyeColor = (new Color(0.7f, 0.7f, 0.7f), new Color(1f, 1f, 1f));
                 AvatarLayer ears = new (earsPath, earsColor);
                 AvatarLayer nose = new (nosePath, noseColor);
                 #if BIOTECH
@@ -396,16 +478,17 @@ namespace Avatar
                     }
                 }
                 #endif
-                #if !(v1_3 || v1_4)
-                if (pawn.IsShambler)
+                if (pawn.Drawer.renderer.CurRotDrawMode == RotDrawMode.Rotting
+                    #if ANOMALY
+                    || pawn.IsShambler
+                    #endif
+                )
                 {
-                    hairColor = MutantUtility.GetShamblerColor(hairColor);
                     // try to make the eyes look more lifeless
                     Color avg = new ((eyeColor.Item1.r + eyeColor.Item2.r*2)/3, (eyeColor.Item1.g + eyeColor.Item2.g*2)/3, (eyeColor.Item1.b + eyeColor.Item2.b*2)/3);
                     eyeColor.Item1 = avg;
                     eyeColor.Item2 = avg;
                 }
-                #endif
                 AvatarLayer eyes = new (eyesPath, skinColor);
                 eyes.eyeColor = eyeColor;
                 AvatarLayer mouth = new (mouthPath, skinColor);
@@ -413,11 +496,12 @@ namespace Avatar
                 AvatarLayer head = new (headPath, skinColor);
                 head.hideTop = headHideTop;
                 if (!hideEars && (!mod.settings.earsOnTop || ears.texPath == "Core/Unisex/Ears/Ears_Human")) layers.Add(ears);
-                layers.Add(head);
+                // start to build head layers
+                head_layers.Add(head);
                 if (!hideWrinkles && !mod.settings.noWrinkles)
                 {
                     if (ShouldShowWrinkles())
-                        layers.Add(new AvatarLayer("Core/Unisex/Facial/Wrinkles", skinColor));
+                        head_layers.Add(new AvatarLayer("Core/Unisex/Facial/Wrinkles", skinColor));
                 }
                 #if BIOTECH
                 foreach (Gene gene in cosmeticGenes)
@@ -428,15 +512,15 @@ namespace Avatar
                         #endif
                         )
                     {
-                        layers.Add(AvatarLayer.FromGene(gene, pawn));
+                        head_layers.Add(AvatarLayer.FromGene(gene, pawn));
                         cosmeticGenes.Remove(gene);
                         break;
                     }
                 }
                 #endif
-                if (!hideMouth) layers.Add(mouth);
-                if (!hideNose) layers.Add(nose);
-                if (!hideEyes) layers.Add(eyes);
+                if (!hideMouth) head_layers.Add(mouth);
+                if (!hideNose) head_layers.Add(nose);
+                if (!hideEyes) head_layers.Add(eyes);
                 #if BIOTECH
                 foreach (AvatarFacialDef def in DefDatabase<AvatarFacialDef>.AllDefs)
                 {
@@ -459,20 +543,29 @@ namespace Avatar
                             #endif
                                 path += variant[variant.Length-1];
                             }
-                            layers.Add(new AvatarLayer(path, GeneUseHairColor(gene) ? hairColor : skinColor));
+                            head_layers.Add(new AvatarLayer(path, GeneUseHairColor(gene) ? hairColor : skinColor));
                         }
                     }
                 }
                 #endif
                 if (!hideTattoo)
-                    layers.Add(new AvatarLayer(faceTattooPath, new Color(1f,1f,1f,0.8f)));
-                #if !(v1_3 || v1_4)
-                if (pawn.IsShambler && !(headTypeName == "SSS_HeadType"))
+                    head_layers.Add(new AvatarLayer(faceTattooPath, new Color(1f,1f,1f,0.8f)));
+                #if ANOMALY
+                if (pawn.IsShambler && !(headTypeName == "SSS_HeadType") && !mod.settings.noCorpseGore)
                 {
-                    int v = 2632*pawn.ageTracker.BirthDayOfYear+3341*pawn.ageTracker.BirthYear;
-                    layers.Add(new AvatarLayer("Core/Unisex/Shambler/FaceScar" + ((v%25)/5+1).ToString(), skinColor));
+                    head_layers.Add(new AvatarLayer("Core/Unisex/Corpse/FaceScar" + ((Seed()%25)/5+1).ToString(), skinColor));
                 }
                 #endif
+                if (pawn.Drawer.renderer.CurRotDrawMode == RotDrawMode.Rotting && !mod.settings.noCorpseGore)
+                {
+                    layers.Add(new ("Core/Unisex/Corpse/Skull" + lifeStage, new (0.8f, 0.7f, 0.6f)));
+                    foreach (AvatarLayer layer in head_layers)
+                    {
+                        layer.alphaMaskPath = "Core/Unisex/Corpse/FaceMask" + ((Seed()%5)+1).ToString();
+                    }
+                }
+                foreach (AvatarLayer layer in head_layers)
+                    layers.Add(layer);
                 foreach (Hediff h in pawn.health.hediffSet.hediffs.Where(h => h.Part != null))
                 {
                     if (h.def.defName == "MissingBodyPart")
@@ -511,7 +604,7 @@ namespace Avatar
                     }
                     else
                     {
-                        foreach (AvatarHediffDef def in DefDatabase<AvatarHediffDef>.AllDefs)
+                        foreach (AvatarHeadHediffDef def in DefDatabase<AvatarHeadHediffDef>.AllDefs)
                         {
                             if (h.def.defName == def.typeName)
                             {
@@ -529,6 +622,8 @@ namespace Avatar
                                             prosthetic.drawDexter = false;
                                         else
                                             prosthetic.drawSinister = false;
+                                        if (lifeStage != "") prosthetic.offset = -1;
+                                        layers.Add(prosthetic);
                                     }
                                     else if (h.Part.def.defName == "Ear")
                                     {
@@ -546,18 +641,20 @@ namespace Avatar
                                             ears.drawDexter = false;
                                             prosthetic.drawSinister = false;
                                         }
+                                        layers.Add(prosthetic);
                                     }
-                                    #if !(v1_3 || v1_4)
-                                    // handle variant
-                                    if (h.def.renderNodeProperties?.Count >= 1 && h.def.renderNodeProperties[0].texPaths != null) // only the first node is read
+                                    else
                                     {
-                                        PawnRenderNode node = new (pawn, h.def.renderNodeProperties[0], null);
-                                        node.hediff = h;
-                                        string variant = node.TexPathFor(pawn); // should end with A, B, C
-                                        prosthetic.texPath += variant[variant.Length-1];
+                                        #if v1_3 || v1_4
+                                        layers.Add(prosthetic);
+                                        #else
+                                        if (h.def.renderNodeProperties != null)
+                                            foreach (AvatarLayer layer in HandleRenderNode(h.def.renderNodeProperties, h, def.GetPath(gender, lifeStage), skinColor, hairColor))
+                                                layers.Add(layer);
+                                        else
+                                            layers.Add(prosthetic);
+                                        #endif
                                     }
-                                    #endif
-                                    layers.Add(prosthetic);
                                 }
                             }
                         }
@@ -635,6 +732,7 @@ namespace Avatar
                 {
                     Texture2D texture = null;
                     Texture2D mask = null;
+                    Texture2D alphaMask = null;
                     if (layer.fallback is (string, int, string) fallback)
                     {
                         // fallback to vanilla texture
@@ -653,6 +751,12 @@ namespace Avatar
                         Texture2D maskTexture = mod.GetTexture(layer.texPath + "m", false);
                         if (maskTexture != null)
                             mask = TextureUtil.MakeReadableCopy(maskTexture);
+                        if (layer.alphaMaskPath != null)
+                        {
+                            Texture2D alphaMaskTexture = mod.GetTexture(layer.alphaMaskPath, false);
+                            if (alphaMaskTexture != null)
+                                alphaMask = TextureUtil.MakeReadableCopy(alphaMaskTexture);
+                        }
                         if (mod.settings.avatarCompression)
                             texture.Compress(true);
 
@@ -669,11 +773,13 @@ namespace Avatar
                             for (int x = (layer.drawDexter ? 0 : width/2); x < (layer.drawSinister ? width : width/2); x++)
                             {
                                 Color oldColor = downed ? canvas.GetPixel(y-halfWidthHeightDiff, x) : canvas.GetPixel(x, y);
-                                Color newColor = texture.GetPixel(x, y-(height-texture.height-layer.offset)+yOffset);
-                                if (newColor.a > 0)
+                                Color newColor = texture.GetPixel(layer.flipGraphic ? (width-1 - x) : x, y-(height-texture.height-layer.offset)+yOffset);
+                                float alpha = newColor.a;
+                                if (alphaMask != null)
+                                    alpha *= alphaMask.GetPixel(x, y-(height-texture.height-layer.offset)+yOffset).r;
+                                if (alpha > 0)
                                 {
                                     Color color = new ();
-                                    float alpha = newColor.a;
                                     if (layer.color is Color tint)
                                     {
                                         alpha *= tint.a;
@@ -738,6 +844,7 @@ namespace Avatar
                                 }
                             }
                         }
+                        if (alphaMask != null) UnityEngine.Object.Destroy(alphaMask);
                         if (mask != null) UnityEngine.Object.Destroy(mask);
                         UnityEngine.Object.Destroy(texture);
                     }

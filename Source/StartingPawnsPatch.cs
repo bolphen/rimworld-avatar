@@ -11,7 +11,7 @@ namespace Avatar
 {
     // patch vanilla starting pawns to draw the avatars
     #if !v1_5
-    [HarmonyPatch(typeof(Page_ConfigureStartingPawns), "DrawPortraitArea")]
+    [HarmonyPatch(typeof(Page_ConfigureStartingPawns), nameof(Page_ConfigureStartingPawns.DrawPortraitArea))]
     public static class StartingPawn_DrawPortraitArea_Patch
     {
         static AvatarMod mod = LoadedModManager.GetMod<AvatarMod>();
@@ -30,7 +30,7 @@ namespace Avatar
         }
     }
     #else
-    [HarmonyPatch(typeof(StartingPawnUtility), "DrawPortraitArea")]
+    [HarmonyPatch(typeof(StartingPawnUtility), nameof(StartingPawnUtility.DrawPortraitArea))]
     public static class StartingPawn_DrawPortraitArea_Patch
     {
         static AvatarMod mod = LoadedModManager.GetMod<AvatarMod>();

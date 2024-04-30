@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <Avatar.AvatarHediffDef>
+    <Avatar.AvatarHeadHediffDef>
         <defName>Eyes_Bionic</defName>
         <typeName>BionicEye</typeName>
         <unisexPath>Core/Unisex/Eyes/BionicEye</unisexPath>
-    </Avatar.AvatarHediffDef>
+    </Avatar.AvatarHeadHediffDef>
 
-    <Avatar.AvatarHediffDef>
+    <Avatar.AvatarHeadHediffDef>
         <defName>Eyes_Archotech</defName>
         <typeName>ArchotechEye</typeName>
         <unisexPath>Core/Unisex/Eyes/ArchotechEye</unisexPath>
-    </Avatar.AvatarHediffDef>
+    </Avatar.AvatarHeadHediffDef>
 
-    <Avatar.AvatarHediffDef>
+    <Avatar.AvatarHeadHediffDef>
         <defName>Ears_CochlearImplant</defName>
         <typeName>CochlearImplant</typeName>
         <unisexPath>Core/Unisex/Ears/CochlearImplant</unisexPath>
-    </Avatar.AvatarHediffDef>
+    </Avatar.AvatarHeadHediffDef>
 
-    <Avatar.AvatarHediffDef>
+    <Avatar.AvatarHeadHediffDef>
         <defName>Jaw_Denture</defName>
         <typeName>Denture</typeName>
         <unisexPath>Core/Unisex/Jaw/Denture</unisexPath>
         <unisexChildPath>Core/Unisex/Jaw/DentureChild</unisexChildPath>
         <unisexNewbornPath>Core/Unisex/Jaw/DentureNewborn</unisexNewbornPath>
-    </Avatar.AvatarHediffDef>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Jaw_Bionic</defName>
+        <typeName>BionicJaw</typeName>
+        <unisexPath>Core/Unisex/Jaw/BionicJaw</unisexPath>
+        <unisexChildPath>Core/Unisex/Jaw/BionicJawChild</unisexChildPath>
+        <unisexNewbornPath>Core/Unisex/Jaw/BionicJawNewborn</unisexNewbornPath>
+    </Avatar.AvatarHeadHediffDef>
 
     <Avatar.AvatarEarsDef>
         <defName>Ears_Cat</defName>
@@ -110,4 +118,33 @@
         <unisexNewbornPath>Core/Unisex/Horn/Headbone_CenterHorn_Newborn</unisexNewbornPath>
     </Avatar.AvatarHeadboneDef>
 
+    <Avatar.AvatarBodyHediffDef>
+        <defName>GhoulPlating</defName>
+        <typeName>GhoulPlating</typeName>
+        <unisexPath>Core/Unisex/Ghoul/GhoulPlating</unisexPath>
+    </Avatar.AvatarBodyHediffDef>
+
+    <Avatar.AvatarBodyHediffDef>
+        <defName>GhoulBarbs</defName>
+        <typeName>GhoulBarbs</typeName>
+        <unisexPath>Core/Unisex/Ghoul/GhoulBarbs</unisexPath>
+    </Avatar.AvatarBodyHediffDef>
+
+    <Avatar.AvatarBodyHediffDef>
+        <defName>Tentacle</defName>
+        <typeName>Tentacle</typeName>
+        <unisexPath>Core/Unisex/Arms/Tentacle</unisexPath>
+        <unisexChildPath>Core/Unisex/Arms/TentacleChild</unisexChildPath>
+        <unisexNewbornPath>Core/Unisex/Arms/TentacleNewborn</unisexNewbornPath>
+    </Avatar.AvatarBodyHediffDef>
+
+    <Avatar.AvatarBodyHediffDef>
+        <defName>FleshWhip</defName>
+        <typeName>FleshWhip</typeName>
+        <unisexPath>Core/Unisex/Arms/Tentacle</unisexPath>
+        <unisexChildPath>Core/Unisex/Arms/TentacleChild</unisexChildPath>
+        <unisexNewbornPath>Core/Unisex/Arms/TentacleNewborn</unisexNewbornPath>
+    </Avatar.AvatarBodyHediffDef>
+
 </Defs>
+

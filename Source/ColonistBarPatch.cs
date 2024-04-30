@@ -18,8 +18,17 @@ namespace Avatar
         }
     }
 
+    [HarmonyPatch(typeof(PrefsData), nameof(PrefsData.Apply))]
+    public static class GlobalHatSetting_Patch
+    {
+        public static void Postfix()
+        {
+            AvatarMod.ClearCachedAvatars();
+        }
+    }
+
     // patch vanilla colonist bar drawing function to use the avatars
-    [HarmonyPatch(typeof(ColonistBarColonistDrawer), "DrawColonist")]
+    [HarmonyPatch(typeof(ColonistBarColonistDrawer), nameof(ColonistBarColonistDrawer.DrawColonist))]
     public static class ColonistBar_Transpiler_Patch
     {
         private static AvatarMod mod = LoadedModManager.GetMod<AvatarMod>();
@@ -32,7 +41,8 @@ namespace Avatar
         {
             if (mod.settings.showInColonistBar)
             {
-                return mod.GetColonistBarAvatar(pawn, renderHeadgear, renderClothes);
+                // vanilla ignores the "renderHeadgear" parameter anyway...
+                return mod.GetColonistBarAvatar(pawn, !Prefs.HatsOnlyOnMap, renderClothes);
             }
             #if v1_3
             return PortraitsCache.Get(pawn, size, rotation, cameraOffset, cameraZoom, supersample, compensateForUIScale, renderHeadgear, renderClothes, overrideApparelColors, overrideHairColor, stylingStation);
@@ -89,7 +99,7 @@ namespace Avatar
     }
 
     // patch GetRect for vanilla colonist bar drawing function
-    [HarmonyPatch(typeof(ColonistBarColonistDrawer), "GetPawnTextureRect")]
+    [HarmonyPatch(typeof(ColonistBarColonistDrawer), nameof(ColonistBarColonistDrawer.GetPawnTextureRect))]
     class ColonistBar_GetRect_Patch
     {
         private static AvatarMod mod = LoadedModManager.GetMod<AvatarMod>();
