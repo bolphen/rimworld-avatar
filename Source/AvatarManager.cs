@@ -95,6 +95,13 @@ namespace Avatar
         }
         private int Seed()
         {
+            #if ANOMALY
+            if (pawn.IsDuplicate && Find.PawnDuplicator.duplicates.ContainsKey(pawn.duplicate.duplicateOf))
+            {
+                Pawn original = Find.PawnDuplicator.duplicates[pawn.duplicate.duplicateOf].First();
+                return 2632*original.ageTracker.BirthDayOfYear+3341*original.ageTracker.BirthYear;
+            }
+            #endif
             return 2632*pawn.ageTracker.BirthDayOfYear+3341*pawn.ageTracker.BirthYear;
         }
         private Feature GetFeature()
