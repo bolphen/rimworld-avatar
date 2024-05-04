@@ -19,6 +19,8 @@
         <malePath>Core/Male/Head/AveragePointy</malePath>
         <femaleChildPath>Core/FemaleChild/Head/AveragePointy</femaleChildPath>
         <maleChildPath>Core/MaleChild/Head/AveragePointy</maleChildPath>
+        <femaleNewbornPath>Core/FemaleNewborn/Head/AverageNormal</femaleNewbornPath>
+        <maleNewbornPath>Core/MaleNewborn/Head/AverageNormal</maleNewbornPath>
     </Avatar.AvatarHeadDef>
 
     <Avatar.AvatarHeadDef>
@@ -28,6 +30,8 @@
         <malePath>Core/Male/Head/AverageWide</malePath>
         <femaleChildPath>Core/FemaleChild/Head/AverageWide</femaleChildPath>
         <maleChildPath>Core/MaleChild/Head/AverageWide</maleChildPath>
+        <femaleNewbornPath>Core/FemaleNewborn/Head/AverageNormal</femaleNewbornPath>
+        <maleNewbornPath>Core/MaleNewborn/Head/AverageNormal</maleNewbornPath>
     </Avatar.AvatarHeadDef>
 
     <Avatar.AvatarHeadDef>
@@ -37,6 +41,8 @@
         <malePath>Core/Male/Head/NarrowNormal</malePath>
         <femaleChildPath>Core/FemaleChild/Head/NarrowNormal</femaleChildPath>
         <maleChildPath>Core/MaleChild/Head/NarrowNormal</maleChildPath>
+        <femaleNewbornPath>Core/FemaleNewborn/Head/AverageNormal</femaleNewbornPath>
+        <maleNewbornPath>Core/MaleNewborn/Head/AverageNormal</maleNewbornPath>
     </Avatar.AvatarHeadDef>
 
     <Avatar.AvatarHeadDef>
@@ -46,6 +52,8 @@
         <malePath>Core/Male/Head/NarrowPointy</malePath>
         <femaleChildPath>Core/FemaleChild/Head/NarrowPointy</femaleChildPath>
         <maleChildPath>Core/MaleChild/Head/NarrowPointy</maleChildPath>
+        <femaleNewbornPath>Core/FemaleNewborn/Head/AverageNormal</femaleNewbornPath>
+        <maleNewbornPath>Core/MaleNewborn/Head/AverageNormal</maleNewbornPath>
     </Avatar.AvatarHeadDef>
 
     <Avatar.AvatarHeadDef>
@@ -55,6 +63,8 @@
         <malePath>Core/Male/Head/NarrowWide</malePath>
         <femaleChildPath>Core/FemaleChild/Head/NarrowWide</femaleChildPath>
         <maleChildPath>Core/MaleChild/Head/NarrowWide</maleChildPath>
+        <femaleNewbornPath>Core/FemaleNewborn/Head/AverageNormal</femaleNewbornPath>
+        <maleNewbornPath>Core/MaleNewborn/Head/AverageNormal</maleNewbornPath>
     </Avatar.AvatarHeadDef>
 
     <Avatar.AvatarHeadDef>
