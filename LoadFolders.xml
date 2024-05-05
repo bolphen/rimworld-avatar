@@ -9,6 +9,7 @@
         <li IfModActive="kentington.saveourship2">Mods/SOS2</li>
         <li IfModActive="Malistaticy.UnderWhere">Mods/UnderWhere</li>
         <li IfModActive="vanillaexpanded.vappe">Mods/VanillaExpanded/VE_Apparel</li>
+        <li IfModActive="VanillaExpanded.VAEAccessories">Mods/VanillaExpanded/VE_Apparel_Accessories</li>
         <li IfModActive="vanillaexpanded.varme">Mods/VanillaExpanded/VE_Armour</li>
         <li IfModActive="vanillaexpanded.vpsycastse">Mods/VanillaExpanded/VE_Psycasts</li>
         <li IfModActive="oskarpotocki.vanillafactionsexpanded.medievalmodule">Mods/VanillaExpanded/VFE_Medieval</li>
@@ -26,10 +27,12 @@
         <li IfModActive="kikohi.jewelry">Mods/Jewelry</li>
         <li IfModActive="DankPyon.Medieval.Overhaul">Mods/MedievalOverhaul</li>
         <li IfModActive="Pal5k.PersonaMechs">Mods/PersonaMechs</li>
+        <li IfModActive="FS.ReviaRaceBiotech">Mods/Revia</li>
         <li IfModActive="kentington.saveourship2">Mods/SOS2</li>
         <li IfModActive="cyanobot.toddlers">Mods/Toddlers</li>
         <li IfModActive="Malistaticy.UnderWhere">Mods/UnderWhere</li>
         <li IfModActive="vanillaexpanded.vappe">Mods/VanillaExpanded/VE_Apparel</li>
+        <li IfModActive="VanillaExpanded.VAEAccessories">Mods/VanillaExpanded/VE_Apparel_Accessories</li>
         <li IfModActive="vanillaexpanded.varme">Mods/VanillaExpanded/VE_Armour</li>
         <li IfModActive="vanillaexpanded.vpsycastse">Mods/VanillaExpanded/VE_Psycasts</li>
         <li IfModActive="oskarpotocki.vfe.empire">Mods/VanillaExpanded/VFE_Empire</li>
@@ -55,10 +58,12 @@
         <li IfModActive="kikohi.jewelry">Mods/Jewelry</li>
         <li IfModActive="DankPyon.Medieval.Overhaul">Mods/MedievalOverhaul</li>
         <li IfModActive="Pal5k.PersonaMechs">Mods/PersonaMechs</li>
+        <li IfModActive="FS.ReviaRaceBiotech">Mods/Revia</li>
         <li IfModActive="kentington.saveourship2">Mods/SOS2</li>
         <li IfModActive="cyanobot.toddlers">Mods/Toddlers</li>
         <li IfModActive="Malistaticy.UnderWhere">Mods/UnderWhere</li>
         <li IfModActive="vanillaexpanded.vappe">Mods/VanillaExpanded/VE_Apparel</li>
+        <li IfModActive="VanillaExpanded.VAEAccessories">Mods/VanillaExpanded/VE_Apparel_Accessories</li>
         <li IfModActive="vanillaexpanded.varme">Mods/VanillaExpanded/VE_Armour</li>
         <li IfModActive="vanillaexpanded.vpsycastse">Mods/VanillaExpanded/VE_Psycasts</li>
         <li IfModActive="oskarpotocki.vfe.empire">Mods/VanillaExpanded/VFE_Empire</li>

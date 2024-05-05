@@ -986,15 +986,18 @@ namespace Avatar
             if (pawn.style.beardDef?.defName != "NoBeard")
             {
                 AIGenPromptDef def = DefDatabase<AIGenPromptDef>.GetNamedSilentFail(pawn.style.beardDef.defName);
-                if (def != null)
-                    prompts.Add(def.prompt);
-                else
-                    prompts.Add("beard");
+                prompts.Add(def?.prompt ?? "beard");
             }
             if (pawn.style.faceTattoo?.defName != "NoTattoo_Face")
-                prompts.Add("facial tattoo");
+            {
+                AIGenPromptDef def = DefDatabase<AIGenPromptDef>.GetNamedSilentFail(pawn.style.faceTattoo.defName);
+                prompts.Add(def?.prompt ?? "facial tattoo");
+            }
             if (pawn.style.bodyTattoo?.defName != "NoTattoo_Body")
-                prompts.Add("body tattoo");
+            {
+                AIGenPromptDef def = DefDatabase<AIGenPromptDef>.GetNamedSilentFail(pawn.style.bodyTattoo.defName);
+                prompts.Add(def?.prompt ?? "body tattoo");
+            }
             #if BIOTECH
             foreach (Gene gene in pawn.genes.GenesListForReading.Where(g => g.Active))
             {

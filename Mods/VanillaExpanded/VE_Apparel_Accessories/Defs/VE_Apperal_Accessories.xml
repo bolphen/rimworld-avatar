@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarBackgearDef>
+        <defName>VAEA_Apparel_Quiver</defName>
+        <unisexPath>VanillaExpanded/Apparel/Quiver</unisexPath>
+    </Avatar.AvatarBackgearDef>
+
+    <Avatar.AvatarBackgearDef>
+        <defName>VAEA_Apparel_BattleBanner</defName>
+        <unisexPath>VanillaExpanded/Apparel/BattleBanner</unisexPath>
+    </Avatar.AvatarBackgearDef>
+
+    <Avatar.AvatarBackgearDef>
+        <defName>VAEA_Apparel_MiniTurretPack</defName>
+        <unisexPath>VanillaExpanded/Apparel/MiniTurretPack</unisexPath>
+    </Avatar.AvatarBackgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>VAEA_Apparel_Backpack</defName>
+        <unisexPath>VanillaExpanded/Apparel/Backpack</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+</Defs>
+

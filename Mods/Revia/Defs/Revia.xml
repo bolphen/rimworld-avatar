@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarEarsDef>
+        <defName>Ears_Revia</defName>
+        <geneName>ReviaEars</geneName>
+        <unisexPath>Common/Ears/Fox</unisexPath>
+        <unisexNewbornPath>Common/Ears/FoxNewborn</unisexNewbornPath>
+    </Avatar.AvatarEarsDef>
+
+</Defs>
