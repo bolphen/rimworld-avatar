@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>VIEHAR_Apparel_Rags</defName>
+        <unisexPath>VanillaExpanded/Apparel/Rags</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>VIEHAR_Apparel_Beads</defName>
+        <unisexPath>VanillaExpanded/Apparel/Beads</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VIEHAR_Apparel_BishopHat</defName>
+        <hideTop>16</hideTop>
+        <unisexPath>VanillaExpanded/Apparel/BishopHat</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VIEHAR_Apparel_BrimlessHat</defName>
+        <hideTop>16</hideTop>
+        <unisexPath>VanillaExpanded/Apparel/BrimlessHat</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VIEHAR_Apparel_CommisarHat</defName>
+        <hideTop>16</hideTop>
+        <unisexPath>VanillaExpanded/Apparel/CommisarHat</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VIEHAR_Apparel_DeerSkull</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>VanillaExpanded/Apparel/DeerSkull</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VIEHAR_Apparel_Fez</defName>
+        <hideTop>12</hideTop>
+        <unisexPath>VanillaExpanded/Apparel/Fez</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VIEHAR_Apparel_Headbag</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>VanillaExpanded/Apparel/Headbag</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VIEHAR_Apparel_Headscarf</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>VanillaExpanded/Apparel/Headscarf</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VIEHAR_Apparel_HorseMask</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>VanillaExpanded/Apparel/HorseMask</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VIEHAR_Apparel_MilitaryCap</defName>
+        <hideTop>14</hideTop>
+        <unisexPath>VanillaExpanded/Apparel/MilitaryCap</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VIEHAR_Apparel_Skullcap</defName>
+        <hideTop>12</hideTop>
+        <unisexPath>VanillaExpanded/Apparel/Skullcap</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VIEHAR_Apparel_SpikedSkullcap</defName>
+        <hideTop>10</hideTop>
+        <unisexPath>VanillaExpanded/Apparel/SpikedSkullcap</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VIEHAR_Apparel_WideHat</defName>
+        <hideTop>16</hideTop>
+        <unisexPath>VanillaExpanded/Apparel/WideHat</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+</Defs>
+

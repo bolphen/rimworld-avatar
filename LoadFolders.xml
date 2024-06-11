@@ -11,6 +11,7 @@
         <li IfModActive="vanillaexpanded.vappe">Mods/VanillaExpanded/VE_Apparel</li>
         <li IfModActive="VanillaExpanded.VAEAccessories">Mods/VanillaExpanded/VE_Apparel_Accessories</li>
         <li IfModActive="vanillaexpanded.varme">Mods/VanillaExpanded/VE_Armour</li>
+        <li IfModActive="VanillaExpanded.VIEHAR">Mods/VanillaExpanded/VIE_HatsAndRags</li>
         <li IfModActive="vanillaexpanded.vpsycastse">Mods/VanillaExpanded/VE_Psycasts</li>
         <li IfModActive="oskarpotocki.vanillafactionsexpanded.medievalmodule">Mods/VanillaExpanded/VFE_Medieval</li>
         <li IfModActive="oskarpotocki.vfe.pirates">Mods/VanillaExpanded/VFE_Pirates</li>
@@ -23,6 +24,7 @@
         <li IfModActive="ATK.Anthrosonae">Mods/Anthrosonae</li>
         <li IfModActive="Aoba.DeadManSwitch.Core">Mods/DMS</li>
         <li IfModActive="Ykara.elStrages.EPOE">Mods/EPOE</li>
+        <li IfModActive="zal.eyeprosthetics">Mods/EyeProsthetics</li>
         <li IfModActive="DevDesigner.Blood">Mods/HouseSanguin</li>
         <li IfModActive="kikohi.jewelry">Mods/Jewelry</li>
         <li IfModActive="DankPyon.Medieval.Overhaul">Mods/MedievalOverhaul</li>
@@ -34,6 +36,7 @@
         <li IfModActive="vanillaexpanded.vappe">Mods/VanillaExpanded/VE_Apparel</li>
         <li IfModActive="VanillaExpanded.VAEAccessories">Mods/VanillaExpanded/VE_Apparel_Accessories</li>
         <li IfModActive="vanillaexpanded.varme">Mods/VanillaExpanded/VE_Armour</li>
+        <li IfModActive="VanillaExpanded.VIEHAR">Mods/VanillaExpanded/VIE_HatsAndRags</li>
         <li IfModActive="vanillaexpanded.vpsycastse">Mods/VanillaExpanded/VE_Psycasts</li>
         <li IfModActive="oskarpotocki.vfe.empire">Mods/VanillaExpanded/VFE_Empire</li>
         <li IfModActive="oskarpotocki.vanillafactionsexpanded.medievalmodule">Mods/VanillaExpanded/VFE_Medieval</li>
@@ -54,7 +57,9 @@
         <li IfModActive="Killathon.MechHumanlikes.AndroidTiers">Mods/AndroidTiers</li>
         <li IfModActive="ATK.Anthrosonae">Mods/Anthrosonae</li>
         <li IfModActive="Aoba.DeadManSwitch.Core">Mods/DMS</li>
+        <li IfModActive="Rabbit.EoDVanguard">Mods/EdgeOfDescension</li>
         <li IfModActive="Ykara.elStrages.EPOE">Mods/EPOE</li>
+        <li IfModActive="zal.eyeprosthetics">Mods/EyeProsthetics</li>
         <li IfModActive="kikohi.jewelry">Mods/Jewelry</li>
         <li IfModActive="DankPyon.Medieval.Overhaul">Mods/MedievalOverhaul</li>
         <li IfModActive="Pal5k.PersonaMechs">Mods/PersonaMechs</li>
@@ -65,6 +70,7 @@
         <li IfModActive="vanillaexpanded.vappe">Mods/VanillaExpanded/VE_Apparel</li>
         <li IfModActive="VanillaExpanded.VAEAccessories">Mods/VanillaExpanded/VE_Apparel_Accessories</li>
         <li IfModActive="vanillaexpanded.varme">Mods/VanillaExpanded/VE_Armour</li>
+        <li IfModActive="VanillaExpanded.VIEHAR">Mods/VanillaExpanded/VIE_HatsAndRags</li>
         <li IfModActive="vanillaexpanded.vpsycastse">Mods/VanillaExpanded/VE_Psycasts</li>
         <li IfModActive="oskarpotocki.vfe.empire">Mods/VanillaExpanded/VFE_Empire</li>
         <li IfModActive="oskarpotocki.vfe.pirates">Mods/VanillaExpanded/VFE_Pirates</li>

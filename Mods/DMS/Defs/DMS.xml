@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <Avatar.AvatarHediffDef>
+    <Avatar.AvatarHeadHediffDef>
         <defName>Eyes_DMS_ProstheticEye</defName>
         <typeName>DMS_ProstheticEye</typeName>
         <unisexPath>DMS/ProstheticEye</unisexPath>
-    </Avatar.AvatarHediffDef>
+    </Avatar.AvatarHeadHediffDef>
 
     <Avatar.AvatarHeadgearDef>
         <defName>DMS_Apparel_ArmyCap</defName>

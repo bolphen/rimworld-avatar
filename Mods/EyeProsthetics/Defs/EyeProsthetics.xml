@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Eyes_EPR_EyePatch</defName>
+        <typeName>EPR_Eyepatch</typeName>
+        <unisexPath>EyeProsthetics/EyePatch</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Eyes_EPR_TribalEyepatch</defName>
+        <typeName>EPR_TribalEyepatch</typeName>
+        <unisexPath>EyeProsthetics/TribalEyePatch</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Eyes_EPR_LightReceptor</defName>
+        <typeName>EPR_LightReceptor</typeName>
+        <unisexPath>EyeProsthetics/LightReceptor</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Eyes_EPR_RoyalBionicEye</defName>
+        <typeName>EPR_RoyalBionicEye</typeName>
+        <unisexPath>EyeProsthetics/RoyalBionicEye</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+</Defs>
+

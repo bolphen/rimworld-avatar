@@ -47,4 +47,17 @@
         <unisexPath>VanillaExpanded/VFE_Empire/StellicRobe</unisexPath>
     </Avatar.AvatarBodygearDef>
 
+    <!-- AIGenPromptDef -->
+    <Avatar.AIGenPromptDef>
+        <defName>VFEE_Apparel_ArmorDeserter</defName>
+        <prompt>high-tech armor, purple cape</prompt>
+        <overrides>T-shirt, button-down shirt</overrides>
+    </Avatar.AIGenPromptDef>
+
+    <Avatar.AIGenPromptDef>
+        <defName>VFEE_Apparel_DeserterHelmet</defName>
+        <prompt>high-tech open helmet with antenna</prompt>
+        <overrides>bald, shaved head</overrides>
+    </Avatar.AIGenPromptDef>
+
 </Defs>

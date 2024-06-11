@@ -575,7 +575,7 @@ namespace Avatar
                     layers.Add(layer);
                 foreach (Hediff h in pawn.health.hediffSet.hediffs.Where(h => h.Part != null))
                 {
-                    if (h.def.defName == "MissingBodyPart")
+                    if (h is Hediff_MissingPart _)
                     {
                         if (h.Part.def.defName == "Nose")
                         {
@@ -609,7 +609,7 @@ namespace Avatar
                                 ears.drawDexter = false;
                         }
                     }
-                    else
+                    else if (h is Hediff_AddedPart _)
                     {
                         foreach (AvatarHeadHediffDef def in DefDatabase<AvatarHeadHediffDef>.AllDefs)
                         {
@@ -663,6 +663,26 @@ namespace Avatar
                                         #endif
                                     }
                                 }
+                            }
+                        }
+                    }
+                    else if (h is Hediff_Injury injury && injury.IsPermanent())
+                    {
+                        string scarName = h.Part.def.defName + "_" + h.def.defName;
+                        foreach (AvatarHeadHediffDef def in DefDatabase<AvatarHeadHediffDef>.AllDefs)
+                        {
+                            if (scarName == def.typeName)
+                            {
+                                AvatarLayer scar = new (def.GetPath(gender, lifeStage), skinColor);
+                                if (lifeStage != "") scar.offset = -1;
+                                if (h.Part.def.defName == "Eye")
+                                {
+                                    if (h.Part.woundAnchorTag == "LeftEye")
+                                        scar.drawDexter = false;
+                                    else
+                                        scar.drawSinister = false;
+                                }
+                                layers.Add(scar);
                             }
                         }
                     }

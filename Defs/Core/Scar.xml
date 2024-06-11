@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Eyes_Bite_Scar</defName>
+        <typeName>Eye_Bite</typeName>
+        <unisexPath>Core/Unisex/Scar/EyesBite</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Eyes_Crush_Scar</defName>
+        <typeName>Eye_Crush</typeName>
+        <unisexPath>Core/Unisex/Scar/EyesBite</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Eyes_Shredded_Scar</defName>
+        <typeName>Eye_Shredded</typeName>
+        <unisexPath>Core/Unisex/Scar/EyesBite</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Eyes_Burn_Scar</defName>
+        <typeName>Eye_Burn</typeName>
+        <unisexPath>Core/Unisex/Scar/EyesBurn</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Eyes_AcidBurn_Scar</defName>
+        <typeName>Eye_AcidBurn</typeName>
+        <unisexPath>Core/Unisex/Scar/EyesBurn</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Eyes_ChemicalBurn_Scar</defName>
+        <typeName>Eye_ChemicalBurn</typeName>
+        <unisexPath>Core/Unisex/Scar/EyesBurn</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Eyes_ElectricalBurn_Scar</defName>
+        <typeName>Eye_ElectricalBurn</typeName>
+        <unisexPath>Core/Unisex/Scar/EyesBurn</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Eyes_Cut_Scar</defName>
+        <typeName>Eye_Cut</typeName>
+        <unisexPath>Core/Unisex/Scar/EyesCut</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Eyes_Scratch_Scar</defName>
+        <typeName>Eye_Scratch</typeName>
+        <unisexPath>Core/Unisex/Scar/EyesCut</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Eyes_Stab_Scar</defName>
+        <typeName>Eye_Stab</typeName>
+        <unisexPath>Core/Unisex/Scar/EyesCut</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Eyes_SurgicalCut_Scar</defName>
+        <typeName>Eye_SurgicalCut</typeName>
+        <unisexPath>Core/Unisex/Scar/EyesCut</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Eyes_Gunshot_Scar</defName>
+        <typeName>Eye_Gunshot</typeName>
+        <unisexPath>Core/Unisex/Scar/EyesGunshot</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Head_Bite_Scar</defName>
+        <typeName>Head_Bite</typeName>
+        <unisexPath>Core/Unisex/Scar/HeadBite</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Head_Crush_Scar</defName>
+        <typeName>Head_Crush</typeName>
+        <unisexPath>Core/Unisex/Scar/HeadBite</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Head_Shredded_Scar</defName>
+        <typeName>Head_Shredded</typeName>
+        <unisexPath>Core/Unisex/Scar/HeadBite</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Head_Burn_Scar</defName>
+        <typeName>Head_Burn</typeName>
+        <unisexPath>Core/Unisex/Scar/HeadBurn</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Head_AcidBurn_Scar</defName>
+        <typeName>Head_AcidBurn</typeName>
+        <unisexPath>Core/Unisex/Scar/HeadBurn</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Head_ChemicalBurn_Scar</defName>
+        <typeName>Head_ChemicalBurn</typeName>
+        <unisexPath>Core/Unisex/Scar/HeadBurn</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Head_ElectricalBurn_Scar</defName>
+        <typeName>Head_ElectricalBurn</typeName>
+        <unisexPath>Core/Unisex/Scar/HeadBurn</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Head_Cut_Scar</defName>
+        <typeName>Head_Cut</typeName>
+        <unisexPath>Core/Unisex/Scar/HeadCut</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Head_Scratch_Scar</defName>
+        <typeName>Head_Scratch</typeName>
+        <unisexPath>Core/Unisex/Scar/HeadCut</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Head_Stab_Scar</defName>
+        <typeName>Head_Stab</typeName>
+        <unisexPath>Core/Unisex/Scar/HeadCut</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Head_SurgicalCut_Scar</defName>
+        <typeName>Head_SurgicalCut</typeName>
+        <unisexPath>Core/Unisex/Scar/HeadCut</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Head_Gunshot_Scar</defName>
+        <typeName>Head_Gunshot</typeName>
+        <unisexPath>Core/Unisex/Scar/HeadGunshot</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Jaw_Bite_Scar</defName>
+        <typeName>Jaw_Bite</typeName>
+        <unisexPath>Core/Unisex/Scar/JawBite</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Jaw_Crush_Scar</defName>
+        <typeName>Jaw_Crush</typeName>
+        <unisexPath>Core/Unisex/Scar/JawBite</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Jaw_Shredded_Scar</defName>
+        <typeName>Jaw_Shredded</typeName>
+        <unisexPath>Core/Unisex/Scar/JawBite</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Jaw_Burn_Scar</defName>
+        <typeName>Jaw_Burn</typeName>
+        <unisexPath>Core/Unisex/Scar/JawBurn</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Jaw_AcidBurn_Scar</defName>
+        <typeName>Jaw_AcidBurn</typeName>
+        <unisexPath>Core/Unisex/Scar/JawBurn</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Jaw_ChemicalBurn_Scar</defName>
+        <typeName>Jaw_ChemicalBurn</typeName>
+        <unisexPath>Core/Unisex/Scar/JawBurn</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Jaw_ElectricalBurn_Scar</defName>
+        <typeName>Jaw_ElectricalBurn</typeName>
+        <unisexPath>Core/Unisex/Scar/JawBurn</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Jaw_Cut_Scar</defName>
+        <typeName>Jaw_Cut</typeName>
+        <unisexPath>Core/Unisex/Scar/JawCut</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Jaw_Scratch_Scar</defName>
+        <typeName>Jaw_Scratch</typeName>
+        <unisexPath>Core/Unisex/Scar/JawCut</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Jaw_Stab_Scar</defName>
+        <typeName>Jaw_Stab</typeName>
+        <unisexPath>Core/Unisex/Scar/JawCut</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Jaw_SurgicalCut_Scar</defName>
+        <typeName>Jaw_SurgicalCut</typeName>
+        <unisexPath>Core/Unisex/Scar/JawCut</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+    <Avatar.AvatarHeadHediffDef>
+        <defName>Jaw_Gunshot_Scar</defName>
+        <typeName>Jaw_Gunshot</typeName>
+        <unisexPath>Core/Unisex/Scar/JawGunshot</unisexPath>
+    </Avatar.AvatarHeadHediffDef>
+
+</Defs>
+
