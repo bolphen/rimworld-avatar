@@ -20,6 +20,7 @@
         <li>/</li>
         <li>1.4</li>
         <li IfModActive="sarg.alphagenes">Mods/AlphaGenes</li>
+        <li IfModActive="BotchJob.ancientarmory">Mods/AncientArmory</li>
         <li IfModActive="Killathon.MechHumanlikes.AndroidTiers">Mods/AndroidTiers</li>
         <li IfModActive="ATK.Anthrosonae">Mods/Anthrosonae</li>
         <li IfModActive="Aoba.DeadManSwitch.Core">Mods/DMS</li>
@@ -54,6 +55,7 @@
         <li>/</li>
         <li>1.5</li>
         <li IfModActive="sarg.alphagenes">Mods/AlphaGenes</li>
+        <li IfModActive="BotchJob.ancientarmory">Mods/AncientArmory</li>
         <li IfModActive="Killathon.MechHumanlikes.AndroidTiers">Mods/AndroidTiers</li>
         <li IfModActive="ATK.Anthrosonae">Mods/Anthrosonae</li>
         <li IfModActive="Aoba.DeadManSwitch.Core">Mods/DMS</li>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>BotchJob_AncientPlateArmor</defName>
+        <unisexPath>AncientArmory/PlateArmor</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>BotchJob_AncientPlateHelmet</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>AncientArmory/PlateHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>BotchJob_AncientJerkin</defName>
+        <unisexPath>AncientArmory/Jerkin</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>BotchJob_AncientHoodedHelmet</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>AncientArmory/HoodedHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>BotchJob_AncientAcolyteRobe</defName>
+        <unisexPath>AncientArmory/AcolyteRobe</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>BotchJob_AncientAcolyteCowl</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>AncientArmory/AcolyteCowl</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+</Defs>
+
