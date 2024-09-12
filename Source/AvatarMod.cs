@@ -143,15 +143,16 @@ namespace Avatar
         {
             if (!colonistBarManagers.ContainsKey(pawn))
             {
-                AvatarManager manager = new ();
-                manager.SetPawn(pawn);
-                manager.SetBGColor(new Color(0,0,0,0));
-                manager.drawHeadgear = drawHeadgear;
-                manager.drawClothes = drawClothes;
-                manager.SetCheckDowned(true);
-                colonistBarManagers[pawn] = manager;
+                AvatarManager new_manager = new ();
+                new_manager.SetPawn(pawn);
+                new_manager.SetBGColor(new Color(0,0,0,0));
+                new_manager.SetCheckDowned(true);
+                colonistBarManagers[pawn] = new_manager;
             }
-            return colonistBarManagers[pawn].GetAvatar();
+            AvatarManager manager = colonistBarManagers[pawn];
+            manager.drawHeadgear = drawHeadgear;
+            manager.drawClothes = drawClothes;
+            return manager.GetAvatar();
         }
 
         public Texture2D GetQuestTabAvatar(Pawn pawn)
@@ -187,6 +188,7 @@ namespace Avatar
                 {
                     AvatarManager manager = AvatarMod.mainManager;
                     manager.SetPawn(pawn);
+                    manager.drawClothes = !ModCompatibility.ModdedNudity(pawn);
                     Texture2D avatar = manager.GetAvatar();
                     float width = mod.settings.avatarWidth;
                     float height = width*avatar.height/avatar.width;

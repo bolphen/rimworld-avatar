@@ -12,13 +12,17 @@ namespace Avatar
     {
         public static bool CCMBar_Loaded = ModsConfig.IsActive("crashm.colorcodedmoodbar.11");
         public static bool ColonyGroups_Loaded = ModsConfig.IsActive("DerekBickley.LTOColonyGroupsFinal");
+        public static bool DBH_Loaded = ModsConfig.IsActive("Dubwise.DubsBadHygiene");
         public static bool FacialAnimation_Loaded = ModsConfig.IsActive("Nals.FacialAnimation");
         public static bool GradientHair_Loaded = ModsConfig.IsActive("automatic.gradienthair");
         public static bool Portraits_Loaded = ModsConfig.IsActive("twopenny.portraitsoftherim");
+        public static bool RegrowthCore_Loaded = ModsConfig.IsActive("ReGrowth.BOTR.Core");
+        public static bool RJW_Loaded = ModsConfig.IsActive("rim.job.world");
         public static bool VanillaFactionsExpanded_Loaded = ModsConfig.IsActive("OskarPotocki.VanillaFactionsExpanded.Core");
 
         private static Dictionary<string, FieldInfo> cachedFieldInfo = new ();
         private static Dictionary<string, MethodInfo> cachedMethodInfo = new ();
+        private static Dictionary<string, Def> cachedDef = new ();
         public static FieldInfo GetFieldInfo(string fieldName)
         {
             if (!cachedFieldInfo.ContainsKey(fieldName))
@@ -79,6 +83,47 @@ namespace Avatar
             }
             return false;
         }
+
+        public static bool GetDBHNudity(Pawn pawn)
+        {
+            if (!cachedDef.ContainsKey("DubsBadHygiene.DubDef:Washing"))
+                cachedDef["DubsBadHygiene.DubDef:Washing"] = AccessTools.StaticFieldRefAccess<Def>("DubsBadHygiene.DubDef:Washing");
+            return pawn.health.hediffSet.HasHediff((HediffDef) cachedDef["DubsBadHygiene.DubDef:Washing"]);
+        }
+
+        public static bool GetRegrowthNudity(Pawn pawn)
+        {
+            #if v1_3
+            return false;
+            #else
+            return (bool) GetMethodInfo("ReGrowthCore.ReGrowthUtils:IsBathingNow").Invoke(null, new object[] {pawn});
+            #endif
+        }
+
+        public static bool GetRJWNudity(Pawn pawn)
+        {
+            #if !(v1_3 || v1_4)
+            if (!cachedMethodInfo.ContainsKey("RJW:GetComp_CompRJW"))
+                cachedMethodInfo["RJW:GetComp_CompRJW"] = AccessTools.Method(typeof(Pawn), "GetComp", null, new Type[] {AccessTools.TypeByName("rjw.CompRJW")});
+            var compRJW = cachedMethodInfo["RJW:GetComp_CompRJW"].Invoke(pawn, null);
+            if (compRJW != null)
+            {
+                return (bool) GetFieldInfo("rjw.CompRJW:drawNude").GetValue(compRJW);
+            }
+            #endif
+            return false;
+        }
+
+        public static bool ModdedNudity(Pawn pawn)
+        {
+            bool nudity = false;
+            if (ModCompatibility.DBH_Loaded)
+                nudity |= ModCompatibility.GetDBHNudity(pawn);
+            if (ModCompatibility.RegrowthCore_Loaded)
+                nudity |= ModCompatibility.GetRegrowthNudity(pawn);
+            if (ModCompatibility.RJW_Loaded)
+                nudity |= ModCompatibility.GetRJWNudity(pawn);
+            return nudity;
+        }
     }
 }
-

@@ -42,7 +42,7 @@ namespace Avatar
             if (mod.settings.showInColonistBar)
             {
                 // vanilla ignores the "renderHeadgear" parameter anyway...
-                return mod.GetColonistBarAvatar(pawn, !Prefs.HatsOnlyOnMap, renderClothes);
+                return mod.GetColonistBarAvatar(pawn, !Prefs.HatsOnlyOnMap, !ModCompatibility.ModdedNudity(pawn));
             }
             #if v1_3
             return PortraitsCache.Get(pawn, size, rotation, cameraOffset, cameraZoom, supersample, compensateForUIScale, renderHeadgear, renderClothes, overrideApparelColors, overrideHairColor, stylingStation);
