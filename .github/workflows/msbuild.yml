@@ -1,0 +1,45 @@
+name: MSBuild
+
+on:
+  push:
+    tags:
+      - '*'
+
+env:
+  SOURCE_PATH: ./Source
+  SOLUTION_FILE_PATH: ./Source/Avatar.csproj
+  OUTPUT_NAME: rimworld-avatar.zip
+  OUTPUT_PATH_PREFIX: Avatar
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Restore
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: nuget restore ${{env.SOLUTION_FILE_PATH}}
+
+    - name: Build
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: msbuild -v:m -clp:summary ${{env.SOURCE_PATH}}
+
+    - name: Packaging
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: >
+        git archive
+        --output ${{env.OUTPUT_NAME}}
+        $(for dll in $(echo 1.*/Assemblies/*.dll);
+        do echo --prefix ${{env.OUTPUT_PATH_PREFIX}}/$(dirname $dll)/ --add-file $dll; done)
+        --prefix ${{env.OUTPUT_PATH_PREFIX}}/
+        HEAD . ":(exclude).git*"
+
+    - name: Release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: ${{env.OUTPUT_NAME}}

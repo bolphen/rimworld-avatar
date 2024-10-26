@@ -1,4 +1,6 @@
+1.*/Assemblies/*.dll
 Source/obj/
 Source/.vs/
+*.zip
 _*
 tags
