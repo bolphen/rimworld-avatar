@@ -1106,10 +1106,16 @@ namespace Avatar
     {
         public static void Generate(string image, string prompts)
         {
-            System.Diagnostics.ProcessStartInfo process = new ();
-            process.FileName = AvatarManager.mod.settings.aiGenExecutable;
-            process.Arguments = string.Format("\"{0}\" \"{1}\"", image, prompts);
-            System.Diagnostics.Process.Start(process);
+            System.Diagnostics.Process process = new ();
+            process.StartInfo.FileName = AvatarManager.mod.settings.aiGenExecutable;
+            process.StartInfo.Arguments = string.Format("\"{0}\" \"{1}\"", image, prompts);
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardError = true;
+            process.ErrorDataReceived += new System.Diagnostics.DataReceivedEventHandler((sender, e) =>
+            {
+                Log.Error(e.Data);
+            });
+            process.Start();
         }
     }
 
