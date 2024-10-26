@@ -70,14 +70,12 @@ namespace Avatar
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
-            Rect viewRect = new (0, 0, inRect.width - 17f, settings.scrollHeight);
-            Widgets.BeginScrollView(inRect, ref settings.scroll, viewRect);
-            Listing_Standard listingStandard = new Listing_Standard(inRect.AtZero(), () => settings.scroll)
+            Listing_Standard listingStandard = new Listing_Standard()
             {
-                maxOneColumn = true,
-                ColumnWidth = viewRect.width
+                boundingRect = inRect.AtZero(),
+                ColumnWidth = inRect.width / 2 - 17,
             };
-            listingStandard.Begin(viewRect);
+            listingStandard.Begin(inRect);
             #if v1_3
             listingStandard.Label("Avatar size");
             settings.avatarWidth = (float)Math.Round(
@@ -96,7 +94,7 @@ namespace Avatar
             float width = settings.avatarWidth;
             float height = width*avatar.height/avatar.width;
             listingStandard.ButtonImage(avatar, width, height);
-            listingStandard.GapLine();
+            listingStandard.NewColumn();
             listingStandard.CheckboxLabeled("Draw headgear by default", ref settings.defaultDrawHeadgear,
                 "Whether headgear should be drawn by default. Can always be toggled by clicking on the avatar.");
             listingStandard.CheckboxLabeled("Show hair with headgear", ref settings.showHairWithHeadgear,
@@ -115,12 +113,12 @@ namespace Avatar
             if (settings.showInColonistBar && !ModCompatibility.ColonyGroups_Loaded)
             {
                 #if v1_3
-                listingStandard.Label("Colonist bar avatar size adjustment");
+                listingStandard.Label("Colonist bar size adjustment");
                 settings.showInColonistBarSizeAdjust = (float)(
                     listingStandard.Slider(settings.showInColonistBarSizeAdjust, 0f, 10f));
                 #else
                 settings.showInColonistBarSizeAdjust = (float)(
-                    listingStandard.SliderLabeled("Colonist bar avatar size adjustment", settings.showInColonistBarSizeAdjust, 0f, 10f));
+                    listingStandard.SliderLabeled("Colonist bar size adjustment", settings.showInColonistBarSizeAdjust, 0f, 10f));
                 #endif
             }
             if (ModCompatibility.CCMBar_Loaded && listingStandard.ButtonText("Refresh colonist bar"))
@@ -131,12 +129,14 @@ namespace Avatar
             listingStandard.GapLine();
             listingStandard.Label("Path to the AI-gen executable");
             settings.aiGenExecutable = listingStandard.TextEntry(settings.aiGenExecutable);
-            if (Event.current.type == EventType.Layout)
+            listingStandard.Label("Base prompts", -1, "Will be added before all other prompts.\n{age}, {gender}, {lifestage} will be replaced with their values.");
+            settings.aiGenPreamble = listingStandard.TextEntry(settings.aiGenPreamble);
+            if (listingStandard.ButtonText("Reset to default"))
             {
-                settings.scrollHeight = listingStandard.CurHeight;
+                settings.aiGenPreamble = settings.aiGenPreambleDefault;
             }
             listingStandard.End();
-            Widgets.EndScrollView();
+            base.DoSettingsWindowContents(inRect);
         }
 
         public Texture2D GetColonistBarAvatar(Pawn pawn, bool drawHeadgear, bool drawClothes)
@@ -348,9 +348,8 @@ namespace Avatar
         public bool noCorpseGore = false;
 
         public string aiGenExecutable = "";
-
-        public Vector2 scroll;
-        public float scrollHeight = 0;
+        public string aiGenPreamble = "front portrait, {age}-year-old {gender} {lifestage}, ";
+        public string aiGenPreambleDefault = "front portrait, {age}-year-old {gender} {lifestage}, ";
 
         public override void ExposeData()
         {
@@ -371,6 +370,7 @@ namespace Avatar
             Scribe_Values.Look(ref earsOnTop, "earsOnTop");
             Scribe_Values.Look(ref noCorpseGore, "noCorpseGore");
             Scribe_Values.Look(ref aiGenExecutable, "aiGenExecutable");
+            Scribe_Values.Look(ref aiGenPreamble, "aiGenPreamble");
             if (hideBackground)
                 AvatarMod.mainManager.SetBGColor(new Color(0,0,0,0));
             else

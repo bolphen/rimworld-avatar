@@ -987,11 +987,10 @@ namespace Avatar
         }
         public string GetPrompts()
         {
-            string prompts_joind = "front portrait, ";
-            prompts_joind += string.Format("{0}-year-old {1} {2}, ",
-                pawn.ageTracker.AgeBiologicalYears,
-                (pawn.gender == Gender.Female) ? "female" : "male",
-                pawn.ageTracker.CurLifeStage.defName.Substring(9).ToLower());
+            string prompts_joind = mod.settings.aiGenPreamble
+                .Replace("{age}", pawn.ageTracker.AgeBiologicalYears.ToString())
+                .Replace("{gender}", (pawn.gender == Gender.Female) ? "female" : "male")
+                .Replace("{lifestage}", pawn.ageTracker.CurLifeStage.defName.Substring(9).ToLower());
             HashSet<string> prompts = new ();
             if (ShouldShowWrinkles())
                 prompts.Add(DefDatabase<AIGenPromptDef>.GetNamedSilentFail("Wrinkles")?.prompt ?? "");
@@ -1149,7 +1148,10 @@ namespace Avatar
             Widgets.Label(new Rect(0f, 0f, rect.width, 35f), "Prompts");
             Text.Font = GameFont.Small;
             GUI.DrawTexture(new Rect(0f, 35f, 100f, 120f), manager.GetAvatar(false));
-            curPrompts = Widgets.TextArea(new Rect(120f, 35f, rect.width / 2f + 60f, InitialSize.y - 75f), curPrompts);
+            curPrompts = Widgets.TextArea(new Rect(120f, 35f, rect.width / 2f + 60f, InitialSize.y - 95f), curPrompts);
+            Text.Font = GameFont.Tiny;
+            Widgets.Label(new Rect(120f, InitialSize.y - 60f, rect.width / 2f + 60f, 20f), "The base prompts (\"front portrait\" etc.) can be set in the mod settings.");
+            Text.Font = GameFont.Small;
             bool enterPressed = false;
             if (Event.current.type == EventType.KeyDown && (Event.current.keyCode == KeyCode.Return || Event.current.keyCode == KeyCode.KeypadEnter))
             {
