@@ -17,4 +17,7 @@ Show a pixel-art style avatar for pawns.
 
 -----
 
-**Note.** The repo no longer contains the assembly files. You should either download the zip from the "Releases" section (here's a [download](https://github.com/bolphen/rimworld-avatar/releases/latest/download/rimworld-avatar.zip) button again), or build them yourself.
+**Note.** The repo no longer contains the assembly files. You should either download the zip from the "Releases" section (here's a [download](https://github.com/bolphen/rimworld-avatar/releases/latest/download/rimworld-avatar.zip) button again), or build them yourself by running the following
+```bash
+nuget restore Source/Avatar.csproj; msbuild -v:m -clp:summary Source
+```
