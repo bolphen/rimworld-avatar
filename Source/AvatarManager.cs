@@ -1059,7 +1059,7 @@ namespace Avatar
             prompts_joind += string.Join(", ", prompts);
             return prompts_joind;
         }
-        public void GeneratePortrait()
+        public void OpenPromptsWindow()
         {
             Find.WindowStack.Add(new Prompts_Window(pawn, drawHeadgear, drawClothes));
         }
@@ -1080,7 +1080,7 @@ namespace Avatar
             {
                 options.Add(new ("Enable static portrait", EnableStatic));
                 if (mod.settings.aiGenExecutable?.Length > 0)
-                    options.Add(new ("Generate portrait", GeneratePortrait));
+                    options.Add(new ("Generate portrait", OpenPromptsWindow));
                 options.Add(new ("Save upscaled (480x576)", UpscaleSaveAsPng));
                 options.Add(new ("Save original ("+avatar.width.ToString()+"x"+avatar.height.ToString()+")", SaveAsPng));
             }
@@ -1088,7 +1088,7 @@ namespace Avatar
             {
                 options.Add(new ("Disable static portrait", DisableStatic));
                 if (mod.settings.aiGenExecutable?.Length > 0)
-                    options.Add(new ("Regenerate portrait", GeneratePortrait));
+                    options.Add(new ("Regenerate portrait", OpenPromptsWindow));
             }
             return new FloatMenu(options);
         }
@@ -1103,18 +1103,26 @@ namespace Avatar
 
     public static class AIGen
     {
-        public static void Generate(string image, string prompts)
+        public static System.Diagnostics.Process NewProcess(string image, string prompts)
         {
             System.Diagnostics.Process process = new ();
             process.StartInfo.FileName = AvatarManager.mod.settings.aiGenExecutable;
             process.StartInfo.Arguments = string.Format("\"{0}\" \"{1}\"", image, prompts);
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardError = true;
+            process.EnableRaisingEvents = true;
+            // Dumps stderr to RimWorld log
+            String errorString = "AI-gen process failed with the following error:";                 
             process.ErrorDataReceived += new System.Diagnostics.DataReceivedEventHandler((sender, e) =>
             {
-                Log.Error(e.Data);
+                // EOF is represented by a null
+                if (e.Data != null) errorString += "\n  " + e.Data;
             });
-            process.Start();
+            process.Exited += new EventHandler((sender, e) =>
+            {
+                if (process.ExitCode != 0) Log.Error(errorString);
+            });
+            return process;
         }
     }
 
@@ -1182,9 +1190,20 @@ namespace Avatar
             {
                 if (curPrompts.Length > 0)
                 {
-                    Messages.Message("AI-gen process launched", MessageTypeDefOf.TaskCompletion, historical: false);
-                    AIGen.Generate(manager.SaveToStaticPortrait(), curPrompts);
-                    Find.WindowStack.TryRemove(this);
+                    System.Diagnostics.Process process = AIGen.NewProcess(manager.SaveToStaticPortrait(), curPrompts);
+                    try
+                    {
+                        process.Start();
+                        Messages.Message("AI-gen process launched", MessageTypeDefOf.TaskCompletion, historical: false);
+                        Find.WindowStack.TryRemove(this);
+                        process.BeginErrorReadLine();
+                    }
+                    // Handles the case where the process failed to start
+                    catch (System.ComponentModel.Win32Exception e)
+                    {
+                        Messages.Message("AI-gen process failed to start", MessageTypeDefOf.RejectInput, historical: false);
+                        Log.Error("AI-gen process failed to start:\n  " + e.Message);
+                    }
                 }
                 else
                 {
