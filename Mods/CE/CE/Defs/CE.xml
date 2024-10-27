@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>CE_Apparel_PlateHelmet</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>CE/PlateHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>CE_Apparel_SimpleNightVision</defName>
+        <unisexPath>CE/SimpleNightVision</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>CE_Apparel_AdvancedNightVision</defName>
+        <unisexPath>CE/AdvancedNightVision</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarFacegearDef>
+        <defName>CE_Apparel_GasMask</defName>
+        <unisexPath>CE/GasMask</unisexPath>
+    </Avatar.AvatarFacegearDef>
+
+    <Avatar.AvatarFacegearDef>
+        <defName>CE_Apparel_ImprovGasMask</defName>
+        <unisexPath>CE/ImprovGasMask</unisexPath>
+    </Avatar.AvatarFacegearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>CE_Apparel_CompositeVest</defName>
+        <unisexPath>CE/CompositeVest</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>CE_Apparel_TacVest</defName>
+        <unisexPath>CE/TacVest</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>CE_Apparel_Backpack</defName>
+        <unisexPath>CE/Backpack</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>CE_Apparel_KidBackpack</defName>
+        <unisexPath>CE/BackpackKid</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>CE_Apparel_TribalBackpack</defName>
+        <unisexPath>CE/BackpackTribal</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>CE_Apparel_ExoFrame</defName>
+        <unisexPath>CE/ExoFrame</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+</Defs>

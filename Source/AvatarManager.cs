@@ -294,7 +294,19 @@ namespace Avatar
                     else if (GetApparelDef<AvatarBackgearDef>(apparel) is AvatarBackgearDef backgearDef)
                         backgears.Add((apparel, backgearDef));
                     else if (GetApparelDef<AvatarFacegearDef>(apparel) is AvatarFacegearDef facegearDef)
-                        facegears.Add((apparel, facegearDef));
+                    {
+                        if (drawHeadgear)
+                        {
+                            facegears.Add((apparel, facegearDef));
+                            if (mod.settings.showHairWithHeadgear)
+                                hideHair |= facegearDef.hideHair;
+                            else
+                                hideHair |= apparel.def.apparel.bodyPartGroups.Exists(p => p.defName == "UpperHead" || p.defName == "FullHead");
+                            hairHideTop = Math.Max(hairHideTop, facegearDef.hideTop);
+                            headHideTop = Math.Max(headHideTop, facegearDef.hideTop);
+                            hideBeard |= facegearDef.hideBeard;
+                        }
+                    }
                     else if (GetApparelDef<AvatarHeadgearDef>(apparel) is AvatarHeadgearDef headgearDef)
                     {
                         if (drawHeadgear)

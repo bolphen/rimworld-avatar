@@ -58,6 +58,8 @@
         <li IfModActive="BotchJob.ancientarmory">Mods/AncientArmory</li>
         <li IfModActive="Killathon.MechHumanlikes.AndroidTiers">Mods/AndroidTiers</li>
         <li IfModActive="ATK.Anthrosonae">Mods/Anthrosonae</li>
+        <li IfModActive="CETeam.CombatExtended">Mods/CE/CE</li>
+        <li IfModActive="CETeam.CombatExtendedArmors">Mods/CE/CE_Armors</li>
         <li IfModActive="Aoba.DeadManSwitch.Core">Mods/DMS</li>
         <li IfModActive="Rabbit.EoDVanguard">Mods/EdgeOfDescension</li>
         <li IfModActive="Ykara.elStrages.EPOE">Mods/EPOE</li>

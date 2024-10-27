@@ -47,17 +47,23 @@
     </Avatar.AvatarHeadgearDef>
 
     <Avatar.AvatarHeadgearDef>
+        <defName>VAE_Headgear_StoneWarMask</defName>
+        <unisexPath>VanillaExpanded/Apparel/StoneWarMask</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VAE_Apparel_RiotHelmet</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>VanillaExpanded/Apparel/RiotHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarFacegearDef>
         <defName>VAE_Headgear_Balaclava</defName>
         <hideHair>true</hideHair>
         <hideTop>12</hideTop>
         <hideBeard>true</hideBeard>
         <unisexPath>VanillaExpanded/Apparel/Balaclava</unisexPath>
-    </Avatar.AvatarHeadgearDef>
-
-    <Avatar.AvatarHeadgearDef>
-        <defName>VAE_Headgear_StoneWarMask</defName>
-        <unisexPath>VanillaExpanded/Apparel/StoneWarMask</unisexPath>
-    </Avatar.AvatarHeadgearDef>
+    </Avatar.AvatarFacegearDef>
 
     <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_TrooperArmor</defName>
@@ -122,6 +128,11 @@
     <Avatar.AvatarBodygearDef>
         <defName>VAE_Apparel_HAZMATSuit</defName>
         <unisexPath>VanillaExpanded/Apparel/HAZMATSuit</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>VAE_Apparel_RiotArmor</defName>
+        <unisexPath>VanillaExpanded/Apparel/RiotArmor</unisexPath>
     </Avatar.AvatarBodygearDef>
 
 </Defs>

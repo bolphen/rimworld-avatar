@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>CE_Armor_Sombrero</defName>
+        <hideTop>16</hideTop>
+        <unisexPath>CE/Sombrero</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>CE_Armor_BallisticGoggles</defName>
+        <unisexPath>CE/BallisticGoggles</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarFacegearDef>
+        <defName>CE_Armor_Balaclava</defName>
+        <hideHair>true</hideHair>
+        <hideTop>12</hideTop>
+        <hideBeard>true</hideBeard>
+        <unisexPath>CE/Balaclava</unisexPath>
+    </Avatar.AvatarFacegearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>CE_Armor_LargeBackpack</defName>
+        <unisexPath>CE/BackpackLarge</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>CE_Armor_Gambeson</defName>
+        <unisexPath>CE/Gambeson</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>CE_Armor_Cuirass</defName>
+        <unisexPath>CE/Cuirass</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>CE_Armor_Jumpsuit</defName>
+        <unisexPath>CE/Jumpsuit</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>CE_Armor_Poncho</defName>
+        <unisexPath>CE/Poncho</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>CE_Armor_SoftVest</defName>
+        <unisexPath>CE/SoftVest</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>CE_Armor_FragSuit</defName>
+        <unisexPath>CE/FragSuit</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+</Defs>

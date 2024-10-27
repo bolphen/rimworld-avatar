@@ -74,7 +74,12 @@ namespace Avatar
     public class AvatarApparelDef : AvatarDef {};
     public class AvatarBodygearDef : AvatarApparelDef {};
     public class AvatarBackgearDef : AvatarApparelDef {};
-    public class AvatarFacegearDef : AvatarApparelDef {};
+    public class AvatarFacegearDef : AvatarApparelDef
+    {
+        public bool hideHair;
+        public bool hideBeard;
+        public int hideTop = 0;
+    };
     public class AvatarHeadgearDef : AvatarApparelDef
     {
         public bool hideHair;
