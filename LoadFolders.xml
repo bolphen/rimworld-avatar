@@ -64,6 +64,7 @@
         <li IfModActive="Rabbit.EoDVanguard">Mods/EdgeOfDescension</li>
         <li IfModActive="Ykara.elStrages.EPOE">Mods/EPOE</li>
         <li IfModActive="zal.eyeprosthetics">Mods/EyeProsthetics</li>
+        <li IfModActive="Finch.Blood">Mods/HouseSanguin</li>
         <li IfModActive="kikohi.jewelry">Mods/Jewelry</li>
         <li IfModActive="DankPyon.Medieval.Overhaul">Mods/MedievalOverhaul</li>
         <li IfModActive="Pal5k.PersonaMechs">Mods/PersonaMechs</li>

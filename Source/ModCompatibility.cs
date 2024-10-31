@@ -19,6 +19,7 @@ namespace Avatar
         public static bool RegrowthCore_Loaded = ModsConfig.IsActive("ReGrowth.BOTR.Core");
         public static bool RJW_Loaded = ModsConfig.IsActive("rim.job.world");
         public static bool VanillaFactionsExpanded_Loaded = ModsConfig.IsActive("OskarPotocki.VanillaFactionsExpanded.Core");
+        public static bool VREHighmate_Loaded = ModsConfig.IsActive("vanillaracesexpanded.highmate");
 
         private static Dictionary<string, FieldInfo> cachedFieldInfo = new ();
         private static Dictionary<string, MethodInfo> cachedMethodInfo = new ();
@@ -114,6 +115,13 @@ namespace Avatar
             return false;
         }
 
+        public static bool GetVREHighmateNudity(Pawn pawn)
+        {
+            if (!cachedDef.ContainsKey("VanillaRacesExpandedHighmate.InternalDefOf:VRE_Naked"))
+                cachedDef["VanillaRacesExpandedHighmate.InternalDefOf:VRE_Naked"] = AccessTools.StaticFieldRefAccess<Def>("VanillaRacesExpandedHighmate.InternalDefOf:VRE_Naked");
+            return pawn.health.hediffSet.HasHediff((HediffDef) cachedDef["VanillaRacesExpandedHighmate.InternalDefOf:VRE_Naked"]);
+        }
+
         public static bool ModdedNudity(Pawn pawn)
         {
             bool nudity = false;
@@ -123,6 +131,8 @@ namespace Avatar
                 nudity |= ModCompatibility.GetRegrowthNudity(pawn);
             if (ModCompatibility.RJW_Loaded)
                 nudity |= ModCompatibility.GetRJWNudity(pawn);
+            if (ModCompatibility.VREHighmate_Loaded)
+                nudity |= ModCompatibility.GetVREHighmateNudity(pawn);
             return nudity;
         }
     }
