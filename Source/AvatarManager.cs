@@ -121,6 +121,10 @@ namespace Avatar
                     result = def.GetPath(gender, lifeStage);
             return result ?? fallbackPath;
         }
+        private string GetPathByDefName<T>(string gender, string lifeStage, string defName, string fallbackPath) where T: AvatarDef
+        {
+            return DefDatabase<T>.GetNamedSilentFail(defName)?.GetPath(gender, lifeStage) ?? fallbackPath;
+        }
         private T GetApparelDef<T>(Apparel apparel) where T: AvatarApparelDef
         {
             T def = null;
@@ -156,23 +160,23 @@ namespace Avatar
         #endif
         private bool ShouldShowWrinkles()
         {
-            float ageThreshold = 0.7f*pawn.RaceProps.lifeExpectancy;
+            float lifeExpectancy = pawn.RaceProps.lifeExpectancy;
             #if BIOTECH
             foreach (Gene gene in pawn.genes.GenesListForReading.Where(g => g.Active))
             {
                 if (gene.def.defName == "Ageless")
-                    ageThreshold = float.PositiveInfinity;
+                    lifeExpectancy = float.PositiveInfinity;
                 else if (!gene.def.statFactors.NullOrEmpty())
                 {
                     foreach (StatModifier statModifier in gene.def.statFactors)
                     {
                         if (statModifier.stat == StatDefOf.LifespanFactor)
-                            ageThreshold *= statModifier.value;
+                            lifeExpectancy *= statModifier.value;
                     }
                 }
             }
             #endif
-            return pawn.ageTracker.AgeBiologicalYears >= ageThreshold;
+            return pawn.ageTracker.AgeBiologicalYears >= 0.7 * lifeExpectancy;
         }
         #if BIOTECH
         private bool GeneUseHairColor(Gene gene)
@@ -197,6 +201,9 @@ namespace Avatar
             string lifeStage = "";
             int yOffset = 0;
             int eyeLevel = 0;
+            string harRaceName = pawn.RaceProps.AnyPawnKind.race.defName;
+            if (harRaceName == "Human")
+                harRaceName = "";
             if (pawn.ageTracker.CurLifeStage.defName == "HumanlikeBaby"
                 || pawn.ageTracker.CurLifeStage.defName == "HumanlikeToddler") // from Toddlers mod
             {
@@ -251,7 +258,7 @@ namespace Avatar
                 headTypeName = headTypeName.Substring(0, headTypeName.Length-5);
             if (pawn.Drawer.renderer.CurRotDrawMode == RotDrawMode.Dessicated)
             {
-                headTypeName = "SSS_HeadType";
+                headTypeName = "Skeleton";
                 skinColor = new (0.8f, 0.7f, 0.6f);
             }
             bool hideTattoo = false;
@@ -262,25 +269,25 @@ namespace Avatar
             bool hideMouth = false;
             bool hideHair = false;
             bool hideBeard = false;
+            bool specialNoJaw = false;
             int hairHideTop = 0;
             int headHideTop = 0;
-            AvatarHeadDef headTypeDef = null;
             string bodyTypeName = "";
             List<EyePos> eyesPos = new List<EyePos> {new EyePos (14,27,15,27), new EyePos (24,27,23,27)};
-            foreach (AvatarHeadDef def in DefDatabase<AvatarHeadDef>.AllDefs)
-                if (def.typeName == headTypeName)
-                {
-                    headTypeDef = def;
-                    hideTattoo = def.hideTattoo;
-                    hideHair = def.hideHair;
-                    hideBeard = def.hideBeard;
-                    hideWrinkles = def.hideWrinkles;
-                    hideEyes = def.hideEyes;
-                    hideEars = def.hideEars;
-                    hideNose = def.hideNose;
-                    hideMouth = def.hideMouth;
-                    bodyTypeName = def.forceBodyType;
-                }
+            AvatarHeadDef headTypeDef = DefDatabase<AvatarHeadDef>.GetNamedSilentFail("Head_" + headTypeName + harRaceName);
+            if (headTypeDef != null)
+            {
+                hideTattoo = headTypeDef.hideTattoo;
+                hideHair = headTypeDef.hideHair;
+                hideBeard = headTypeDef.hideBeard;
+                hideWrinkles = headTypeDef.hideWrinkles;
+                hideEyes = headTypeDef.hideEyes;
+                hideEars = headTypeDef.hideEars;
+                hideNose = headTypeDef.hideNose;
+                hideMouth = headTypeDef.hideMouth;
+                bodyTypeName = headTypeDef.forceBodyType;
+                specialNoJaw = headTypeDef.specialNoJaw;
+            }
             List<(Apparel, AvatarBodygearDef)> bodygears = new ();
             List<(Apparel, AvatarBackgearDef)> backgears = new ();
             List<(Apparel, AvatarFacegearDef)> facegears = new ();
@@ -363,7 +370,7 @@ namespace Avatar
                 layers.Add(new AvatarLayer(def.GetPath(gender, lifeStage), apparel.DrawColor, 8));
             }
             List<AvatarLayer> body_layers = new ();
-            string neckPath = GetPath<AvatarBodyDef>(gender, lifeStage, bodyTypeName, "Core/"+gender+lifeStage+"/Neck");
+            string neckPath = GetPathByDefName<AvatarBodyDef>(gender, lifeStage, "Body_" + bodyTypeName, "Core/"+gender+lifeStage+"/Neck");
             body_layers.Add(new AvatarLayer(neckPath, skinColor, 8));
             if (!hideTattoo)
             {
@@ -371,7 +378,7 @@ namespace Avatar
                 body_layers.Add(new AvatarLayer(bodyTattooPath, new Color(1f,1f,1f,0.8f), 8));
             }
             #if ANOMALY
-            if (pawn.IsShambler && !(headTypeName == "SSS_HeadType") && !mod.settings.noCorpseGore)
+            if (pawn.IsShambler && !(headTypeName == "Skeleton") && !mod.settings.noCorpseGore)
             {
                 body_layers.Add(new AvatarLayer("Core/Unisex/Corpse/BodyScar" + ((Seed()%125)/25+1).ToString(), skinColor, 8));
             }
@@ -430,10 +437,10 @@ namespace Avatar
             // draw head
             if (!pawn.health.hediffSet.hediffs.Exists(h => h.def.defName == "MissingBodyPart" && h.Part != null && h.Part.def.defName == "Head"))
             {
-                string headPath   = GetPath<AvatarHeadDef>(gender, lifeStage, headTypeName, "Core/"+gender+lifeStage+"/Head/AverageNormal");
+                string headPath = GetPathByDefName<AvatarHeadDef>(gender, lifeStage, "Head_" + headTypeName + harRaceName, "Core/"+gender+lifeStage+"/Head/AverageNormal");
                 string faceTattooPath = GetPath<AvatarFaceTattooDef>(gender, lifeStage, pawn.style.FaceTattoo?.defName, "Core/Unisex/FaceTattoo/NoTattoo");
-                string beardPath  = GetPath<AvatarBeardDef>(gender, lifeStage, pawn.style.beardDef?.defName ?? "NoBeard", "BEARD");
-                string hairPath = GetPath<AvatarHairDef>(gender, lifeStage, pawn.story.hairDef?.defName ?? "Bald", "HAIR");
+                string beardPath = GetPathByDefName<AvatarBeardDef>(gender, lifeStage, "Beard_" + (pawn.style.beardDef?.defName ?? "NoBeard"), "BEARD");
+                string hairPath = GetPathByDefName<AvatarHairDef>(gender, lifeStage, "Hair_" + (pawn.story.hairDef?.defName ?? "Bald"), "HAIR");
                 string earsPath = "Core/Unisex/Ears/Ears_Human";
                 string nosePath = "Core/"+gender+lifeStage+"/Nose/Nose"+GetFeature().nose.ToString();
                 string eyesPath = "Core/"+gender+lifeStage+"/Eyes/Eyes"+GetFeature().eyes.ToString();
@@ -570,7 +577,7 @@ namespace Avatar
                 if (!hideTattoo)
                     head_layers.Add(new AvatarLayer(faceTattooPath, new Color(1f,1f,1f,0.8f)));
                 #if ANOMALY
-                if (pawn.IsShambler && !(headTypeName == "SSS_HeadType") && !mod.settings.noCorpseGore)
+                if (pawn.IsShambler && !(headTypeName == "Skeleton") && !mod.settings.noCorpseGore)
                 {
                     head_layers.Add(new AvatarLayer("Core/Unisex/Corpse/FaceScar" + ((Seed()%25)/5+1).ToString(), skinColor));
                 }
@@ -595,7 +602,7 @@ namespace Avatar
                         }
                         else if (h.Part.def.defName == "Jaw")
                         {
-                            if (headTypeDef != null && headTypeDef.specialNoJaw)
+                            if (specialNoJaw)
                                 head.texPath += "NoJaw";
                             else
                                 layers.Add(new AvatarLayer("Core/Unisex/Jaw/Missing" + lifeStage, skinColor));
@@ -678,7 +685,7 @@ namespace Avatar
                             }
                         }
                     }
-                    else if (h is Hediff_Injury injury && injury.IsPermanent())
+                    else if (h is Hediff_Injury injury && injury.IsPermanent() && pawn.Drawer.renderer.CurRotDrawMode != RotDrawMode.Dessicated)
                     {
                         string scarName = h.Part.def.defName + "_" + h.def.defName;
                         foreach (AvatarHeadHediffDef def in DefDatabase<AvatarHeadHediffDef>.AllDefs)
