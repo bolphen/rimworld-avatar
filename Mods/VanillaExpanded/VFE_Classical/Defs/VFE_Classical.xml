@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VFEC_Wreath</defName>
+        <unisexPath>VanillaExpanded/VFE_Classical/Wreath</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VFEC_Apparel_LegionnaireHelmet</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>VanillaExpanded/VFE_Classical/LegionnaireHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VFEC_Apparel_CenturionHelmet</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>VanillaExpanded/VFE_Classical/CenturionHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>VFEC_Toga</defName>
+        <unisexPath>VanillaExpanded/VFE_Classical/Toga</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>VFEC_Apparel_LegionnaireArmor</defName>
+        <unisexPath>VanillaExpanded/VFE_Classical/LegionnaireArmor</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>VFEC_Apparel_CenturionArmor</defName>
+        <unisexPath>VanillaExpanded/VFE_Classical/CenturionArmor</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+</Defs>

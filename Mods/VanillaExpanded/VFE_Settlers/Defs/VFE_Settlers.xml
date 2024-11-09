@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarFacegearDef>
+        <defName>VFES_Headgear_Bandana</defName>
+        <unisexPath>VanillaExpanded/VFE_Settlers/Bandana</unisexPath>
+    </Avatar.AvatarFacegearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VFES_Headgear_Sombrero</defName>
+        <hideTop>16</hideTop>
+        <unisexPath>VanillaExpanded/VFE_Settlers/Sombrero</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VFES_Headgear_FlatCap</defName>
+        <hideTop>16</hideTop>
+        <unisexPath>VanillaExpanded/VFE_Settlers/FlatCap</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>Apparel_Vest</defName>
+        <unisexPath>VanillaExpanded/VFE_Settlers/Vest</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>Apparel_GreatDress</defName>
+        <unisexPath>VanillaExpanded/VFE_Settlers/GreatDress</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+</Defs>

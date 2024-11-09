@@ -13,8 +13,11 @@
         <li IfModActive="vanillaexpanded.varme">Mods/VanillaExpanded/VE_Armour</li>
         <li IfModActive="VanillaExpanded.VIEHAR">Mods/VanillaExpanded/VIE_HatsAndRags</li>
         <li IfModActive="vanillaexpanded.vpsycastse">Mods/VanillaExpanded/VE_Psycasts</li>
+        <li IfModActive="OskarPotocki.VFE.Classical">Mods/VanillaExpanded/VFE_Classical</li>
+        <li IfModActive="OskarPotocki.VFE.Mechanoid">Mods/VanillaExpanded/VFE_Mechanoids</li>
         <li IfModActive="oskarpotocki.vanillafactionsexpanded.medievalmodule">Mods/VanillaExpanded/VFE_Medieval</li>
         <li IfModActive="oskarpotocki.vfe.pirates">Mods/VanillaExpanded/VFE_Pirates</li>
+        <li IfModActive="OskarPotocki.VanillaFactionsExpanded.SettlersModule">Mods/VanillaExpanded/VFE_Settlers</li>
     </v1.3>
     <v1.4>
         <li>/</li>
@@ -39,9 +42,12 @@
         <li IfModActive="vanillaexpanded.varme">Mods/VanillaExpanded/VE_Armour</li>
         <li IfModActive="VanillaExpanded.VIEHAR">Mods/VanillaExpanded/VIE_HatsAndRags</li>
         <li IfModActive="vanillaexpanded.vpsycastse">Mods/VanillaExpanded/VE_Psycasts</li>
+        <li IfModActive="OskarPotocki.VFE.Classical">Mods/VanillaExpanded/VFE_Classical</li>
         <li IfModActive="oskarpotocki.vfe.empire">Mods/VanillaExpanded/VFE_Empire</li>
+        <li IfModActive="OskarPotocki.VFE.Mechanoid">Mods/VanillaExpanded/VFE_Mechanoids</li>
         <li IfModActive="oskarpotocki.vanillafactionsexpanded.medievalmodule">Mods/VanillaExpanded/VFE_Medieval</li>
         <li IfModActive="oskarpotocki.vfe.pirates">Mods/VanillaExpanded/VFE_Pirates</li>
+        <li IfModActive="OskarPotocki.VanillaFactionsExpanded.SettlersModule">Mods/VanillaExpanded/VFE_Settlers</li>
         <li IfModActive="oskarpotocki.vfe.tribals">Mods/VanillaExpanded/VFE_Tribals</li>
         <li IfModActive="vanillaracesexpanded.archon">Mods/VanillaExpanded/VRE_Archons</li>
         <li IfModActive="vanillaracesexpanded.fungoid">Mods/VanillaExpanded/VRE_Fungoids</li>
@@ -77,8 +83,11 @@
         <li IfModActive="vanillaexpanded.varme">Mods/VanillaExpanded/VE_Armour</li>
         <li IfModActive="VanillaExpanded.VIEHAR">Mods/VanillaExpanded/VIE_HatsAndRags</li>
         <li IfModActive="vanillaexpanded.vpsycastse">Mods/VanillaExpanded/VE_Psycasts</li>
+        <li IfModActive="OskarPotocki.VFE.Classical">Mods/VanillaExpanded/VFE_Classical</li>
         <li IfModActive="oskarpotocki.vfe.empire">Mods/VanillaExpanded/VFE_Empire</li>
+        <li IfModActive="OskarPotocki.VFE.Mechanoid">Mods/VanillaExpanded/VFE_Mechanoids</li>
         <li IfModActive="oskarpotocki.vfe.pirates">Mods/VanillaExpanded/VFE_Pirates</li>
+        <li IfModActive="OskarPotocki.VanillaFactionsExpanded.SettlersModule">Mods/VanillaExpanded/VFE_Settlers</li>
         <li IfModActive="oskarpotocki.vfe.tribals">Mods/VanillaExpanded/VFE_Tribals</li>
         <li IfModActive="vanillaracesexpanded.archon">Mods/VanillaExpanded/VRE_Archons</li>
         <li IfModActive="vanillaracesexpanded.fungoid">Mods/VanillaExpanded/VRE_Fungoids</li>

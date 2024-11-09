@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>VFE_MechaniteUnderArmor</defName>
+        <femalePath>VanillaExpanded/VFE_Mechanoids/MechaniteUnderArmor_Female</femalePath>
+        <malePath>VanillaExpanded/VFE_Mechanoids/MechaniteUnderArmor_Male</malePath>
+    </Avatar.AvatarBodygearDef>
+
+</Defs>
