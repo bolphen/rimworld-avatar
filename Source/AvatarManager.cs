@@ -201,9 +201,8 @@ namespace Avatar
             string lifeStage = "";
             int yOffset = 0;
             int eyeLevel = 0;
-            string harRaceName = pawn.RaceProps.AnyPawnKind.race.defName;
-            if (harRaceName == "Human")
-                harRaceName = "";
+            string raceName = pawn.RaceProps.AnyPawnKind?.race.defName ?? "Human";
+            raceName = (raceName == "Human") ? "" : ("_" + raceName);
             if (pawn.ageTracker.CurLifeStage.defName == "HumanlikeBaby"
                 || pawn.ageTracker.CurLifeStage.defName == "HumanlikeToddler") // from Toddlers mod
             {
@@ -274,7 +273,7 @@ namespace Avatar
             int headHideTop = 0;
             string bodyTypeName = "";
             List<EyePos> eyesPos = new List<EyePos> {new EyePos (14,27,15,27), new EyePos (24,27,23,27)};
-            AvatarHeadDef headTypeDef = DefDatabase<AvatarHeadDef>.GetNamedSilentFail("Head_" + headTypeName + harRaceName);
+            AvatarHeadDef headTypeDef = DefDatabase<AvatarHeadDef>.GetNamedSilentFail("Head_" + headTypeName + raceName);
             if (headTypeDef != null)
             {
                 hideTattoo = headTypeDef.hideTattoo;
@@ -437,7 +436,7 @@ namespace Avatar
             // draw head
             if (!pawn.health.hediffSet.hediffs.Exists(h => h.def.defName == "MissingBodyPart" && h.Part != null && h.Part.def.defName == "Head"))
             {
-                string headPath = GetPathByDefName<AvatarHeadDef>(gender, lifeStage, "Head_" + headTypeName + harRaceName, "Core/"+gender+lifeStage+"/Head/AverageNormal");
+                string headPath = GetPathByDefName<AvatarHeadDef>(gender, lifeStage, "Head_" + headTypeName + raceName, "Core/"+gender+lifeStage+"/Head/AverageNormal");
                 string faceTattooPath = GetPath<AvatarFaceTattooDef>(gender, lifeStage, pawn.style.FaceTattoo?.defName, "Core/Unisex/FaceTattoo/NoTattoo");
                 string beardPath = GetPathByDefName<AvatarBeardDef>(gender, lifeStage, "Beard_" + (pawn.style.beardDef?.defName ?? "NoBeard"), "BEARD");
                 string hairPath = GetPathByDefName<AvatarHairDef>(gender, lifeStage, "Hair_" + (pawn.story.hairDef?.defName ?? "Bald"), "HAIR");

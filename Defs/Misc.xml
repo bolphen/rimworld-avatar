@@ -52,30 +52,13 @@
         <unisexNewbornPath>Common/TuskNewborn</unisexNewbornPath>
     </Avatar.AvatarHeadboneDef>
 
-    <Avatar.AvatarHeadDef>
-        <defName>Head_Skeleton</defName>
-        <typeName>SSS_HeadType</typeName>
-        <hideTattoo>true</hideTattoo>
-        <hideHair>true</hideHair>
-        <hideBeard>true</hideBeard>
-        <hideWrinkles>true</hideWrinkles>
-        <hideEyes>true</hideEyes>
-        <hideEars>true</hideEars>
-        <hideNose>true</hideNose>
-        <hideMouth>true</hideMouth>
+    <Avatar.AvatarHeadDef ParentName="Custom" MayRequireAnyOf="Sovereign.Skeleton,zal.sovereignskeleton">
+        <defName>Head_SSS_HeadType_SSS_Skeleton_Race</defName>
         <specialNoJaw>true</specialNoJaw>
         <forceBodyType>Skeleton</forceBodyType>
         <unisexPath>Core/Unisex/Corpse/Skull</unisexPath>
         <unisexChildPath>Core/Unisex/Corpse/SkullChild</unisexChildPath>
         <unisexNewbornPath>Core/Unisex/Corpse/SkullNewborn</unisexNewbornPath>
     </Avatar.AvatarHeadDef>
-
-    <Avatar.AvatarBodyDef>
-        <defName>Body_Skeleton</defName>
-        <typeName>Skeleton</typeName>
-        <unisexPath>Core/Unisex/Corpse/Skeleton</unisexPath>
-        <unisexChildPath>Core/Unisex/Corpse/SkeletonChild</unisexChildPath>
-        <unisexNewbornPath>Core/Unisex/Corpse/SkeletonNewborn</unisexNewbornPath>
-    </Avatar.AvatarBodyDef>
 
 </Defs>

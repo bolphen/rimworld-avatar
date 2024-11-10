@@ -1,89 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-    <Avatar.AvatarHeadDef>
-        <defName>PersonaMechs_Persona</defName>
-        <typeName>Persona</typeName>
-        <hideTattoo>true</hideTattoo>
-        <hideWrinkles>true</hideWrinkles>
-        <hideEyes>true</hideEyes>
-        <hideEars>true</hideEars>
-        <hideNose>true</hideNose>
-        <hideMouth>true</hideMouth>
-        <forceBodyType>PersonaMechs_Body</forceBodyType>
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_Persona_PersonaMechRace</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
         <unisexPath>PersonaMechs/Persona</unisexPath>
     </Avatar.AvatarHeadDef>
 
-    <Avatar.AvatarHeadDef>
-        <defName>PersonaMechs_Sturdy</defName>
-        <typeName>Sturdy</typeName>
-        <hideTattoo>true</hideTattoo>
-        <hideWrinkles>true</hideWrinkles>
-        <hideEyes>true</hideEyes>
-        <hideEars>true</hideEars>
-        <hideNose>true</hideNose>
-        <hideMouth>true</hideMouth>
-        <forceBodyType>PersonaMechs_Body</forceBodyType>
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_Sturdy_PersonaMechRace</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
         <unisexPath>PersonaMechs/Sturdy</unisexPath>
     </Avatar.AvatarHeadDef>
 
-    <Avatar.AvatarHeadDef>
-        <defName>PersonaMechs_Tri</defName>
-        <typeName>Tri</typeName>
-        <hideTattoo>true</hideTattoo>
-        <hideWrinkles>true</hideWrinkles>
-        <hideEyes>true</hideEyes>
-        <hideEars>true</hideEars>
-        <hideNose>true</hideNose>
-        <hideMouth>true</hideMouth>
-        <forceBodyType>PersonaMechs_Body</forceBodyType>
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_Tri_PersonaMechRace</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
         <unisexPath>PersonaMechs/Tri</unisexPath>
     </Avatar.AvatarHeadDef>
 
-    <Avatar.AvatarHeadDef>
-        <defName>PersonaMechs_StylishSubcore</defName>
-        <typeName>StylishSubcore</typeName>
-        <hideTattoo>true</hideTattoo>
-        <hideWrinkles>true</hideWrinkles>
-        <hideEyes>true</hideEyes>
-        <hideEars>true</hideEars>
-        <hideNose>true</hideNose>
-        <hideMouth>true</hideMouth>
-        <forceBodyType>PersonaMechs_Body</forceBodyType>
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_StylishSubcore_PersonaMechRace</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
         <unisexPath>PersonaMechs/StylishSubcore</unisexPath>
     </Avatar.AvatarHeadDef>
 
-    <Avatar.AvatarHeadDef>
-        <defName>PersonaMechs_Fabricor</defName>
-        <typeName>Fabricor</typeName>
-        <hideTattoo>true</hideTattoo>
-        <hideWrinkles>true</hideWrinkles>
-        <hideEyes>true</hideEyes>
-        <hideEars>true</hideEars>
-        <hideNose>true</hideNose>
-        <hideMouth>true</hideMouth>
-        <forceBodyType>PersonaMechs_Body</forceBodyType>
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_Fabricor_PersonaMechRace</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
         <unisexPath>PersonaMechs/Fabricor</unisexPath>
     </Avatar.AvatarHeadDef>
 
-    <Avatar.AvatarHeadDef>
-        <defName>PersonaMechs_Visor</defName>
-        <typeName>Visor</typeName>
-        <hideTattoo>true</hideTattoo>
-        <hideWrinkles>true</hideWrinkles>
-        <hideEyes>true</hideEyes>
-        <hideEars>true</hideEars>
-        <hideNose>true</hideNose>
-        <hideMouth>true</hideMouth>
-        <forceBodyType>PersonaMechs_Body</forceBodyType>
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_Visor_PersonaMechRace</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
         <unisexPath>PersonaMechs/Visor</unisexPath>
     </Avatar.AvatarHeadDef>
 
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_Enforcer_PersonaMechRace</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
+        <unisexPath>PersonaMechs/Enforcer</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_Bubble_PersonaMechRace</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
+        <unisexPath>PersonaMechs/Bubble</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_Flat_PersonaMechRace</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
+        <unisexPath>PersonaMechs/Flat</unisexPath>
+    </Avatar.AvatarHeadDef>
+
     <Avatar.AvatarBodyDef>
-        <defName>PersonaMechs_Body</defName>
+        <defName>Body_PersonaMechRace</defName>
         <typeName>PersonaMechs_Body</typeName>
         <unisexPath>PersonaMechs/Body</unisexPath>
     </Avatar.AvatarBodyDef>
 
 </Defs>
-

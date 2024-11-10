@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarHeadDef Name="TVAndroid" ParentName="Custom" Abstract="True">
+        <forceBodyType>TVAndroid</forceBodyType>
+        <unisexPath>BS/HeadTVAndroid</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarBodyDef>
+        <defName>Body_TVAndroid</defName>
+        <unisexPath>BS/BodyTVAndroid</unisexPath>
+    </Avatar.AvatarBodyDef>
+
+    <Avatar.AvatarHeadDef ParentName="TVAndroid">
+        <defName>Head_AverageNormal_BS_TVAndroid</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="TVAndroid">
+        <defName>Head_AverageNormal_BS_TVAndroid_Sapient</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="TVAndroid">
+        <defName>Head_AveragePointy_BS_TVAndroid</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="TVAndroid">
+        <defName>Head_AveragePointy_BS_TVAndroid_Sapient</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="TVAndroid">
+        <defName>Head_AverageWide_BS_TVAndroid</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="TVAndroid">
+        <defName>Head_AverageWide_BS_TVAndroid_Sapient</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="TVAndroid">
+        <defName>Head_NarrowNormal_BS_TVAndroid</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="TVAndroid">
+        <defName>Head_NarrowNormal_BS_TVAndroid_Sapient</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="TVAndroid">
+        <defName>Head_NarrowPointy_BS_TVAndroid</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="TVAndroid">
+        <defName>Head_NarrowPointy_BS_TVAndroid_Sapient</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="TVAndroid">
+        <defName>Head_NarrowWide_BS_TVAndroid</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="TVAndroid">
+        <defName>Head_NarrowWide_BS_TVAndroid_Sapient</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef Name="CommandoBot" ParentName="Custom" Abstract="True">
+        <forceBodyType>CommandoBot</forceBodyType>
+        <unisexPath>BS/HeadCommandoBot</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarBodyDef>
+        <defName>Body_CommandoBot</defName>
+        <unisexPath>BS/BodyCommandoBot</unisexPath>
+    </Avatar.AvatarBodyDef>
+
+    <Avatar.AvatarHeadDef ParentName="CommandoBot">
+        <defName>Head_AverageNormal_BS_CommandoBot</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="CommandoBot">
+        <defName>Head_AverageNormal_BS_CommandoBot_NonSapient</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="CommandoBot">
+        <defName>Head_AveragePointy_BS_CommandoBot</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="CommandoBot">
+        <defName>Head_AveragePointy_BS_CommandoBot_NonSapient</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="CommandoBot">
+        <defName>Head_AverageWide_BS_CommandoBot</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="CommandoBot">
+        <defName>Head_AverageWide_BS_CommandoBot_NonSapient</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="CommandoBot">
+        <defName>Head_NarrowNormal_BS_CommandoBot</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="CommandoBot">
+        <defName>Head_NarrowNormal_BS_CommandoBot_NonSapient</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="CommandoBot">
+        <defName>Head_NarrowPointy_BS_CommandoBot</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="CommandoBot">
+        <defName>Head_NarrowPointy_BS_CommandoBot_NonSapient</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="CommandoBot">
+        <defName>Head_NarrowWide_BS_CommandoBot</defName>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="CommandoBot">
+        <defName>Head_NarrowWide_BS_CommandoBot_NonSapient</defName>
+    </Avatar.AvatarHeadDef>
+
+</Defs>

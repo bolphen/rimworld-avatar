@@ -203,5 +203,32 @@
         <unisexPath>Core/Unisex/Head/Ghoul_Heavy</unisexPath>
     </Avatar.AvatarHeadDef>
 
-</Defs>
+    <Avatar.AvatarHeadDef Name="Custom" Abstract="True">
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <hideTattoo>true</hideTattoo>
+        <hideWrinkles>true</hideWrinkles>
+        <hideEyes>true</hideEyes>
+        <hideEars>true</hideEars>
+        <hideNose>true</hideNose>
+        <hideMouth>true</hideMouth>
+    </Avatar.AvatarHeadDef>
 
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_Skeleton</defName>
+        <specialNoJaw>true</specialNoJaw>
+        <forceBodyType>Skeleton</forceBodyType>
+        <unisexPath>Core/Unisex/Corpse/Skull</unisexPath>
+        <unisexChildPath>Core/Unisex/Corpse/SkullChild</unisexChildPath>
+        <unisexNewbornPath>Core/Unisex/Corpse/SkullNewborn</unisexNewbornPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarBodyDef>
+        <defName>Body_Skeleton</defName>
+        <typeName>Skeleton</typeName>
+        <unisexPath>Core/Unisex/Corpse/Skeleton</unisexPath>
+        <unisexChildPath>Core/Unisex/Corpse/SkeletonChild</unisexChildPath>
+        <unisexNewbornPath>Core/Unisex/Corpse/SkeletonNewborn</unisexNewbornPath>
+    </Avatar.AvatarBodyDef>
+
+</Defs>
