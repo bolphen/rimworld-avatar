@@ -50,7 +50,7 @@ namespace Avatar
         private Texture2D staticTexture;
         private DateTime? staticTextureLastModified;
         private int staticTextureLastCheck;
-        public void ClearCachedAvatar()
+        public virtual void ClearCachedAvatar()
         {
             if (avatar != null)
             {
@@ -920,7 +920,7 @@ namespace Avatar
             avatar.filterMode = FilterMode.Point;
             return avatar;
         }
-        public Texture2D GetAvatar(bool allowStatic = true)
+        public virtual Texture2D GetAvatar(bool allowStatic = true)
         {
             if (allowStatic)
             {
@@ -1150,11 +1150,43 @@ namespace Avatar
         public string overrides = "";
     }
 
+    public class AIAvatarManager : AvatarManager
+    {
+        public bool useVanillaPortrait = false;
+        private Texture2D vanillaPortrait;
+        public override Texture2D GetAvatar(bool allowStatic = true)
+        {
+            if (useVanillaPortrait)
+            {
+                if (vanillaPortrait == null)
+                {
+                    RenderTexture active = RenderTexture.active;
+                    RenderTexture.active = PortraitsCache.Get(pawn, new Vector2(160, 160), Rot4.South, renderHeadgear: drawHeadgear, renderClothes: drawClothes);
+                    vanillaPortrait = new (80, 96);
+                    vanillaPortrait.ReadPixels(new Rect(60, 80, 80, 96), 0, 0);
+                    vanillaPortrait.Apply();
+                    RenderTexture.active = active;
+                }
+                return vanillaPortrait;
+            }
+            return base.GetAvatar(allowStatic);
+        }
+        public override void ClearCachedAvatar()
+        {
+            if (vanillaPortrait != null)
+            {
+                UnityEngine.Object.Destroy(vanillaPortrait);
+                vanillaPortrait = null;
+            }
+            base.ClearCachedAvatar();
+        }
+    }
+
     public class Prompts_Window : Window
     {
-        private AvatarManager manager;
+        private AIAvatarManager manager;
         protected string curPrompts;
-        public override Vector2 InitialSize => new Vector2(800f, 200f);
+        public override Vector2 InitialSize => new Vector2(800f, 240f);
         public Prompts_Window(Pawn pawn, bool drawHeadgear = false, bool drawClothes = true)
         {
             manager = new ();
@@ -1186,9 +1218,12 @@ namespace Avatar
             }
             bool drawHeadgear = manager.drawHeadgear;
             bool drawClothes = manager.drawClothes;
+            bool useVanillaPortrait = manager.useVanillaPortrait;
             bool toggled = false;
-            Widgets.CheckboxLabeled(new Rect(rect.width / 2f + 200f, 35f, rect.width / 2f - 200f, 30f), "Draw headgear", ref drawHeadgear, !drawClothes);
-            Widgets.CheckboxLabeled(new Rect(rect.width / 2f + 200f, 65f, rect.width / 2f - 200f, 30f), "Draw clothes", ref drawClothes);
+            Widgets.CheckboxLabeled(new Rect(rect.width / 2f + 200f, 35f, rect.width / 2f - 200f, 30f), "Use vanilla portrait", ref useVanillaPortrait);
+            Widgets.CheckboxLabeled(new Rect(rect.width / 2f + 200f, 65f, rect.width / 2f - 200f, 30f), "Draw headgear", ref drawHeadgear, !drawClothes);
+            Widgets.CheckboxLabeled(new Rect(rect.width / 2f + 200f, 95f, rect.width / 2f - 200f, 30f), "Draw clothes", ref drawClothes);
+            manager.useVanillaPortrait = useVanillaPortrait;
             if (drawHeadgear != manager.drawHeadgear)
             {
                 manager.drawHeadgear = drawHeadgear;
@@ -1203,8 +1238,7 @@ namespace Avatar
             {
                 curPrompts = manager.GetPrompts();
             }
-            manager.drawClothes = drawClothes;
-            if (Widgets.ButtonText(new Rect(rect.width / 2f + 200f, 105f, rect.width / 2f - 200f, 35f), "OK") || enterPressed)
+            if (Widgets.ButtonText(new Rect(rect.width / 2f + 200f, 135f, rect.width / 2f - 200f, 35f), "OK") || enterPressed)
             {
                 if (curPrompts.Length > 0)
                 {
@@ -1236,4 +1270,3 @@ namespace Avatar
         }
     }
 }
-

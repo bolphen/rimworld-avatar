@@ -16,7 +16,7 @@ namespace Avatar
             RenderTexture.ReleaseTemporary(canvas);
             RenderTexture.active = active;
         }
-        public static Texture2D MakeReadableCopy(Texture2D texture, int? targetWidth = null, int? targetHeight = null)
+        public static Texture2D MakeReadableCopy(Texture texture, int? targetWidth = null, int? targetHeight = null)
         {
             int width = targetWidth ?? texture.width;
             int height = targetHeight ?? texture.height;
