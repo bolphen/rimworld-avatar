@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarMouthDef>
+        <defName>Outland_LongMouth</defName>
+        <geneName>Outland_LongMouth</geneName>
+        <unisexPath>Common/Mouth/Snout</unisexPath>
+        <unisexChildPath>Common/Mouth/SnoutChild</unisexChildPath>
+        <unisexNewbornPath>Common/Mouth/SnoutNewborn</unisexNewbornPath>
+    </Avatar.AvatarMouthDef>
+
+    <Avatar.AvatarNoseDef>
+        <defName>Outland_LongMouth_Nose</defName>
+        <geneName>Outland_LongMouth</geneName>
+    </Avatar.AvatarNoseDef>
+
+    <Avatar.AvatarHeadboneDef>
+        <defName>Outland_Antenna_Fluted</defName>
+        <geneName>Outland_Antenna_Fluted</geneName>
+        <unisexPath>Common/Antenna</unisexPath>
+        <unisexNewbornPath>Common/AntennaNewborn</unisexNewbornPath>
+    </Avatar.AvatarHeadboneDef>
+
+    <Avatar.AvatarEyesDef>
+        <defName>Outland_CompositeEyes</defName>
+        <geneName>Outland_CompositeEyes</geneName>
+        <unisexPath>Common/Eyes/InsectEyes</unisexPath>
+        <unisexChildPath>Common/Eyes/InsectEyesChild</unisexChildPath>
+        <eyesPos></eyesPos> <!-- disable color -->
+    </Avatar.AvatarEyesDef>
+
+    <Avatar.AvatarEarsDef>
+        <defName>Outland_Ears_Large</defName>
+        <geneName>Outland_Ears_Large</geneName>
+        <unisexPath>Common/Ears/Large</unisexPath>
+    </Avatar.AvatarEarsDef>
+
+    <Avatar.AvatarFacialDef>
+        <defName>Outland_FaceTendrils</defName>
+        <geneName>Outland_FaceTendrils</geneName>
+        <unisexPath>OuterRim/Diversity/FaceTendrils</unisexPath>
+    </Avatar.AvatarFacialDef>
+
+    <Avatar.AvatarNoseDef>
+        <defName>Outland_Nose_Leathery</defName>
+        <geneName>Outland_Nose_Leathery</geneName>
+        <malePath>Common/Nose/Canine_Male</malePath>
+        <femalePath>Common/Nose/Canine_Female</femalePath>
+        <maleChildPath>Common/Nose/Canine_MaleChild</maleChildPath>
+        <femaleChildPath>Common/Nose/Canine_FemaleChild</femaleChildPath>
+        <unisexNewbornPath>Common/Nose/Canine_Newborn</unisexNewbornPath>
+    </Avatar.AvatarNoseDef>
+
+    <Avatar.AvatarNoseDef>
+        <defName>Outland_Nose_NoseSlits</defName>
+        <geneName>Outland_Nose_NoseSlits</geneName>
+        <malePath>Common/Nose/Slits_Male</malePath>
+        <femalePath>Common/Nose/Slits_Female</femalePath>
+        <maleChildPath>Common/Nose/Slits_MaleChild</maleChildPath>
+        <femaleChildPath>Common/Nose/Slits_FemaleChild</femaleChildPath>
+        <unisexNewbornPath>Common/Nose/Slits_Newborn</unisexNewbornPath>
+    </Avatar.AvatarNoseDef>
+
+    <Avatar.AvatarFacialDef>
+        <defName>Outland_JawTusks</defName>
+        <geneName>Outland_JawTusks</geneName>
+        <unisexPath>Common/JawTusk</unisexPath>
+        <unisexChildPath>Common/JawTuskChild</unisexChildPath>
+        <unisexNewbornPath>Common/JawTuskNewborn</unisexNewbornPath>
+    </Avatar.AvatarFacialDef>
+
+    <Avatar.AvatarFacialDef>
+        <defName>Outland_ChinHorns</defName>
+        <geneName>Outland_ChinHorns</geneName>
+        <unisexPath>Common/ChinHorns</unisexPath>
+        <unisexChildPath>Common/ChinHornsChild</unisexChildPath>
+        <unisexNewbornPath>Common/ChinHornsNewborn</unisexNewbornPath>
+    </Avatar.AvatarFacialDef>
+
+    <Avatar.AvatarEyesDef>
+        <defName>Outland_EyeVisual_Recessed</defName>
+        <geneName>Outland_EyeVisual_Recessed</geneName>
+        <unisexPath>Common/Eyes/RecessedEyes</unisexPath>
+        <unisexChildPath>Common/Eyes/RecessedEyesChild</unisexChildPath>
+    </Avatar.AvatarEyesDef>
+
+    <Avatar.AvatarEyesDef>
+        <defName>Outland_Eye_Orange</defName>
+        <geneName>Outland_Eye_Orange</geneName>
+        <color1>(1.0,0.5,0.1)</color1>
+        <color2>(0.7,0.3,0.0)</color2>
+    </Avatar.AvatarEyesDef>
+
+    <Avatar.AvatarEyesDef>
+        <defName>Outland_Eye_Yellow</defName>
+        <geneName>Outland_Eye_Yellow</geneName>
+        <color1>(1.0,0.9,0.2)</color1>
+        <color2>(0.7,0.6,0.0)</color2>
+    </Avatar.AvatarEyesDef>
+
+    <Avatar.AvatarEyesDef>
+        <defName>Outland_Eye_Green</defName>
+        <geneName>Outland_Eye_Green</geneName>
+        <color1>(0.4,0.5,0.1)</color1>
+        <color2>(0.2,0.3,0.0)</color2>
+    </Avatar.AvatarEyesDef>
+
+    <Avatar.AvatarEyesDef>
+        <defName>Outland_Eye_White</defName>
+        <geneName>Outland_Eye_White</geneName>
+        <color1>(0.7,0.7,0.7)</color1>
+        <color2>(1.0,1.0,1.0)</color2>
+    </Avatar.AvatarEyesDef>
+
+</Defs>

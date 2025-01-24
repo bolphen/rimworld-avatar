@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_RebelFleetTrooperHelmet</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>OuterRim/Rebel/FleetTrooperHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_RebelFleetTrooperUniform</defName>
+        <unisexPath>OuterRim/Rebel/FleetTrooperUniform</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_RebelForestHelmet</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>OuterRim/Rebel/ForestHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_RebelForestFatigues</defName>
+        <unisexPath>OuterRim/Rebel/ForestFatigues</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_RebelForestJacket</defName>
+        <unisexPath>OuterRim/Rebel/ForestJacket</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_RebelForestPoncho</defName>
+        <unisexPath>OuterRim/Rebel/ForestPoncho</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_RebelOfficerCap</defName>
+        <hideTop>16</hideTop>
+        <unisexPath>OuterRim/Rebel/OfficerCap</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_RebelOfficerUniform</defName>
+        <unisexPath>OuterRim/Rebel/OfficerUniform</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_RebelOfficerJacket</defName>
+        <unisexPath>OuterRim/Rebel/OfficerJacket</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+</Defs>

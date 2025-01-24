@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_Bodysuit</defName>
+        <malePath>OuterRim/Core/Bodysuit_Male</malePath>
+        <femalePath>OuterRim/Core/Bodysuit_Female</femalePath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_BoneHelmet</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>OuterRim/Core/BoneHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_BoneCuirass</defName>
+        <unisexPath>OuterRim/Core/BoneCuirass</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_BonePauldrons</defName>
+        <unisexPath>OuterRim/Core/BonePauldrons</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_CasualClothing</defName>
+        <unisexPath>OuterRim/Core/CasualClothing</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_ChitinHelmet</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>OuterRim/Core/ChitinHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ChitinCuirass</defName>
+        <unisexPath>OuterRim/Core/ChitinCuirass</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ChitinPauldrons</defName>
+        <unisexPath>OuterRim/Core/ChitinPauldrons</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_Hood</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>OuterRim/Core/Hood</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_Cloak</defName>
+        <unisexPath>OuterRim/Core/Cloak</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CompositeHelmet</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Core/CompositeHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_CompositeCuirass</defName>
+        <unisexPath>OuterRim/Core/CompositeCuirass</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_CompositePauldrons</defName>
+        <unisexPath>OuterRim/Core/CompositePauldrons</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_DesertHood</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>OuterRim/Core/DesertHood</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_DesertGarb</defName>
+        <unisexPath>OuterRim/Core/DesertGarb</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_HermitTunic</defName>
+        <unisexPath>OuterRim/Core/HermitTunic</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_PaddedHelmet</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>OuterRim/Core/PaddedHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_PaddedCuirass</defName>
+        <unisexPath>OuterRim/Core/PaddedCuirass</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_PaddedPauldrons</defName>
+        <unisexPath>OuterRim/Core/PaddedPauldrons</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_Poncho</defName>
+        <unisexPath>OuterRim/Core/Poncho</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_ScrapperHelmet</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>OuterRim/Core/ScrapperHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ScrapperWorksuit</defName>
+        <unisexPath>OuterRim/Core/ScrapperWorksuit</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_TuskenHeadgear</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Core/TuskenHeadgear</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+</Defs>

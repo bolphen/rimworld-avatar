@@ -113,6 +113,18 @@ namespace Avatar
             }
             return feature;
         }
+        private string GetStardardHead()
+        {
+            switch ((Seed() % 2700)/450)
+            {
+                case 1: return "AverageWide";
+                case 2: return "AveragePointy";
+                case 3: return "NarrowNormal";
+                case 4: return "NarrowWide";
+                case 5: return "NarrowPointy";
+                default: return "AverageNormal";
+            }
+        }
         private string GetPath<T>(string gender, string lifeStage, string typeName, string fallbackPath) where T: AvatarDef
         {
             string result = null;
@@ -179,12 +191,12 @@ namespace Avatar
             return pawn.ageTracker.AgeBiologicalYears >= 0.7 * lifeExpectancy;
         }
         #if BIOTECH
-        private bool GeneUseHairColor(Gene gene)
+        private int GeneUseColor(Gene gene)
         {
             #if v1_4
-            return gene.def.HasGraphic && gene.def.graphicData.colorType == GeneColorType.Hair;
+            return gene.def.HasGraphic ? (int) gene.def.graphicData.colorType : -1;
             #else
-            return gene.def.renderNodeProperties?.Count >= 1 && gene.def.renderNodeProperties[0].colorType == PawnRenderNodeProperties.AttachmentColorType.Hair;
+            return gene.def.renderNodeProperties?.Count >= 1 ? (int) gene.def.renderNodeProperties[0].colorType : -1;
             #endif
         }
         #endif
@@ -271,9 +283,12 @@ namespace Avatar
             bool specialNoJaw = false;
             int hairHideTop = 0;
             int headHideTop = 0;
+            int headAttachmentOffset = 0;
             string bodyTypeName = "";
             List<EyePos> eyesPos = new List<EyePos> {new EyePos (14,27,15,27), new EyePos (24,27,23,27)};
             AvatarHeadDef headTypeDef = DefDatabase<AvatarHeadDef>.GetNamedSilentFail("Head_" + headTypeName + raceName);
+            string facePaint = null;
+            Color? facePaintColor = null;
             if (headTypeDef != null)
             {
                 hideTattoo = headTypeDef.hideTattoo;
@@ -286,6 +301,13 @@ namespace Avatar
                 hideMouth = headTypeDef.hideMouth;
                 bodyTypeName = headTypeDef.forceBodyType;
                 specialNoJaw = headTypeDef.specialNoJaw;
+                facePaint = headTypeDef.facePaint;
+                facePaintColor = headTypeDef.facePaintColor;
+                headAttachmentOffset = headTypeDef.headAttachmentOffset;
+                if (headTypeDef.eyesPos != null)
+                    eyesPos = headTypeDef.eyesPos;
+                if (headTypeDef.reassignStandard)
+                    headTypeName = GetStardardHead();
             }
             List<(Apparel, AvatarBodygearDef)> bodygears = new ();
             List<(Apparel, AvatarBackgearDef)> backgears = new ();
@@ -322,7 +344,7 @@ namespace Avatar
                             #else
                             if (apparel.def.apparel.renderSkipFlags?.FirstOrDefault()?.defName == "Head")
                             #endif
-                                coversAll = new (headgearDef.GetPath(gender, lifeStage), apparel.DrawColor);
+                                coversAll = new (headgearDef.GetPath(gender, lifeStage), apparel.DrawColor, headAttachmentOffset);
                             else
                                 headgears.Add((apparel, headgearDef));
                             if (mod.settings.showHairWithHeadgear)
@@ -370,10 +392,20 @@ namespace Avatar
             }
             List<AvatarLayer> body_layers = new ();
             string neckPath = GetPathByDefName<AvatarBodyDef>(gender, lifeStage, "Body_" + bodyTypeName, "Core/"+gender+lifeStage+"/Neck");
-            body_layers.Add(new AvatarLayer(neckPath, skinColor, 8));
+            // asimov colored robot support
+            AvatarLayer neck = new (neckPath, skinColor, 8);
+            if (ModCompatibility.Asimov_Loaded)
+            {
+                if (ModCompatibility.GetAsimovSkinColor(pawn) is (Color skinFirst, Color skinSecond))
+                {
+                    neck.color = skinFirst;
+                    neck.colorB = skinSecond;
+                }
+            }
+            body_layers.Add(neck);
             if (!hideTattoo)
             {
-                string bodyTattooPath = GetPath<AvatarBodyTattooDef>(gender, lifeStage, pawn.style.BodyTattoo?.defName, "Core/Unisex/BodyTattoo/NoTattoo");
+                string bodyTattooPath = GetPath<AvatarBodyTattooDef>(gender, lifeStage, pawn.style.BodyTattoo?.defName, null);
                 body_layers.Add(new AvatarLayer(bodyTattooPath, new Color(1f,1f,1f,0.8f), 8));
             }
             #if ANOMALY
@@ -437,7 +469,7 @@ namespace Avatar
             if (!pawn.health.hediffSet.hediffs.Exists(h => h.def.defName == "MissingBodyPart" && h.Part != null && h.Part.def.defName == "Head"))
             {
                 string headPath = GetPathByDefName<AvatarHeadDef>(gender, lifeStage, "Head_" + headTypeName + raceName, "Core/"+gender+lifeStage+"/Head/AverageNormal");
-                string faceTattooPath = GetPath<AvatarFaceTattooDef>(gender, lifeStage, pawn.style.FaceTattoo?.defName, "Core/Unisex/FaceTattoo/NoTattoo");
+                string faceTattooPath = GetPath<AvatarFaceTattooDef>(gender, lifeStage, pawn.style.FaceTattoo?.defName, null);
                 string beardPath = GetPathByDefName<AvatarBeardDef>(gender, lifeStage, "Beard_" + (pawn.style.beardDef?.defName ?? "NoBeard"), "BEARD");
                 string hairPath = GetPathByDefName<AvatarHairDef>(gender, lifeStage, "Hair_" + (pawn.story.hairDef?.defName ?? "Bald"), "HAIR");
                 string earsPath = "Core/Unisex/Ears/Ears_Human";
@@ -456,15 +488,29 @@ namespace Avatar
                         if (gene.def.defName == def.geneName)
                         {
                             earsPath = def.GetPath(gender, lifeStage);
-                            if (GeneUseHairColor(gene))
-                                earsColor = hairColor;
+                            switch (GeneUseColor(gene))
+                            {
+                                case 0: // custom
+                                    earsColor = new (1,1,1,1);
+                                    break;
+                                case 1: // hair
+                                    earsColor = hairColor;
+                                    break;
+                            }
                         }
                     foreach (AvatarNoseDef def in DefDatabase<AvatarNoseDef>.AllDefs)
                         if (gene.def.defName == def.geneName)
                         {
                             nosePath = def.GetPath(gender, lifeStage);
-                            if (GeneUseHairColor(gene))
-                                noseColor = hairColor;
+                            switch (GeneUseColor(gene))
+                            {
+                                case 0: // custom
+                                    noseColor = new (1,1,1,1);
+                                    break;
+                                case 1: // hair
+                                    noseColor = hairColor;
+                                    break;
+                            }
                         }
                     foreach (AvatarMouthDef def in DefDatabase<AvatarMouthDef>.AllDefs)
                         if (gene.def.defName == def.geneName)
@@ -519,7 +565,16 @@ namespace Avatar
                 AvatarLayer mouth = new (mouthPath, skinColor);
                 if (mod.settings.noFemaleLips && gender == "Female" && lifeStage != "Newborn") mouth.offset = -1; // shift female lips
                 AvatarLayer head = new (headPath, skinColor);
-                head.hideTop = headHideTop;
+                head.hideTop = headHideTop + headAttachmentOffset;
+                // asimov colored robot support
+                if (ModCompatibility.Asimov_Loaded)
+                {
+                    if (ModCompatibility.GetAsimovSkinColor(pawn) is (Color skinFirst, Color skinSecond))
+                    {
+                        head.color = skinFirst;
+                        head.colorB = skinSecond;
+                    }
+                }
                 if (!hideEars && (!mod.settings.earsOnTop || ears.texPath == "Core/Unisex/Ears/Ears_Human")) layers.Add(ears);
                 // start to build head layers
                 head_layers.Add(head);
@@ -568,13 +623,32 @@ namespace Avatar
                             #endif
                                 path += variant[variant.Length-1];
                             }
-                            head_layers.Add(new AvatarLayer(path, GeneUseHairColor(gene) ? hairColor : skinColor));
+                            Color color = skinColor;
+                            switch (GeneUseColor(gene))
+                            {
+                                case 0: // custom
+                                    color = new (1,1,1,1);
+                                    break;
+                                case 1: // hair
+                                    color = hairColor;
+                                    break;
+                            }
+                            head_layers.Add(new AvatarLayer(path, color));
                         }
                     }
                 }
                 #endif
+                if (!string.IsNullOrEmpty(facePaint))
+                {
+                    string facePaintPath = GetPathByDefName<AvatarFacePaintDef>(gender, lifeStage, facePaint, null);
+                    foreach (AvatarLayer layer in head_layers)
+                    {
+                        layer.maskPath = facePaintPath;
+                        layer.colorB = facePaintColor;
+                    }
+                }
                 if (!hideTattoo)
-                    head_layers.Add(new AvatarLayer(faceTattooPath, new Color(1f,1f,1f,0.8f)));
+                    head_layers.Add(new AvatarLayer(faceTattooPath, new Color(1f,1f,1f,0.8f), headAttachmentOffset));
                 #if ANOMALY
                 if (pawn.IsShambler && !(headTypeName == "Skeleton") && !mod.settings.noCorpseGore)
                 {
@@ -691,7 +765,7 @@ namespace Avatar
                         {
                             if (scarName == def.typeName)
                             {
-                                AvatarLayer scar = new (def.GetPath(gender, lifeStage), skinColor);
+                                AvatarLayer scar = new (def.GetPath(gender, lifeStage), skinColor, headAttachmentOffset);
                                 if (lifeStage != "") scar.offset = -1;
                                 if (h.Part.def.defName == "Eye")
                                 {
@@ -716,16 +790,22 @@ namespace Avatar
                     }
                 }
                 #endif
-                AvatarLayer beard = new (beardPath, hairColor);
+                AvatarLayer beard = new (beardPath, hairColor, headAttachmentOffset);
                 if (beardPath == "BEARD")
                     beard.fallback = (pawn.style.beardDef.texPath + "_south", 8, "yes");
-                AvatarLayer hair = new (hairPath, hairColor);
-                hair.hideTop = hairHideTop;
+                AvatarLayer hair = new (hairPath, hairColor, headAttachmentOffset);
+                hair.hideTop = hairHideTop + headAttachmentOffset;
                 if (hairPath == "HAIR")
                     hair.fallback = (pawn.story.hairDef.texPath + "_south", 4, "yes");
                 // gradient hair mod support
                 if (ModCompatibility.GradientHair_Loaded)
-                    hair.gradient = ModCompatibility.GetGradientHair(pawn);
+                {
+                    if (ModCompatibility.GetGradientHair(pawn) is (String mask, Color color))
+                    {
+                        hair.gradientMask = mask;
+                        hair.colorB = color;
+                    }
+                }
                 AvatarLayer brows = new (browsPath, hairColor);
                 if (!hideBeard && lifeStage != "Newborn")
                     layers.Add(beard);
@@ -741,7 +821,7 @@ namespace Avatar
                     // facegear goes under hair
                     foreach ((Apparel apparel, AvatarFacegearDef def) in facegears)
                     {
-                        layers.Add(new AvatarLayer(def.GetPath(gender, lifeStage), apparel.DrawColor, lifeStage == "" ? 0 : -1));
+                        layers.Add(new AvatarLayer(def.GetPath(gender, lifeStage), apparel.DrawColor, headAttachmentOffset + (lifeStage == "" ? 0 : -1)));
                     }
                     // hair and headgear
                     if (!hideHair && lifeStage != "Newborn")
@@ -749,7 +829,7 @@ namespace Avatar
                     if (coversAll == null)
                         foreach ((Apparel apparel, AvatarHeadgearDef def) in headgears)
                         {
-                            layers.Add(new AvatarLayer(def.GetPath(gender, lifeStage), apparel.DrawColor));
+                            layers.Add(new AvatarLayer(def.GetPath(gender, lifeStage), apparel.DrawColor, headAttachmentOffset));
                         }
                 }
                 if (!hideEars && (mod.settings.earsOnTop && ears.texPath != "Core/Unisex/Ears/Ears_Human")) layers.Add(ears);
@@ -758,11 +838,27 @@ namespace Avatar
                 {
                     foreach (AvatarHeadboneDef def in DefDatabase<AvatarHeadboneDef>.AllDefs)
                         if (gene.def.defName == def.geneName)
-                            layers.Add(new AvatarLayer(def.GetPath(gender, lifeStage)));
+                        {
+                            Color color = new (1,1,1,1);
+                            switch (GeneUseColor(gene))
+                            {
+                                case 1: // hair
+                                    color = hairColor;
+                                    break;
+                                case 2: // skin
+                                    color = skinColor;
+                                    break;
+                            }
+                            layers.Add(new AvatarLayer(def.GetPath(gender, lifeStage), color, headAttachmentOffset));
+                        }
                 }
                 // dump all remaining cosmetic genes here
                 foreach (Gene gene in cosmeticGenes)
-                    layers.Add(AvatarLayer.FromGene(gene, pawn));
+                {
+                    AvatarLayer layer = AvatarLayer.FromGene(gene, pawn);
+                    layer.offset += headAttachmentOffset;
+                    layers.Add(layer);
+                }
                 #endif
                 if (drawHeadgear && coversAll != null)
                     layers.Add(coversAll);
@@ -793,7 +889,8 @@ namespace Avatar
                     }
                     if (texture != null)
                     {
-                        Texture2D maskTexture = mod.GetTexture(layer.texPath + "m", false);
+                        string maskPath = string.IsNullOrEmpty(layer.maskPath) ? layer.texPath + "m" : layer.maskPath;
+                        Texture2D maskTexture = mod.GetTexture(maskPath, false);
                         if (maskTexture != null)
                             mask = TextureUtil.MakeReadableCopy(maskTexture);
                         if (layer.alphaMaskPath != null)
@@ -806,14 +903,13 @@ namespace Avatar
                             texture.Compress(true);
 
                         // ad hoc stuff for gradient hair
-                        Color? colorB = null;
-                        if (mask == null && layer.gradient is (string, Color) gradient)
+                        if (!string.IsNullOrEmpty(layer.gradientMask))
                         {
-                            mask = TextureUtil.ProcessVanillaTexture(gradient.Item1, (width, height), (62,68), 4, "no");
-                            colorB = gradient.Item2;
+                            mask = TextureUtil.ProcessVanillaTexture(layer.gradientMask, (40,48), (62,68), 4, "no");
                         }
 
-                        for (int y = height-texture.height-layer.offset; y < height-layer.hideTop-yOffset-layer.offset; y++)
+                        for (int y = Math.Max(height-texture.height-layer.offset, 0);
+                            y < Math.Min(height-layer.hideTop-yOffset-layer.offset, height); y++)
                         {
                             for (int x = (layer.drawDexter ? 0 : width/2); x < (layer.drawSinister ? width : width/2); x++)
                             {
@@ -830,20 +926,23 @@ namespace Avatar
                                         alpha *= tint.a;
                                         if (mask != null)
                                         {
-                                            if (colorB is Color tint2)
+                                            if (layer.colorB is Color tint2)
                                             {
                                                 Color maskPixel = mask.GetPixel(x, y-(height-texture.height-layer.offset)+yOffset);
-                                                color.r = oldColor.r*(1f-alpha) + newColor.r*(tint.r*maskPixel.r + tint2.r*maskPixel.g)*alpha;
-                                                color.g = oldColor.g*(1f-alpha) + newColor.g*(tint.g*maskPixel.r + tint2.g*maskPixel.g)*alpha;
-                                                color.b = oldColor.b*(1f-alpha) + newColor.b*(tint.b*maskPixel.r + tint2.b*maskPixel.g)*alpha;
+                                                float r = maskPixel.r;
+                                                float g = maskPixel.g;
+                                                color.r = oldColor.r*(1f-alpha) + newColor.r*(tint.r*r + tint2.r*g + (1-r)*(1-g))*alpha;
+                                                color.g = oldColor.g*(1f-alpha) + newColor.g*(tint.g*r + tint2.g*g + (1-r)*(1-g))*alpha;
+                                                color.b = oldColor.b*(1f-alpha) + newColor.b*(tint.b*r + tint2.b*g + (1-r)*(1-g))*alpha;
                                                 color.a = 1f;
                                             }
                                             else
                                             {
                                                 Color maskPixel = mask.GetPixel(x, y-(height-texture.height-layer.offset)+yOffset);
-                                                color.r = oldColor.r*(1f-alpha) + newColor.r*(tint.r*maskPixel.r + 1-maskPixel.r)*alpha;
-                                                color.g = oldColor.g*(1f-alpha) + newColor.g*(tint.g*maskPixel.r + 1-maskPixel.r)*alpha;
-                                                color.b = oldColor.b*(1f-alpha) + newColor.b*(tint.b*maskPixel.r + 1-maskPixel.r)*alpha;
+                                                float r = maskPixel.r;
+                                                color.r = oldColor.r*(1f-alpha) + newColor.r*(tint.r*r + 1-r)*alpha;
+                                                color.g = oldColor.g*(1f-alpha) + newColor.g*(tint.g*r + 1-r)*alpha;
+                                                color.b = oldColor.b*(1f-alpha) + newColor.b*(tint.b*r + 1-r)*alpha;
                                                 color.a = 1f;
                                             }
                                         }
@@ -879,13 +978,17 @@ namespace Avatar
                             {
                                 if (downed)
                                 {
-                                    canvas.SetPixel(eye.pos1.z+eyeLevel-halfWidthHeightDiff, width-eye.pos1.x-downedOffset, eyeColor.Item1);
-                                    canvas.SetPixel(eye.pos2.z+eyeLevel-halfWidthHeightDiff, width-eye.pos2.x-downedOffset, eyeColor.Item2);
+                                    foreach (IntVec2 pos1 in eye.pos1)
+                                        canvas.SetPixel(pos1.z+eyeLevel-halfWidthHeightDiff, width-pos1.x-downedOffset, eyeColor.Item1);
+                                    foreach (IntVec2 pos2 in eye.pos2)
+                                        canvas.SetPixel(pos2.z+eyeLevel-halfWidthHeightDiff, width-pos2.x-downedOffset, eyeColor.Item2);
                                 }
                                 else
                                 {
-                                    canvas.SetPixel(eye.pos1.x, eye.pos1.z+eyeLevel, eyeColor.Item1);
-                                    canvas.SetPixel(eye.pos2.x, eye.pos2.z+eyeLevel, eyeColor.Item2);
+                                    foreach (IntVec2 pos1 in eye.pos1)
+                                        canvas.SetPixel(pos1.x, pos1.z+eyeLevel, eyeColor.Item1);
+                                    foreach (IntVec2 pos2 in eye.pos2)
+                                        canvas.SetPixel(pos2.x, pos2.z+eyeLevel, eyeColor.Item2);
                                 }
                             }
                         }

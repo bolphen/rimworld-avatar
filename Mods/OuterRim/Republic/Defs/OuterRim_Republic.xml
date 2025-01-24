@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_CloneTrooperFatigues</defName>
+        <unisexPath>OuterRim/Republic/TrooperFatigues</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <!-- phase one -->
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmet_PhaseOne</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/Helmet_PhaseOne</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmet_PhaseOne_Sergeant</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/Helmet_PhaseOne_Sergeant</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmet_PhaseOne_Lieutenant</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/Helmet_PhaseOne_Lieutenant</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmet_PhaseOne_Captain</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/Helmet_PhaseOne_Captain</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmet_PhaseOne_Commander</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/Helmet_PhaseOne_Commander</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_CloneArmor_PhaseOne</defName>
+        <unisexPath>OuterRim/Republic/Armor_PhaseOne</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ClonePauldrons_PhaseOne</defName>
+        <unisexPath>OuterRim/Republic/Pauldrons_PhaseOne</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <!-- commando -->
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneCommandoHelmet</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/CommandoHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_CloneCommandoCuirass</defName>
+        <unisexPath>OuterRim/Republic/CommandoCuirass</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_CloneCommandoPauldrons</defName>
+        <unisexPath>OuterRim/Republic/CommandoPauldrons</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <!-- officer -->
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_RepublicOfficerUniform</defName>
+        <unisexPath>OuterRim/Republic/OfficerUniform</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_RepublicOfficerCap</defName>
+        <hideTop>16</hideTop>
+        <unisexPath>OuterRim/Republic/OfficerCap</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <!-- phase two -->
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Trooper</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Trooper</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_ARC</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_ARC</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_BARC</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_BARC</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Desert</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Desert</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Engineer</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Engineer</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Heavy</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Heavy</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Ops</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Ops</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Pilot</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Pilot</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Snow</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Snow</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Captain</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Captain</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Commander</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Commander</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_CloneCuirassII_Trooper</defName>
+        <unisexPath>OuterRim/Republic/CuirassII_Trooper</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_CloneCuirassII_Snow</defName>
+        <unisexPath>OuterRim/Republic/CuirassII_Snow</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ClonePauldronsII_Trooper</defName>
+        <unisexPath>OuterRim/Republic/PauldronsII_Trooper</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ClonePauldronsII_ARC</defName>
+        <unisexPath>OuterRim/Republic/PauldronsII_ARC</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ClonePauldronsII_Rank</defName>
+        <unisexPath>OuterRim/Republic/PauldronsII_Rank</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <!-- phase two chevron -->
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Trooper_Chevron</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Trooper_Chevron</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_ARC_Chevron</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_ARC_Chevron</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_BARC_Chevron</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_BARC_Chevron</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Desert_Chevron</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Desert_Chevron</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Engineer_Chevron</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Engineer_Chevron</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Heavy_Chevron</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Heavy_Chevron</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Ops_Chevron</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Ops_Chevron</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Pilot_Chevron</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Pilot_Chevron</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Snow_Chevron</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Snow_Chevron</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Captain_Chevron</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Captain_Chevron</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Commander_Chevron</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Commander_Chevron</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_CloneCuirassII_Trooper_Chevron</defName>
+        <unisexPath>OuterRim/Republic/CuirassII_Trooper_Chevron</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_CloneCuirassII_Snow_Chevron</defName>
+        <unisexPath>OuterRim/Republic/CuirassII_Snow_Chevron</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ClonePauldronsII_Trooper_Chevron</defName>
+        <unisexPath>OuterRim/Republic/PauldronsII_Trooper_Chevron</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <!-- phase two half -->
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Trooper_Half</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Trooper_Half</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_ARC_Half</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_ARC_Half</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_BARC_Half</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_BARC_Half</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Desert_Half</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Desert_Half</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Engineer_Half</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Engineer_Half</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Heavy_Half</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Heavy_Half</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Ops_Half</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Ops_Half</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Pilot_Half</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Pilot_Half</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Snow_Half</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Snow_Half</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Captain_Half</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Captain_Half</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_CloneHelmetII_Commander_Half</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Republic/HelmetII_Commander_Half</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_CloneCuirassII_Trooper_Half</defName>
+        <unisexPath>OuterRim/Republic/CuirassII_Trooper_Half</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_CloneCuirassII_Snow_Half</defName>
+        <unisexPath>OuterRim/Republic/CuirassII_Snow_Half</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ClonePauldronsII_Trooper_Half</defName>
+        <unisexPath>OuterRim/Republic/PauldronsII_Trooper_Half</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+</Defs>

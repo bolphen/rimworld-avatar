@@ -46,6 +46,7 @@ namespace Avatar
 
         public Texture2D GetTexture(string texPath, bool fallback=true)
         {
+            if (string.IsNullOrEmpty(texPath)) return null;
             if (!cachedTextures.ContainsKey(texPath))
             {
                 string path = Content.RootDir+"/Assets/"+texPath+".png";

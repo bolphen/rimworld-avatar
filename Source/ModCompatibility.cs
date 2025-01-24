@@ -10,6 +10,7 @@ namespace Avatar
     [StaticConstructorOnStartup]
     public static class ModCompatibility
     {
+        public static bool Asimov_Loaded = ModsConfig.IsActive("Neronix17.Asimov");
         public static bool CCMBar_Loaded = ModsConfig.IsActive("crashm.colorcodedmoodbar.11");
         public static bool ColonyGroups_Loaded = ModsConfig.IsActive("DerekBickley.LTOColonyGroupsFinal");
         public static bool DBH_Loaded = ModsConfig.IsActive("Dubwise.DubsBadHygiene");
@@ -71,6 +72,21 @@ namespace Avatar
                         (Color) GetFieldInfo("GradientHair.GradientHairSettings:colorB").GetValue(settings)
                     );
                 }
+            }
+            return null;
+        }
+
+        public static (Color, Color)? GetAsimovSkinColor(Pawn pawn)
+        {
+            if (!cachedMethodInfo.ContainsKey("Asimov:GetComp_CompAutomaton"))
+                cachedMethodInfo["Asimov:GetComp_CompAutomaton"] = AccessTools.Method(typeof(Pawn), "GetComp", null, new Type[] {AccessTools.TypeByName("Asimov.Comp_Automaton")});
+            var compAutomaton = cachedMethodInfo["Asimov:GetComp_CompAutomaton"].Invoke(pawn, null);
+            if (compAutomaton != null)
+            {
+                return (
+                    (Color) GetFieldInfo("Asimov.Comp_Automaton:skinFirst").GetValue(compAutomaton),
+                    (Color) GetFieldInfo("Asimov.Comp_Automaton:skinSecond").GetValue(compAutomaton)
+                );
             }
             return null;
         }

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_OuterRim_Head_BattleDroid_OuterRim_BattleDroid</defName>
+        <forceBodyType>BattleDroid</forceBodyType>
+        <unisexPath>OuterRim/Droid/Head_BattleDroid</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarBodyDef>
+        <defName>Body_BattleDroid</defName>
+        <typeName>BattleDroid</typeName>
+        <unisexPath>OuterRim/Droid/Body_BattleDroid</unisexPath>
+    </Avatar.AvatarBodyDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_OuterRim_Head_BattleDroidAdvanced_OuterRim_BattleDroidAdvanced</defName>
+        <forceBodyType>BattleDroidAdvanced</forceBodyType>
+        <unisexPath>OuterRim/Droid/Head_BattleDroidAdvanced</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarBodyDef>
+        <defName>Body_BattleDroidAdvanced</defName>
+        <typeName>BattleDroidAdvanced</typeName>
+        <unisexPath>OuterRim/Droid/Body_BattleDroidAdvanced</unisexPath>
+    </Avatar.AvatarBodyDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_OuterRim_Head_BlankDroid_OuterRim_SuperBattleDroid</defName>
+        <forceBodyType>SuperBattleDroid</forceBodyType>
+        <unisexPath>OuterRim/Droid/Head_SuperBattleDroid</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarBodyDef>
+        <defName>Body_SuperBattleDroid</defName>
+        <typeName>SuperBattleDroid</typeName>
+        <unisexPath>OuterRim/Droid/Body_SuperBattleDroid</unisexPath>
+    </Avatar.AvatarBodyDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_OuterRim_Head_CommandoDroid_OuterRim_CommandoDroid</defName>
+        <forceBodyType>CommandoDroid</forceBodyType>
+        <unisexPath>OuterRim/Droid/Head_CommandoDroid</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarBodyDef>
+        <defName>Body_CommandoDroid</defName>
+        <typeName>CommandoDroid</typeName>
+        <unisexPath>OuterRim/Droid/Body_CommandoDroid</unisexPath>
+    </Avatar.AvatarBodyDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_OuterRim_Head_HKDroid_OuterRim_HKDroid</defName>
+        <forceBodyType>HKDroid</forceBodyType>
+        <unisexPath>OuterRim/Droid/Head_HKDroid</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarBodyDef>
+        <defName>Body_HKDroid</defName>
+        <typeName>HKDroid</typeName>
+        <unisexPath>OuterRim/Droid/Body_HKDroid</unisexPath>
+    </Avatar.AvatarBodyDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_OuterRim_Head_KXSeriesDroid_OuterRim_KXSecurityDroid</defName>
+        <forceBodyType>KXDroid</forceBodyType>
+        <headAttachmentOffset>-3</headAttachmentOffset>
+        <unisexPath>OuterRim/Droid/Head_KXDroid</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarBodyDef>
+        <defName>Body_KXDroid</defName>
+        <typeName>KXDroid</typeName>
+        <unisexPath>OuterRim/Droid/Body_KXDroid</unisexPath>
+    </Avatar.AvatarBodyDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_OuterRim_Head_MagnaGuardDroid_OuterRim_MagnaGuardDroid</defName>
+        <forceBodyType>MagnaGuardDroid</forceBodyType>
+        <unisexPath>OuterRim/Droid/Head_MagnaGuardDroid</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarBodyDef>
+        <defName>Body_MagnaGuardDroid</defName>
+        <typeName>MagnaGuardDroid</typeName>
+        <unisexPath>OuterRim/Droid/Body_MagnaGuardDroid</unisexPath>
+    </Avatar.AvatarBodyDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_OuterRim_Head_ProtocolDroid_OuterRim_ProtocolDroid</defName>
+        <forceBodyType>ProtocolDroid</forceBodyType>
+        <unisexPath>OuterRim/Droid/Head_ProtocolDroid</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarBodyDef>
+        <defName>Body_ProtocolDroid</defName>
+        <typeName>ProtocolDroid</typeName>
+        <unisexPath>OuterRim/Droid/Body_ProtocolDroid</unisexPath>
+    </Avatar.AvatarBodyDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_OuterRim_Head_ImperialLaborDroid_OuterRim_ImperialLaborDroid</defName>
+        <forceBodyType>ImperialLaborDroid</forceBodyType>
+        <unisexPath>OuterRim/Droid/Head_ImperialLaborDroid</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarBodyDef>
+        <defName>Body_ImperialLaborDroid</defName>
+        <typeName>ImperialLaborDroid</typeName>
+        <unisexPath>OuterRim/Droid/Body_ImperialLaborDroid</unisexPath>
+    </Avatar.AvatarBodyDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_OuterRim_Head_TacticalDroid_OuterRim_TacticalDroid</defName>
+        <forceBodyType>TacticalDroid</forceBodyType>
+        <unisexPath>OuterRim/Droid/Head_TacticalDroid</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarBodyDef>
+        <defName>Body_TacticalDroid</defName>
+        <typeName>TacticalDroid</typeName>
+        <unisexPath>OuterRim/Droid/Body_TacticalDroid</unisexPath>
+    </Avatar.AvatarBodyDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_OuterRim_Head_SuperTacticalDroid_OuterRim_SuperTacticalDroid</defName>
+        <forceBodyType>SuperTacticalDroid</forceBodyType>
+        <unisexPath>OuterRim/Droid/Head_SuperTacticalDroid</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarBodyDef>
+        <defName>Body_SuperTacticalDroid</defName>
+        <typeName>SuperTacticalDroid</typeName>
+        <unisexPath>OuterRim/Droid/Body_SuperTacticalDroid</unisexPath>
+    </Avatar.AvatarBodyDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_DroidArmorLight</defName>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_DroidArmorModule</defName>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_DroidArmorHeavy</defName>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_DroidDeflectorShield</defName>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_DroidPropulsionJets</defName>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_DroidJetpackJump</defName>
+    </Avatar.AvatarBodygearDef>
+
+</Defs>

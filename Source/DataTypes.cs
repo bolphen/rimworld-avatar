@@ -65,8 +65,14 @@ namespace Avatar
         public bool hideNose;
         public bool hideMouth;
         public bool specialNoJaw = false;
+        public bool reassignStandard = false;
         public string forceBodyType;
-    }
+        public string facePaint;
+        public Color? facePaintColor;
+        public int headAttachmentOffset = 0;
+        public List<EyePos> eyesPos;
+    };
+    public class AvatarFacePaintDef : AvatarDef {};
     public class AvatarBodyDef : AvatarDef {};
     public class AvatarHeadHediffDef : AvatarDef {};
     public class AvatarBodyHediffDef : AvatarDef {};
@@ -115,7 +121,9 @@ namespace Avatar
         public bool flipGraphic = false;
         public Color? color;
         public (Color, Color)? eyeColor;
-        public (string, Color)? gradient;
+        public string maskPath;
+        public string gradientMask;
+        public Color? colorB;
         public bool drawDexter = true;
         public bool drawSinister = true;
         public (string, int, string)? fallback = null;
@@ -177,13 +185,13 @@ namespace Avatar
 
     public class EyePos
     {
-        public IntVec2 pos1;
-        public IntVec2 pos2;
+        public List<IntVec2> pos1;
+        public List<IntVec2> pos2;
         public EyePos() {}
         public EyePos(int pos1x, int pos1y, int pos2x, int pos2y)
         {
-            pos1 = new (pos1x, pos1y);
-            pos2 = new (pos2x, pos2y);
+            pos1 = new List<IntVec2> { new IntVec2 (pos1x, pos1y) };
+            pos2 = new List<IntVec2> { new IntVec2 (pos2x, pos2y) };
         }
     }
 

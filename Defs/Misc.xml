@@ -26,20 +26,20 @@
     <Avatar.AvatarEyesDef MayRequire="det.avaloi">
         <defName>DV_Head_Avaloi</defName>
         <geneName>DV_Head_Avaloi</geneName>
-        <unisexPath>Common/ThreeEyes</unisexPath>
-        <unisexChildPath>Common/ThreeEyesChild</unisexChildPath>
+        <unisexPath>Common/Eyes/ThreeEyes</unisexPath>
+        <unisexChildPath>Common/Eyes/ThreeEyesChild</unisexChildPath>
         <eyesPos>
             <li>
-                <pos1>(14,27)</pos1>
-                <pos2>(15,27)</pos2>
+                <pos1><li>(14,27)</li></pos1>
+                <pos2><li>(15,27)</li></pos2>
             </li>
             <li>
-                <pos1>(24,27)</pos1>
-                <pos2>(23,27)</pos2>
+                <pos1><li>(24,27)</li></pos1>
+                <pos2><li>(23,27)</li></pos2>
             </li>
             <li>
-                <pos1>(19,32)</pos1>
-                <pos2>(19,31)</pos2>
+                <pos1><li>(19,32)</li></pos1>
+                <pos2><li>(19,31)</li></pos2>
             </li>
         </eyesPos>
     </Avatar.AvatarEyesDef>
@@ -60,5 +60,10 @@
         <unisexChildPath>Core/Unisex/Corpse/SkullChild</unisexChildPath>
         <unisexNewbornPath>Core/Unisex/Corpse/SkullNewborn</unisexNewbornPath>
     </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarBodygearDef MayRequire="vanillaquestsexpanded.generator">
+        <defName>VQE_Apparel_Parka</defName>
+        <unisexPath>Core/Apparel/Parka</unisexPath>
+    </Avatar.AvatarBodygearDef>
 
 </Defs>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <!-- helmet -->
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_MandalorianHelmet_Simple</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Mandalore/Helmet_Simple</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_MandalorianHelmet_Armorer</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Mandalore/Helmet_Armorer</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_MandalorianHelmet_Traditional</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Mandalore/Helmet_Traditional</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_MandalorianHelmet_Pilot</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Mandalore/Helmet_Pilot</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_MandalorianHelmet_Imperial</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Mandalore/Helmet_Imperial</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_MandalorianHelmet_NeoCrusader</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Mandalore/Helmet_NeoCrusader</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_MandalorianHelmet_Executioner</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Mandalore/Helmet_Executioner</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_MandalorianHelmet_NiteOwl</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Mandalore/Helmet_NiteOwl</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_MandalorianHelmet_NiteOwlAlt</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Mandalore/Helmet_NiteOwlAlt</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_MandalorianHelmet_Tooka</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Mandalore/Helmet_Tooka</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_MandalorianHelmet_Powertech</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Mandalore/Helmet_Powertech</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_MandalorianHelmet_Heavy</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Mandalore/Helmet_Heavy</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_MandalorianHelmet_RetroCrusader</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Mandalore/Helmet_RetroCrusader</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <!-- chest -->
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_MandalorianChest_Simple</defName>
+        <unisexPath>OuterRim/Mandalore/Chest_Simple</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_MandalorianChest_Traditional</defName>
+        <unisexPath>OuterRim/Mandalore/Chest_Traditional</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_MandalorianChest_NeoCrusader</defName>
+        <unisexPath>OuterRim/Mandalore/Chest_NeoCrusader</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_MandalorianChest_NiteOwl</defName>
+        <unisexPath>OuterRim/Mandalore/Chest_NiteOwl</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_MandalorianChest_Heavy</defName>
+        <unisexPath>OuterRim/Mandalore/Chest_Heavy</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <!-- pauldrons -->
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_MandalorianPauldrons_Simple</defName>
+        <unisexPath>OuterRim/Mandalore/Pauldrons_Simple</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_MandalorianPauldrons_Traditional</defName>
+        <unisexPath>OuterRim/Mandalore/Pauldrons_Traditional</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_MandalorianPauldrons_NeoCrusader</defName>
+        <unisexPath>OuterRim/Mandalore/Pauldrons_NeoCrusader</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_MandalorianPauldrons_NiteOwl</defName>
+        <unisexPath>OuterRim/Mandalore/Pauldrons_NiteOwl</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_MandalorianPauldrons_Heavy</defName>
+        <unisexPath>OuterRim/Mandalore/Pauldrons_Heavy</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+</Defs>

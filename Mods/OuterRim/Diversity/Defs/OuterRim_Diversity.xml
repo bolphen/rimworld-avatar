@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <!-- togruta -->
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Togruta_Male0</defName>
+        <facePaint>FacePaint_Togruta0</facePaint>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Togruta_Female0</defName>
+        <facePaint>FacePaint_Togruta0</facePaint>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Togruta_Male1</defName>
+        <facePaint>FacePaint_Togruta1</facePaint>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Togruta_Female1</defName>
+        <facePaint>FacePaint_Togruta1</facePaint>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Togruta_Male2</defName>
+        <facePaint>FacePaint_Togruta2</facePaint>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Togruta_Female2</defName>
+        <facePaint>FacePaint_Togruta2</facePaint>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Togruta_Male3</defName>
+        <facePaint>FacePaint_Togruta3</facePaint>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Togruta_Female3</defName>
+        <facePaint>FacePaint_Togruta3</facePaint>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Togruta0</defName>
+        <unisexPath>OuterRim/Diversity/FacePaint/Togruta0</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/FacePaint/Togruta_Child0</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/FacePaint/Togruta_Newborn0</unisexNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Togruta1</defName>
+        <unisexPath>OuterRim/Diversity/FacePaint/Togruta1</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/FacePaint/Togruta_Child1</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/FacePaint/Togruta_Newborn1</unisexNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Togruta2</defName>
+        <unisexPath>OuterRim/Diversity/FacePaint/Togruta2</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/FacePaint/Togruta_Child2</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/FacePaint/Togruta_Newborn2</unisexNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Togruta3</defName>
+        <unisexPath>OuterRim/Diversity/FacePaint/Togruta3</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/FacePaint/Togruta_Child3</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/FacePaint/Togruta_Newborn3</unisexNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarHeadboneDef>
+        <defName>OuterRim_TogrutaMontrals</defName>
+        <geneName>OuterRim_TogrutaMontrals</geneName>
+        <unisexPath>OuterRim/Diversity/TogrutaMontrals</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/TogrutaMontralsChild</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/TogrutaMontralsNewborn</unisexNewbornPath>
+    </Avatar.AvatarHeadboneDef>
+
+    <!-- pantoran -->
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Male0</defName>
+        <facePaint>FacePaint_Pantoran0</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Male1</defName>
+        <facePaint>FacePaint_Pantoran1</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Male2</defName>
+        <facePaint>FacePaint_Pantoran2</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Male3</defName>
+        <facePaint>FacePaint_Pantoran3</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Male4</defName>
+        <facePaint>FacePaint_Pantoran4</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Male5</defName>
+        <facePaint>FacePaint_Pantoran5</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Male6</defName>
+        <facePaint>FacePaint_Pantoran6</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Male7</defName>
+        <facePaint>FacePaint_Pantoran7</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Male8</defName>
+        <facePaint>FacePaint_Pantoran8</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Female0</defName>
+        <facePaint>FacePaint_Pantoran0</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Female1</defName>
+        <facePaint>FacePaint_Pantoran1</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Female2</defName>
+        <facePaint>FacePaint_Pantoran2</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Female3</defName>
+        <facePaint>FacePaint_Pantoran3</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Female4</defName>
+        <facePaint>FacePaint_Pantoran4</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Female5</defName>
+        <facePaint>FacePaint_Pantoran5</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Female6</defName>
+        <facePaint>FacePaint_Pantoran6</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Female7</defName>
+        <facePaint>FacePaint_Pantoran7</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Pantoran_Female8</defName>
+        <facePaint>FacePaint_Pantoran8</facePaint>
+        <facePaintColor>(0.84, 0.74, 0.41)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Pantoran0</defName>
+        <unisexPath>OuterRim/Diversity/FacePaint/Pantoran0</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/FacePaint/Pantoran_Child0</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/FacePaint/Pantoran_Newborn0</unisexNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Pantoran1</defName>
+        <unisexPath>OuterRim/Diversity/FacePaint/Pantoran1</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/FacePaint/Pantoran_Child1</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/FacePaint/Pantoran_Newborn1</unisexNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Pantoran2</defName>
+        <unisexPath>OuterRim/Diversity/FacePaint/Pantoran2</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/FacePaint/Pantoran_Child2</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/FacePaint/Pantoran_Newborn2</unisexNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Pantoran3</defName>
+        <unisexPath>OuterRim/Diversity/FacePaint/Pantoran3</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/FacePaint/Pantoran_Child3</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/FacePaint/Pantoran_Newborn3</unisexNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Pantoran4</defName>
+        <unisexPath>OuterRim/Diversity/FacePaint/Pantoran4</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/FacePaint/Pantoran_Child4</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/FacePaint/Pantoran_Newborn4</unisexNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Pantoran5</defName>
+        <unisexPath>OuterRim/Diversity/FacePaint/Pantoran5</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/FacePaint/Pantoran_Child5</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/FacePaint/Pantoran_Newborn5</unisexNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Pantoran6</defName>
+        <unisexPath>OuterRim/Diversity/FacePaint/Pantoran6</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/FacePaint/Pantoran_Child6</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/FacePaint/Pantoran_Newborn6</unisexNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Pantoran7</defName>
+        <unisexPath>OuterRim/Diversity/FacePaint/Pantoran7</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/FacePaint/Pantoran_Child7</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/FacePaint/Pantoran_Newborn7</unisexNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Pantoran8</defName>
+        <unisexPath>OuterRim/Diversity/FacePaint/Pantoran8</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/FacePaint/Pantoran_Child8</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/FacePaint/Pantoran_Newborn8</unisexNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <!-- dathomirian -->
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Dathomirian_Male0</defName>
+        <facePaint>FacePaint_Dathomirian_Male0</facePaint>
+        <facePaintColor>(0.26, 0.26, 0.26)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Dathomirian_Female0</defName>
+        <facePaint>FacePaint_Dathomirian_Female0</facePaint>
+        <facePaintColor>(0.26, 0.26, 0.26)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Dathomirian_Male1</defName>
+        <facePaint>FacePaint_Dathomirian_Male1</facePaint>
+        <facePaintColor>(0.26, 0.26, 0.26)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Dathomirian_Female1</defName>
+        <facePaint>FacePaint_Dathomirian_Female1</facePaint>
+        <facePaintColor>(0.26, 0.26, 0.26)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Dathomirian_Male2</defName>
+        <facePaint>FacePaint_Dathomirian_Male2</facePaint>
+        <facePaintColor>(0.26, 0.26, 0.26)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Dathomirian_Female2</defName>
+        <facePaint>FacePaint_Dathomirian_Female2</facePaint>
+        <facePaintColor>(0.26, 0.26, 0.26)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Dathomirian_Male3</defName>
+        <facePaint>FacePaint_Dathomirian_Male3</facePaint>
+        <facePaintColor>(0.26, 0.26, 0.26)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Dathomirian_Female3</defName>
+        <facePaint>FacePaint_Dathomirian_Female3</facePaint>
+        <facePaintColor>(0.26, 0.26, 0.26)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Dathomirian_Male0</defName>
+        <malePath>OuterRim/Diversity/FacePaint/Dathomirian_Male0</malePath>
+        <maleChildPath>OuterRim/Diversity/FacePaint/Dathomirian_MaleChild0</maleChildPath>
+        <maleNewbornPath>OuterRim/DiversityFacePaintHead/Dathomirian_MaleNewborn0</maleNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Dathomirian_Male1</defName>
+        <malePath>OuterRim/Diversity/FacePaint/Dathomirian_Male1</malePath>
+        <maleChildPath>OuterRim/Diversity/FacePaint/Dathomirian_MaleChild1</maleChildPath>
+        <maleNewbornPath>OuterRim/DiversityFacePaintHead/Dathomirian_MaleNewborn1</maleNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Dathomirian_Male2</defName>
+        <malePath>OuterRim/Diversity/FacePaint/Dathomirian_Male2</malePath>
+        <maleChildPath>OuterRim/Diversity/FacePaint/Dathomirian_MaleChild2</maleChildPath>
+        <maleNewbornPath>OuterRim/DiversityFacePaintHead/Dathomirian_MaleNewborn2</maleNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Dathomirian_Male3</defName>
+        <malePath>OuterRim/Diversity/FacePaint/Dathomirian_Male3</malePath>
+        <maleChildPath>OuterRim/Diversity/FacePaint/Dathomirian_MaleChild3</maleChildPath>
+        <maleNewbornPath>OuterRim/DiversityFacePaintHead/Dathomirian_MaleNewborn3</maleNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Dathomirian_Female0</defName>
+        <femalePath>OuterRim/Diversity/FacePaint/Dathomirian_Female0</femalePath>
+        <femaleChildPath>OuterRim/Diversity/FacePaint/Dathomirian_FemaleChild0</femaleChildPath>
+        <femaleNewbornPath>OuterRim/DiversityFacePaintHead/Dathomirian_FemaleNewborn0</femaleNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Dathomirian_Female1</defName>
+        <femalePath>OuterRim/Diversity/FacePaint/Dathomirian_Female1</femalePath>
+        <femaleChildPath>OuterRim/Diversity/FacePaint/Dathomirian_FemaleChild1</femaleChildPath>
+        <femaleNewbornPath>OuterRim/DiversityFacePaintHead/Dathomirian_FemaleNewborn1</femaleNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Dathomirian_Female2</defName>
+        <femalePath>OuterRim/Diversity/FacePaint/Dathomirian_Female2</femalePath>
+        <femaleChildPath>OuterRim/Diversity/FacePaint/Dathomirian_FemaleChild2</femaleChildPath>
+        <femaleNewbornPath>OuterRim/DiversityFacePaintHead/Dathomirian_FemaleNewborn2</femaleNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Dathomirian_Female3</defName>
+        <femalePath>OuterRim/Diversity/FacePaint/Dathomirian_Female3</femalePath>
+        <femaleChildPath>OuterRim/Diversity/FacePaint/Dathomirian_FemaleChild3</femaleChildPath>
+        <femaleNewbornPath>OuterRim/DiversityFacePaintHead/Dathomirian_FemaleNewborn3</femaleNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarHeadboneDef>
+        <defName>OuterRim_ZabrakHorns</defName>
+        <geneName>OuterRim_ZabrakHorns</geneName>
+        <unisexPath>OuterRim/Diversity/ZabrakHorns</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/ZabrakHornsChild</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/ZabrakHornsNewborn</unisexNewbornPath>
+    </Avatar.AvatarHeadboneDef>
+
+    <Avatar.AvatarHeadboneDef>
+        <defName>OuterRim_ZabrakHornsMale</defName>
+        <geneName>OuterRim_ZabrakHornsMale</geneName>
+        <malePath>OuterRim/Diversity/ZabrakHorns</malePath>
+        <maleChildPath>OuterRim/Diversity/ZabrakHornsChild</maleChildPath>
+        <maleNewbornPath>OuterRim/Diversity/ZabrakHornsNewborn</maleNewbornPath>
+    </Avatar.AvatarHeadboneDef>
+
+    <!-- mirialan -->
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Mirialan_Male0</defName>
+        <facePaint>FacePaint_Mirialan0</facePaint>
+        <facePaintColor>(0.26, 0.26, 0.26)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Mirialan_Female0</defName>
+        <facePaint>FacePaint_Mirialan0</facePaint>
+        <facePaintColor>(0.26, 0.26, 0.26)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Mirialan_Male1</defName>
+        <facePaint>FacePaint_Mirialan1</facePaint>
+        <facePaintColor>(0.26, 0.26, 0.26)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Mirialan_Female1</defName>
+        <facePaint>FacePaint_Mirialan1</facePaint>
+        <facePaintColor>(0.26, 0.26, 0.26)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Mirialan_Male2</defName>
+        <facePaint>FacePaint_Mirialan2</facePaint>
+        <facePaintColor>(0.26, 0.26, 0.26)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Mirialan_Female2</defName>
+        <facePaint>FacePaint_Mirialan2</facePaint>
+        <facePaintColor>(0.26, 0.26, 0.26)</facePaintColor>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Mirialan0</defName>
+        <unisexPath>OuterRim/Diversity/FacePaint/Mirialan0</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/FacePaint/Mirialan_Child0</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/FacePaint/Mirialan_Newborn0</unisexNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Mirialan1</defName>
+        <unisexPath>OuterRim/Diversity/FacePaint/Mirialan1</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/FacePaint/Mirialan_Child1</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/FacePaint/Mirialan_Newborn1</unisexNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarFacePaintDef>
+        <defName>FacePaint_Mirialan2</defName>
+        <unisexPath>OuterRim/Diversity/FacePaint/Mirialan2</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/FacePaint/Mirialan_Child2</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/FacePaint/Mirialan_Newborn2</unisexNewbornPath>
+    </Avatar.AvatarFacePaintDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Cerean_MaleNormal</defName>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Cerean_FemaleNormal</defName>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarFacialDef>
+        <defName>OuterRim_CereanHead</defName>
+        <geneName>OuterRim_CereanHead</geneName>
+        <unisexPath>OuterRim/Diversity/Head/Cerean</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/Head/Cerean_Child</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/Head/Cerean_Newborn</unisexNewbornPath>
+    </Avatar.AvatarFacialDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_OuterRim_CereanBald</defName>
+        <unisexPath>Core/Unisex/Hair/Bald</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_OuterRim_CereanPony</defName>
+        <unisexPath>OuterRim/Diversity/CereanPony</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_OuterRim_CereanMane</defName>
+        <unisexPath>Core/Unisex/Hair/Bald</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_OuterRim_CereanLong</defName>
+        <unisexPath>OuterRim/Diversity/CereanLong</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHairDef>
+        <defName>Hair_OuterRim_CereanTuft</defName>
+        <unisexPath>OuterRim/Diversity/CereanTuft</unisexPath>
+    </Avatar.AvatarHairDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Iktotchi_MaleNormal</defName>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Iktotchi_FemaleNormal</defName>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarFacialDef>
+        <defName>OuterRim_IktotchiHead</defName>
+        <geneName>OuterRim_IktotchiHead</geneName>
+        <unisexPath>OuterRim/Diversity/Head/Iktotchi</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/Head/Iktotchi_Child</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/Head/Iktotchi_Newborn</unisexNewbornPath>
+    </Avatar.AvatarFacialDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Twilek_MaleNormal</defName>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Twilek_FemaleNormal</defName>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Twilek_MaleStriped</defName>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef>
+        <defName>Head_OuterRim_Twilek_FemaleStriped</defName>
+        <reassignStandard>true</reassignStandard>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarFacialDef>
+        <defName>OuterRim_TwilekHead</defName>
+        <geneName>OuterRim_TwilekHead</geneName>
+        <unisexPath>OuterRim/Diversity/Head/Twilek</unisexPath>
+        <unisexChildPath>OuterRim/Diversity/Head/Twilek_Child</unisexChildPath>
+        <unisexNewbornPath>OuterRim/Diversity/Head/Twilek_Newborn</unisexNewbornPath>
+    </Avatar.AvatarFacialDef>
+
+    <Avatar.AvatarHeadDef Name="OuterRimCustom" ParentName="Custom" Abstract="True">
+        <hideTattoo>false</hideTattoo><!-- allow tattoo -->
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Abednedo_Normal</defName>
+        <unisexPath>OuterRim/Diversity/Head/Abednedo</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Aqualish_Duo</defName>
+        <unisexPath>OuterRim/Diversity/Head/AqualishDuo</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Aqualish_Quad</defName>
+        <unisexPath>OuterRim/Diversity/Head/AqualishQuad</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Bith_Normal</defName>
+        <unisexPath>OuterRim/Diversity/Head/Bith</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarNoseDef>
+        <defName>OuterRim_Bothan_Nose</defName>
+        <geneName>OuterRim_BothanHead</geneName>
+        <malePath>Common/Nose/Canine_Male</malePath>
+        <femalePath>Common/Nose/Canine_Female</femalePath>
+        <maleChildPath>Common/Nose/Canine_MaleChild</maleChildPath>
+        <femaleChildPath>Common/Nose/Canine_FemaleChild</femaleChildPath>
+        <unisexNewbornPath>Common/Nose/Canine_Newborn</unisexNewbornPath>
+    </Avatar.AvatarNoseDef>
+
+    <Avatar.AvatarNoseDef>
+        <defName>OuterRim_Cathar_Nose</defName>
+        <geneName>OuterRim_CatharHead</geneName>
+        <malePath>Common/Nose/Feline_Male</malePath>
+        <femalePath>Common/Nose/Feline_Female</femalePath>
+        <maleChildPath>Common/Nose/Feline_MaleChild</maleChildPath>
+        <femaleChildPath>Common/Nose/Feline_FemaleChild</femaleChildPath>
+        <unisexNewbornPath>Common/Nose/Feline_Newborn</unisexNewbornPath>
+    </Avatar.AvatarNoseDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Ithorian_Normal</defName>
+        <unisexPath>OuterRim/Diversity/Head/Ithorian</unisexPath>
+        <headAttachmentOffset>-6</headAttachmentOffset>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Kaminoan_MaleNormal</defName>
+        <malePath>OuterRim/Diversity/Head/KaminoanMale</malePath>
+        <headAttachmentOffset>-6</headAttachmentOffset>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Kaminoan_FemaleNormal</defName>
+        <femalePath>OuterRim/Diversity/Head/KaminoanFemale</femalePath>
+        <headAttachmentOffset>-6</headAttachmentOffset>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_MonCalamari_Normal</defName>
+        <unisexPath>OuterRim/Diversity/Head/MonCalamari</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef Name="Duros" ParentName="OuterRimCustom" Abstract="True">
+        <hideEyes>false</hideEyes>
+        <eyesPos>
+            <li>
+                <pos1>
+                    <li>(15,27)</li>
+                    <li>(16,27)</li>
+                </pos1>
+                <pos2>
+                    <li>(13,27)</li>
+                    <li>(14,26)</li>
+                    <li>(14,27)</li>
+                    <li>(14,28)</li>
+                    <li>(15,26)</li>
+                    <li>(15,28)</li>
+                    <li>(16,26)</li>
+                </pos2>
+            </li>
+            <li>
+                <pos1>
+                    <li>(23,27)</li>
+                    <li>(24,27)</li>
+                </pos1>
+                <pos2>
+                    <li>(26,27)</li>
+                    <li>(25,26)</li>
+                    <li>(25,27)</li>
+                    <li>(25,28)</li>
+                    <li>(24,26)</li>
+                    <li>(24,28)</li>
+                    <li>(23,26)</li>
+                </pos2>
+            </li>
+        </eyesPos>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="Duros">
+        <defName>Head_OuterRim_Duros_MaleNormal</defName>
+        <malePath>OuterRim/Diversity/Head/Duros</malePath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="Duros">
+        <defName>Head_OuterRim_Duros_FemaleNormal</defName>
+        <femalePath>OuterRim/Diversity/Head/Duros</femalePath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Geonosian_Normal</defName>
+        <unisexPath>OuterRim/Diversity/Head/Geonosian</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Gungan_MaleNormal</defName>
+        <unisexPath>OuterRim/Diversity/Head/Gungan</unisexPath>
+        <hideEars>false</hideEars>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Gungan_FemaleNormal</defName>
+        <unisexPath>OuterRim/Diversity/Head/Gungan</unisexPath>
+        <hideEars>false</hideEars>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarEarsDef>
+        <defName>OuterRim_GunganEars</defName>
+        <geneName>OuterRim_GunganEars</geneName>
+        <unisexPath>OuterRim/Diversity/GunganEars</unisexPath>
+    </Avatar.AvatarEarsDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Herglic</defName>
+        <unisexPath>OuterRim/Diversity/Head/Herglic</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Nikto</defName>
+        <unisexPath>OuterRim/Diversity/Head/Nikto</unisexPath>
+        <hideEyes>false</hideEyes>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Pyke_Normal</defName>
+        <unisexPath>OuterRim/Diversity/Head/Pyke</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Quarren_Normal</defName>
+        <unisexPath>OuterRim/Diversity/Head/Quarren</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Rakatan</defName>
+        <unisexPath>OuterRim/Diversity/Head/Rakatan</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Selkath_Normal</defName>
+        <unisexPath>OuterRim/Diversity/Head/Selkath</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Sullustan</defName>
+        <unisexPath>OuterRim/Diversity/Head/Sullustan</unisexPath>
+        <hideEars>false</hideEars>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Trandoshan</defName>
+        <unisexPath>OuterRim/Diversity/Head/Trandoshan</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="OuterRimCustom">
+        <defName>Head_OuterRim_Wookiee</defName>
+        <unisexPath>OuterRim/Diversity/Head/Wookiee</unisexPath>
+        <hideEyes>false</hideEyes>
+    </Avatar.AvatarHeadDef>
+
+</Defs>

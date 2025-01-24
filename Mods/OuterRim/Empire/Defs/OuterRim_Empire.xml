@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_StormtrooperHelmet</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Empire/StormtrooperHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_StormtrooperHelmet_Pride</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Empire/StormtrooperHelmet_Pride</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_StormtrooperHelmet_Specialist</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Empire/StormtrooperHelmet_Specialist</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_StormtrooperCuirass</defName>
+        <unisexPath>OuterRim/Empire/StormtrooperCuirass</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_StormtrooperCuirass_Pride</defName>
+        <unisexPath>OuterRim/Empire/StormtrooperCuirass_Pride</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_StormtrooperCuirass_Specialist</defName>
+        <unisexPath>OuterRim/Empire/StormtrooperCuirass_Specialist</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_StormtrooperPauldrons</defName>
+        <unisexPath>OuterRim/Empire/StormtrooperPauldrons</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_StormtrooperPauldrons_Artillery</defName>
+        <unisexPath>OuterRim/Empire/StormtrooperPauldrons_Artillery</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_StormtrooperPauldrons_Commander</defName>
+        <unisexPath>OuterRim/Empire/StormtrooperPauldrons_Commander</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_StormtrooperPauldrons_Enlisted</defName>
+        <unisexPath>OuterRim/Empire/StormtrooperPauldrons_Enlisted</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_StormtrooperPauldrons_Officer</defName>
+        <unisexPath>OuterRim/Empire/StormtrooperPauldrons_Officer</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_StormtrooperPauldrons_Pride</defName>
+        <unisexPath>OuterRim/Empire/StormtrooperPauldrons_Pride</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_StormtrooperPauldrons_Sergeant</defName>
+        <unisexPath>OuterRim/Empire/StormtrooperPauldrons_Sergeant</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_ScoutTrooperHelmet</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Empire/ScoutTrooperHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ScoutTrooperCuirass</defName>
+        <unisexPath>OuterRim/Empire/ScoutTrooperCuirass</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ScoutTrooperPauldrons</defName>
+        <unisexPath>OuterRim/Empire/StormtrooperPauldrons</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_ImperialOfficerCap</defName>
+        <hideTop>16</hideTop>
+        <unisexPath>OuterRim/Empire/OfficerCap</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ImperialOfficerUniform</defName>
+        <unisexPath>OuterRim/Empire/OfficerUniform</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_ImperialOfficerCap_Black</defName>
+        <hideTop>16</hideTop>
+        <unisexPath>OuterRim/Empire/OfficerCap_Black</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ImperialOfficerUniform_Black</defName>
+        <unisexPath>OuterRim/Empire/OfficerUniform_Black</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_ImperialOfficerCap_White</defName>
+        <hideTop>16</hideTop>
+        <unisexPath>OuterRim/Empire/OfficerCap_White</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ImperialOfficerUniform_White</defName>
+        <unisexPath>OuterRim/Empire/OfficerUniform_White</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_ISBAgentHelmet</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>OuterRim/Empire/ISBAgentHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ISBAgentCuirass</defName>
+        <unisexPath>OuterRim/Empire/ISBAgentCuirass</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_ImperialCadetHelmet</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Empire/CadetHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_ImperialCadetHelmetAlt</defName>
+        <hideHair>true</hideHair>
+        <hideBeard>true</hideBeard>
+        <unisexPath>OuterRim/Empire/CadetHelmetAlt</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ImperialCadetUniform</defName>
+        <unisexPath>OuterRim/Empire/CadetUniform</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_ImperialArmyCap</defName>
+        <hideTop>16</hideTop>
+        <unisexPath>OuterRim/Empire/ArmyCap</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ImperialArmyUniform</defName>
+        <unisexPath>OuterRim/Empire/ArmyUniform</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>OuterRim_ImperialArmyHelmet</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>OuterRim/Empire/ArmyHelmet</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ImperialArmyCuirass</defName>
+        <unisexPath>OuterRim/Empire/ArmyCuirass</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>OuterRim_ImperialArmyPauldrons</defName>
+        <unisexPath>OuterRim/Empire/StormtrooperPauldrons</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+</Defs>
