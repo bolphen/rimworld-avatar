@@ -139,7 +139,7 @@
         <li IfModActive="Neronix17.OuterRim.Mandalore">Mods/OuterRim/Mandalore</li>
         <li IfModActive="Neronix17.OuterRim.RebelAlliance">Mods/OuterRim/Rebel</li>
         <li IfModActive="Neronix17.Outland.Genetics">Mods/OutlandGenetics</li>
-        <li IfModActive="Pal5k.PersonaMechs">Mods/PersonaMechs</li>
+        <li IfModActive="Pal5k.PersonaMechs2">Mods/PersonaMechs2</li>
         <li IfModActive="FS.ReviaRaceBiotech">Mods/Revia</li>
         <li IfModActive="kentington.saveourship2">Mods/SOS2</li>
         <li IfModActive="cyanobot.toddlers">Mods/Toddlers</li>
@@ -149,6 +149,8 @@
         <li IfModActive="vanillaexpanded.varme">Mods/VanillaExpanded/VE_Armour</li>
         <li IfModActive="VanillaExpanded.VIEHAR">Mods/VanillaExpanded/VIE_HatsAndRags</li>
         <li IfModActive="vanillaexpanded.vpsycastse">Mods/VanillaExpanded/VE_Psycasts</li>
+        <li IfModActive="vanillaexpanded.gravship">Mods/VanillaExpanded/VGE1</li>
+        <li IfModActive="vanillaexpanded.gravship2">Mods/VanillaExpanded/VGE2</li>
         <li IfModActive="OskarPotocki.VFE.Classical">Mods/VanillaExpanded/VFE_Classical</li>
         <li IfModActive="oskarpotocki.vfe.empire">Mods/VanillaExpanded/VFE_Empire</li>
         <li IfModActive="OskarPotocki.VFE.Mechanoid">Mods/VanillaExpanded/VFE_Mechanoids</li>

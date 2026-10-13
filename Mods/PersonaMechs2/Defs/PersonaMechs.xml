@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_PMP_Persona</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
+        <unisexPath>PersonaMechs/Persona2</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_PMP_Sturdy</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
+        <unisexPath>PersonaMechs/Sturdy2</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_PMP_Tri</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
+        <unisexPath>PersonaMechs/Tri2</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_PMP_StylishSubcore</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
+        <unisexPath>PersonaMechs/StylishSubcore2</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_PMP_Fabricor</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
+        <unisexPath>PersonaMechs/Fabricor2</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_PMP_Visor</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
+        <unisexPath>PersonaMechs/Visor2</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_PMP_Enforcer</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
+        <unisexPath>PersonaMechs/Enforcer2</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_PMP_Tunneler</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
+        <unisexPath>PersonaMechs/Tunneler2</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarHeadDef ParentName="Custom">
+        <defName>Head_PMP_Flat</defName>
+        <forceBodyType>PersonaMechRace</forceBodyType>
+        <unisexPath>PersonaMechs/Flat2</unisexPath>
+    </Avatar.AvatarHeadDef>
+
+    <Avatar.AvatarBodyDef>
+        <defName>Body_PersonaMechRace</defName>
+        <typeName>PersonaMechs_Body</typeName>
+        <unisexPath>PersonaMechs/Body</unisexPath>
+    </Avatar.AvatarBodyDef>
+
+</Defs>

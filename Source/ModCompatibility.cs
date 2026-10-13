@@ -17,6 +17,7 @@ namespace Avatar
         public static bool FacialAnimation_Loaded = ModsConfig.IsActive("Nals.FacialAnimation");
         public static bool GradientHair_Loaded = ModsConfig.IsActive("automatic.gradienthair");
         public static bool Intimacy_Loaded = ModsConfig.IsActive("LovelyDovey.Sex.WithEuterpe");
+        public static bool PersonaMechs_Loaded = ModsConfig.IsActive("Pal5k.PersonaMechs2");
         public static bool Portraits_Loaded = ModsConfig.IsActive("twopenny.portraitsoftherim");
         public static bool RegrowthCore_Loaded = ModsConfig.IsActive("ReGrowth.BOTR.Core");
         public static bool RJW_Loaded = ModsConfig.IsActive("rim.job.world");
@@ -38,12 +39,17 @@ namespace Avatar
                 cachedMethodInfo[methodName] = AccessTools.Method(methodName);
             return cachedMethodInfo[methodName];
         }
+        private static Type Type_VFECore_ApparelDrawPosExtension = AccessTools.TypeByName("VFECore.ApparelDrawPosExtension");
+        private static Type Type_GradientHair_CompGradientHair = AccessTools.TypeByName("GradientHair.CompGradientHair");
+        private static Type Type_Asimov_CompAutomaton = AccessTools.TypeByName("Asimov.Comp_Automaton");
+        private static Type Type_RJW_CompRJW = AccessTools.TypeByName("rjw.CompRJW");
+        private static Type Type_Intimacy_JobDriverSex = AccessTools.TypeByName("LoveyDoveySexWithEuterpe.JobDriver_Sex");
 
         #if v1_3 || v1_4
         public static float GetVEOffset(ThingDef def)
         {
             if (!cachedMethodInfo.ContainsKey("VFECore:GetModExtension_ApparelDrawPosExtension"))
-                cachedMethodInfo["VFECore:GetModExtension_ApparelDrawPosExtension"] = AccessTools.Method(typeof(Def), "GetModExtension", null, new Type[] {AccessTools.TypeByName("VFECore.ApparelDrawPosExtension")});
+                cachedMethodInfo["VFECore:GetModExtension_ApparelDrawPosExtension"] = AccessTools.Method(typeof(Def), "GetModExtension", null, new Type[] {Type_VFECore_ApparelDrawPosExtension});
             var apparelDrawPosExtension = cachedMethodInfo["VFECore:GetModExtension_ApparelDrawPosExtension"].Invoke(def, null);
             if (apparelDrawPosExtension != null)
             {
@@ -61,7 +67,7 @@ namespace Avatar
         public static (string, Color)? GetGradientHair(Pawn pawn)
         {
             if (!cachedMethodInfo.ContainsKey("GradientHair:GetComp_CompGradientHair"))
-                cachedMethodInfo["GradientHair:GetComp_CompGradientHair"] = AccessTools.Method(typeof(Pawn), "GetComp", null, new Type[] {AccessTools.TypeByName("GradientHair.CompGradientHair")});
+                cachedMethodInfo["GradientHair:GetComp_CompGradientHair"] = AccessTools.Method(typeof(Pawn), "GetComp", null, new Type[] {Type_GradientHair_CompGradientHair});
             var compGradientHair = cachedMethodInfo["GradientHair:GetComp_CompGradientHair"].Invoke(pawn, null);
             if (compGradientHair != null)
             {
@@ -80,7 +86,7 @@ namespace Avatar
         public static (Color, Color)? GetAsimovSkinColor(Pawn pawn)
         {
             if (!cachedMethodInfo.ContainsKey("Asimov:GetComp_CompAutomaton"))
-                cachedMethodInfo["Asimov:GetComp_CompAutomaton"] = AccessTools.Method(typeof(Pawn), "GetComp", null, new Type[] {AccessTools.TypeByName("Asimov.Comp_Automaton")});
+                cachedMethodInfo["Asimov:GetComp_CompAutomaton"] = AccessTools.Method(typeof(Pawn), "GetComp", null, new Type[] {Type_Asimov_CompAutomaton});
             var compAutomaton = cachedMethodInfo["Asimov:GetComp_CompAutomaton"].Invoke(pawn, null);
             if (compAutomaton != null)
             {
@@ -90,6 +96,14 @@ namespace Avatar
                 );
             }
             return null;
+        }
+
+        public static (bool, Color) GetPersonaMechsColor(Pawn pawn)
+        {
+            return (
+                (bool) GetMethodInfo("Persona_Pawns.MiscUtility:HasVisibleAccent").Invoke(null, new object[] {pawn}),
+                (Color) GetMethodInfo("Persona_Pawns.MiscUtility:GetPersonaAccentColor").Invoke(null, new object[] {pawn})
+            );
         }
 
         public static bool PortraitShown(Pawn pawn)
@@ -112,14 +126,9 @@ namespace Avatar
         public static bool GetIntimacyNudity(Pawn pawn)
         {
             var curDriver = pawn?.jobs?.curDriver;
-            try {
+            if (curDriver == null) return false;
+            if (Type_Intimacy_JobDriverSex.IsInstanceOfType(curDriver))
                 return (bool) GetFieldInfo("LoveyDoveySexWithEuterpe.JobDriver_Sex:IsCurrentlyLovin").GetValue(curDriver);
-            }
-            catch {}
-            try {
-                return (bool) GetFieldInfo("LoveyDoveySexWithEuterpe.JobDriver_Sex_Mechanitor:IsCurrentlyLovin").GetValue(curDriver);
-            }
-            catch {}
             return false;
         }
 
@@ -136,7 +145,7 @@ namespace Avatar
         {
             #if !(v1_3 || v1_4)
             if (!cachedMethodInfo.ContainsKey("RJW:GetComp_CompRJW"))
-                cachedMethodInfo["RJW:GetComp_CompRJW"] = AccessTools.Method(typeof(Pawn), "GetComp", null, new Type[] {AccessTools.TypeByName("rjw.CompRJW")});
+                cachedMethodInfo["RJW:GetComp_CompRJW"] = AccessTools.Method(typeof(Pawn), "GetComp", null, new Type[] {Type_RJW_CompRJW});
             var compRJW = cachedMethodInfo["RJW:GetComp_CompRJW"].Invoke(pawn, null);
             if (compRJW != null)
             {

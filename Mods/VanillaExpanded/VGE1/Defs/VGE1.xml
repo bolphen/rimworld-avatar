@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+    <Avatar.AvatarHeadgearDef>
+        <defName>VGE_Apparel_VacsuitHelmet_Prestige</defName>
+        <hideHair>true</hideHair>
+        <unisexPath>VanillaExpanded/Apparel/VacsuitHelmetPrestige</unisexPath>
+    </Avatar.AvatarHeadgearDef>
+
+    <Avatar.AvatarBodygearDef>
+        <defName>VGE_Apparel_Vacsuit_Prestige</defName>
+        <unisexPath>VanillaExpanded/Apparel/VacsuitPrestige</unisexPath>
+    </Avatar.AvatarBodygearDef>
+
+</Defs>

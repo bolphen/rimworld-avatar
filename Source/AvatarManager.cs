@@ -575,6 +575,14 @@ namespace Avatar
                         head.colorB = skinSecond;
                     }
                 }
+                if (ModCompatibility.PersonaMechs_Loaded)
+                {
+                    var (hasAccent, colorB) = ModCompatibility.GetPersonaMechsColor(pawn);
+                    if (hasAccent)
+                        head.colorB = colorB;
+                    else
+                        head.colorB = skinColor;
+                }
                 if (!hideEars && (!mod.settings.earsOnTop || ears.texPath == "Core/Unisex/Ears/Ears_Human")) layers.Add(ears);
                 // start to build head layers
                 head_layers.Add(head);
@@ -930,8 +938,8 @@ namespace Avatar
                                             if (layer.colorB is Color tint2)
                                             {
                                                 Color maskPixel = mask.GetPixel(x, y-(height-texture.height-layer.offset)+yOffset);
-                                                float r = maskPixel.r;
-                                                float g = maskPixel.g;
+                                                float r = maskPixel.r*maskPixel.a;
+                                                float g = maskPixel.g*maskPixel.a;
                                                 color.r = oldColor.r*(1f-alpha) + newColor.r*(tint.r*r + tint2.r*g + (1-r)*(1-g))*alpha;
                                                 color.g = oldColor.g*(1f-alpha) + newColor.g*(tint.g*r + tint2.g*g + (1-r)*(1-g))*alpha;
                                                 color.b = oldColor.b*(1f-alpha) + newColor.b*(tint.b*r + tint2.b*g + (1-r)*(1-g))*alpha;
@@ -940,7 +948,7 @@ namespace Avatar
                                             else
                                             {
                                                 Color maskPixel = mask.GetPixel(x, y-(height-texture.height-layer.offset)+yOffset);
-                                                float r = maskPixel.r;
+                                                float r = maskPixel.r*maskPixel.a;
                                                 color.r = oldColor.r*(1f-alpha) + newColor.r*(tint.r*r + 1-r)*alpha;
                                                 color.g = oldColor.g*(1f-alpha) + newColor.g*(tint.g*r + 1-r)*alpha;
                                                 color.b = oldColor.b*(1f-alpha) + newColor.b*(tint.b*r + 1-r)*alpha;
